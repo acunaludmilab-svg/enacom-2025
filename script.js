@@ -1,1114 +1,1074 @@
 /* =========================================================
-   ENACOM 2025
-   Interactividad, idiomas, accesibilidad, carrusel y quiz
+ENACOM 2025
+Interactividad, idiomas, accesibilidad, carrusel y quiz
 ========================================================= */
 
-
 /* =========================================================
-   ACORDEÓN
+ACORDEÓN
 ========================================================= */
 
 const accordionButtons =
-  document.querySelectorAll(".subthread-button");
+document.querySelectorAll(".subthread-button");
 
 accordionButtons.forEach((button) => {
 
-  button.addEventListener("click", () => {
+button.addEventListener("click", () => {
 
-    const article = button.closest(".subthread");
+```
+const article = button.closest(".subthread");
 
-    const content =
-      article.querySelector(".subthread-content");
+const content =
+  article.querySelector(".subthread-content");
 
-    const isOpen =
-      article.classList.contains("open");
+const isOpen =
+  article.classList.contains("open");
 
-    article.classList.toggle("open");
+article.classList.toggle("open");
 
-    button.setAttribute(
-      "aria-expanded",
-      String(!isOpen)
-    );
+button.setAttribute(
+  "aria-expanded",
+  String(!isOpen)
+);
 
-    if (!isOpen) {
+if (!isOpen) {
 
-      content.style.maxHeight =
-        content.scrollHeight + "px";
+  content.style.maxHeight =
+    content.scrollHeight + "px";
 
-    } else {
+} else {
 
-      content.style.maxHeight = "0px";
+  content.style.maxHeight = "0px";
 
-    }
-
-  });
+}
+```
 
 });
 
+});
 
 /* Abrir correctamente el primer acordeón */
 
 document.querySelectorAll(".subthread.open")
-  .forEach((article) => {
+.forEach((article) => {
 
-    const content =
-      article.querySelector(".subthread-content");
+```
+const content =
+  article.querySelector(".subthread-content");
 
-    content.style.maxHeight =
-      content.scrollHeight + "px";
+content.style.maxHeight =
+  content.scrollHeight + "px";
+```
 
-  });
-
+});
 
 /* =========================================================
-   CARRUSEL
+CARRUSEL
 ========================================================= */
 
 const slides =
-  document.querySelectorAll(".carousel-slide");
+document.querySelectorAll(".carousel-slide");
 
 const prevButton =
-  document.querySelector(".carousel-control.prev");
+document.querySelector(".carousel-control.prev");
 
 const nextButton =
-  document.querySelector(".carousel-control.next");
+document.querySelector(".carousel-control.next");
 
 const dotsContainer =
-  document.querySelector(".carousel-dots");
+document.querySelector(".carousel-dots");
 
 let currentSlide = 0;
-
 
 /* Crear indicadores */
 
 slides.forEach((slide, index) => {
 
-  const dot =
-    document.createElement("button");
+const dot =
+document.createElement("button");
 
-  dot.className = "carousel-dot";
+dot.className = "carousel-dot";
 
-  dot.type = "button";
+dot.type = "button";
 
-  dot.setAttribute(
-    "aria-label",
-    `Ver fotografía ${index + 1}`
-  );
+dot.setAttribute(
+"aria-label",
+`Ver fotografía ${index + 1}`
+);
 
-  dot.addEventListener("click", () => {
+dot.addEventListener("click", () => {
 
-    showSlide(index);
-
-  });
-
-  dotsContainer.appendChild(dot);
+```
+showSlide(index);
+```
 
 });
 
+dotsContainer.appendChild(dot);
+
+});
 
 const dots =
-  document.querySelectorAll(".carousel-dot");
-
+document.querySelectorAll(".carousel-dot");
 
 function showSlide(index) {
 
-  if (!slides.length) return;
+if (!slides.length) return;
 
-  if (index < 0) {
+if (index < 0) {
 
-    index = slides.length - 1;
-
-  }
-
-  if (index >= slides.length) {
-
-    index = 0;
-
-  }
-
-  currentSlide = index;
-
-
-  slides.forEach((slide, i) => {
-
-    slide.classList.toggle(
-      "active",
-      i === currentSlide
-    );
-
-  });
-
-
-  dots.forEach((dot, i) => {
-
-    dot.classList.toggle(
-      "active",
-      i === currentSlide
-    );
-
-  });
+```
+index = slides.length - 1;
+```
 
 }
 
+if (index >= slides.length) {
+
+```
+index = 0;
+```
+
+}
+
+currentSlide = index;
+
+slides.forEach((slide, i) => {
+
+```
+slide.classList.toggle(
+  "active",
+  i === currentSlide
+);
+```
+
+});
+
+dots.forEach((dot, i) => {
+
+```
+dot.classList.toggle(
+  "active",
+  i === currentSlide
+);
+```
+
+});
+
+}
 
 prevButton.addEventListener("click", () => {
 
-  showSlide(currentSlide - 1);
+showSlide(currentSlide - 1);
 
 });
-
 
 nextButton.addEventListener("click", () => {
 
-  showSlide(currentSlide + 1);
+showSlide(currentSlide + 1);
 
 });
 
-
 showSlide(0);
-
 
 /* Carrusel automático */
 
 let carouselTimer =
+setInterval(() => {
+
+```
+showSlide(currentSlide + 1);
+```
+
+}, 6500);
+
+/* Pausar al pasar el mouse */
+
+const carousel =
+document.querySelector(".carousel");
+
+carousel.addEventListener(
+"mouseenter",
+() => clearInterval(carouselTimer)
+);
+
+carousel.addEventListener(
+"mouseleave",
+() => {
+
+```
+carouselTimer =
   setInterval(() => {
 
     showSlide(currentSlide + 1);
 
   }, 6500);
+```
 
-
-/* Pausar al pasar el mouse */
-
-const carousel =
-  document.querySelector(".carousel");
-
-carousel.addEventListener(
-  "mouseenter",
-  () => clearInterval(carouselTimer)
+}
 );
-
-carousel.addEventListener(
-  "mouseleave",
-  () => {
-
-    carouselTimer =
-      setInterval(() => {
-
-        showSlide(currentSlide + 1);
-
-      }, 6500);
-
-  }
-);
-
 
 /* =========================================================
-   IDIOMAS
+IDIOMAS
 ========================================================= */
 
 const translations = {
 
-  es: {
+es: {
 
-    navEjes: "Ejes temáticos",
-    navPonencias: "Ponencias",
-    navInteractivo: "Interactivo",
-    navRedes: "Redes",
+```
+navEjes:
+  "Ejes temáticos",
 
-    kicker:
-      "XXII Encuentro Nacional de Carreras de Comunicación",
+navPonencias:
+  "Referentes",
 
-    heroTitle:
-      "Tiempo de comunicación. Diálogos sobre pasado y presente en un mundo acelerado",
+navInteractivo:
+  "Participá",
 
-    heroText:
-      "Un recorrido por los principales debates, ponencias y producciones del ENACOM 2025, realizado en San Luis.",
+navRedes:
+  "Redes",
 
-    heroGallery:
-      "Ver fotografías",
+kicker:
+  "XXII Encuentro Nacional de Carreras de Comunicación",
 
-    heroExplore:
-      "Explorar el encuentro",
+heroTitle:
+  "Tiempo de comunicación. Diálogos sobre pasado y presente en un mundo acelerado",
 
-    heroImageCaption:
-      "Producciones desarrolladas a partir de los debates y problemáticas abordadas durante el encuentro.",
+heroText:
+  "Un recorrido por los principales debates, ponencias y producciones del ENACOM 2025, realizado en San Luis.",
 
-    galleryKicker:
-      "El encuentro en imágenes",
+heroGallery:
+  "Ver fotografías",
 
-    galleryTitle:
-      "ENACOM 2025 en San Luis",
+heroExplore:
+  "Explorar el encuentro",
 
-    galleryText:
-      "Una mirada visual sobre las jornadas realizadas en la Facultad de Ciencias Humanas de la Universidad Nacional de San Luis.",
+heroImageCaption:
+  "Producciones desarrolladas a partir de los debates y problemáticas abordadas durante el encuentro.",
 
-    photo1Title:
-      "Apertura del ENACOM 2025",
+galleryKicker:
+  "El encuentro en imágenes",
 
-    photo1Credit:
-      "Fotografía: Noticias UNSL — Universidad Nacional de San Luis.",
+galleryTitle:
+  "ENACOM 2025 en San Luis",
 
-    photo2Title:
-      "Participación y encuentro",
+galleryText:
+  "Una mirada visual sobre las jornadas realizadas en la Facultad de Ciencias Humanas de la Universidad Nacional de San Luis.",
 
-    photo2Credit:
-      "Fotografía: Noticias UNSL — Universidad Nacional de San Luis.",
+photo1Title:
+  "Apertura del ENACOM 2025",
 
-    photo3Title:
-      "Comunidad académica",
+photo1Credit:
+  "Fotografía: Noticias UNSL — Universidad Nacional de San Luis.",
 
-    photo3Credit:
-      "Fotografía: Noticias UNSL — Universidad Nacional de San Luis.",
+photo2Title:
+  "Participación y encuentro",
 
-    photo4Title:
-      "Ponencias y debates",
+photo2Credit:
+  "Fotografía: Noticias UNSL — Universidad Nacional de San Luis.",
 
-    photo4Credit:
-      "Fotografía: Facultad de Ciencias de la Educación — UNER.",
+photo3Title:
+  "Comunidad académica",
 
-    photo5Title:
-      "Participantes del encuentro",
+photo3Credit:
+  "Fotografía: Noticias UNSL — Universidad Nacional de San Luis.",
 
-    photo5Credit:
-      "Fotografía: Facultad de Ciencias de la Educación — UNER.",
+photo4Title:
+  "Ponencias y debates",
 
-    photoNote:
-      "Las fotografías se presentan con identificación de su fuente y autoría.",
+photo4Credit:
+  "Fotografía: Facultad de Ciencias de la Educación — UNER.",
 
-    axesKicker:
-      "Recorrido conceptual",
+photo5Title:
+  "Participantes del encuentro",
 
-    axesTitle:
-      "Ejes temáticos",
+photo5Credit:
+  "Fotografía: Facultad de Ciencias de la Educación — UNER.",
 
-    axesIntro:
-      "El recorrido reúne algunas de las principales problemáticas abordadas durante el ENACOM 2025.",
+photoNote:
+  "Las fotografías se presentan con identificación de su fuente y autoría.",
 
-    axisMainTitle:
-      "Crisis, comunicación y democracia",
+axesKicker:
+  "Recorrido conceptual",
 
-    axisMainText:
-      "Este eje aborda la relación entre las crisis socioeconómicas y políticas, la comunicación pública, el periodismo, la circulación de información y los desafíos democráticos.",
+axesTitle:
+  "Ejes temáticos",
 
-    problemsKicker:
-      "Debates contemporáneos",
+axesIntro:
+  "El recorrido reúne algunas de las principales problemáticas abordadas durante el ENACOM 2025.",
 
-    problemsTitle:
-      "Problemáticas y debates",
+axisMainTitle:
+  "Crisis, comunicación y democracia",
 
-    problemsIntro:
-      "Dos de los temas trabajados en nuestro recorrido sobre comunicación, periodismo y democracia.",
+axisMainText:
+  "Este eje aborda la relación entre las crisis socioeconómicas y políticas, la comunicación pública, el periodismo, la circulación de información y los desafíos democráticos.",
 
-    problemA:
-      "Ataques a comunicadores y periodistas",
+problemsKicker:
+  "Debates contemporáneos",
 
-    problemAText:
-      "Esta problemática aborda las formas de hostigamiento, censura, violencia simbólica y presión pública que afectan el trabajo periodístico y el derecho social a estar informado.",
+problemsTitle:
+  "Problemáticas y debates",
 
-    problemB:
-      "Desinformación, periodismo y democracia",
+problemsIntro:
+  "Dos de los temas trabajados en nuestro recorrido sobre comunicación, periodismo y democracia.",
 
-    problemBText:
-      "La circulación de fake news, la inteligencia artificial y la desinformación transforman la forma en que se produce, distribuye y recibe información.",
+problemA:
+  "Ataques a comunicadores y periodistas",
 
-    viewInfographic:
-      "Ver infografía completa",
+problemAText:
+  "Esta problemática aborda las formas de hostigamiento, censura, violencia simbólica y presión pública que afectan el trabajo periodístico y el derecho social a estar informado.",
 
-    viewPdf:
-      "Ver material completo",
+problemB:
+  "Desinformación, periodismo y democracia",
 
-    speakersKicker:
-      "Voces del encuentro",
+problemBText:
+  "La circulación de fake news, la inteligencia artificial y la desinformación transforman la forma en que se produce, distribuye y recibe información.",
 
-    speakersTitle:
-      "Ponencias destacadas",
+viewInfographic:
+  "Ver infografía completa",
 
-    speakersIntro:
-      "Algunas de las mesas y especialistas que participaron del ENACOM 2025.",
+viewPdf:
+  "Ver material completo",
 
-    speaker1Title:
-      "Cultura, política y comunicación",
+speakersKicker:
+  "Referentes del encuentro",
 
-    speaker1Subtitle:
-      "Para una genealogía del campo: ¿de dónde venimos?",
+speakersTitle:
+  "Referentes del ENACOM 2025",
 
-    speaker2Title:
-      "Comunicación, convergencia e inteligencia artificial",
+speakersIntro:
+  "Investigadores, docentes y especialistas que participaron de los debates y actividades del encuentro.",
 
-    speaker3Title:
-      "Ciencias Sociales y Humanidades",
+speaker1Title:
+  "Cultura, política y comunicación",
 
-    speaker4Title:
-      "Herencias de la comunicación",
+speaker1Subtitle:
+  "Para una genealogía del campo: ¿de dónde venimos?",
 
-    quizKicker:
-      "Participá",
+speaker2Title:
+  "Comunicación, convergencia e inteligencia artificial",
 
-    quizTitle:
-      "¿Cuánto sabés sobre comunicación?",
+speaker3Title:
+  "Ciencias Sociales y Humanidades",
 
-    quizIntro:
-      "Poné a prueba lo que aprendiste durante el recorrido.",
+speaker4Title:
+  "Herencias de la comunicación",
 
-    nextQuestion:
-      "Siguiente pregunta",
+quizKicker:
+  "Participá",
 
-    socialKicker:
-      "Seguí el encuentro",
+quizTitle:
+  "¿Cuánto sabés sobre comunicación?",
 
-    socialTitle:
-      "ENACOM también está en redes",
+quizIntro:
+  "Poné a prueba lo que aprendiste durante el recorrido.",
 
-    socialText:
-      "Encontrá más información, fotografías y novedades sobre el Encuentro Nacional de Carreras de Comunicación.",
+nextQuestion:
+  "Siguiente pregunta",
 
-    accessKicker:
-      "Accesibilidad",
+socialKicker:
+  "Seguí el encuentro",
 
-    accessTitle:
-      "Una página para todas las personas",
+socialTitle:
+  "ENACOM también está en redes",
 
-    accessText:
-      "Utilizá estas herramientas para adaptar la experiencia de lectura según tus necesidades.",
+socialText:
+  "Encontrá más información, fotografías y novedades sobre el Encuentro Nacional de Carreras de Comunicación.",
 
-    increaseText:
-      "Aumentar texto",
+accessKicker:
+  "Accesibilidad",
 
-    decreaseText:
-      "Disminuir texto",
+accessTitle:
+  "Una página para todas las personas",
 
-    contrast:
-      "Alto contraste",
+accessText:
+  "Utilizá estas herramientas para adaptar la experiencia de lectura según tus necesidades.",
 
-    reset:
-      "Restablecer",
+increaseText:
+  "Aumentar texto",
 
-    closing:
-      "ENACOM 2025 invita a pensar el tiempo de la comunicación como una trama viva: memoria, presente, conflicto, tecnología y derecho a la información en diálogo.",
+decreaseText:
+  "Disminuir texto",
 
-    footer:
-      "Trabajo académico realizado en el marco del ENACOM 2025."
+contrast:
+  "Alto contraste",
 
-  },
+reset:
+  "Restablecer",
 
+closing:
+  "ENACOM 2025 invita a pensar el tiempo de la comunicación como una trama viva: memoria, presente, conflicto, tecnología y derecho a la información en diálogo.",
 
-  en: {
+footer:
+  "Trabajo académico realizado por estudiantes de la Licenciatura en Comunicación Social de la Universidad Nacional del Nordeste (UNNE)."
+```
 
-    navEjes:
-      "Thematic axes",
+},
 
-    navPonencias:
-      "Featured talks",
+en: {
 
-    navInteractivo:
-      "Interactive",
+```
+navEjes:
+  "Thematic axes",
 
-    navRedes:
-      "Social media",
+navPonencias:
+  "Speakers",
 
-    kicker:
-      "22nd National Meeting of Communication Careers",
+navInteractivo:
+  "Take part",
 
-    heroTitle:
-      "A time for communication. Dialogues between past and present in an accelerated world",
+navRedes:
+  "Social media",
 
-    heroText:
-      "A journey through the main debates, talks and productions of ENACOM 2025, held in San Luis, Argentina.",
+kicker:
+  "22nd National Meeting of Communication Careers",
 
-    heroGallery:
-      "View photographs",
+heroTitle:
+  "A time for communication. Dialogues between past and present in an accelerated world",
 
-    heroExplore:
-      "Explore the event",
+heroText:
+  "A journey through the main debates, talks and productions of ENACOM 2025, held in San Luis, Argentina.",
 
-    heroImageCaption:
-      "Productions developed from the debates and issues addressed during the event.",
+heroGallery:
+  "View photographs",
 
-    galleryKicker:
-      "The event in images",
+heroExplore:
+  "Explore the event",
 
-    galleryTitle:
-      "ENACOM 2025 in San Luis",
+heroImageCaption:
+  "Productions developed from the debates and issues addressed during the event.",
 
-    galleryText:
-      "A visual look at the sessions held at the Faculty of Human Sciences of the National University of San Luis.",
+galleryKicker:
+  "The event in images",
 
-    photo1Title:
-      "Opening of ENACOM 2025",
+galleryTitle:
+  "ENACOM 2025 in San Luis",
 
-    photo1Credit:
-      "Photograph: Noticias UNSL — National University of San Luis.",
+galleryText:
+  "A visual look at the sessions held at the Faculty of Human Sciences of the National University of San Luis.",
 
-    photo2Title:
-      "Participation and encounter",
+photoNote:
+  "Photographs are presented with their source and authorship clearly identified.",
 
-    photo2Credit:
-      "Photograph: Noticias UNSL — National University of San Luis.",
+axesKicker:
+  "Conceptual journey",
 
-    photo3Title:
-      "Academic community",
+axesTitle:
+  "Thematic axes",
 
-    photo3Credit:
-      "Photograph: Noticias UNSL — National University of San Luis.",
+axesIntro:
+  "The journey brings together some of the main issues addressed during ENACOM 2025.",
 
-    photo4Title:
-      "Talks and debates",
+axisMainTitle:
+  "Crisis, communication and democracy",
 
-    photo4Credit:
-      "Photograph: Faculty of Education Sciences — UNER.",
+axisMainText:
+  "This axis explores the relationship between socioeconomic and political crises, public communication, journalism, information circulation and democratic challenges.",
 
-    photo5Title:
-      "Event participants",
+problemsKicker:
+  "Contemporary debates",
 
-    photo5Credit:
-      "Photograph: Faculty of Education Sciences — UNER.",
+problemsTitle:
+  "Issues and debates",
 
-    photoNote:
-      "Photographs are presented with their source and authorship clearly identified.",
+problemsIntro:
+  "Two of the topics explored in our journey through communication, journalism and democracy.",
 
-    axesKicker:
-      "Conceptual journey",
+problemA:
+  "Attacks against communicators and journalists",
 
-    axesTitle:
-      "Thematic axes",
+problemAText:
+  "This topic addresses harassment, censorship, symbolic violence and public pressure affecting journalistic work and the social right to information.",
 
-    axesIntro:
-      "The journey brings together some of the main issues addressed during ENACOM 2025.",
+problemB:
+  "Disinformation, journalism and democracy",
 
-    axisMainTitle:
-      "Crisis, communication and democracy",
+problemBText:
+  "Fake news, artificial intelligence and disinformation are transforming how information is produced, distributed and received.",
 
-    axisMainText:
-      "This axis explores the relationship between socioeconomic and political crises, public communication, journalism, information circulation and democratic challenges.",
+viewInfographic:
+  "View complete infographic",
 
-    problemsKicker:
-      "Contemporary debates",
+viewPdf:
+  "View complete material",
 
-    problemsTitle:
-      "Issues and debates",
+speakersKicker:
+  "Speakers at the event",
 
-    problemsIntro:
-      "Two of the topics explored in our journey through communication, journalism and democracy.",
+speakersTitle:
+  "ENACOM 2025 speakers",
 
-    problemA:
-      "Attacks against communicators and journalists",
+speakersIntro:
+  "Researchers, teachers and specialists who participated in the event's debates and activities.",
 
-    problemAText:
-      "This topic addresses harassment, censorship, symbolic violence and public pressure affecting journalistic work and the social right to information.",
+quizKicker:
+  "Take part",
 
-    problemB:
-      "Disinformation, journalism and democracy",
+quizTitle:
+  "How much do you know about communication?",
 
-    problemBText:
-      "Fake news, artificial intelligence and disinformation are transforming how information is produced, distributed and received.",
+quizIntro:
+  "Test what you learned during the journey.",
 
-    viewInfographic:
-      "View complete infographic",
+nextQuestion:
+  "Next question",
 
-    viewPdf:
-      "View complete material",
+socialKicker:
+  "Follow the event",
 
-    speakersKicker:
-      "Voices of the event",
+socialTitle:
+  "ENACOM is also on social media",
 
-    speakersTitle:
-      "Featured talks",
+socialText:
+  "Find more information, photographs and news about the National Meeting of Communication Careers.",
 
-    speakersIntro:
-      "Some of the panels and specialists who participated in ENACOM 2025.",
+accessKicker:
+  "Accessibility",
 
-    speaker1Title:
-      "Culture, politics and communication",
+accessTitle:
+  "A website for everyone",
 
-    speaker1Subtitle:
-      "Towards a genealogy of the field: where do we come from?",
+accessText:
+  "Use these tools to adapt the reading experience to your needs.",
 
-    speaker2Title:
-      "Communication, convergence and artificial intelligence",
+increaseText:
+  "Increase text",
 
-    speaker3Title:
-      "Social Sciences and Humanities",
+decreaseText:
+  "Decrease text",
 
-    speaker4Title:
-      "Legacies of communication",
+contrast:
+  "High contrast",
 
-    quizKicker:
-      "Take part",
+reset:
+  "Reset",
 
-    quizTitle:
-      "How much do you know about communication?",
+closing:
+  "ENACOM 2025 invites us to think about the time of communication as a living network: memory, present, conflict, technology and the right to information in dialogue.",
 
-    quizIntro:
-      "Test what you learned during the journey.",
+footer:
+  "Academic project developed by students of the Bachelor's Degree in Social Communication at the National University of the Northeast (UNNE)."
+```
 
-    nextQuestion:
-      "Next question",
+},
 
-    socialKicker:
-      "Follow the event",
+pt: {
 
-    socialTitle:
-      "ENACOM is also on social media",
+```
+navEjes:
+  "Eixos temáticos",
 
-    socialText:
-      "Find more information, photographs and news about the National Meeting of Communication Careers.",
+navPonencias:
+  "Referentes",
 
-    accessKicker:
-      "Accessibility",
+navInteractivo:
+  "Participe",
 
-    accessTitle:
-      "A website for everyone",
+navRedes:
+  "Redes sociais",
 
-    accessText:
-      "Use these tools to adapt the reading experience to your needs.",
+kicker:
+  "22º Encontro Nacional de Carreiras de Comunicação",
 
-    increaseText:
-      "Increase text",
+heroTitle:
+  "Tempo de comunicação. Diálogos entre passado e presente em um mundo acelerado",
 
-    decreaseText:
-      "Decrease text",
+heroText:
+  "Um percurso pelos principais debates, palestras e produções do ENACOM 2025, realizado em San Luis, Argentina.",
 
-    contrast:
-      "High contrast",
+heroGallery:
+  "Ver fotografias",
 
-    reset:
-      "Reset",
+heroExplore:
+  "Explorar o encontro",
 
-    closing:
-      "ENACOM 2025 invites us to think about the time of communication as a living network: memory, present, conflict, technology and the right to information in dialogue.",
+heroImageCaption:
+  "Produções desenvolvidas a partir dos debates e questões abordados durante o encontro.",
 
-    footer:
-      "Academic project developed within the framework of ENACOM 2025."
+galleryKicker:
+  "O encontro em imagens",
 
-  },
+galleryTitle:
+  "ENACOM 2025 em San Luis",
 
+galleryText:
+  "Um olhar visual sobre as jornadas realizadas na Faculdade de Ciências Humanas da Universidade Nacional de San Luis.",
 
-  pt: {
+photoNote:
+  "As fotografias são apresentadas com sua fonte e autoria devidamente identificadas.",
 
-    navEjes:
-      "Eixos temáticos",
+axesKicker:
+  "Percurso conceitual",
 
-    navPonencias:
-      "Palestras",
+axesTitle:
+  "Eixos temáticos",
 
-    navInteractivo:
-      "Interativo",
+axesIntro:
+  "O percurso reúne alguns dos principais temas abordados durante o ENACOM 2025.",
 
-    navRedes:
-      "Redes sociais",
+axisMainTitle:
+  "Crise, comunicação e democracia",
 
-    kicker:
-      "22º Encontro Nacional de Carreiras de Comunicação",
+axisMainText:
+  "Este eixo aborda a relação entre as crises socioeconômicas e políticas, a comunicação pública, o jornalismo, a circulação de informações e os desafios democráticos.",
 
-    heroTitle:
-      "Tempo de comunicação. Diálogos entre passado e presente em um mundo acelerado",
+problemsKicker:
+  "Debates contemporâneos",
 
-    heroText:
-      "Um percurso pelos principais debates, palestras e produções do ENACOM 2025, realizado em San Luis, Argentina.",
+problemsTitle:
+  "Questões e debates",
 
-    heroGallery:
-      "Ver fotografias",
+problemsIntro:
+  "Dois dos temas trabalhados em nosso percurso sobre comunicação, jornalismo e democracia.",
 
-    heroExplore:
-      "Explorar o encontro",
+problemA:
+  "Ataques contra comunicadores e jornalistas",
 
-    heroImageCaption:
-      "Produções desenvolvidas a partir dos debates e questões abordados durante o encontro.",
+problemAText:
+  "Esta questão aborda as formas de assédio, censura, violência simbólica e pressão pública que afetam o trabalho jornalístico e o direito social à informação.",
 
-    galleryKicker:
-      "O encontro em imagens",
+problemB:
+  "Desinformação, jornalismo e democracia",
 
-    galleryTitle:
-      "ENACOM 2025 em San Luis",
+problemBText:
+  "As fake news, a inteligência artificial e a desinformação transformam a maneira como as informações são produzidas, distribuídas e recebidas.",
 
-    galleryText:
-      "Um olhar visual sobre as jornadas realizadas na Faculdade de Ciências Humanas da Universidade Nacional de San Luis.",
+viewInfographic:
+  "Ver infográfico completo",
 
-    photo1Title:
-      "Abertura do ENACOM 2025",
+viewPdf:
+  "Ver material completo",
 
-    photo1Credit:
-      "Fotografia: Noticias UNSL — Universidade Nacional de San Luis.",
+speakersKicker:
+  "Referentes do encontro",
 
-    photo2Title:
-      "Participação e encontro",
+speakersTitle:
+  "Referentes do ENACOM 2025",
 
-    photo2Credit:
-      "Fotografia: Noticias UNSL — Universidade Nacional de San Luis.",
+speakersIntro:
+  "Pesquisadores, docentes e especialistas que participaram dos debates e atividades do encontro.",
 
-    photo3Title:
-      "Comunidade acadêmica",
+quizKicker:
+  "Participe",
 
-    photo3Credit:
-      "Fotografia: Noticias UNSL — Universidade Nacional de San Luis.",
+quizTitle:
+  "Quanto você sabe sobre comunicação?",
 
-    photo4Title:
-      "Palestras e debates",
+quizIntro:
+  "Teste o que você aprendeu durante o percurso.",
 
-    photo4Credit:
-      "Fotografia: Faculdade de Ciências da Educação — UNER.",
+nextQuestion:
+  "Próxima pergunta",
 
-    photo5Title:
-      "Participantes do encontro",
+socialKicker:
+  "Acompanhe o encontro",
 
-    photo5Credit:
-      "Fotografia: Faculdade de Ciências da Educação — UNER.",
+socialTitle:
+  "O ENACOM também está nas redes",
 
-    photoNote:
-      "As fotografias são apresentadas com sua fonte e autoria devidamente identificadas.",
+socialText:
+  "Encontre mais informações, fotografias e novidades sobre o Encontro Nacional de Carreiras de Comunicação.",
 
-    axesKicker:
-      "Percurso conceitual",
+accessKicker:
+  "Acessibilidade",
 
-    axesTitle:
-      "Eixos temáticos",
+accessTitle:
+  "Um site para todas as pessoas",
 
-    axesIntro:
-      "O percurso reúne alguns dos principais temas abordados durante o ENACOM 2025.",
+accessText:
+  "Use estas ferramentas para adaptar a experiência de leitura às suas necessidades.",
 
-    axisMainTitle:
-      "Crise, comunicação e democracia",
+increaseText:
+  "Aumentar texto",
 
-    axisMainText:
-      "Este eixo aborda a relação entre as crises socioeconômicas e políticas, a comunicação pública, o jornalismo, a circulação de informações e os desafios democráticos.",
+decreaseText:
+  "Diminuir texto",
 
-    problemsKicker:
-      "Debates contemporâneos",
+contrast:
+  "Alto contraste",
 
-    problemsTitle:
-      "Questões e debates",
+reset:
+  "Restabelecer",
 
-    problemsIntro:
-      "Dois dos temas trabalhados em nosso percurso sobre comunicação, jornalismo e democracia.",
+closing:
+  "O ENACOM 2025 convida a pensar o tempo da comunicação como uma trama viva: memória, presente, conflito, tecnologia e direito à informação em diálogo.",
 
-    problemA:
-      "Ataques contra comunicadores e jornalistas",
+footer:
+  "Trabalho acadêmico realizado por estudantes da Licenciatura em Comunicação Social da Universidade Nacional do Nordeste (UNNE)."
+```
 
-    problemAText:
-      "Esta questão aborda as formas de assédio, censura, violência simbólica e pressão pública que afetam o trabalho jornalístico e o direito social à informação.",
-
-    problemB:
-      "Desinformação, jornalismo e democracia",
-
-    problemBText:
-      "As fake news, a inteligência artificial e a desinformação transformam a maneira como as informações são produzidas, distribuídas e recebidas.",
-
-    viewInfographic:
-      "Ver infográfico completo",
-
-    viewPdf:
-      "Ver material completo",
-
-    speakersKicker:
-      "Vozes do encontro",
-
-    speakersTitle:
-      "Palestras em destaque",
-
-    speakersIntro:
-      "Algumas das mesas e especialistas que participaram do ENACOM 2025.",
-
-    speaker1Title:
-      "Cultura, política e comunicação",
-
-    speaker1Subtitle:
-      "Para uma genealogia do campo: de onde viemos?",
-
-    speaker2Title:
-      "Comunicação, convergência e inteligência artificial",
-
-    speaker3Title:
-      "Ciências Sociais e Humanidades",
-
-    speaker4Title:
-      "Heranças da comunicação",
-
-    quizKicker:
-      "Participe",
-
-    quizTitle:
-      "Quanto você sabe sobre comunicação?",
-
-    quizIntro:
-      "Teste o que você aprendeu durante o percurso.",
-
-    nextQuestion:
-      "Próxima pergunta",
-
-    socialKicker:
-      "Acompanhe o encontro",
-
-    socialTitle:
-      "O ENACOM também está nas redes",
-
-    socialText:
-      "Encontre mais informações, fotografias e novidades sobre o Encontro Nacional de Carreiras de Comunicação.",
-
-    accessKicker:
-      "Acessibilidade",
-
-    accessTitle:
-      "Um site para todas as pessoas",
-
-    accessText:
-      "Use estas ferramentas para adaptar a experiência de leitura às suas necessidades.",
-
-    increaseText:
-      "Aumentar texto",
-
-    decreaseText:
-      "Diminuir texto",
-
-    contrast:
-      "Alto contraste",
-
-    reset:
-      "Restabelecer",
-
-    closing:
-      "O ENACOM 2025 convida a pensar o tempo da comunicação como uma trama viva: memória, presente, conflito, tecnologia e direito à informação em diálogo.",
-
-    footer:
-      "Trabalho acadêmico realizado no âmbito do ENACOM 2025."
-
-  }
+}
 
 };
 
-
-/* Cambiar idioma */
+/* =========================================================
+CAMBIAR IDIOMA
+========================================================= */
 
 const languageButtons =
-  document.querySelectorAll(".language-btn");
-
+document.querySelectorAll(".language-btn");
 
 function changeLanguage(lang) {
 
-  document.documentElement.lang = lang;
+document.documentElement.lang = lang;
 
-  const elements =
-    document.querySelectorAll("[data-i18n]");
+const elements =
+document.querySelectorAll("[data-i18n]");
 
-  elements.forEach((element) => {
+elements.forEach((element) => {
 
-    const key =
-      element.dataset.i18n;
+```
+const key =
+  element.dataset.i18n;
 
-    if (
-      translations[lang] &&
-      translations[lang][key]
-    ) {
+if (
+  translations[lang] &&
+  translations[lang][key]
+) {
 
-      element.textContent =
-        translations[lang][key];
-
-    }
-
-  });
-
-
-  languageButtons.forEach((button) => {
-
-    button.classList.toggle(
-      "active",
-      button.dataset.lang === lang
-    );
-
-  });
-
-
-  localStorage.setItem(
-    "enacom-language",
-    lang
-  );
+  element.textContent =
+    translations[lang][key];
 
 }
-
-
-languageButtons.forEach((button) => {
-
-  button.addEventListener(
-    "click",
-    () => {
-
-      changeLanguage(
-        button.dataset.lang
-      );
-
-    }
-  );
+```
 
 });
 
+languageButtons.forEach((button) => {
+
+```
+button.classList.toggle(
+  "active",
+  button.dataset.lang === lang
+);
+```
+
+});
+
+localStorage.setItem(
+"enacom-language",
+lang
+);
+
+}
+
+languageButtons.forEach((button) => {
+
+button.addEventListener(
+"click",
+() => {
+
+```
+  changeLanguage(
+    button.dataset.lang
+  );
+
+}
+```
+
+);
+
+});
 
 const savedLanguage =
-  localStorage.getItem(
-    "enacom-language"
-  ) || "es";
+localStorage.getItem(
+"enacom-language"
+) || "es";
 
 changeLanguage(savedLanguage);
 
-
 /* =========================================================
-   ACCESIBILIDAD
+ACCESIBILIDAD
 ========================================================= */
 
 let textScale =
-  parseFloat(
-    localStorage.getItem(
-      "enacom-text-scale"
-    )
-  ) || 1;
+parseFloat(
+localStorage.getItem(
+"enacom-text-scale"
+)
+) || 1;
 
 document.documentElement.style.setProperty(
-  "--text-scale",
-  textScale
+"--text-scale",
+textScale
 );
 
+document
+.getElementById("increase-text")
+.addEventListener("click", () => {
+
+```
+textScale =
+  Math.min(
+    textScale + 0.1,
+    1.5
+  );
+
+updateTextScale();
+```
+
+});
 
 document
-  .getElementById("increase-text")
-  .addEventListener("click", () => {
+.getElementById("decrease-text")
+.addEventListener("click", () => {
 
-    textScale =
-      Math.min(
-        textScale + 0.1,
-        1.5
-      );
+```
+textScale =
+  Math.max(
+    textScale - 0.1,
+    0.8
+  );
 
-    updateTextScale();
+updateTextScale();
+```
 
-  });
-
-
-document
-  .getElementById("decrease-text")
-  .addEventListener("click", () => {
-
-    textScale =
-      Math.max(
-        textScale - 0.1,
-        0.8
-      );
-
-    updateTextScale();
-
-  });
-
+});
 
 function updateTextScale() {
 
-  document.documentElement.style.setProperty(
-    "--text-scale",
-    textScale
-  );
+document.documentElement.style.setProperty(
+"--text-scale",
+textScale
+);
 
-  localStorage.setItem(
-    "enacom-text-scale",
-    textScale
-  );
+localStorage.setItem(
+"enacom-text-scale",
+textScale
+);
 
 }
 
-
 document
-  .getElementById("contrast-toggle")
-  .addEventListener("click", () => {
+.getElementById("contrast-toggle")
+.addEventListener("click", () => {
 
-    document.body.classList.toggle(
-      "high-contrast"
-    );
+```
+document.body.classList.toggle(
+  "high-contrast"
+);
 
-    localStorage.setItem(
-      "enacom-contrast",
-      document.body.classList.contains(
-        "high-contrast"
-      )
-    );
+localStorage.setItem(
+  "enacom-contrast",
+  document.body.classList.contains(
+    "high-contrast"
+  )
+);
+```
 
-  });
-
+});
 
 if (
-  localStorage.getItem(
-    "enacom-contrast"
-  ) === "true"
+localStorage.getItem(
+"enacom-contrast"
+) === "true"
 ) {
 
-  document.body.classList.add(
-    "high-contrast"
-  );
+document.body.classList.add(
+"high-contrast"
+);
 
 }
 
-
 document
-  .getElementById("reset-accessibility")
-  .addEventListener("click", () => {
+.getElementById("reset-accessibility")
+.addEventListener("click", () => {
 
-    textScale = 1;
+```
+textScale = 1;
 
-    updateTextScale();
+updateTextScale();
 
-    document.body.classList.remove(
-      "high-contrast"
-    );
+document.body.classList.remove(
+  "high-contrast"
+);
 
-    localStorage.removeItem(
-      "enacom-contrast"
-    );
+localStorage.removeItem(
+  "enacom-contrast"
+);
+```
 
-  });
-
+});
 
 /* =========================================================
-   QUIZ
+QUIZ
 ========================================================= */
 
 const quizQuestions = [
 
-  {
+{
 
-    question: {
-      es: "¿Cuál es uno de los principales desafíos de la desinformación?",
-      en: "What is one of the main challenges posed by disinformation?",
-      pt: "Qual é um dos principais desafios da desinformação?"
-    },
+```
+question: {
 
-    options: {
+  es:
+    "¿Cuál es uno de los principales desafíos de la desinformación?",
 
-      es: [
-        "Mejorar automáticamente la calidad de las noticias",
-        "Afectar la confianza pública y la circulación de información",
-        "Eliminar la necesidad de periodistas"
-      ],
+  en:
+    "What is one of the main challenges posed by disinformation?",
 
-      en: [
-        "Automatically improve news quality",
-        "Affect public trust and the circulation of information",
-        "Eliminate the need for journalists"
-      ],
+  pt:
+    "Qual é um dos principais desafios da desinformação?"
 
-      pt: [
-        "Melhorar automaticamente a qualidade das notícias",
-        "Afetar a confiança pública e a circulação de informações",
-        "Eliminar a necessidade de jornalistas"
-      ]
+},
 
-    },
+options: {
 
-    correct: 1
+  es: [
+    "Mejorar automáticamente la calidad de las noticias",
+    "Afectar la confianza pública y la circulación de información",
+    "Eliminar la necesidad de periodistas"
+  ],
 
-  },
+  en: [
+    "Automatically improve news quality",
+    "Affect public trust and the circulation of information",
+    "Eliminate the need for journalists"
+  ],
 
+  pt: [
+    "Melhorar automaticamente a qualidade das notícias",
+    "Afetar a confiança pública e a circulação de informações",
+    "Eliminar a necessidade de jornalistas"
+  ]
 
-  {
+},
 
-    question: {
-      es: "¿Qué relación existe entre comunicación y democracia?",
-      en: "What is the relationship between communication and democracy?",
-      pt: "Qual é a relação entre comunicação e democracia?"
-    },
+correct: 1
+```
 
-    options: {
+},
 
-      es: [
-        "La comunicación no tiene relación con la democracia",
-        "La circulación de información contribuye a la participación y al debate público",
-        "La democracia depende únicamente de las redes sociales"
-      ],
+{
 
-      en: [
-        "Communication has no relationship with democracy",
-        "The circulation of information contributes to participation and public debate",
-        "Democracy depends only on social media"
-      ],
+```
+question: {
 
-      pt: [
-        "A comunicação não tem relação com a democracia",
-        "A circulação de informações contribui para a participação e o debate público",
-        "A democracia depende apenas das redes sociais"
-      ]
+  es:
+    "¿Qué relación existe entre comunicación y democracia?",
 
-    },
+  en:
+    "What is the relationship between communication and democracy?",
 
-    correct: 1
+  pt:
+    "Qual é a relação entre comunicação e democracia?"
 
-  },
+},
 
+options: {
 
-  {
+  es: [
+    "La comunicación no tiene relación con la democracia",
+    "La circulación de información contribuye a la participación y al debate público",
+    "La democracia depende únicamente de las redes sociales"
+  ],
 
-    question: {
-      es: "¿Qué tecnología plantea nuevos desafíos para el periodismo?",
-      en: "Which technology creates new challenges for journalism?",
-      pt: "Qual tecnologia cria novos desafios para o jornalismo?"
-    },
+  en: [
+    "Communication has no relationship with democracy",
+    "The circulation of information contributes to participation and public debate",
+    "Democracy depends only on social media"
+  ],
 
-    options: {
+  pt: [
+    "A comunicação não tem relação com a democracia",
+    "A circulação de informações contribui para a participação e o debate público",
+    "A democracia depende apenas das redes sociais"
+  ]
 
-      es: [
-        "La inteligencia artificial",
-        "El papel",
-        "La radio analógica únicamente"
-      ],
+},
 
-      en: [
-        "Artificial intelligence",
-        "Paper",
-        "Analog radio only"
-      ],
+correct: 1
+```
 
-      pt: [
-        "A inteligência artificial",
-        "O papel",
-        "Apenas o rádio analógico"
-      ]
+},
 
-    },
+{
 
-    correct: 0
+```
+question: {
 
-  },
+  es:
+    "¿Qué tecnología plantea nuevos desafíos para el periodismo?",
 
+  en:
+    "Which technology creates new challenges for journalism?",
 
-  {
+  pt:
+    "Qual tecnologia cria novos desafios para o jornalismo?"
 
-    question: {
-      es: "¿Dónde se realizó ENACOM 2025?",
-      en: "Where was ENACOM 2025 held?",
-      pt: "Onde foi realizado o ENACOM 2025?"
-    },
+},
 
-    options: {
+options: {
 
-      es: [
-        "San Luis",
-        "Buenos Aires",
-        "Córdoba"
-      ],
+  es: [
+    "La inteligencia artificial",
+    "El papel",
+    "La radio analógica únicamente"
+  ],
 
-      en: [
-        "San Luis",
-        "Buenos Aires",
-        "Córdoba"
-      ],
+  en: [
+    "Artificial intelligence",
+    "Paper",
+    "Analog radio only"
+  ],
 
-      pt: [
-        "San Luis",
-        "Buenos Aires",
-        "Córdoba"
-      ]
+  pt: [
+    "A inteligência artificial",
+    "O papel",
+    "Apenas o rádio analógico"
+  ]
 
-    },
+},
 
-    correct: 0
+correct: 0
+```
 
-  }
+},
+
+{
+
+```
+question: {
+
+  es:
+    "¿Dónde se realizó ENACOM 2025?",
+
+  en:
+    "Where was ENACOM 2025 held?",
+
+  pt:
+    "Onde foi realizado o ENACOM 2025?"
+
+},
+
+options: {
+
+  es: [
+    "San Luis",
+    "Buenos Aires",
+    "Córdoba"
+  ],
+
+  en: [
+    "San Luis",
+    "Buenos Aires",
+    "Córdoba"
+  ],
+
+  pt: [
+    "San Luis",
+    "Buenos Aires",
+    "Córdoba"
+  ]
+
+},
+
+correct: 0
+```
+
+}
 
 ];
-
 
 let currentQuestion = 0;
 
@@ -1116,226 +1076,225 @@ let score = 0;
 
 let selectedAnswer = null;
 
-
 const quizContainer =
-  document.getElementById(
-    "quiz-container"
-  );
+document.getElementById(
+"quiz-container"
+);
 
 const quizNext =
-  document.getElementById(
-    "quiz-next"
-  );
+document.getElementById(
+"quiz-next"
+);
 
 const quizResult =
-  document.getElementById(
-    "quiz-result"
-  );
-
+document.getElementById(
+"quiz-result"
+);
 
 function renderQuestion() {
 
-  selectedAnswer = null;
+selectedAnswer = null;
 
-  const lang =
-    document.documentElement.lang || "es";
+const lang =
+document.documentElement.lang || "es";
 
-  const question =
-    quizQuestions[currentQuestion];
+const question =
+quizQuestions[currentQuestion];
 
-  quizContainer.innerHTML = "";
+quizContainer.innerHTML = "";
 
+const wrapper =
+document.createElement("div");
 
-  const wrapper =
-    document.createElement("div");
+wrapper.className =
+"quiz-question";
 
-  wrapper.className =
-    "quiz-question";
+const title =
+document.createElement("h3");
 
-
-  const title =
-    document.createElement("h3");
-
-  title.textContent =
-    `${currentQuestion + 1}. ${
+title.textContent =
+`${currentQuestion + 1}. ${
       question.question[lang]
     }`;
 
+wrapper.appendChild(title);
 
-  wrapper.appendChild(title);
+const options =
+document.createElement("div");
 
+options.className =
+"quiz-options";
 
-  const options =
-    document.createElement("div");
+question.options[lang]
+.forEach((option, index) => {
 
-  options.className =
-    "quiz-options";
+```
+  const button =
+    document.createElement("button");
 
+  button.type = "button";
 
-  question.options[lang]
-    .forEach((option, index) => {
+  button.className =
+    "quiz-option";
 
-      const button =
-        document.createElement("button");
+  button.textContent =
+    option;
 
-      button.type = "button";
-
-      button.className =
-        "quiz-option";
-
-      button.textContent =
-        option;
-
-
-      button.addEventListener(
-        "click",
-        () => {
-
-          selectedAnswer = index;
-
-          document
-            .querySelectorAll(".quiz-option")
-            .forEach((item) => {
-
-              item.classList.remove(
-                "selected"
-              );
-
-            });
-
-          button.classList.add(
-            "selected"
-          );
-
-        }
-      );
-
-
-      options.appendChild(button);
-
-    });
-
-
-  wrapper.appendChild(options);
-
-  quizContainer.appendChild(wrapper);
-
-  quizResult.textContent = "";
-
-  quizNext.disabled = false;
-
-}
-
-
-quizNext.addEventListener(
-  "click",
-  () => {
-
-    if (selectedAnswer === null) {
-
-      quizResult.textContent =
-        document.documentElement.lang === "pt"
-          ? "Escolha uma resposta antes de continuar."
-          : document.documentElement.lang === "en"
-            ? "Choose an answer before continuing."
-            : "Elegí una respuesta antes de continuar.";
-
-      return;
-
-    }
-
-
-    if (
-      selectedAnswer ===
-      quizQuestions[currentQuestion].correct
-    ) {
-
-      score++;
-
-    }
-
-
-    currentQuestion++;
-
-
-    if (
-      currentQuestion >=
-      quizQuestions.length
-    ) {
-
-      showQuizResult();
-
-    } else {
-
-      renderQuestion();
-
-    }
-
-  }
-);
-
-
-function showQuizResult() {
-
-  const lang =
-    document.documentElement.lang || "es";
-
-  quizContainer.innerHTML = "";
-
-  quizNext.style.display = "none";
-
-
-  let message = "";
-
-
-  if (lang === "en") {
-
-    message =
-      `You got ${score} out of ${quizQuestions.length} correct.`;
-
-  } else if (lang === "pt") {
-
-    message =
-      `Você acertou ${score} de ${quizQuestions.length} perguntas.`;
-
-  } else {
-
-    message =
-      `Acertaste ${score} de ${quizQuestions.length} preguntas.`;
-
-  }
-
-
-  quizResult.textContent = message;
-
-}
-
-
-/* Iniciar quiz */
-
-renderQuestion();
-
-
-/* =========================================================
-   ACTUALIZAR QUIZ CUANDO CAMBIA EL IDIOMA
-========================================================= */
-
-languageButtons.forEach((button) => {
 
   button.addEventListener(
     "click",
     () => {
 
-      if (
-        currentQuestion <
-        quizQuestions.length
-      ) {
+      selectedAnswer = index;
 
-        renderQuestion();
+      document
+        .querySelectorAll(".quiz-option")
+        .forEach((item) => {
 
-      }
+          item.classList.remove(
+            "selected"
+          );
+
+        });
+
+
+      button.classList.add(
+        "selected"
+      );
 
     }
   );
+
+
+  options.appendChild(button);
+
+});
+```
+
+wrapper.appendChild(options);
+
+quizContainer.appendChild(wrapper);
+
+quizResult.textContent = "";
+
+quizNext.disabled = false;
+
+}
+
+quizNext.addEventListener(
+"click",
+() => {
+
+```
+if (selectedAnswer === null) {
+
+  quizResult.textContent =
+    document.documentElement.lang === "pt"
+      ? "Escolha uma resposta antes de continuar."
+      : document.documentElement.lang === "en"
+        ? "Choose an answer before continuing."
+        : "Elegí una respuesta antes de continuar.";
+
+  return;
+
+}
+
+
+if (
+  selectedAnswer ===
+  quizQuestions[currentQuestion].correct
+) {
+
+  score++;
+
+}
+
+
+currentQuestion++;
+
+
+if (
+  currentQuestion >=
+  quizQuestions.length
+) {
+
+  showQuizResult();
+
+} else {
+
+  renderQuestion();
+
+}
+```
+
+}
+);
+
+function showQuizResult() {
+
+const lang =
+document.documentElement.lang || "es";
+
+quizContainer.innerHTML = "";
+
+quizNext.style.display = "none";
+
+let message = "";
+
+if (lang === "en") {
+
+```
+message =
+  `You got ${score} out of ${quizQuestions.length} correct.`;
+```
+
+} else if (lang === "pt") {
+
+```
+message =
+  `Você acertou ${score} de ${quizQuestions.length} perguntas.`;
+```
+
+} else {
+
+```
+message =
+  `Acertaste ${score} de ${quizQuestions.length} preguntas.`;
+```
+
+}
+
+quizResult.textContent = message;
+
+}
+
+/* Iniciar quiz */
+
+renderQuestion();
+
+/* =========================================================
+ACTUALIZAR QUIZ CUANDO CAMBIA EL IDIOMA
+========================================================= */
+
+languageButtons.forEach((button) => {
+
+button.addEventListener(
+"click",
+() => {
+
+```
+  if (
+    currentQuestion <
+    quizQuestions.length
+  ) {
+
+    renderQuestion();
+
+  }
+
+}
+```
+
+);
 
 });
