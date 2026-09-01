@@ -1,6 +1,6 @@
 /* =========================================================
    ENACOM 2025
-   Interactividad, idiomas, accesibilidad, carrusel y quiz
+   INTERACTIVIDAD · IDIOMAS · ACCESIBILIDAD · CARRUSEL · QUIZ
 ========================================================= */
 
 
@@ -16,16 +16,11 @@ accordionButtons.forEach((button) => {
   button.addEventListener("click", () => {
 
     const article = button.closest(".subthread");
+    const content = article?.querySelector(".subthread-content");
 
-    if (!article) return;
+    if (!article || !content) return;
 
-    const content =
-      article.querySelector(".subthread-content");
-
-    if (!content) return;
-
-    const isOpen =
-      article.classList.contains("open");
+    const isOpen = article.classList.contains("open");
 
     article.classList.toggle("open");
 
@@ -50,7 +45,7 @@ accordionButtons.forEach((button) => {
 });
 
 
-/* Abrir correctamente los acordeones que ya están abiertos */
+/* Abrir correctamente los acordeones que comienzan abiertos */
 
 document
   .querySelectorAll(".subthread.open")
@@ -59,10 +54,12 @@ document
     const content =
       article.querySelector(".subthread-content");
 
-    if (!content) return;
+    if (content) {
 
-    content.style.maxHeight =
-      content.scrollHeight + "px";
+      content.style.maxHeight =
+        content.scrollHeight + "px";
+
+    }
 
   });
 
@@ -87,16 +84,12 @@ const dotsContainer =
 let currentSlide = 0;
 
 
-/* Solo activar el carrusel si existe */
+/* Crear indicadores solamente si existen */
 
 if (
-  slides.length > 0 &&
-  dotsContainer &&
-  prevButton &&
-  nextButton
+  slides.length &&
+  dotsContainer
 ) {
-
-  /* Crear indicadores */
 
   slides.forEach((slide, index) => {
 
@@ -122,51 +115,55 @@ if (
 
   });
 
-
-  const dots =
-    document.querySelectorAll(".carousel-dot");
+}
 
 
-  function showSlide(index) {
-
-    if (!slides.length) return;
-
-    if (index < 0) {
-
-      index = slides.length - 1;
-
-    }
-
-    if (index >= slides.length) {
-
-      index = 0;
-
-    }
-
-    currentSlide = index;
+const dots =
+  document.querySelectorAll(".carousel-dot");
 
 
-    slides.forEach((slide, i) => {
+function showSlide(index) {
 
-      slide.classList.toggle(
-        "active",
-        i === currentSlide
-      );
+  if (!slides.length) return;
 
-    });
+  if (index < 0) {
 
-
-    dots.forEach((dot, i) => {
-
-      dot.classList.toggle(
-        "active",
-        i === currentSlide
-      );
-
-    });
+    index = slides.length - 1;
 
   }
 
+  if (index >= slides.length) {
+
+    index = 0;
+
+  }
+
+  currentSlide = index;
+
+
+  slides.forEach((slide, i) => {
+
+    slide.classList.toggle(
+      "active",
+      i === currentSlide
+    );
+
+  });
+
+
+  dots.forEach((dot, i) => {
+
+    dot.classList.toggle(
+      "active",
+      i === currentSlide
+    );
+
+  });
+
+}
+
+
+if (prevButton) {
 
   prevButton.addEventListener("click", () => {
 
@@ -174,6 +171,10 @@ if (
 
   });
 
+}
+
+
+if (nextButton) {
 
   nextButton.addEventListener("click", () => {
 
@@ -181,48 +182,64 @@ if (
 
   });
 
+}
 
-  showSlide(0);
+
+showSlide(0);
 
 
-  /* Carrusel automático */
+/* Carrusel automático */
 
-  let carouselTimer =
+let carouselTimer = null;
+
+
+if (slides.length > 1) {
+
+  carouselTimer =
     setInterval(() => {
 
       showSlide(currentSlide + 1);
 
     }, 6500);
 
-
-  /* Pausar al pasar el mouse */
-
-  const carousel =
-    document.querySelector(".carousel");
-
-  if (carousel) {
-
-    carousel.addEventListener(
-      "mouseenter",
-      () => clearInterval(carouselTimer)
-    );
+}
 
 
-    carousel.addEventListener(
-      "mouseleave",
-      () => {
+/* Pausar al pasar el mouse */
 
-        carouselTimer =
-          setInterval(() => {
+const carousel =
+  document.querySelector(".carousel");
 
-            showSlide(currentSlide + 1);
 
-          }, 6500);
+if (carousel && slides.length > 1) {
+
+  carousel.addEventListener(
+    "mouseenter",
+    () => {
+
+      if (carouselTimer) {
+
+        clearInterval(carouselTimer);
 
       }
-    );
 
-  }
+    }
+  );
+
+
+  carousel.addEventListener(
+    "mouseleave",
+    () => {
+
+      carouselTimer =
+        setInterval(() => {
+
+          showSlide(currentSlide + 1);
+
+        }, 6500);
+
+    }
+  );
 
 }
 
@@ -237,11 +254,8 @@ const translations = {
   es: {
 
     navEjes: "Ejes temáticos",
-
     navPonencias: "Ponencias",
-
     navInteractivo: "Participá",
-
     navRedes: "Redes",
 
     kicker:
@@ -416,7 +430,7 @@ const translations = {
       "ENACOM 2025 invita a pensar el tiempo de la comunicación como una trama viva: memoria, presente, conflicto, tecnología y derecho a la información en diálogo.",
 
     footer:
-      "Trabajo académico realizado por estudiantes de la carrera de Comunicación Social de la UNNE."
+      "Trabajo académico realizado por estudiantes de la carrera de Comunicación Social de la Universidad Nacional del Nordeste (UNNE)."
 
   },
 
@@ -461,36 +475,6 @@ const translations = {
 
     galleryText:
       "A visual look at the sessions held at the Faculty of Human Sciences of the National University of San Luis.",
-
-    photo1Title:
-      "Opening of ENACOM 2025",
-
-    photo1Credit:
-      "Photograph: Noticias UNSL — National University of San Luis.",
-
-    photo2Title:
-      "Participation and encounter",
-
-    photo2Credit:
-      "Photograph: Noticias UNSL — National University of San Luis.",
-
-    photo3Title:
-      "Academic community",
-
-    photo3Credit:
-      "Photograph: Noticias UNSL — National University of San Luis.",
-
-    photo4Title:
-      "Talks and debates",
-
-    photo4Credit:
-      "Photograph: Faculty of Education Sciences — UNER.",
-
-    photo5Title:
-      "Event participants",
-
-    photo5Credit:
-      "Photograph: Faculty of Education Sciences — UNER.",
 
     photoNote:
       "Photographs are presented with their source and authorship clearly identified.",
@@ -546,21 +530,6 @@ const translations = {
     speakersIntro:
       "Some of the panels and specialists who participated in ENACOM 2025.",
 
-    speaker1Title:
-      "Culture, politics and communication",
-
-    speaker1Subtitle:
-      "Towards a genealogy of the field: where do we come from?",
-
-    speaker2Title:
-      "Communication, convergence and artificial intelligence",
-
-    speaker3Title:
-      "Social Sciences and Humanities",
-
-    speaker4Title:
-      "Legacies of communication",
-
     quizKicker:
       "Take part",
 
@@ -607,7 +576,7 @@ const translations = {
       "ENACOM 2025 invites us to think about the time of communication as a living network: memory, present, conflict, technology and the right to information in dialogue.",
 
     footer:
-      "Academic project developed by students of the Social Communication program at UNNE."
+      "Academic project developed by students of the Social Communication program at the National University of the Northeast (UNNE)."
 
   },
 
@@ -652,36 +621,6 @@ const translations = {
 
     galleryText:
       "Um olhar visual sobre as jornadas realizadas na Faculdade de Ciências Humanas da Universidade Nacional de San Luis.",
-
-    photo1Title:
-      "Abertura do ENACOM 2025",
-
-    photo1Credit:
-      "Fotografia: Noticias UNSL — Universidade Nacional de San Luis.",
-
-    photo2Title:
-      "Participação e encontro",
-
-    photo2Credit:
-      "Fotografia: Noticias UNSL — Universidade Nacional de San Luis.",
-
-    photo3Title:
-      "Comunidade acadêmica",
-
-    photo3Credit:
-      "Fotografia: Noticias UNSL — Universidade Nacional de San Luis.",
-
-    photo4Title:
-      "Palestras e debates",
-
-    photo4Credit:
-      "Fotografia: Faculdade de Ciências da Educação — UNER.",
-
-    photo5Title:
-      "Participantes do encontro",
-
-    photo5Credit:
-      "Fotografia: Faculdade de Ciências da Educação — UNER.",
 
     photoNote:
       "As fotografias são apresentadas com sua fonte e autoria devidamente identificadas.",
@@ -737,21 +676,6 @@ const translations = {
     speakersIntro:
       "Algumas das mesas e especialistas que participaram do ENACOM 2025.",
 
-    speaker1Title:
-      "Cultura, política e comunicação",
-
-    speaker1Subtitle:
-      "Para uma genealogia do campo: de onde viemos?",
-
-    speaker2Title:
-      "Comunicação, convergência e inteligência artificial",
-
-    speaker3Title:
-      "Ciências Sociais e Humanidades",
-
-    speaker4Title:
-      "Heranças da comunicação",
-
     quizKicker:
       "Participe",
 
@@ -798,7 +722,7 @@ const translations = {
       "O ENACOM 2025 convida a pensar o tempo da comunicação como uma trama viva: memória, presente, conflito, tecnologia e direito à informação em diálogo.",
 
     footer:
-      "Trabalho acadêmico realizado por estudantes da carreira de Comunicação Social da UNNE."
+      "Trabalho acadêmico realizado por estudantes da carreira de Comunicação Social da Universidade Nacional do Nordeste (UNNE)."
 
   }
 
@@ -807,7 +731,7 @@ const translations = {
 
 
 /* =========================================================
-   CAMBIAR IDIOMA
+   CAMBIO DE IDIOMA
 ========================================================= */
 
 const languageButtons =
@@ -817,8 +741,11 @@ const languageButtons =
 function changeLanguage(lang) {
 
   if (!translations[lang]) {
+
     lang = "es";
+
   }
+
 
   document.documentElement.lang = lang;
 
@@ -832,9 +759,10 @@ function changeLanguage(lang) {
     const key =
       element.dataset.i18n;
 
+
     if (
       translations[lang] &&
-      translations[lang][key] !== undefined
+      translations[lang][key]
     ) {
 
       element.textContent =
@@ -861,15 +789,21 @@ function changeLanguage(lang) {
   );
 
 
-  /* Actualizar el quiz si está activo */
+  /* Actualizar la pregunta del quiz */
 
   if (
-    typeof renderQuestion === "function" &&
-    typeof currentQuestion !== "undefined" &&
-    currentQuestion < quizQuestions.length
+    typeof quizQuestions !== "undefined" &&
+    typeof renderQuestion === "function"
   ) {
 
-    renderQuestion();
+    if (
+      currentQuestion <
+      quizQuestions.length
+    ) {
+
+      renderQuestion();
+
+    }
 
   }
 
@@ -908,68 +842,20 @@ let textScale =
     localStorage.getItem(
       "enacom-text-scale"
     )
-  ) || 1;
+  );
+
+
+if (isNaN(textScale)) {
+
+  textScale = 1;
+
+}
 
 
 document.documentElement.style.setProperty(
   "--text-scale",
   textScale
 );
-
-
-
-/* AUMENTAR TEXTO */
-
-const increaseTextButton =
-  document.getElementById("increase-text");
-
-
-if (increaseTextButton) {
-
-  increaseTextButton.addEventListener(
-    "click",
-    () => {
-
-      textScale =
-        Math.min(
-          textScale + 0.1,
-          1.5
-        );
-
-      updateTextScale();
-
-    }
-  );
-
-}
-
-
-
-/* DISMINUIR TEXTO */
-
-const decreaseTextButton =
-  document.getElementById("decrease-text");
-
-
-if (decreaseTextButton) {
-
-  decreaseTextButton.addEventListener(
-    "click",
-    () => {
-
-      textScale =
-        Math.max(
-          textScale - 0.1,
-          0.8
-        );
-
-      updateTextScale();
-
-    }
-  );
-
-}
-
 
 
 function updateTextScale() {
@@ -988,16 +874,73 @@ function updateTextScale() {
 }
 
 
+const increaseText =
+  document.getElementById(
+    "increase-text"
+  );
 
-/* ALTO CONTRASTE */
 
-const contrastButton =
-  document.getElementById("contrast-toggle");
+const decreaseText =
+  document.getElementById(
+    "decrease-text"
+  );
 
 
-if (contrastButton) {
+const contrastToggle =
+  document.getElementById(
+    "contrast-toggle"
+  );
 
-  contrastButton.addEventListener(
+
+const resetAccessibility =
+  document.getElementById(
+    "reset-accessibility"
+  );
+
+
+if (increaseText) {
+
+  increaseText.addEventListener(
+    "click",
+    () => {
+
+      textScale =
+        Math.min(
+          textScale + 0.1,
+          1.5
+        );
+
+      updateTextScale();
+
+    }
+  );
+
+}
+
+
+if (decreaseText) {
+
+  decreaseText.addEventListener(
+    "click",
+    () => {
+
+      textScale =
+        Math.max(
+          textScale - 0.1,
+          0.8
+        );
+
+      updateTextScale();
+
+    }
+  );
+
+}
+
+
+if (contrastToggle) {
+
+  contrastToggle.addEventListener(
     "click",
     () => {
 
@@ -1019,9 +962,6 @@ if (contrastButton) {
 }
 
 
-
-/* Recuperar contraste guardado */
-
 if (
   localStorage.getItem(
     "enacom-contrast"
@@ -1035,18 +975,9 @@ if (
 }
 
 
+if (resetAccessibility) {
 
-/* RESTABLECER */
-
-const resetAccessibilityButton =
-  document.getElementById(
-    "reset-accessibility"
-  );
-
-
-if (resetAccessibilityButton) {
-
-  resetAccessibilityButton.addEventListener(
+  resetAccessibility.addEventListener(
     "click",
     () => {
 
@@ -1311,13 +1242,11 @@ const quizQuestions = [
 ];
 
 
-
 let currentQuestion = 0;
 
 let score = 0;
 
 let selectedAnswer = null;
-
 
 
 const quizContainer =
@@ -1346,10 +1275,6 @@ const quizResult =
 function renderQuestion() {
 
   if (!quizContainer) return;
-
-  if (!quizNext) return;
-
-  if (!quizResult) return;
 
 
   selectedAnswer = null;
@@ -1383,8 +1308,7 @@ function renderQuestion() {
 
   title.textContent =
     `${currentQuestion + 1}. ${
-      question.question[lang] ||
-      question.question.es
+      question.question[lang]
     }`;
 
 
@@ -1399,19 +1323,15 @@ function renderQuestion() {
     "quiz-options";
 
 
-  const questionOptions =
-    question.options[lang] ||
-    question.options.es;
-
-
-  questionOptions.forEach(
-    (option, index) => {
+  question.options[lang]
+    .forEach((option, index) => {
 
       const button =
         document.createElement("button");
 
 
-      button.type = "button";
+      button.type =
+        "button";
 
 
       button.className =
@@ -1426,7 +1346,8 @@ function renderQuestion() {
         "click",
         () => {
 
-          selectedAnswer = index;
+          selectedAnswer =
+            index;
 
 
           document
@@ -1448,25 +1369,40 @@ function renderQuestion() {
       );
 
 
-      options.appendChild(button);
+      options.appendChild(
+        button
+      );
 
-    }
+    });
+
+
+  wrapper.appendChild(
+    options
   );
 
 
-  wrapper.appendChild(options);
+  quizContainer.appendChild(
+    wrapper
+  );
 
 
-  quizContainer.appendChild(wrapper);
+  if (quizResult) {
+
+    quizResult.textContent =
+      "";
+
+  }
 
 
-  quizResult.textContent = "";
+  if (quizNext) {
 
+    quizNext.disabled =
+      false;
 
-  quizNext.style.display = "";
+    quizNext.style.display =
+      "";
 
-
-  quizNext.disabled = false;
+  }
 
 }
 
@@ -1484,12 +1420,12 @@ if (quizNext) {
 
       if (selectedAnswer === null) {
 
-        const lang =
-          document.documentElement.lang ||
-          "es";
-
-
         if (quizResult) {
+
+          const lang =
+            document.documentElement.lang ||
+            "es";
+
 
           if (lang === "pt") {
 
@@ -1513,7 +1449,6 @@ if (quizNext) {
         return;
 
       }
-
 
 
       if (
@@ -1555,25 +1490,30 @@ if (quizNext) {
 
 function showQuizResult() {
 
-  if (!quizContainer) return;
-
-  if (!quizNext) return;
-
-  if (!quizResult) return;
-
-
   const lang =
     document.documentElement.lang || "es";
 
 
-  quizContainer.innerHTML = "";
+  if (quizContainer) {
+
+    quizContainer.innerHTML =
+      "";
+
+  }
 
 
-  quizNext.style.display =
-    "none";
+  if (quizNext) {
+
+    quizNext.style.display =
+      "none";
+
+  }
 
 
-  let message = "";
+  if (!quizResult) return;
+
+
+  let message;
 
 
   if (lang === "en") {
@@ -1602,8 +1542,13 @@ function showQuizResult() {
 
 
 /* =========================================================
-   INICIAR
+   INICIAR TODO
 ========================================================= */
+
+/*
+   Primero establecemos el idioma.
+   Después renderizamos el quiz.
+*/
 
 changeLanguage(savedLanguage);
 
