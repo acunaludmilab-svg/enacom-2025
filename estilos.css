@@ -3,23 +3,16 @@
   --coral: #ef5b5b;
   --red: #c8332d;
   --dark-red: #982722;
-
   --cream: #fff3e1;
   --sand: #f8dfbd;
-
   --ink: #2d2020;
   --muted: #654f49;
-
   --white: #fffaf3;
   --line: rgba(200, 51, 45, 0.18);
-
   --shadow: 0 18px 42px rgba(97, 43, 22, 0.14);
-
   --radius: 14px;
-
   --text-scale: 1;
 }
-
 
 /* ================= GENERAL ================= */
 
@@ -34,14 +27,8 @@ html {
 
 body {
   margin: 0;
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
+  font-family: Arial, Helvetica, sans-serif;
   color: var(--ink);
-
   background:
     radial-gradient(
       circle at top left,
@@ -54,7 +41,6 @@ body {
       #ffffff 48%,
       #fff7ed 100%
     );
-
   line-height: 1.6;
 }
 
