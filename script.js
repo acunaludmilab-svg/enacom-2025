@@ -1,4 +1,4 @@
-```javascript
+javascript
 /* =========================================================
    ENACOM 2025
    INTERACTIVIDAD · IDIOMAS · ACCESIBILIDAD · CARRUSEL · QUIZ
