@@ -1,14 +1,15 @@
+```javascript
 /* =========================================================
    ENACOM 2025
    INTERACTIVIDAD · IDIOMAS · ACCESIBILIDAD · CARRUSEL · QUIZ
 ========================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
 
-  /* =======================================================
+  /* =========================================================
      ACORDEÓN
-  ======================================================= */
+  ========================================================= */
 
   const accordionButtons =
     document.querySelectorAll(".subthread-button");
@@ -17,45 +18,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     button.addEventListener("click", () => {
 
-      const article =
-        button.closest(".subthread");
+      const article = button.closest(".subthread");
+      const content = article?.querySelector(".subthread-content");
 
-      if (!article) return;
+      if (!article || !content) return;
 
-      const content =
-        article.querySelector(".subthread-content");
+      const isOpen = article.classList.contains("open");
 
-      if (!content) return;
+      article.classList.toggle("open");
 
-      const isOpen =
-        article.classList.contains("open");
+      button.setAttribute(
+        "aria-expanded",
+        String(!isOpen)
+      );
 
-      /* Si está abierto, lo cerramos */
-      if (isOpen) {
-
-        article.classList.remove("open");
-
-        button.setAttribute(
-          "aria-expanded",
-          "false"
-        );
-
-        content.style.maxHeight = "0px";
-
-      }
-
-      /* Si está cerrado, lo abrimos */
-      else {
-
-        article.classList.add("open");
-
-        button.setAttribute(
-          "aria-expanded",
-          "true"
-        );
+      if (!isOpen) {
 
         content.style.maxHeight =
           content.scrollHeight + "px";
+
+      } else {
+
+        content.style.maxHeight = "0px";
 
       }
 
@@ -64,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  /* Abrir correctamente los acordeones que empiezan abiertos */
+  /* Abrir correctamente los acordeones que comienzan abiertos */
 
   document
     .querySelectorAll(".subthread.open")
@@ -84,9 +68,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  /* =======================================================
+  /* =========================================================
      CARRUSEL
-  ======================================================= */
+  ========================================================= */
 
   const slides =
     document.querySelectorAll(".carousel-slide");
@@ -100,18 +84,55 @@ document.addEventListener("DOMContentLoaded", () => {
   const dotsContainer =
     document.querySelector(".carousel-dots");
 
-  const carousel =
-    document.querySelector(".carousel");
-
   let currentSlide = 0;
 
-  let carouselTimer = null;
+
+  /* Crear indicadores solamente si existen */
+
+  if (
+    slides.length &&
+    dotsContainer
+  ) {
+
+    dotsContainer.innerHTML = "";
+
+    slides.forEach((slide, index) => {
+
+      const dot =
+        document.createElement("button");
+
+      dot.className = "carousel-dot";
+
+      dot.type = "button";
+
+      dot.setAttribute(
+        "aria-label",
+        `Ver fotografía ${index + 1}`
+      );
+
+      dot.addEventListener("click", () => {
+
+        showSlide(index);
+
+      });
+
+      dotsContainer.appendChild(dot);
+
+    });
+
+  }
+
+
+  function getDots() {
+
+    return document.querySelectorAll(".carousel-dot");
+
+  }
 
 
   function showSlide(index) {
 
     if (!slides.length) return;
-
 
     if (index < 0) {
 
@@ -119,13 +140,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-
     if (index >= slides.length) {
 
       index = 0;
 
     }
-
 
     currentSlide = index;
 
@@ -140,10 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    const dots =
-      document.querySelectorAll(".carousel-dot");
-
-    dots.forEach((dot, i) => {
+    getDots().forEach((dot, i) => {
 
       dot.classList.toggle(
         "active",
@@ -155,137 +171,54 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* Crear puntos del carrusel */
+  if (prevButton) {
 
-  if (
-    slides.length &&
-    dotsContainer
-  ) {
+    prevButton.addEventListener("click", () => {
 
-    dotsContainer.innerHTML = "";
-
-
-    slides.forEach((slide, index) => {
-
-      const dot =
-        document.createElement("button");
-
-      dot.type = "button";
-
-      dot.className =
-        "carousel-dot";
-
-      dot.setAttribute(
-        "aria-label",
-        `Ver fotografía ${index + 1}`
-      );
-
-
-      dot.addEventListener(
-        "click",
-        () => {
-
-          showSlide(index);
-
-        }
-      );
-
-
-      dotsContainer.appendChild(dot);
+      showSlide(currentSlide - 1);
 
     });
 
   }
 
 
-  /* Botón anterior */
-
-  if (prevButton) {
-
-    prevButton.addEventListener(
-      "click",
-      () => {
-
-        showSlide(
-          currentSlide - 1
-        );
-
-      }
-    );
-
-  }
-
-
-  /* Botón siguiente */
-
   if (nextButton) {
 
-    nextButton.addEventListener(
-      "click",
-      () => {
+    nextButton.addEventListener("click", () => {
 
-        showSlide(
-          currentSlide + 1
-        );
+      showSlide(currentSlide + 1);
 
-      }
-    );
+    });
 
   }
 
-
-  /* Mostrar primera fotografía */
 
   showSlide(0);
 
 
   /* Carrusel automático */
 
+  let carouselTimer = null;
+
+
   function startCarousel() {
 
-    if (slides.length <= 1) return;
+    if (slides.length > 1) {
 
-    stopCarousel();
+      if (carouselTimer) {
 
-    carouselTimer =
-      setInterval(() => {
+        clearInterval(carouselTimer);
 
-        showSlide(
-          currentSlide + 1
-        );
+      }
 
-      }, 6500);
+      carouselTimer =
+        setInterval(() => {
 
-  }
+          showSlide(currentSlide + 1);
 
-
-  function stopCarousel() {
-
-    if (carouselTimer) {
-
-      clearInterval(
-        carouselTimer
-      );
-
-      carouselTimer = null;
+        }, 6500);
 
     }
-
-  }
-
-
-  if (carousel) {
-
-    carousel.addEventListener(
-      "mouseenter",
-      stopCarousel
-    );
-
-
-    carousel.addEventListener(
-      "mouseleave",
-      startCarousel
-    );
 
   }
 
@@ -293,21 +226,54 @@ document.addEventListener("DOMContentLoaded", () => {
   startCarousel();
 
 
+  /* Pausar al pasar el mouse */
 
-  /* =======================================================
-     TRADUCCIONES
-  ======================================================= */
+  const carousel =
+    document.querySelector(".carousel");
+
+
+  if (carousel && slides.length > 1) {
+
+    carousel.addEventListener(
+      "mouseenter",
+      () => {
+
+        if (carouselTimer) {
+
+          clearInterval(carouselTimer);
+
+          carouselTimer = null;
+
+        }
+
+      }
+    );
+
+
+    carousel.addEventListener(
+      "mouseleave",
+      () => {
+
+        startCarousel();
+
+      }
+    );
+
+  }
+
+
+
+  /* =========================================================
+     IDIOMAS
+  ========================================================= */
 
   const translations = {
 
     es: {
 
       navEjes: "Ejes temáticos",
-
       navPonencias: "Ponencias",
-
       navInteractivo: "Participá",
-
       navRedes: "Redes",
 
       kicker:
@@ -336,6 +302,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
       galleryText:
         "Una mirada visual sobre las jornadas realizadas en la Facultad de Ciencias Humanas de la Universidad Nacional de San Luis.",
+
+      photo1Title:
+        "Apertura del ENACOM 2025",
+
+      photo1Credit:
+        "Fotografía: Noticias UNSL — Universidad Nacional de San Luis.",
+
+      photo2Title:
+        "Participación y encuentro",
+
+      photo2Credit:
+        "Fotografía: Noticias UNSL — Universidad Nacional de San Luis.",
+
+      photo3Title:
+        "Comunidad académica",
+
+      photo3Credit:
+        "Fotografía: Noticias UNSL — Universidad Nacional de San Luis.",
+
+      photo4Title:
+        "Ponencias y debates",
+
+      photo4Credit:
+        "Fotografía: Facultad de Ciencias de la Educación — UNER.",
+
+      photo5Title:
+        "Participantes del encuentro",
+
+      photo5Credit:
+        "Fotografía: Facultad de Ciencias de la Educación — UNER.",
 
       photoNote:
         "Las fotografías se presentan con identificación de su fuente y autoría.",
@@ -390,6 +386,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
       speakersIntro:
         "Algunas de las mesas y especialistas que participaron del ENACOM 2025.",
+
+      speaker1Title:
+        "Cultura, política y comunicación",
+
+      speaker1Subtitle:
+        "Para una genealogía del campo: ¿de dónde venimos?",
+
+      speaker2Title:
+        "Comunicación, convergencia e inteligencia artificial",
+
+      speaker3Title:
+        "Ciencias Sociales y Humanidades",
+
+      speaker4Title:
+        "Herencias de la comunicación",
 
       quizKicker:
         "Participá",
@@ -737,225 +748,145 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  /* =======================================================
+  /* =========================================================
      QUIZ
-  ======================================================= */
+  ========================================================= */
 
   const quizQuestions = [
 
     {
-
       question: {
-
         es:
           "¿Cuál es uno de los principales desafíos de la desinformación?",
-
         en:
           "What is one of the main challenges posed by disinformation?",
-
         pt:
           "Qual é um dos principais desafios da desinformação?"
-
       },
 
       options: {
-
         es: [
-
           "Mejorar automáticamente la calidad de las noticias",
-
           "Afectar la confianza pública y la circulación de información",
-
           "Eliminar la necesidad de periodistas"
-
         ],
 
         en: [
-
           "Automatically improve news quality",
-
           "Affect public trust and the circulation of information",
-
           "Eliminate the need for journalists"
-
         ],
 
         pt: [
-
           "Melhorar automaticamente a qualidade das notícias",
-
           "Afetar a confiança pública e a circulação de informações",
-
           "Eliminar a necessidade de jornalistas"
-
         ]
-
       },
 
       correct: 1
-
     },
 
 
     {
-
       question: {
-
         es:
           "¿Qué relación existe entre comunicación y democracia?",
-
         en:
           "What is the relationship between communication and democracy?",
-
         pt:
           "Qual é a relação entre comunicação e democracia?"
-
       },
 
       options: {
-
         es: [
-
           "La comunicación no tiene relación con la democracia",
-
           "La circulación de información contribuye a la participación y al debate público",
-
           "La democracia depende únicamente de las redes sociales"
-
         ],
 
         en: [
-
           "Communication has no relationship with democracy",
-
           "The circulation of information contributes to participation and public debate",
-
           "Democracy depends only on social media"
-
         ],
 
         pt: [
-
           "A comunicação não tem relação com a democracia",
-
           "A circulação de informações contribui para a participação e o debate público",
-
           "A democracia depende apenas das redes sociais"
-
         ]
-
       },
 
       correct: 1
-
     },
 
 
     {
-
       question: {
-
         es:
           "¿Qué tecnología plantea nuevos desafíos para el periodismo?",
-
         en:
           "Which technology creates new challenges for journalism?",
-
         pt:
           "Qual tecnologia cria novos desafios para o jornalismo?"
-
       },
 
       options: {
-
         es: [
-
           "La inteligencia artificial",
-
           "El papel",
-
           "La radio analógica únicamente"
-
         ],
 
         en: [
-
           "Artificial intelligence",
-
           "Paper",
-
           "Analog radio only"
-
         ],
 
         pt: [
-
           "A inteligência artificial",
-
           "O papel",
-
           "Apenas o rádio analógico"
-
         ]
-
       },
 
       correct: 0
-
     },
 
 
     {
-
       question: {
-
         es:
           "¿Dónde se realizó ENACOM 2025?",
-
         en:
           "Where was ENACOM 2025 held?",
-
         pt:
           "Onde foi realizado o ENACOM 2025?"
-
       },
 
       options: {
-
         es: [
-
           "San Luis",
-
           "Buenos Aires",
-
           "Córdoba"
-
         ],
 
         en: [
-
           "San Luis",
-
           "Buenos Aires",
-
           "Córdoba"
-
         ],
 
         pt: [
-
           "San Luis",
-
           "Buenos Aires",
-
           "Córdoba"
-
         ]
-
       },
 
       correct: 0
-
     }
 
   ];
@@ -969,41 +900,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   const quizContainer =
-    document.getElementById(
-      "quiz-container"
-    );
+    document.getElementById("quiz-container");
 
   const quizNext =
-    document.getElementById(
-      "quiz-next"
-    );
+    document.getElementById("quiz-next");
 
   const quizResult =
-    document.getElementById(
-      "quiz-result"
-    );
+    document.getElementById("quiz-result");
 
 
 
-  /* =======================================================
-     RENDERIZAR QUIZ
-  ======================================================= */
+  /* =========================================================
+     RENDERIZAR PREGUNTA
+  ========================================================= */
 
   function renderQuestion() {
 
     if (!quizContainer) return;
-
-    if (
-      currentQuestion >=
-      quizQuestions.length
-    ) {
-
-      showQuizResult();
-
-      return;
-
-    }
-
 
     selectedAnswer = null;
 
@@ -1014,6 +927,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const question =
       quizQuestions[currentQuestion];
+
+
+    if (!question) return;
 
 
     quizContainer.innerHTML = "";
@@ -1029,13 +945,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const title =
       document.createElement("h3");
 
-
     title.textContent =
       `${currentQuestion + 1}. ${
-        question.question[lang] ||
-        question.question.es
+        question.question[lang]
       }`;
-
 
     wrapper.appendChild(title);
 
@@ -1047,13 +960,8 @@ document.addEventListener("DOMContentLoaded", () => {
       "quiz-options";
 
 
-    const questionOptions =
-      question.options[lang] ||
-      question.options.es;
-
-
-    questionOptions.forEach(
-      (option, index) => {
+    question.options[lang]
+      .forEach((option, index) => {
 
         const button =
           document.createElement("button");
@@ -1071,14 +979,11 @@ document.addEventListener("DOMContentLoaded", () => {
           "click",
           () => {
 
-            selectedAnswer =
-              index;
+            selectedAnswer = index;
 
 
-            wrapper
-              .querySelectorAll(
-                ".quiz-option"
-              )
+            quizContainer
+              .querySelectorAll(".quiz-option")
               .forEach((item) => {
 
                 item.classList.remove(
@@ -1096,28 +1001,19 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-        options.appendChild(
-          button
-        );
+        options.appendChild(button);
 
-      }
-    );
+      });
 
 
-    wrapper.appendChild(
-      options
-    );
+    wrapper.appendChild(options);
 
-
-    quizContainer.appendChild(
-      wrapper
-    );
+    quizContainer.appendChild(wrapper);
 
 
     if (quizResult) {
 
-      quizResult.textContent =
-        "";
+      quizResult.textContent = "";
 
     }
 
@@ -1126,8 +1022,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       quizNext.disabled = false;
 
-      quizNext.style.display =
-        "";
+      quizNext.style.display = "";
 
     }
 
@@ -1135,61 +1030,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  /* =======================================================
-     RESULTADO QUIZ
-  ======================================================= */
-
-  function showQuizResult() {
-
-    const lang =
-      document.documentElement.lang || "es";
-
-
-    if (quizContainer) {
-
-      quizContainer.innerHTML =
-        "";
-
-    }
-
-
-    if (quizNext) {
-
-      quizNext.style.display =
-        "none";
-
-    }
-
-
-    if (!quizResult) return;
-
-
-    if (lang === "en") {
-
-      quizResult.textContent =
-        `You got ${score} out of ${quizQuestions.length} correct.`;
-
-    }
-
-    else if (lang === "pt") {
-
-      quizResult.textContent =
-        `Você acertou ${score} de ${quizQuestions.length} perguntas.`;
-
-    }
-
-    else {
-
-      quizResult.textContent =
-        `Acertaste ${score} de ${quizQuestions.length} preguntas.`;
-
-    }
-
-  }
-
-
-
-  /* Botón siguiente */
+  /* =========================================================
+     SIGUIENTE PREGUNTA
+  ========================================================= */
 
   if (quizNext) {
 
@@ -1197,32 +1040,26 @@ document.addEventListener("DOMContentLoaded", () => {
       "click",
       () => {
 
-        if (
-          selectedAnswer === null
-        ) {
-
-          const lang =
-            document.documentElement.lang ||
-            "es";
-
+        if (selectedAnswer === null) {
 
           if (quizResult) {
 
-            if (lang === "en") {
+            const lang =
+              document.documentElement.lang ||
+              "es";
 
-              quizResult.textContent =
-                "Choose an answer before continuing.";
 
-            }
-
-            else if (lang === "pt") {
+            if (lang === "pt") {
 
               quizResult.textContent =
                 "Escolha uma resposta antes de continuar.";
 
-            }
+            } else if (lang === "en") {
 
-            else {
+              quizResult.textContent =
+                "Choose an answer before continuing.";
+
+            } else {
 
               quizResult.textContent =
                 "Elegí una respuesta antes de continuar.";
@@ -1256,9 +1093,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           showQuizResult();
 
-        }
-
-        else {
+        } else {
 
           renderQuestion();
 
@@ -1271,14 +1106,67 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  /* =======================================================
+  /* =========================================================
+     RESULTADO DEL QUIZ
+  ========================================================= */
+
+  function showQuizResult() {
+
+    const lang =
+      document.documentElement.lang || "es";
+
+
+    if (quizContainer) {
+
+      quizContainer.innerHTML = "";
+
+    }
+
+
+    if (quizNext) {
+
+      quizNext.style.display = "none";
+
+    }
+
+
+    if (!quizResult) return;
+
+
+    let message;
+
+
+    if (lang === "en") {
+
+      message =
+        `You got ${score} out of ${quizQuestions.length} correct.`;
+
+    } else if (lang === "pt") {
+
+      message =
+        `Você acertou ${score} de ${quizQuestions.length} perguntas.`;
+
+    } else {
+
+      message =
+        `Acertaste ${score} de ${quizQuestions.length} preguntas.`;
+
+    }
+
+
+    quizResult.textContent =
+      message;
+
+  }
+
+
+
+  /* =========================================================
      CAMBIO DE IDIOMA
-  ======================================================= */
+  ========================================================= */
 
   const languageButtons =
-    document.querySelectorAll(
-      ".language-btn"
-    );
+    document.querySelectorAll(".language-btn");
 
 
   function changeLanguage(lang) {
@@ -1294,62 +1182,50 @@ document.addEventListener("DOMContentLoaded", () => {
       lang;
 
 
-    document
-      .querySelectorAll("[data-i18n]")
-      .forEach((element) => {
-
-        const key =
-          element.dataset.i18n;
+    const elements =
+      document.querySelectorAll("[data-i18n]");
 
 
-        if (
-          translations[lang] &&
-          translations[lang][key]
-        ) {
+    elements.forEach((element) => {
 
-          element.textContent =
-            translations[lang][key];
-
-        }
-
-      });
+      const key =
+        element.dataset.i18n;
 
 
-    languageButtons.forEach(
-      (button) => {
+      if (
+        translations[lang] &&
+        translations[lang][key]
+      ) {
 
-        button.classList.toggle(
-          "active",
-          button.dataset.lang === lang
-        );
+        element.textContent =
+          translations[lang][key];
 
       }
+
+    });
+
+
+    languageButtons.forEach((button) => {
+
+      button.classList.toggle(
+        "active",
+        button.dataset.lang === lang
+      );
+
+    });
+
+
+    localStorage.setItem(
+      "enacom-language",
+      lang
     );
 
 
-    try {
-
-      localStorage.setItem(
-        "enacom-language",
-        lang
-      );
-
-    }
-
-    catch (error) {
-
-      /* Si el navegador bloquea localStorage,
-         la página continúa funcionando. */
-
-    }
-
-
-    /* Actualizar pregunta actual */
+    /* Actualizar la pregunta del quiz */
 
     if (
-      quizContainer &&
-      currentQuestion <
-      quizQuestions.length
+      quizQuestions.length &&
+      currentQuestion < quizQuestions.length
     ) {
 
       renderQuestion();
@@ -1359,70 +1235,42 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  languageButtons.forEach(
-    (button) => {
+  languageButtons.forEach((button) => {
 
-      button.addEventListener(
-        "click",
-        () => {
+    button.addEventListener(
+      "click",
+      () => {
 
-          changeLanguage(
-            button.dataset.lang
-          );
+        changeLanguage(
+          button.dataset.lang
+        );
 
-        }
-      );
+      }
+    );
 
-    }
-  );
+  });
 
 
-  let savedLanguage = "es";
-
-
-  try {
-
-    savedLanguage =
-      localStorage.getItem(
-        "enacom-language"
-      ) || "es";
-
-  }
-
-  catch (error) {
-
-    savedLanguage = "es";
-
-  }
+  const savedLanguage =
+    localStorage.getItem(
+      "enacom-language"
+    ) || "es";
 
 
 
-  /* =======================================================
+  /* =========================================================
      ACCESIBILIDAD
-  ======================================================= */
+  ========================================================= */
 
-  let textScale = 1;
-
-
-  try {
-
-    const storedScale =
-      parseFloat(
-        localStorage.getItem(
-          "enacom-text-scale"
-        )
-      );
+  let textScale =
+    parseFloat(
+      localStorage.getItem(
+        "enacom-text-scale"
+      )
+    );
 
 
-    if (!isNaN(storedScale)) {
-
-      textScale = storedScale;
-
-    }
-
-  }
-
-  catch (error) {
+  if (isNaN(textScale)) {
 
     textScale = 1;
 
@@ -1443,20 +1291,10 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    try {
-
-      localStorage.setItem(
-        "enacom-text-scale",
-        textScale
-      );
-
-    }
-
-    catch (error) {
-
-      /* Continuar aunque localStorage no esté disponible */
-
-    }
+    localStorage.setItem(
+      "enacom-text-scale",
+      textScale
+    );
 
   }
 
@@ -1485,7 +1323,8 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-  /* Aumentar texto */
+
+  /* AUMENTAR TEXTO */
 
   if (increaseText) {
 
@@ -1499,7 +1338,6 @@ document.addEventListener("DOMContentLoaded", () => {
             1.5
           );
 
-
         updateTextScale();
 
       }
@@ -1508,7 +1346,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* Disminuir texto */
+
+  /* DISMINUIR TEXTO */
 
   if (decreaseText) {
 
@@ -1522,7 +1361,6 @@ document.addEventListener("DOMContentLoaded", () => {
             0.8
           );
 
-
         updateTextScale();
 
       }
@@ -1531,7 +1369,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* Alto contraste */
+
+  /* ALTO CONTRASTE */
 
   if (contrastToggle) {
 
@@ -1544,22 +1383,12 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-        try {
-
-          localStorage.setItem(
-            "enacom-contrast",
-            document.body.classList.contains(
-              "high-contrast"
-            )
-          );
-
-        }
-
-        catch (error) {
-
-          /* Continuar normalmente */
-
-        }
+        localStorage.setItem(
+          "enacom-contrast",
+          document.body.classList.contains(
+            "high-contrast"
+          )
+        );
 
       }
     );
@@ -1567,32 +1396,24 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* Recuperar contraste */
 
-  try {
+  /* Recuperar contraste guardado */
 
-    if (
-      localStorage.getItem(
-        "enacom-contrast"
-      ) === "true"
-    ) {
+  if (
+    localStorage.getItem(
+      "enacom-contrast"
+    ) === "true"
+  ) {
 
-      document.body.classList.add(
-        "high-contrast"
-      );
-
-    }
-
-  }
-
-  catch (error) {
-
-    /* No hacer nada */
+    document.body.classList.add(
+      "high-contrast"
+    );
 
   }
 
 
-  /* Restablecer accesibilidad */
+
+  /* RESTABLECER */
 
   if (resetAccessibility) {
 
@@ -1610,19 +1431,9 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-        try {
-
-          localStorage.removeItem(
-            "enacom-contrast"
-          );
-
-        }
-
-        catch (error) {
-
-          /* Continuar normalmente */
-
-        }
+        localStorage.removeItem(
+          "enacom-contrast"
+        );
 
       }
     );
@@ -1631,16 +1442,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  /* =======================================================
-     INICIAR
-  ======================================================= */
+  /* =========================================================
+     INICIAR TODO
+  ========================================================= */
 
-  changeLanguage(
-    savedLanguage
-  );
-
+  changeLanguage(savedLanguage);
 
   renderQuestion();
 
 
 });
+```
