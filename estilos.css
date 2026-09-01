@@ -701,6 +701,23 @@ section {
 }
 
 
+/* ================= CRÉDITOS FOTOGRÁFICOS ================= */
+
+.photo-credit {
+  max-width: 700px;
+
+  margin: 0.35rem auto 0;
+
+  text-align: center;
+
+  color: var(--muted);
+
+  font-size: 0.78rem;
+
+  opacity: 0.85;
+}
+
+
 /* ================= EJE PRINCIPAL ================= */
 
 .main-thread {
@@ -979,11 +996,203 @@ section {
 }
 
 
-/* ================= PONENCIAS ================= */
+/* =====================================================
+   REFERENTES DEL ENACOM 2025
+===================================================== */
 
 .speakers-section {
   background: #fff;
 }
+
+
+/* Grilla de referentes */
+
+.referents-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 1.3rem;
+
+  margin-top: 2rem;
+}
+
+
+/* Tarjeta individual */
+
+.referent-card {
+  display: grid;
+
+  grid-template-columns: 150px minmax(0, 1fr);
+
+  gap: 1.25rem;
+
+  align-items: stretch;
+
+  padding: 1rem;
+
+  border-radius: var(--radius);
+
+  background:
+    linear-gradient(
+      145deg,
+      #fff7ed,
+      #ffffff
+    );
+
+  border: 1px solid var(--line);
+
+  box-shadow:
+    0 12px 30px rgba(97,43,22,0.08);
+
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.referent-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 18px 36px rgba(97,43,22,0.14);
+}
+
+
+/* Foto del referente */
+
+.referent-card > img {
+  width: 150px;
+
+  height: 190px;
+
+  object-fit: cover;
+
+  display: block;
+
+  border-radius: 10px;
+
+  background: var(--cream);
+}
+
+
+/* Contenido */
+
+.referent-content {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  min-width: 0;
+}
+
+.referent-content h3 {
+  margin: 0 0 0.5rem;
+
+  color: var(--red);
+
+  font-size: 1.35rem;
+
+  line-height: 1.2;
+}
+
+.referent-content p {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 0.92rem;
+
+  line-height: 1.5;
+}
+
+.referent-content small {
+  display: block;
+
+  margin-top: 0.75rem;
+
+  color: var(--muted);
+
+  font-size: 0.72rem;
+
+  line-height: 1.35;
+
+  opacity: 0.78;
+}
+
+
+/* =====================================================
+   MESA DESTACADA
+===================================================== */
+
+.featured-panel {
+  margin-top: 2rem;
+
+  padding: clamp(1.5rem, 4vw, 2.4rem);
+
+  border-radius: var(--radius);
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--cream),
+      #ffffff
+    );
+
+  border-left: 6px solid var(--orange);
+
+  box-shadow:
+    0 14px 34px rgba(97,43,22,0.09);
+}
+
+.featured-panel .kicker {
+  margin-bottom: 0.8rem;
+}
+
+.featured-panel h3 {
+  margin: 0 0 0.8rem;
+
+  color: var(--red);
+
+  font-size:
+    clamp(1.5rem, 3vw, 2.15rem);
+
+  line-height: 1.15;
+}
+
+.featured-panel p {
+  max-width: 900px;
+
+  margin: 0 0 0.8rem;
+
+  color: var(--muted);
+}
+
+.featured-panel blockquote {
+  margin: 1.3rem 0 0;
+
+  padding: 1rem 1.2rem;
+
+  border-left: 4px solid var(--red);
+
+  background: rgba(255,255,255,0.7);
+
+  border-radius: 0 10px 10px 0;
+
+  color: #4f2927;
+
+  font-weight: 800;
+
+  font-style: italic;
+}
+
+
+/* =====================================================
+   ESTILOS ANTIGUOS DE PONENCIAS
+   Se mantienen por compatibilidad.
+===================================================== */
 
 .speakers-grid {
   display: grid;
@@ -1248,6 +1457,10 @@ section {
   text-decoration: none;
 
   font-weight: 900;
+
+  transition:
+    transform 180ms ease,
+    background 180ms ease;
 }
 
 .social-button:hover {
@@ -1320,6 +1533,80 @@ section {
 }
 
 
+/* =====================================================
+   MODO ALTO CONTRASTE
+===================================================== */
+
+body.high-contrast .site-header {
+  background: #ffffff;
+
+  border-color: #000000;
+}
+
+body.high-contrast .hero::before {
+  background: #ffffff;
+}
+
+body.high-contrast .hero h1,
+body.high-contrast .hero h2,
+body.high-contrast .section-title h2,
+body.high-contrast .referent-content h3,
+body.high-contrast .featured-panel h3 {
+  color: #000000;
+}
+
+body.high-contrast .kicker {
+  color: #000000;
+
+  background: #ffffff;
+
+  border-color: #000000;
+}
+
+body.high-contrast .referent-card,
+body.high-contrast .featured-panel,
+body.high-contrast .quiz-card,
+body.high-contrast .accessibility-panel {
+  background: #ffffff;
+
+  border-color: #000000;
+
+  box-shadow: none;
+}
+
+body.high-contrast .referent-content p,
+body.high-contrast .referent-content small,
+body.high-contrast .photo-note,
+body.high-contrast .photo-credit,
+body.high-contrast .section-title p {
+  color: #000000;
+}
+
+body.high-contrast .featured-panel {
+  border-left-color: #000000;
+}
+
+body.high-contrast .featured-panel blockquote {
+  color: #000000;
+
+  border-left-color: #000000;
+
+  background: #ffffff;
+}
+
+body.high-contrast .subthread {
+  border-color: #000000;
+}
+
+body.high-contrast .subthread-text {
+  background: #ffffff;
+
+  color: #000000;
+
+  border: 1px solid #000000;
+}
+
+
 /* ================= CIERRE ================= */
 
 .closing {
@@ -1368,7 +1655,24 @@ section {
 }
 
 
-/* ================= RESPONSIVE ================= */
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1000px) {
+
+  .referent-card {
+    grid-template-columns: 125px minmax(0, 1fr);
+  }
+
+  .referent-card > img {
+    width: 125px;
+
+    height: 175px;
+  }
+
+}
+
 
 @media (max-width: 900px) {
 
@@ -1396,6 +1700,10 @@ section {
     flex-direction: column;
 
     align-items: flex-start;
+  }
+
+  .referents-grid {
+    grid-template-columns: 1fr;
   }
 
 }
@@ -1430,6 +1738,14 @@ section {
     padding-bottom: 3.2rem;
   }
 
+  .carousel-slide figcaption strong {
+    font-size: 0.95rem;
+  }
+
+  .carousel-slide figcaption span {
+    font-size: 0.7rem;
+  }
+
   .carousel-control {
     width: 2.5rem;
     height: 2.5rem;
@@ -1453,8 +1769,135 @@ section {
     margin-left: auto;
   }
 
+
+  /* REFERENTES EN CELULAR */
+
+  .referents-grid {
+    grid-template-columns: 1fr;
+
+    gap: 1rem;
+  }
+
+  .referent-card {
+    grid-template-columns: 105px minmax(0, 1fr);
+
+    gap: 1rem;
+
+    padding: 0.8rem;
+  }
+
+  .referent-card > img {
+    width: 105px;
+
+    height: 145px;
+  }
+
+  .referent-content h3 {
+    font-size: 1.12rem;
+  }
+
+  .referent-content p {
+    font-size: 0.82rem;
+
+    line-height: 1.45;
+  }
+
+  .referent-content small {
+    font-size: 0.67rem;
+  }
+
+
+  /* MESA DESTACADA */
+
+  .featured-panel {
+    padding: 1.3rem;
+
+    border-left-width: 4px;
+  }
+
+  .featured-panel h3 {
+    font-size: 1.4rem;
+  }
+
+  .featured-panel p {
+    font-size: 0.9rem;
+  }
+
+  .featured-panel blockquote {
+    font-size: 0.9rem;
+  }
+
+
+  /* REDES */
+
+  .social-buttons {
+    width: 100%;
+  }
+
+  .social-button {
+    flex: 1;
+  }
+
+
+  /* ACCESIBILIDAD */
+
+  .accessibility-buttons {
+    width: 100%;
+  }
+
+  .access-button {
+    flex: 1;
+  }
+
 }
 
+
+@media (max-width: 430px) {
+
+  .referent-card {
+    grid-template-columns: 85px minmax(0, 1fr);
+
+    gap: 0.75rem;
+  }
+
+  .referent-card > img {
+    width: 85px;
+
+    height: 120px;
+  }
+
+  .referent-content h3 {
+    font-size: 1rem;
+  }
+
+  .referent-content p {
+    font-size: 0.76rem;
+  }
+
+  .referent-content small {
+    font-size: 0.62rem;
+  }
+
+  .carousel-slide figcaption {
+    padding-left: 0.9rem;
+
+    padding-right: 0.9rem;
+  }
+
+  .carousel-control.prev {
+    left: 0.5rem;
+  }
+
+  .carousel-control.next {
+    right: 0.5rem;
+  }
+
+}
+
+
+/* =====================================================
+   REDUCIR MOVIMIENTO
+===================================================== */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -1473,3 +1916,4 @@ section {
   }
 
 }
+
