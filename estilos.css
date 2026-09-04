@@ -458,7 +458,7 @@ a {
 }
 
 .countdown-title {
-  color: var(--cream);
+  color: #fff3e1;
   font-size: 1.15rem;
   letter-spacing: 0.02em;
   text-transform: uppercase;
