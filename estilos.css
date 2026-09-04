@@ -1,2693 +1,2381 @@
-/* =========================================================
-   ENACOM 2025 / 2026
-   Interactividad, idiomas, accesibilidad,
-   carrusel, quiz, línea de tiempo y cuenta regresiva
-========================================================= */
+:root {
+  --orange: #f26a21;
+  --coral: #ef5b5b;
+  --red: #c8332d;
+  --dark-red: #982722;
+
+  --cream: #fff3e1;
+  --sand: #f8dfbd;
+
+  --ink: #2d2020;
+  --muted: #654f49;
+
+  --white: #fffaf3;
+  --line: rgba(200, 51, 45, 0.18);
+
+  --shadow: 0 18px 42px rgba(97, 43, 22, 0.14);
+
+  --radius: 14px;
+
+  --text-scale: 1;
+}
 
 
-/* =========================================================
-   ACORDEÓN
-========================================================= */
+/* ================= GENERAL ================= */
 
-const accordionButtons =
-  document.querySelectorAll(".subthread-button");
+* {
+  box-sizing: border-box;
+}
 
-accordionButtons.forEach((button) => {
+html {
+  scroll-behavior: smooth;
+  font-size: calc(16px * var(--text-scale));
+}
 
-  button.addEventListener("click", () => {
+body {
+  margin: 0;
 
-    const article = button.closest(".subthread");
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
 
-    if (!article) return;
+  color: var(--ink);
 
-    const content =
-      article.querySelector(".subthread-content");
-
-    if (!content) return;
-
-    const isOpen =
-      article.classList.contains("open");
-
-    article.classList.toggle("open");
-
-    button.setAttribute(
-      "aria-expanded",
-      String(!isOpen)
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(242, 106, 33, 0.12),
+      transparent 34rem
+    ),
+    linear-gradient(
+      180deg,
+      #fffaf3 0%,
+      #ffffff 48%,
+      #fff7ed 100%
     );
 
-    if (!isOpen) {
+  line-height: 1.6;
+}
 
-      content.style.maxHeight =
-        content.scrollHeight + "px";
+body.high-contrast {
+  --ink: #000000;
+  --muted: #111111;
+  --cream: #ffffff;
+  --white: #ffffff;
+  --sand: #ffffff;
+  --line: #000000;
 
-    } else {
+  background: #ffffff;
+}
 
-      content.style.maxHeight = "0px";
+a {
+  color: inherit;
+}
 
-    }
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
 
-  });
-
-});
-
-
-/* Abrir correctamente los acordeones que ya están abiertos */
-
-document
-  .querySelectorAll(".subthread.open")
-  .forEach((article) => {
-
-    const content =
-      article.querySelector(".subthread-content");
-
-    if (!content) return;
-
-    content.style.maxHeight =
-      content.scrollHeight + "px";
-
-  });
+:focus-visible {
+  outline: 4px solid #0066ff;
+  outline-offset: 4px;
+}
 
 
+/* ================= ACCESIBILIDAD ================= */
 
-/* =========================================================
-   CARRUSEL
-========================================================= */
+.skip-link {
+  position: fixed;
 
-const slides =
-  document.querySelectorAll(".carousel-slide");
+  top: -100px;
+  left: 1rem;
 
-const prevButton =
-  document.querySelector(".carousel-control.prev");
+  z-index: 9999;
 
-const nextButton =
-  document.querySelector(".carousel-control.next");
+  background: #000;
+  color: #fff;
 
-const dotsContainer =
-  document.querySelector(".carousel-dots");
+  padding: 0.8rem 1rem;
 
-let currentSlide = 0;
+  border-radius: 8px;
+
+  font-weight: 800;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
 
 
-if (
-  slides.length > 0 &&
-  dotsContainer &&
-  prevButton &&
-  nextButton
-) {
+/* ================= HEADER ================= */
 
-  /* Crear indicadores */
+.site-header {
+  position: sticky;
 
-  slides.forEach((slide, index) => {
+  top: 0;
 
-    const dot =
-      document.createElement("button");
+  z-index: 100;
 
-    dot.className = "carousel-dot";
+  background: rgba(255, 250, 243, 0.96);
 
-    dot.type = "button";
+  border-bottom: 1px solid var(--line);
 
-    dot.setAttribute(
-      "aria-label",
-      `Ver fotografía ${index + 1}`
+  backdrop-filter: blur(12px);
+}
+
+.nav {
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 0.8rem 1.2rem;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 1rem;
+}
+
+.brand {
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.7rem;
+
+  text-decoration: none;
+
+  font-weight: 900;
+
+  color: var(--red);
+
+  white-space: nowrap;
+}
+
+.brand-mark {
+  width: 2.3rem;
+  height: 2.3rem;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--orange) 0 45%,
+      var(--coral) 45% 70%,
+      var(--red) 70% 100%
     );
 
-    dot.addEventListener("click", () => {
+  box-shadow:
+    0 8px 18px rgba(200, 51, 45, 0.22);
+}
 
-      showSlide(index);
+.nav-links {
+  display: flex;
 
-    });
+  flex-wrap: wrap;
 
-    dotsContainer.appendChild(dot);
+  justify-content: center;
 
-  });
+  gap: 0.45rem;
+}
 
+.nav-links a {
+  padding: 0.55rem 0.7rem;
 
-  const dots =
-    document.querySelectorAll(".carousel-dot");
+  text-decoration: none;
 
+  border-radius: 8px;
 
-  function showSlide(index) {
+  font-weight: 700;
 
-    if (!slides.length) return;
+  transition:
+    background 180ms ease,
+    color 180ms ease;
+}
 
+.nav-links a:hover {
+  background: var(--cream);
 
-    if (index < 0) {
-
-      index =
-        slides.length - 1;
-
-    }
-
-
-    if (index >= slides.length) {
-
-      index = 0;
-
-    }
-
-
-    currentSlide = index;
+  color: var(--red);
+}
 
 
-    slides.forEach((slide, i) => {
+/* ================= IDIOMAS ================= */
 
-      slide.classList.toggle(
-        "active",
-        i === currentSlide
-      );
+.language-selector {
+  display: flex;
 
-    });
+  gap: 0.25rem;
+
+  padding: 0.2rem;
+
+  border-radius: 9px;
+
+  background: #fff;
+
+  border: 1px solid var(--line);
+}
+
+.language-btn {
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  padding: 0.4rem 0.55rem;
+
+  border-radius: 6px;
+
+  font-weight: 800;
+
+  color: var(--muted);
+}
+
+.language-btn.active {
+  background: var(--red);
+
+  color: white;
+}
+
+.language-btn:hover {
+  background: var(--cream);
+}
 
 
-    dots.forEach((dot, i) => {
+/* ================= BOTONES ================= */
 
-      dot.classList.toggle(
-        "active",
-        i === currentSlide
-      );
+.button {
+  border: 1px solid rgba(200, 51, 45, 0.2);
 
-    });
+  border-radius: 10px;
 
+  color: var(--ink);
+
+  background: white;
+
+  text-decoration: none;
+
+  font-weight: 800;
+
+  padding: 0.75rem 1rem;
+
+  min-height: 2.8rem;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    color 180ms ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+
+  background: var(--cream);
+
+  color: var(--red);
+}
+
+.button.primary {
+  background: var(--red);
+
+  border-color: var(--red);
+
+  color: white;
+
+  box-shadow:
+    0 12px 26px rgba(200, 51, 45, 0.24);
+}
+
+.button.primary:hover {
+  background: var(--dark-red);
+
+  color: white;
+}
+
+
+/* ================= HERO ================= */
+
+.hero {
+  min-height: calc(100vh - 4.5rem);
+
+  display: grid;
+
+  align-items: center;
+
+  position: relative;
+
+  padding:
+    clamp(4rem, 8vw, 7rem)
+    1.25rem
+    3.5rem;
+
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      120deg,
+      rgba(255, 250, 243, 0.94) 0 47%,
+      rgba(255, 250, 243, 0.72) 47% 100%
+    ),
+
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='780' viewBox='0 0 1200 780'%3E%3Crect width='1200' height='780' fill='%23fff3e1'/%3E%3Cpath d='M760 90C890 72 1056 121 1116 242c68 137-23 293-133 386-101 85-250 101-371 49-116-50-205-163-202-289C414 242 585 115 760 90Z' fill='%23f26a21' opacity='.28'/%3E%3Cpath d='M119 503c75-89 196-145 309-113 101 29 168 133 169 238 1 54-17 103-49 144H0V616c25-38 61-79 119-113Z' fill='%23ef5b5b' opacity='.22'/%3E%3C/svg%3E");
+
+  background-position: center;
+
+  background-size: cover;
+
+  z-index: -1;
+}
+
+.hero-content {
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.05fr)
+    minmax(18rem, 0.65fr);
+
+  gap: clamp(2rem, 5vw, 4.5rem);
+
+  align-items: center;
+}
+
+.kicker {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 0.42rem 0.68rem;
+
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.86);
+
+  border: 1px solid var(--line);
+
+  color: var(--red);
+
+  font-weight: 800;
+
+  font-size: 0.9rem;
+}
+
+.hero h1 {
+  margin: 1rem 0 0.5rem;
+
+  font-size: clamp(3.4rem, 9vw, 7.5rem);
+
+  line-height: 0.88;
+
+  color: var(--red);
+
+  letter-spacing: -0.04em;
+}
+
+.hero h2 {
+  margin: 0;
+
+  max-width: 52rem;
+
+  font-size:
+    clamp(1.25rem, 2.6vw, 2.1rem);
+
+  line-height: 1.22;
+
+  color: #4f2927;
+
+  font-weight: 800;
+}
+
+.hero p {
+  max-width: 45rem;
+
+  margin: 1.25rem 0 0;
+
+  color: var(--muted);
+
+  font-size: 1.05rem;
+}
+
+.hero-actions {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 0.8rem;
+
+  margin-top: 1.6rem;
+}
+
+
+/* =====================================================
+   CONTADOR ENACOM
+===================================================== */
+
+.countdown {
+  max-width: 45rem;
+
+  margin-top: 1.6rem;
+
+  padding: 1.15rem;
+
+  border: 2px solid var(--red);
+
+  border-radius: var(--radius);
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--red),
+      var(--dark-red)
+    );
+
+  box-shadow:
+    0 16px 32px rgba(200, 51, 45, 0.22);
+}
+
+
+/* TÍTULO PRINCIPAL DEL CONTADOR */
+
+.countdown .countdown-title {
+  display: block;
+
+  margin: 0;
+
+  color: #ffffff !important;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 1.6rem !important;
+
+  line-height: 1.2 !important;
+
+  font-weight: 900 !important;
+
+  letter-spacing: 0.04em !important;
+
+  text-transform: uppercase;
+
+  opacity: 1 !important;
+}
+
+
+/* ESTADO DEL CONTADOR */
+
+.countdown .countdown-status {
+  margin: 0;
+
+  color: #ffffff !important;
+
+  font-weight: 800;
+}
+
+
+/* CUADRÍCULA DEL CONTADOR */
+
+.countdown-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 0.55rem;
+
+  margin-top: 0.75rem;
+}
+
+
+/* CADA UNIDAD */
+
+.countdown-unit {
+  padding: 0.8rem 0.35rem;
+
+  border: 1px solid rgba(255, 255, 255, 0.65);
+
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  text-align: center;
+}
+
+.countdown-unit strong,
+.countdown-unit span {
+  display: block;
+}
+
+.countdown-unit strong {
+  color: var(--red);
+
+  font-size:
+    clamp(1.6rem, 3vw, 2.25rem);
+
+  line-height: 1.1;
+}
+
+.countdown-unit span {
+  margin-top: 0.2rem;
+
+  color: var(--muted);
+
+  font-size: 0.72rem;
+
+  font-weight: 800;
+}
+
+.countdown-status:not(:empty) {
+  margin-top: 0.75rem;
+}
+
+
+/* =====================================================
+   ALTO CONTRASTE - CONTADOR
+===================================================== */
+
+/*
+   IMPORTANTE:
+   Estas reglas están al final de la sección para que
+   el modo alto contraste NO vuelva negro el título
+   del contador.
+*/
+
+body.high-contrast .countdown {
+  background:
+    linear-gradient(
+      135deg,
+      #000000,
+      #222222
+    );
+
+  border-color: #000000;
+}
+
+body.high-contrast .countdown .countdown-title,
+body.high-contrast .countdown .countdown-status {
+  color: #ffffff !important;
+
+  font-size: 1.6rem !important;
+
+  font-weight: 900 !important;
+
+  opacity: 1 !important;
+}
+
+body.high-contrast .countdown-unit {
+  background: #ffffff;
+
+  border-color: #000000;
+}
+
+body.high-contrast .countdown-unit strong {
+  color: #000000 !important;
+}
+
+body.high-contrast .countdown-unit span {
+  color: #000000 !important;
+}
+
+
+/* ================= PANEL DEL EVENTO ================= */
+
+.event-panel {
+  background: rgba(255, 250, 243, 0.9);
+
+  border: 1px solid var(--line);
+
+  border-radius: var(--radius);
+
+  box-shadow: var(--shadow);
+
+  padding: 1rem;
+}
+
+.event-panel img {
+  width: 100%;
+
+  display: block;
+
+  border-radius: 10px;
+
+  aspect-ratio: 4 / 3;
+
+  object-fit: cover;
+}
+
+.event-panel p {
+  margin: 0.9rem 0 0;
+
+  font-size: 0.95rem;
+
+  color: var(--muted);
+}
+
+
+/* ================= SECCIONES ================= */
+
+section {
+  scroll-margin-top: 6rem;
+}
+
+.section-wrap {
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding:
+    clamp(3.5rem, 6vw, 5.5rem)
+    1.25rem;
+}
+
+.section-title {
+  display: grid;
+
+  gap: 0.55rem;
+
+  margin-bottom: 1.7rem;
+}
+
+.section-title.center {
+  text-align: center;
+
+  justify-items: center;
+}
+
+.section-title h2 {
+  margin: 0;
+
+  font-size:
+    clamp(2rem, 4vw, 3.2rem);
+
+  line-height: 1.05;
+
+  color: var(--red);
+}
+
+.section-title p {
+  margin: 0;
+
+  max-width: 48rem;
+
+  color: var(--muted);
+
+  font-size: 1.03rem;
+}
+
+
+/* ================= CARRUSEL ================= */
+
+.gallery-section {
+  background: #fff;
+}
+
+.carousel {
+  position: relative;
+
+  max-width: 1050px;
+
+  margin: 2rem auto 0;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  box-shadow: var(--shadow);
+
+  background: #1d1514;
+}
+
+.carousel-track {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 16 / 8.5;
+}
+
+.carousel-slide {
+  position: absolute;
+
+  inset: 0;
+
+  margin: 0;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition: opacity 400ms ease;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+
+  pointer-events: auto;
+}
+
+.carousel-slide img {
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+.carousel-slide figcaption {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  padding: 1.1rem 1.3rem;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      transparent,
+      rgba(0, 0, 0, 0.82)
+    );
+
+  display: grid;
+
+  gap: 0.15rem;
+
+  padding-top: 4rem;
+}
+
+.carousel-slide figcaption strong {
+  font-size: 1.1rem;
+}
+
+.carousel-slide figcaption span {
+  font-size: 0.8rem;
+
+  opacity: 0.9;
+}
+
+.carousel-control {
+  position: absolute;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  width: 3rem;
+  height: 3rem;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,0.92);
+
+  color: var(--red);
+
+  font-size: 2rem;
+
+  cursor: pointer;
+
+  z-index: 5;
+}
+
+.carousel-control:hover {
+  background: white;
+
+  transform:
+    translateY(-50%)
+    scale(1.06);
+}
+
+.carousel-control.prev {
+  left: 1rem;
+}
+
+.carousel-control.next {
+  right: 1rem;
+}
+
+.carousel-dots {
+  position: absolute;
+
+  bottom: 0.8rem;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+
+  gap: 0.4rem;
+
+  z-index: 10;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+
+  border: 1px solid white;
+
+  background: rgba(255,255,255,0.5);
+
+  cursor: pointer;
+}
+
+.carousel-dot.active {
+  background: white;
+
+  transform: scale(1.2);
+}
+
+.photo-note {
+  text-align: center;
+
+  color: var(--muted);
+
+  font-size: 0.82rem;
+
+  margin-top: 0.8rem;
+}
+
+
+/* ================= CRÉDITOS FOTOGRÁFICOS ================= */
+
+.photo-credit {
+  max-width: 700px;
+
+  margin: 0.35rem auto 0;
+
+  text-align: center;
+
+  color: var(--muted);
+
+  font-size: 0.78rem;
+
+  opacity: 0.85;
+}
+
+
+/* ================= LÍNEA DEL TIEMPO ================= */
+
+.timeline-section {
+  background:
+    linear-gradient(
+      180deg,
+      #fff7ed 0%,
+      #ffffff 100%
+    );
+}
+
+.timeline {
+  max-width: 1050px;
+
+  margin: 2rem auto 0;
+}
+
+.timeline-controls {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(7.2rem, 1fr));
+
+  gap: 0.65rem;
+
+  padding-bottom: 0.35rem;
+}
+
+.timeline-controls::before {
+  content: "";
+
+  position: absolute;
+
+  left: 1.1rem;
+  right: 1.1rem;
+
+  top: 1.12rem;
+
+  height: 2px;
+
+  background: var(--line);
+
+  pointer-events: none;
+}
+
+.timeline-button {
+  position: relative;
+
+  z-index: 1;
+
+  min-height: 5.6rem;
+
+  padding: 0.75rem 0.55rem;
+
+  border: 1px solid var(--line);
+
+  border-radius: 10px;
+
+  background: white;
+
+  color: var(--ink);
+
+  cursor: pointer;
+
+  font: inherit;
+
+  text-align: left;
+
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    color 180ms ease;
+}
+
+.timeline-button::before {
+  content: "";
+
+  display: block;
+
+  width: 0.7rem;
+  height: 0.7rem;
+
+  margin-bottom: 0.45rem;
+
+  border-radius: 50%;
+
+  background: var(--orange);
+}
+
+.timeline-button strong,
+.timeline-button span {
+  display: block;
+}
+
+.timeline-button strong {
+  color: var(--red);
+
+  font-size: 1.1rem;
+}
+
+.timeline-button span {
+  margin-top: 0.15rem;
+
+  color: var(--muted);
+
+  font-size: 0.76rem;
+
+  font-weight: 700;
+
+  line-height: 1.25;
+}
+
+.timeline-button:hover,
+.timeline-button[aria-selected="true"] {
+  background: var(--red);
+
+  color: white;
+
+  transform: translateY(-3px);
+}
+
+.timeline-button[aria-selected="true"]::before {
+  background: white;
+}
+
+.timeline-button[aria-selected="true"] strong,
+.timeline-button[aria-selected="true"] span {
+  color: white;
+}
+
+.timeline-detail {
+  min-height: 10rem;
+
+  margin-top: 1.25rem;
+
+  padding:
+    clamp(1.25rem, 3vw, 2rem);
+
+  border-left: 6px solid var(--orange);
+
+  border-radius: var(--radius);
+
+  background: white;
+
+  box-shadow:
+    0 14px 34px rgba(97, 43, 22, 0.09);
+}
+
+.timeline-detail h3 {
+  margin: 0 0 0.65rem;
+
+  color: var(--red);
+
+  font-size:
+    clamp(1.35rem, 3vw, 2rem);
+}
+
+.timeline-detail p {
+  margin: 0;
+
+  color: var(--muted);
+}
+
+
+/* ================= SR ONLY ================= */
+
+.sr-only {
+  position: absolute;
+
+  width: 1px;
+
+  height: 1px;
+
+  padding: 0;
+
+  margin: -1px;
+
+  overflow: hidden;
+
+  clip: rect(0, 0, 0, 0);
+
+  white-space: nowrap;
+
+  border: 0;
+}
+
+
+/* ================= ALTO CONTRASTE TIMELINE ================= */
+
+body.high-contrast .timeline-button,
+body.high-contrast .timeline-detail {
+  border-color: #000000;
+
+  background: #ffffff;
+
+  box-shadow: none;
+}
+
+body.high-contrast .timeline-button strong,
+body.high-contrast .timeline-button span,
+body.high-contrast .timeline-detail h3,
+body.high-contrast .timeline-detail p {
+  color: #000000;
+}
+
+body.high-contrast .timeline-button[aria-selected="true"] {
+  background: #000000;
+}
+
+body.high-contrast .timeline-button[aria-selected="true"] strong,
+body.high-contrast .timeline-button[aria-selected="true"] span {
+  color: #ffffff;
+}
+
+
+/* ================= EJE PRINCIPAL ================= */
+
+.main-thread {
+  background: white;
+}
+
+.feature-layout {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 0.8fr)
+    minmax(0, 1.2fr);
+
+  gap: 1.25rem;
+
+  align-items: stretch;
+}
+
+.thread-copy {
+  border-left: 6px solid var(--orange);
+
+  padding: 1.3rem;
+
+  background: var(--cream);
+
+  border-radius: var(--radius);
+}
+
+.thread-copy h3 {
+  margin: 0 0 0.5rem;
+
+  font-size: 1.35rem;
+
+  color: #4f2927;
+}
+
+.thread-copy p {
+  margin: 0;
+
+  color: var(--muted);
+}
+
+.media-slot {
+  min-height: 22rem;
+
+  border-radius: var(--radius);
+
+  overflow: hidden;
+
+  background: #1d1514;
+}
+
+.media-slot iframe {
+  width: 100%;
+
+  height: 100%;
+
+  min-height: 22rem;
+
+  border: 0;
+
+  display: block;
+}
+
+
+/* ================= PROBLEMÁTICAS ================= */
+
+.subthreads {
+  background:
+    linear-gradient(
+      180deg,
+      #fff7ed 0%,
+      #ffffff 100%
+    );
+}
+
+.accordion {
+  display: grid;
+
+  gap: 0.9rem;
+}
+
+.subthread {
+  border: 1px solid var(--line);
+
+  border-radius: var(--radius);
+
+  background: rgba(255,255,255,0.92);
+
+  box-shadow:
+    0 12px 28px rgba(97,43,22,0.08);
+
+  overflow: hidden;
+}
+
+.subthread-button {
+  width: 100%;
+
+  border: 0;
+
+  background: transparent;
+
+  padding: 1.1rem;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  cursor: pointer;
+
+  color: var(--ink);
+
+  text-align: left;
+
+  font: inherit;
+
+  font-weight: 800;
+
+  font-size: 1.1rem;
+}
+
+.subthread-button .label {
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.75rem;
+}
+
+.letter {
+  flex: 0 0 auto;
+
+  width: 2rem;
+  height: 2rem;
+
+  border-radius: 8px;
+
+  display: grid;
+
+  place-items: center;
+
+  background: var(--cream);
+
+  color: var(--red);
+
+  border: 1px solid var(--line);
+
+  font-size: 0.92rem;
+}
+
+.chevron {
+  flex: 0 0 auto;
+
+  width: 2.15rem;
+  height: 2.15rem;
+
+  border-radius: 8px;
+
+  display: grid;
+
+  place-items: center;
+
+  background: var(--red);
+
+  color: white;
+
+  transition: transform 180ms ease;
+}
+
+.subthread.open .chevron {
+  transform: rotate(45deg);
+}
+
+.subthread-content {
+  max-height: 0;
+
+  overflow: hidden;
+
+  transition:
+    max-height 300ms ease;
+
+  border-top: 1px solid transparent;
+}
+
+.subthread.open .subthread-content {
+  border-top-color: var(--line);
+}
+
+.subthread-inner {
+  padding: 1.1rem;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 0.78fr)
+    minmax(0, 1.22fr);
+
+  gap: 1rem;
+}
+
+.subthread-text {
+  color: var(--muted);
+
+  margin: 0;
+
+  background: var(--cream);
+
+  border-radius: var(--radius);
+
+  padding: 1rem;
+}
+
+.infografia-preview {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+
+  height: 320px;
+
+  overflow: hidden;
+
+  border-radius: var(--radius);
+
+  border: 1px solid #f6b28b;
+
+  background: #fff7ed;
+
+  text-decoration: none;
+}
+
+.infografia-preview img {
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+.preview-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background: rgba(152,39,34,0.84);
+
+  color: white;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  opacity: 0;
+
+  transition: opacity .25s ease;
+
+  font-size: 1.05rem;
+
+  font-weight: 800;
+}
+
+.infografia-preview:hover .preview-overlay,
+.infografia-preview:focus .preview-overlay {
+  opacity: 1;
+}
+
+
+/* =====================================================
+   REFERENTES DEL ENACOM 2025
+===================================================== */
+
+.speakers-section {
+  background: #fff;
+}
+
+.referents-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 1.3rem;
+
+  margin-top: 2rem;
+}
+
+.referent-card {
+  display: grid;
+
+  grid-template-columns:
+    150px minmax(0, 1fr);
+
+  gap: 1.25rem;
+
+  align-items: stretch;
+
+  padding: 1rem;
+
+  border-radius: var(--radius);
+
+  background:
+    linear-gradient(
+      145deg,
+      #fff7ed,
+      #ffffff
+    );
+
+  border: 1px solid var(--line);
+
+  box-shadow:
+    0 12px 30px rgba(97,43,22,0.08);
+
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.referent-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 18px 36px rgba(97,43,22,0.14);
+}
+
+.referent-card > img {
+  width: 150px;
+
+  height: 190px;
+
+  object-fit: cover;
+
+  display: block;
+
+  border-radius: 10px;
+
+  background: var(--cream);
+}
+
+.referent-content {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  min-width: 0;
+}
+
+.referent-content h3 {
+  margin: 0 0 0.5rem;
+
+  color: var(--red);
+
+  font-size: 1.35rem;
+
+  line-height: 1.2;
+}
+
+.referent-content p {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 0.92rem;
+
+  line-height: 1.5;
+}
+
+.referent-content small {
+  display: block;
+
+  margin-top: 0.75rem;
+
+  color: var(--muted);
+
+  font-size: 0.72rem;
+
+  line-height: 1.35;
+
+  opacity: 0.78;
+}
+
+
+/* =====================================================
+   MESA DESTACADA
+===================================================== */
+
+.featured-panel {
+  margin-top: 2rem;
+
+  padding:
+    clamp(1.5rem, 4vw, 2.4rem);
+
+  border-radius: var(--radius);
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--cream),
+      #ffffff
+    );
+
+  border-left: 6px solid var(--orange);
+
+  box-shadow:
+    0 14px 34px rgba(97,43,22,0.09);
+}
+
+.featured-panel .kicker {
+  margin-bottom: 0.8rem;
+}
+
+.featured-panel h3 {
+  margin: 0 0 0.8rem;
+
+  color: var(--red);
+
+  font-size:
+    clamp(1.5rem, 3vw, 2.15rem);
+
+  line-height: 1.15;
+}
+
+.featured-panel p {
+  max-width: 900px;
+
+  margin: 0 0 0.8rem;
+
+  color: var(--muted);
+}
+
+.featured-panel blockquote {
+  margin: 1.3rem 0 0;
+
+  padding: 1rem 1.2rem;
+
+  border-left: 4px solid var(--red);
+
+  background: rgba(255,255,255,0.7);
+
+  border-radius: 0 10px 10px 0;
+
+  color: #4f2927;
+
+  font-weight: 800;
+
+  font-style: italic;
+}
+
+
+/* =====================================================
+   ESTILOS ANTIGUOS DE PONENCIAS
+===================================================== */
+
+.speakers-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 1.2rem;
+}
+
+.speaker-card {
+  position: relative;
+
+  padding: 1.6rem;
+
+  border-radius: var(--radius);
+
+  background:
+    linear-gradient(
+      145deg,
+      #fff7ed,
+      #ffffff
+    );
+
+  border: 1px solid var(--line);
+
+  box-shadow:
+    0 12px 30px rgba(97,43,22,0.08);
+
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.speaker-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 18px 36px rgba(97,43,22,0.14);
+}
+
+.speaker-number {
+  display: inline-block;
+
+  margin-bottom: 0.8rem;
+
+  color: var(--orange);
+
+  font-weight: 900;
+
+  font-size: 1.2rem;
+}
+
+.speaker-card h3 {
+  margin: 0;
+
+  color: var(--red);
+
+  font-size: 1.35rem;
+
+  line-height: 1.2;
+}
+
+.speaker-subtitle {
+  color: var(--muted);
+
+  font-style: italic;
+}
+
+.speaker-names {
+  margin-top: 1rem;
+
+  padding-top: 1rem;
+
+  border-top: 1px solid var(--line);
+
+  font-weight: 800;
+
+  line-height: 1.8;
+}
+
+
+/* ================= QUIZ ================= */
+
+.interactive-section {
+  background:
+    linear-gradient(
+      135deg,
+      #fff3e1,
+      #ffffff
+    );
+}
+
+.quiz-card {
+  max-width: 760px;
+
+  margin: 2rem auto 0;
+
+  padding: 2rem;
+
+  background: white;
+
+  border-radius: var(--radius);
+
+  border: 1px solid var(--line);
+
+  box-shadow: var(--shadow);
+}
+
+.quiz-question {
+  margin-bottom: 1.5rem;
+}
+
+.quiz-question h3 {
+  margin-top: 0;
+
+  color: var(--red);
+
+  font-size: 1.4rem;
+}
+
+.quiz-options {
+  display: grid;
+
+  gap: 0.7rem;
+}
+
+.quiz-option {
+  width: 100%;
+
+  padding: 1rem;
+
+  border-radius: 10px;
+
+  border: 2px solid var(--line);
+
+  background: white;
+
+  cursor: pointer;
+
+  text-align: left;
+
+  font: inherit;
+
+  font-weight: 700;
+}
+
+.quiz-option:hover {
+  background: var(--cream);
+
+  border-color: var(--orange);
+}
+
+.quiz-option.selected {
+  background: var(--cream);
+
+  border-color: var(--red);
+}
+
+.quiz-option.correct {
+  background: #dff4df;
+
+  border-color: #2e7d32;
+}
+
+.quiz-option.incorrect {
+  background: #ffe1df;
+
+  border-color: #b71c1c;
+}
+
+.quiz-button {
+  margin-top: 1.3rem;
+}
+
+.quiz-result {
+  margin-top: 1.5rem;
+
+  font-size: 1.2rem;
+
+  font-weight: 800;
+
+  color: var(--red);
+}
+
+
+/* ================= REDES ================= */
+
+.social-section {
+  background: white;
+}
+
+.social-card {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 2rem;
+
+  padding: 2rem;
+
+  border-radius: var(--radius);
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--red),
+      var(--dark-red)
+    );
+
+  color: white;
+
+  box-shadow: var(--shadow);
+}
+
+.social-card .kicker {
+  background: rgba(255,255,255,0.15);
+
+  color: white;
+
+  border-color: rgba(255,255,255,0.3);
+}
+
+.social-card h2 {
+  margin: 0.7rem 0 0;
+
+  font-size:
+    clamp(1.8rem, 4vw, 3rem);
+}
+
+.social-card p {
+  max-width: 600px;
+
+  opacity: 0.9;
+}
+
+.social-buttons {
+  display: flex;
+
+  gap: 0.7rem;
+
+  flex-wrap: wrap;
+}
+
+.social-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 0.8rem 1.1rem;
+
+  border-radius: 10px;
+
+  background: white;
+
+  color: var(--red);
+
+  text-decoration: none;
+
+  font-weight: 900;
+
+  transition:
+    transform 180ms ease,
+    background 180ms ease;
+}
+
+.social-button:hover {
+  transform: translateY(-2px);
+}
+
+
+/* ================= ACCESIBILIDAD ================= */
+
+.accessibility-section {
+  background: #fff7ed;
+}
+
+.accessibility-panel {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 2rem;
+
+  padding: 1.7rem;
+
+  border-radius: var(--radius);
+
+  border: 1px solid var(--line);
+
+  background: white;
+}
+
+.accessibility-panel h2 {
+  margin: 0.6rem 0 0;
+
+  color: var(--red);
+}
+
+.accessibility-panel p {
+  color: var(--muted);
+
+  margin-bottom: 0;
+}
+
+.accessibility-buttons {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 0.5rem;
+}
+
+.access-button {
+  padding: 0.7rem 0.8rem;
+
+  border: 1px solid var(--line);
+
+  border-radius: 8px;
+
+  background: white;
+
+  cursor: pointer;
+
+  font-weight: 800;
+}
+
+.access-button:hover {
+  background: var(--cream);
+
+  color: var(--red);
+}
+
+
+/* =====================================================
+   MODO ALTO CONTRASTE
+===================================================== */
+
+body.high-contrast .site-header {
+  background: #ffffff;
+
+  border-color: #000000;
+}
+
+body.high-contrast .hero::before {
+  background: #ffffff;
+}
+
+body.high-contrast .hero h1,
+body.high-contrast .hero h2,
+body.high-contrast .section-title h2,
+body.high-contrast .referent-content h3,
+body.high-contrast .featured-panel h3 {
+  color: #000000;
+}
+
+body.high-contrast .kicker {
+  color: #000000;
+
+  background: #ffffff;
+
+  border-color: #000000;
+}
+
+body.high-contrast .referent-card,
+body.high-contrast .featured-panel,
+body.high-contrast .quiz-card,
+body.high-contrast .accessibility-panel {
+  background: #ffffff;
+
+  border-color: #000000;
+
+  box-shadow: none;
+}
+
+body.high-contrast .referent-content p,
+body.high-contrast .referent-content small,
+body.high-contrast .photo-note,
+body.high-contrast .photo-credit,
+body.high-contrast .section-title p {
+  color: #000000;
+}
+
+body.high-contrast .featured-panel {
+  border-left-color: #000000;
+}
+
+body.high-contrast .featured-panel blockquote {
+  color: #000000;
+
+  border-left-color: #000000;
+
+  background: #ffffff;
+}
+
+body.high-contrast .subthread {
+  border-color: #000000;
+}
+
+body.high-contrast .subthread-text {
+  background: #ffffff;
+
+  color: #000000;
+
+  border: 1px solid #000000;
+}
+
+
+/* =====================================================
+   CIERRE
+===================================================== */
+
+.closing {
+  background: var(--red);
+
+  color: white;
+}
+
+.closing .section-wrap {
+  padding-top: 2.5rem;
+
+  padding-bottom: 2.5rem;
+}
+
+.closing p {
+  margin: 0;
+
+  max-width: 60rem;
+
+  font-weight: 700;
+
+  font-size: 1.15rem;
+}
+
+
+/* ================= FOOTER ================= */
+
+.site-footer {
+  padding: 2rem 1.25rem;
+
+  text-align: center;
+
+  background: #241717;
+
+  color: white;
+}
+
+.site-footer p {
+  margin: 0.25rem;
+}
+
+.site-footer p:last-child {
+  opacity: 0.7;
+
+  font-size: 0.85rem;
+}
+
+
+/* =====================================================
+   HISTORIA ENACOM · INTRODUCCIÓN
+===================================================== */
+.history-section{background:linear-gradient(180deg,#fff7ed 0%,#fff 55%,#fff7ed 100%)}
+.history-intro{max-width:1050px;margin:2.5rem auto 0;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(260px,.65fr);gap:1.25rem;align-items:stretch}
+.history-intro-main{padding:clamp(1.5rem,4vw,2.5rem);border-radius:var(--radius);background:#fff;border:1px solid var(--line);border-left:6px solid var(--orange);box-shadow:0 14px 34px rgba(97,43,22,.09)}
+.history-label{display:inline-flex;align-items:center;width:fit-content;padding:.4rem .7rem;border-radius:8px;background:var(--cream);border:1px solid var(--line);color:var(--red);font-size:.78rem;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
+.history-intro-main h3{margin:.8rem 0 .9rem;color:var(--red);font-size:clamp(1.5rem,3vw,2.25rem);line-height:1.12}
+.history-intro-main p{margin:0 0 .9rem;color:var(--muted);font-size:1rem;line-height:1.65}
+.history-intro-main p:last-child{margin-bottom:0}
+.history-intro-card{position:relative;display:flex;flex-direction:column;justify-content:center;padding:1.6rem;border-radius:var(--radius);background:linear-gradient(145deg,var(--red),var(--dark-red));color:#fff;box-shadow:0 18px 38px rgba(200,51,45,.2);overflow:hidden}
+.history-intro-card::after{content:"";position:absolute;width:180px;height:180px;right:-80px;bottom:-80px;border-radius:50%;background:rgba(255,255,255,.08)}
+.history-card-number{font-size:clamp(3rem,7vw,5rem);line-height:.9;font-weight:900;letter-spacing:-.06em;color:#fff;margin-bottom:1.1rem}
+.history-card-label{display:block;margin-bottom:.25rem;color:rgba(255,255,255,.75);font-size:.75rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.history-intro-card h4{position:relative;z-index:1;margin:0;color:#fff;font-size:1.55rem;line-height:1.15}
+.history-intro-card p{position:relative;z-index:1;margin:.7rem 0 0;color:rgba(255,255,255,.88);font-size:.9rem;line-height:1.5}
+.history-pillars{max-width:1050px;margin:1.25rem auto 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.history-pillar{display:flex;gap:.9rem;align-items:flex-start;padding:1.2rem;border-radius:12px;background:rgba(255,255,255,.9);border:1px solid var(--line);box-shadow:0 10px 24px rgba(97,43,22,.06)}
+.history-pillar-icon{flex:0 0 auto;width:2.4rem;height:2.4rem;display:grid;place-items:center;border-radius:8px;background:var(--cream);color:var(--red);border:1px solid var(--line);font-size:.72rem;font-weight:900}
+.history-pillar h3{margin:0 0 .25rem;color:var(--red);font-size:1rem}.history-pillar p{margin:0;color:var(--muted);font-size:.82rem;line-height:1.5}
+.history-timeline-heading{max-width:1050px;margin:clamp(3rem,6vw,4.5rem) auto 0;text-align:center}.history-timeline-heading h3{margin:.65rem 0 .4rem;color:var(--red);font-size:clamp(1.5rem,3vw,2.2rem);line-height:1.1}.history-timeline-heading p{max-width:600px;margin:0 auto;color:var(--muted);font-size:.95rem}
+.history-closing{max-width:850px;margin:2.5rem auto 0;text-align:center}.history-closing-line{width:70px;height:4px;margin:0 auto 1.2rem;border-radius:10px;background:linear-gradient(90deg,var(--orange),var(--red))}.history-closing p{margin:0;color:#4f2927;font-size:1.05rem;line-height:1.6;font-weight:800}
+body.high-contrast .history-intro-main,body.high-contrast .history-pillar{background:#fff;border-color:#000;box-shadow:none}body.high-contrast .history-intro-main{border-left-color:#000}body.high-contrast .history-label,body.high-contrast .history-pillar-icon{background:#fff;border-color:#000;color:#000}body.high-contrast .history-intro-main h3,body.high-contrast .history-pillar h3,body.high-contrast .history-timeline-heading h3,body.high-contrast .history-closing p{color:#000}body.high-contrast .history-intro-main p,body.high-contrast .history-pillar p,body.high-contrast .history-timeline-heading p{color:#000}body.high-contrast .history-intro-card{background:#000;box-shadow:none}body.high-contrast .history-card-number,body.high-contrast .history-intro-card h4{color:#fff}body.high-contrast .history-card-label,body.high-contrast .history-intro-card p{color:#fff}body.high-contrast .history-closing-line{background:#000}
+@media (max-width:800px){.history-intro{grid-template-columns:1fr}.history-intro-card{min-height:220px}.history-pillars{grid-template-columns:1fr}}
+@media (max-width:650px){.history-intro{margin-top:1.8rem}.history-intro-main{padding:1.25rem;border-left-width:4px}.history-intro-main h3{font-size:1.45rem}.history-intro-main p{font-size:.9rem}.history-intro-card{padding:1.3rem}.history-card-number{font-size:3.6rem}.history-pillar{padding:1rem}.history-timeline-heading{margin-top:3rem}.history-closing{margin-top:2rem}.history-closing p{font-size:.95rem}}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1000px) {
+
+  .referent-card {
+    grid-template-columns:
+      125px minmax(0, 1fr);
+  }
+
+  .referent-card > img {
+    width: 125px;
+
+    height: 175px;
+  }
+
+}
+
+
+@media (max-width: 900px) {
+
+  .nav {
+    flex-wrap: wrap;
+  }
+
+  .nav-links {
+    order: 3;
+
+    width: 100%;
+  }
+
+  .hero-content,
+  .feature-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .speakers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .social-card,
+  .accessibility-panel {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .referents-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .hero {
+    min-height: auto;
+
+    padding-top: 3rem;
+  }
+
+  .hero h1 {
+    font-size:
+      clamp(3rem, 18vw, 5rem);
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-actions .button {
+    width: 100%;
   }
 
 
-  prevButton.addEventListener(
-    "click",
-    () => {
+  /* CONTADOR EN CELULAR */
 
-      showSlide(
-        currentSlide - 1
-      );
+  .countdown-grid {
+    gap: 0.4rem;
+  }
 
-    }
-  );
+  .countdown-unit {
+    padding: 0.55rem 0.2rem;
+  }
 
+  .countdown-unit strong {
+    font-size: 1.2rem;
+  }
 
-  nextButton.addEventListener(
-    "click",
-    () => {
+  .countdown .countdown-title {
+    font-size: 1.35rem !important;
 
-      showSlide(
-        currentSlide + 1
-      );
-
-    }
-  );
+    line-height: 1.2 !important;
+  }
 
 
-  showSlide(0);
+  /* TIMELINE */
+
+  .timeline-controls {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
 
 
-  /* Carrusel automático */
+  /* CARRUSEL */
 
-  let carouselTimer =
-    setInterval(() => {
+  .carousel-track {
+    aspect-ratio: 4 / 3;
+  }
 
-      showSlide(
-        currentSlide + 1
-      );
+  .carousel-slide figcaption {
+    padding-bottom: 3.2rem;
+  }
 
-    }, 6500);
+  .carousel-slide figcaption strong {
+    font-size: 0.95rem;
+  }
 
+  .carousel-slide figcaption span {
+    font-size: 0.7rem;
+  }
 
-  /* Pausar al pasar el mouse */
+  .carousel-control {
+    width: 2.5rem;
 
-  const carousel =
-    document.querySelector(".carousel");
+    height: 2.5rem;
 
-
-  if (carousel) {
-
-    carousel.addEventListener(
-      "mouseenter",
-      () => {
-
-        clearInterval(
-          carouselTimer
-        );
-
-      }
-    );
+    font-size: 1.6rem;
+  }
 
 
-    carousel.addEventListener(
-      "mouseleave",
-      () => {
+  /* PROBLEMÁTICAS */
 
-        carouselTimer =
-          setInterval(() => {
+  .subthread-inner {
+    grid-template-columns: 1fr;
+  }
 
-            showSlide(
-              currentSlide + 1
-            );
+  .infografia-preview {
+    height: 250px;
+  }
 
-          }, 6500);
 
-      }
-    );
+  /* QUIZ */
 
+  .quiz-card {
+    padding: 1.2rem;
+  }
+
+
+  /* IDIOMAS */
+
+  .language-selector {
+    margin-left: auto;
+  }
+
+
+  /* REFERENTES */
+
+  .referents-grid {
+    grid-template-columns: 1fr;
+
+    gap: 1rem;
+  }
+
+  .referent-card {
+    grid-template-columns:
+      105px minmax(0, 1fr);
+
+    gap: 1rem;
+
+    padding: 0.8rem;
+  }
+
+  .referent-card > img {
+    width: 105px;
+
+    height: 145px;
+  }
+
+  .referent-content h3 {
+    font-size: 1.12rem;
+  }
+
+  .referent-content p {
+    font-size: 0.82rem;
+
+    line-height: 1.45;
+  }
+
+  .referent-content small {
+    font-size: 0.67rem;
+  }
+
+
+  /* MESA DESTACADA */
+
+  .featured-panel {
+    padding: 1.3rem;
+
+    border-left-width: 4px;
+  }
+
+  .featured-panel h3 {
+    font-size: 1.4rem;
+  }
+
+  .featured-panel p {
+    font-size: 0.9rem;
+  }
+
+  .featured-panel blockquote {
+    font-size: 0.9rem;
+  }
+
+
+  /* REDES */
+
+  .social-buttons {
+    width: 100%;
+  }
+
+  .social-button {
+    flex: 1;
+  }
+
+
+  /* ACCESIBILIDAD */
+
+  .accessibility-buttons {
+    width: 100%;
+  }
+
+  .access-button {
+    flex: 1;
   }
 
 }
 
 
+@media (max-width: 430px) {
 
-/* =========================================================
-   IDIOMAS
-========================================================= */
+  .referent-card {
+    grid-template-columns:
+      85px minmax(0, 1fr);
 
-const translations = {
-
-  /* =====================================================
-     ESPAÑOL
-  ===================================================== */
-
-  es: {
-
-    navEjes:
-      "Ejes temáticos",
-
-    navHistoria:
-      "Historia",
-
-    navPonencias:
-      "Ponencias",
-
-    navInteractivo:
-      "Participá",
-
-    navRedes:
-      "Redes",
-
-
-    /* HERO */
-
-    kicker:
-      "XXII Encuentro Nacional de Carreras de Comunicación",
-
-    heroTitle:
-      "Tiempo de comunicación. Diálogos sobre pasado y presente en un mundo acelerado",
-
-    heroText:
-      "Un recorrido por los principales debates, ponencias y producciones del ENACOM 2025, realizado en San Luis.",
-
-    heroGallery:
-      "Ver fotografías",
-
-    heroExplore:
-      "Explorar el encuentro",
-
-    heroImageCaption:
-      "Producciones desarrolladas a partir de los debates y problemáticas abordadas durante el encuentro.",
-
-
-    /* CUENTA REGRESIVA */
-
-    countdownTitle:
-      "Días para ENACOM 2026",
-
-    countdownDays:
-      "Días",
-
-    countdownHours:
-      "Horas",
-
-    countdownMinutes:
-      "Minutos",
-
-    countdownSeconds:
-      "Segundos",
-
-    countdownComplete:
-      "El ENACOM 2026 ya comenzó.",
-
-
-    /* GALERÍA */
-
-    galleryKicker:
-      "El encuentro en imágenes",
-
-    galleryTitle:
-      "ENACOM 2025 en San Luis",
-
-    galleryText:
-      "Una mirada visual sobre las jornadas realizadas en la Facultad de Ciencias Humanas de la Universidad Nacional de San Luis.",
-
-
-    photo1Title:
-      "Apertura del ENACOM 2025",
-
-    photo1Credit:
-      "Fotografía: Noticias UNSL — Universidad Nacional de San Luis.",
-
-    photo2Title:
-      "Participación y encuentro",
-
-    photo2Credit:
-      "Fotografía: Noticias UNSL — Universidad Nacional de San Luis.",
-
-    photo3Title:
-      "Comunidad académica",
-
-    photo3Credit:
-      "Fotografía: Noticias UNSL — Universidad Nacional de San Luis.",
-
-    photo4Title:
-      "Ponencias y debates",
-
-    photo4Credit:
-      "Fotografía: Facultad de Ciencias de la Educación — UNER.",
-
-    photo5Title:
-      "Participantes del encuentro",
-
-    photo5Credit:
-      "Fotografía: Facultad de Ciencias de la Educación — UNER.",
-
-    photoNote:
-      "Las fotografías se presentan con identificación de su fuente y autoría.",
-
-
-    /* HISTORIA */
-
-    timelineKicker:
-      "Recorrido histórico",
-
-    timelineTitle:
-      "La historia del ENACOM",
-
-    timelineIntro:
-      "Conocé el origen, la evolución y la construcción federal del Encuentro Nacional de Carreras de Comunicación.",
-
-
-    historyWhatKicker:
-      "¿Qué es ENACOM?",
-
-    historyWhatTitle:
-      "Un encuentro nacional para pensar la comunicación",
-
-    historyWhatText:
-      "El Encuentro Nacional de Carreras de Comunicación (ENACOM) surgió en 2002 como una propuesta para reunir a estudiantes, docentes, investigadores y graduados vinculados al campo de la comunicación social de todo el país.",
-
-    historyWhatText2:
-      "Organizado por la Federación Argentina de Carreras de Comunicación Social (FADECCOS), el primer encuentro se realizó en Olavarría y abrió un espacio federal de intercambio, debate y producción académica alrededor de los medios, el periodismo, la cultura, las políticas comunicacionales y las nuevas tecnologías.",
-
-    historyCardLabel:
-      "Primer ENACOM",
-
-    historyCardTitle:
-      "Olavarría",
-
-    historyCardText:
-      "El comienzo de un espacio nacional y federal dedicado al intercambio sobre comunicación.",
-
-
-    historyPillar1Title:
-      "Encuentro",
-
-    historyPillar1Text:
-      "Un espacio para reunir a estudiantes, docentes, investigadores y graduados de distintas universidades.",
-
-
-    historyPillar2Title:
-      "Federalización",
-
-    historyPillar2Text:
-      "El encuentro comenzó a recorrer distintas provincias, descentralizando la producción y circulación del conocimiento sobre comunicación.",
-
-
-    historyPillar3Title:
-      "Debate",
-
-    historyPillar3Text:
-      "A lo largo de los años incorporó nuevas problemáticas vinculadas con los cambios sociales, culturales, tecnológicos y políticos.",
-
-
-    historyTimelineKicker:
-      "Una historia en movimiento",
-
-    historyTimelineTitle:
-      "De 1983 hasta hoy",
-
-    historyTimelineText:
-      "Seleccioná cada momento para conocer cómo fue transformándose el encuentro.",
-
-    historyClosing:
-      "Más de dos décadas después de aquel primer encuentro, ENACOM continúa construyendo un espacio federal para pensar colectivamente los desafíos de la comunicación.",
-
-
-    /* EJES */
-
-    axesKicker:
-      "Recorrido conceptual",
-
-    axesTitle:
-      "Ejes temáticos",
-
-    axesIntro:
-      "El recorrido reúne algunas de las principales problemáticas abordadas durante el ENACOM 2025.",
-
-    axisMainTitle:
-      "Crisis, comunicación y democracia",
-
-    axisMainText:
-      "Este eje aborda la relación entre las crisis socioeconómicas y políticas, la comunicación pública, el periodismo, la circulación de información y los desafíos democráticos.",
-
-
-    /* PROBLEMÁTICAS */
-
-    problemsKicker:
-      "Debates contemporáneos",
-
-    problemsTitle:
-      "Problemáticas y debates",
-
-    problemsIntro:
-      "Dos de los temas trabajados en nuestro recorrido sobre comunicación, periodismo y democracia.",
-
-    problemA:
-      "Ataques a comunicadores y periodistas",
-
-    problemAText:
-      "Esta problemática aborda las formas de hostigamiento, censura, violencia simbólica y presión pública que afectan el trabajo periodístico y el derecho social a estar informado.",
-
-    problemB:
-      "Desinformación, periodismo y democracia",
-
-    problemBText:
-      "La circulación de fake news, la inteligencia artificial y la desinformación transforman la forma en que se produce, distribuye y recibe información.",
-
-    viewInfographic:
-      "Ver infografía completa",
-
-    viewPdf:
-      "Ver material completo",
-
-
-    /* PONENCIAS */
-
-    speakersKicker:
-      "Voces del encuentro",
-
-    speakersTitle:
-      "Ponencias destacadas",
-
-    speakersIntro:
-      "Algunas de las mesas y especialistas que participaron del ENACOM 2025.",
-
-
-    bioMangone:
-      "Doctor en Ciencias Sociales por la UBA, docente en la Universidad de Buenos Aires y en la Universidad Nacional de La Pampa. Su trabajo aborda el discurso político, los medios y la cultura.",
-
-    bioSegura:
-      "Profesora de la UNC e investigadora del CONICET. Sus investigaciones abordan las desigualdades comunicacionales y digitales, la participación social y los discursos de odio y desinformación.",
-
-    bioBecerra:
-      "Investigador y analista especializado en políticas de comunicación, medios y democracia. Es profesor en la UNQ y la UBA y doctor por la Universidad Autónoma de Barcelona.",
-
-    bioCristiano:
-      "Doctor en Sociología, investigador del CONICET y profesor en la UNC. Su trabajo explora el tiempo social, la imaginación y las formas de vida en el capitalismo contemporáneo.",
-
-    bioCosta:
-      "Doctora en Ciencias Sociales por la UBA, investigadora del CONICET y directora de Tecnoceno Lab. Su obra explora los vínculos entre tecnología, cuerpo y cultura en la era del algoritmo.",
-
-    bioPeret:
-      "Comunicador, docente e investigador. Participó de la organización y coordinación de actividades del ENACOM 2025, incluyendo la mesa sobre convergencia e inteligencias artificiales.",
-
-    bioVilte:
-      "Docente e investigador vinculado al campo de la comunicación. Participó del ENACOM 2025 como parte de las actividades académicas del encuentro.",
-
-
-    /* MESA DESTACADA */
-
-    featuredKicker:
-      "Mesa panel destacada",
-
-    featuredTitle:
-      "¿Qué hacer en tiempos de convergencia e inteligencias artificiales?",
-
-    featuredText1:
-      "Una de las mesas más convocantes del ENACOM 2025 reunió a Martín Becerra (UNQ), Flavia Costa (UBA) y Javier Cristiano (UNC), con la coordinación de Maximiliano Peret (UNICEN).",
-
-    featuredText2:
-      "Durante el encuentro se abordaron los desafíos éticos, políticos y culturales que plantea la inteligencia artificial en el campo de la comunicación: la concentración de poder en las plataformas, la transformación de los modos de producción simbólica y la necesidad de sostener una mirada crítica y democrática sobre las tecnologías.",
-
-    featuredQuote:
-      "“La comunicación no puede quedar al margen de las transformaciones tecnológicas: debe intervenir, pensar y proponer futuros posibles.”",
-
-
-    speaker1Title:
-      "Cultura, política y comunicación",
-
-    speaker1Subtitle:
-      "Para una genealogía del campo: ¿de dónde venimos?",
-
-    speaker2Title:
-      "Comunicación, convergencia e inteligencia artificial",
-
-    speaker3Title:
-      "Ciencias Sociales y Humanidades",
-
-    speaker4Title:
-      "Herencias de la comunicación",
-
-
-    /* QUIZ */
-
-    quizKicker:
-      "Participá",
-
-    quizTitle:
-      "¿Cuánto sabés sobre comunicación?",
-
-    quizIntro:
-      "Poné a prueba lo que aprendiste durante el recorrido.",
-
-    nextQuestion:
-      "Siguiente pregunta",
-
-
-    /* REDES */
-
-    socialKicker:
-      "Seguí el encuentro",
-
-    socialTitle:
-      "ENACOM también está en redes",
-
-    socialText:
-      "Encontrá más información, fotografías y novedades sobre el Encuentro Nacional de Carreras de Comunicación.",
-
-
-    /* ACCESIBILIDAD */
-
-    accessKicker:
-      "Accesibilidad",
-
-    accessTitle:
-      "Una página para todas las personas",
-
-    accessText:
-      "Utilizá estas herramientas para adaptar la experiencia de lectura según tus necesidades.",
-
-    increaseText:
-      "Aumentar texto",
-
-    decreaseText:
-      "Disminuir texto",
-
-    contrast:
-      "Alto contraste",
-
-    reset:
-      "Restablecer",
-
-
-    /* CIERRE */
-
-    closing:
-      "ENACOM 2025 invita a pensar el tiempo de la comunicación como una trama viva: memoria, presente, conflicto, tecnología y derecho a la información en diálogo.",
-
-    footer:
-      "Trabajo académico realizado por estudiantes de la carrera de Comunicación Social de la UNNE."
-
-  },
-
-
-  /* =====================================================
-     ENGLISH
-  ===================================================== */
-
-  en: {
-
-    navEjes:
-      "Thematic axes",
-
-    navHistoria:
-      "History",
-
-    navPonencias:
-      "Featured talks",
-
-    navInteractivo:
-      "Take part",
-
-    navRedes:
-      "Social media",
-
-
-    kicker:
-      "22nd National Meeting of Communication Careers",
-
-    heroTitle:
-      "A time for communication. Dialogues between past and present in an accelerated world",
-
-    heroText:
-      "A journey through the main debates, talks and productions of ENACOM 2025, held in San Luis, Argentina.",
-
-    heroGallery:
-      "View photographs",
-
-    heroExplore:
-      "Explore the event",
-
-    heroImageCaption:
-      "Productions developed from the debates and issues addressed during the event.",
-
-
-    countdownTitle:
-      "Days until ENACOM 2026",
-
-    countdownDays:
-      "Days",
-
-    countdownHours:
-      "Hours",
-
-    countdownMinutes:
-      "Minutes",
-
-    countdownSeconds:
-      "Seconds",
-
-    countdownComplete:
-      "ENACOM 2026 has begun.",
-
-
-    galleryKicker:
-      "The event in images",
-
-    galleryTitle:
-      "ENACOM 2025 in San Luis",
-
-    galleryText:
-      "A visual look at the sessions held at the Faculty of Human Sciences of the National University of San Luis.",
-
-
-    photo1Title:
-      "Opening of ENACOM 2025",
-
-    photo1Credit:
-      "Photograph: Noticias UNSL — National University of San Luis.",
-
-    photo2Title:
-      "Participation and encounter",
-
-    photo2Credit:
-      "Photograph: Noticias UNSL — National University of San Luis.",
-
-    photo3Title:
-      "Academic community",
-
-    photo3Credit:
-      "Photograph: Noticias UNSL — National University of San Luis.",
-
-    photo4Title:
-      "Talks and debates",
-
-    photo4Credit:
-      "Photograph: Faculty of Education Sciences — UNER.",
-
-    photo5Title:
-      "Event participants",
-
-    photo5Credit:
-      "Photograph: Faculty of Education Sciences — UNER.",
-
-    photoNote:
-      "Photographs are presented with their source and authorship clearly identified.",
-
-
-    timelineKicker:
-      "Historical journey",
-
-    timelineTitle:
-      "The history of ENACOM",
-
-    timelineIntro:
-      "Discover the origins, evolution and federal development of the National Meeting of Communication Programs.",
-
-
-    historyWhatKicker:
-      "What is ENACOM?",
-
-    historyWhatTitle:
-      "A national meeting to think about communication",
-
-    historyWhatText:
-      "The National Meeting of Communication Programs (ENACOM) was created in 2002 as a proposal to bring together students, teachers, researchers and graduates connected to the field of social communication from across Argentina.",
-
-    historyWhatText2:
-      "Organized by the Argentine Federation of Social Communication Programs (FADECCOS), the first meeting was held in Olavarría and opened a federal space for exchange, debate and academic production around media, journalism, culture, communication policies and new technologies.",
-
-    historyCardLabel:
-      "First ENACOM",
-
-    historyCardTitle:
-      "Olavarría",
-
-    historyCardText:
-      "The beginning of a national and federal space for exchange and discussion about communication.",
-
-
-    historyPillar1Title:
-      "Meeting",
-
-    historyPillar1Text:
-      "A space that brings together students, teachers, researchers and graduates from different universities.",
-
-    historyPillar2Title:
-      "Federal scope",
-
-    historyPillar2Text:
-      "The meeting began moving across different provinces, decentralizing the production and circulation of knowledge about communication.",
-
-    historyPillar3Title:
-      "Debate",
-
-    historyPillar3Text:
-      "Over the years, it incorporated new issues connected to social, cultural, technological and political changes.",
-
-    historyTimelineKicker:
-      "A history in motion",
-
-    historyTimelineTitle:
-      "From 1983 to the present",
-
-    historyTimelineText:
-      "Select each moment to discover how the meeting has evolved.",
-
-    historyClosing:
-      "More than two decades after that first meeting, ENACOM continues to build a federal space for collectively thinking about the challenges facing communication.",
-
-
-    axesKicker:
-      "Conceptual journey",
-
-    axesTitle:
-      "Thematic axes",
-
-    axesIntro:
-      "The journey brings together some of the main issues addressed during ENACOM 2025.",
-
-    axisMainTitle:
-      "Crisis, communication and democracy",
-
-    axisMainText:
-      "This axis explores the relationship between socioeconomic and political crises, public communication, journalism, information circulation and democratic challenges.",
-
-
-    problemsKicker:
-      "Contemporary debates",
-
-    problemsTitle:
-      "Issues and debates",
-
-    problemsIntro:
-      "Two of the topics explored in our journey through communication, journalism and democracy.",
-
-    problemA:
-      "Attacks against communicators and journalists",
-
-    problemAText:
-      "This topic addresses harassment, censorship, symbolic violence and public pressure affecting journalistic work and the social right to information.",
-
-    problemB:
-      "Disinformation, journalism and democracy",
-
-    problemBText:
-      "Fake news, artificial intelligence and disinformation are transforming how information is produced, distributed and received.",
-
-    viewInfographic:
-      "View complete infographic",
-
-    viewPdf:
-      "View complete material",
-
-
-    speakersKicker:
-      "Voices of the event",
-
-    speakersTitle:
-      "Featured talks",
-
-    speakersIntro:
-      "Some of the panels and specialists who participated in ENACOM 2025.",
-
-
-    bioMangone:
-      "Doctor of Social Sciences from the University of Buenos Aires, professor at the University of Buenos Aires and the National University of La Pampa. His work addresses political discourse, media and culture.",
-
-    bioSegura:
-      "Professor at the National University of Córdoba and CONICET researcher. Her research addresses communication and digital inequalities, social participation, hate speech and disinformation.",
-
-    bioBecerra:
-      "Researcher and analyst specializing in communication policies, media and democracy. He teaches at UNQ and UBA and holds a doctorate from the Autonomous University of Barcelona.",
-
-    bioCristiano:
-      "Doctor of Sociology, CONICET researcher and professor at UNC. His work explores social time, imagination and ways of life in contemporary capitalism.",
-
-    bioCosta:
-      "Doctor of Social Sciences from UBA, CONICET researcher and director of Tecnoceno Lab. Her work explores the links between technology, the body and culture in the age of algorithms.",
-
-    bioPeret:
-      "Communicator, professor and researcher. He participated in organizing and coordinating ENACOM 2025 activities, including the panel on convergence and artificial intelligence.",
-
-    bioVilte:
-      "Professor and researcher linked to the field of communication. He participated in ENACOM 2025 as part of the event's academic activities.",
-
-
-    featuredKicker:
-      "Featured panel",
-
-    featuredTitle:
-      "What can we do in times of convergence and artificial intelligence?",
-
-    featuredText1:
-      "One of ENACOM 2025's most popular panels brought together Martín Becerra (UNQ), Flavia Costa (UBA) and Javier Cristiano (UNC), coordinated by Maximiliano Peret (UNICEN).",
-
-    featuredText2:
-      "The event addressed the ethical, political and cultural challenges posed by artificial intelligence in communication: the concentration of power on platforms, changing modes of symbolic production and the need for a critical, democratic view of technology.",
-
-    featuredQuote:
-      "“Communication cannot remain on the sidelines of technological transformations: it must intervene, think and propose possible futures.”",
-
-
-    speaker1Title:
-      "Culture, politics and communication",
-
-    speaker1Subtitle:
-      "Towards a genealogy of the field: where do we come from?",
-
-    speaker2Title:
-      "Communication, convergence and artificial intelligence",
-
-    speaker3Title:
-      "Social Sciences and Humanities",
-
-    speaker4Title:
-      "Legacies of communication",
-
-
-    quizKicker:
-      "Take part",
-
-    quizTitle:
-      "How much do you know about communication?",
-
-    quizIntro:
-      "Test what you learned during the journey.",
-
-    nextQuestion:
-      "Next question",
-
-
-    socialKicker:
-      "Follow the event",
-
-    socialTitle:
-      "ENACOM is also on social media",
-
-    socialText:
-      "Find more information, photographs and news about the National Meeting of Communication Careers.",
-
-
-    accessKicker:
-      "Accessibility",
-
-    accessTitle:
-      "A website for everyone",
-
-    accessText:
-      "Use these tools to adapt the reading experience to your needs.",
-
-    increaseText:
-      "Increase text",
-
-    decreaseText:
-      "Decrease text",
-
-    contrast:
-      "High contrast",
-
-    reset:
-      "Reset",
-
-
-    closing:
-      "ENACOM 2025 invites us to think about the time of communication as a living network: memory, present, conflict, technology and the right to information in dialogue.",
-
-    footer:
-      "Academic project developed by students of the Social Communication program at UNNE."
-
-  },
-
-
-  /* =====================================================
-     PORTUGUÊS
-  ===================================================== */
-
-  pt: {
-
-    navEjes:
-      "Eixos temáticos",
-
-    navHistoria:
-      "História",
-
-    navPonencias:
-      "Palestras",
-
-    navInteractivo:
-      "Participe",
-
-    navRedes:
-      "Redes sociais",
-
-
-    kicker:
-      "22º Encontro Nacional de Carreiras de Comunicação",
-
-    heroTitle:
-      "Tempo de comunicação. Diálogos entre passado e presente em um mundo acelerado",
-
-    heroText:
-      "Um percurso pelos principais debates, palestras e produções do ENACOM 2025, realizado em San Luis, Argentina.",
-
-    heroGallery:
-      "Ver fotografias",
-
-    heroExplore:
-      "Explorar o encontro",
-
-    heroImageCaption:
-      "Produções desenvolvidas a partir dos debates e questões abordados durante o encontro.",
-
-
-    countdownTitle:
-      "Dias para o ENACOM 2026",
-
-    countdownDays:
-      "Dias",
-
-    countdownHours:
-      "Horas",
-
-    countdownMinutes:
-      "Minutos",
-
-    countdownSeconds:
-      "Segundos",
-
-    countdownComplete:
-      "O ENACOM 2026 já começou.",
-
-
-    galleryKicker:
-      "O encontro em imagens",
-
-    galleryTitle:
-      "ENACOM 2025 em San Luis",
-
-    galleryText:
-      "Um olhar visual sobre as jornadas realizadas na Faculdade de Ciências Humanas da Universidade Nacional de San Luis.",
-
-
-    photo1Title:
-      "Abertura do ENACOM 2025",
-
-    photo1Credit:
-      "Fotografia: Noticias UNSL — Universidade Nacional de San Luis.",
-
-    photo2Title:
-      "Participação e encontro",
-
-    photo2Credit:
-      "Fotografia: Noticias UNSL — Universidade Nacional de San Luis.",
-
-    photo3Title:
-      "Comunidade acadêmica",
-
-    photo3Credit:
-      "Fotografia: Noticias UNSL — Universidade Nacional de San Luis.",
-
-    photo4Title:
-      "Palestras e debates",
-
-    photo4Credit:
-      "Fotografia: Faculdade de Ciências da Educação — UNER.",
-
-    photo5Title:
-      "Participantes do encontro",
-
-    photo5Credit:
-      "Fotografia: Faculdade de Ciências da Educação — UNER.",
-
-    photoNote:
-      "As fotografias são apresentadas com sua fonte e autoria devidamente identificadas.",
-
-
-    timelineKicker:
-      "Percurso histórico",
-
-    timelineTitle:
-      "A história do ENACOM",
-
-    timelineIntro:
-      "Conheça a origem, a evolução e a construção federal do Encontro Nacional de Carreiras de Comunicação.",
-
-
-    historyWhatKicker:
-      "O que é o ENACOM?",
-
-    historyWhatTitle:
-      "Um encontro nacional para pensar a comunicação",
-
-    historyWhatText:
-      "O Encontro Nacional de Carreiras de Comunicação (ENACOM) surgiu em 2002 como uma proposta para reunir estudantes, docentes, pesquisadores e graduados vinculados ao campo da comunicação social de todo o país.",
-
-    historyWhatText2:
-      "Organizado pela Federação Argentina de Carreiras de Comunicação Social (FADECCOS), o primeiro encontro foi realizado em Olavarría e abriu um espaço federal de intercâmbio, debate e produção acadêmica sobre os meios de comunicação, o jornalismo, a cultura, as políticas de comunicação e as novas tecnologias.",
-
-    historyCardLabel:
-      "Primeiro ENACOM",
-
-    historyCardTitle:
-      "Olavarría",
-
-    historyCardText:
-      "O início de um espaço nacional e federal dedicado ao intercâmbio e ao debate sobre comunicação.",
-
-
-    historyPillar1Title:
-      "Encontro",
-
-    historyPillar1Text:
-      "Um espaço para reunir estudantes, docentes, pesquisadores e graduados de diferentes universidades.",
-
-    historyPillar2Title:
-      "Federalização",
-
-    historyPillar2Text:
-      "O encontro passou a percorrer diferentes províncias, descentralizando a produção e a circulação do conhecimento sobre comunicação.",
-
-    historyPillar3Title:
-      "Debate",
-
-    historyPillar3Text:
-      "Ao longo dos anos, incorporou novas questões relacionadas às transformações sociais, culturais, tecnológicas e políticas.",
-
-    historyTimelineKicker:
-      "Uma história em movimento",
-
-    historyTimelineTitle:
-      "De 1983 até o presente",
-
-    historyTimelineText:
-      "Selecione cada momento para conhecer como o encontro foi se transformando.",
-
-    historyClosing:
-      "Mais de duas décadas depois daquele primeiro encontro, o ENACOM continua construindo um espaço federal para pensar coletivamente os desafios da comunicação.",
-
-
-    axesKicker:
-      "Percurso conceitual",
-
-    axesTitle:
-      "Eixos temáticos",
-
-    axesIntro:
-      "O percurso reúne alguns dos principais temas abordados durante o ENACOM 2025.",
-
-    axisMainTitle:
-      "Crise, comunicação e democracia",
-
-    axisMainText:
-      "Este eixo aborda a relação entre as crises socioeconômicas e políticas, a comunicação pública, o jornalismo, a circulação de informações e os desafios democráticos.",
-
-
-    problemsKicker:
-      "Debates contemporâneos",
-
-    problemsTitle:
-      "Questões e debates",
-
-    problemsIntro:
-      "Dois dos temas trabalhados em nosso percurso sobre comunicação, jornalismo e democracia.",
-
-    problemA:
-      "Ataques contra comunicadores e jornalistas",
-
-    problemAText:
-      "Esta questão aborda as formas de assédio, censura, violência simbólica e pressão pública que afetam o trabalho jornalístico e o direito social à informação.",
-
-    problemB:
-      "Desinformação, jornalismo e democracia",
-
-    problemBText:
-      "As fake news, a inteligência artificial e a desinformação transformam a maneira como as informações são produzidas, distribuídas e recebidas.",
-
-    viewInfographic:
-      "Ver infográfico completo",
-
-    viewPdf:
-      "Ver material completo",
-
-
-    speakersKicker:
-      "Vozes do encontro",
-
-    speakersTitle:
-      "Palestras em destaque",
-
-    speakersIntro:
-      "Algumas das mesas e especialistas que participaram do ENACOM 2025.",
-
-
-    bioMangone:
-      "Doutor em Ciências Sociais pela UBA, docente da Universidade de Buenos Aires e da Universidade Nacional de La Pampa. Seu trabalho aborda o discurso político, os meios e a cultura.",
-
-    bioSegura:
-      "Professora da UNC e pesquisadora do CONICET. Suas pesquisas abordam desigualdades comunicacionais e digitais, participação social, discursos de ódio e desinformação.",
-
-    bioBecerra:
-      "Pesquisador e analista especializado em políticas de comunicação, meios e democracia. É professor da UNQ e da UBA e doutor pela Universidade Autônoma de Barcelona.",
-
-    bioCristiano:
-      "Doutor em Sociologia, pesquisador do CONICET e professor da UNC. Seu trabalho explora o tempo social, a imaginação e as formas de vida no capitalismo contemporâneo.",
-
-    bioCosta:
-      "Doutora em Ciências Sociais pela UBA, pesquisadora do CONICET e diretora do Tecnoceno Lab. Sua obra explora os vínculos entre tecnologia, corpo e cultura na era do algoritmo.",
-
-    bioPeret:
-      "Comunicador, docente e pesquisador. Participou da organização e coordenação das atividades do ENACOM 2025, incluindo a mesa sobre convergência e inteligências artificiais.",
-
-    bioVilte:
-      "Docente e pesquisador ligado ao campo da comunicação. Participou do ENACOM 2025 como parte das atividades acadêmicas do encontro.",
-
-
-    featuredKicker:
-      "Mesa de destaque",
-
-    featuredTitle:
-      "O que fazer em tempos de convergência e inteligências artificiais?",
-
-    featuredText1:
-      "Uma das mesas mais concorridas do ENACOM 2025 reuniu Martín Becerra (UNQ), Flavia Costa (UBA) e Javier Cristiano (UNC), com coordenação de Maximiliano Peret (UNICEN).",
-
-    featuredText2:
-      "O encontro abordou os desafios éticos, políticos e culturais da inteligência artificial no campo da comunicação: a concentração de poder nas plataformas, a transformação dos modos de produção simbólica e a necessidade de uma visão crítica e democrática sobre as tecnologias.",
-
-    featuredQuote:
-      "“A comunicação não pode ficar à margem das transformações tecnológicas: deve intervir, pensar e propor futuros possíveis.”",
-
-
-    speaker1Title:
-      "Cultura, política e comunicação",
-
-    speaker1Subtitle:
-      "Para uma genealogia do campo: de onde viemos?",
-
-    speaker2Title:
-      "Comunicação, convergência e inteligência artificial",
-
-    speaker3Title:
-      "Ciências Sociais e Humanidades",
-
-    speaker4Title:
-      "Heranças da comunicação",
-
-
-    quizKicker:
-      "Participe",
-
-    quizTitle:
-      "Quanto você sabe sobre comunicação?",
-
-    quizIntro:
-      "Teste o que você aprendeu durante o percurso.",
-
-    nextQuestion:
-      "Próxima pergunta",
-
-
-    socialKicker:
-      "Acompanhe o encontro",
-
-    socialTitle:
-      "O ENACOM também está nas redes",
-
-    socialText:
-      "Encontre mais informações, fotografias e novidades sobre o Encontro Nacional de Carreiras de Comunicação.",
-
-
-    accessKicker:
-      "Acessibilidade",
-
-    accessTitle:
-      "Um site para todas as pessoas",
-
-    accessText:
-      "Use estas ferramentas para adaptar a experiência de leitura às suas necessidades.",
-
-    increaseText:
-      "Aumentar texto",
-
-    decreaseText:
-      "Diminuir texto",
-
-    contrast:
-      "Alto contraste",
-
-    reset:
-      "Restabelecer",
-
-
-    closing:
-      "O ENACOM 2025 convida a pensar o tempo da comunicação como uma trama viva: memória, presente, conflito, tecnologia e direito à informação em diálogo.",
-
-    footer:
-      "Trabalho acadêmico realizado por estudantes da carreira de Comunicação Social da UNNE."
-
+    gap: 0.75rem;
   }
 
-};
+  .referent-card > img {
+    width: 85px;
 
+    height: 120px;
+  }
 
+  .referent-content h3 {
+    font-size: 1rem;
+  }
 
-/* =========================================================
-   CAMBIAR IDIOMA
-========================================================= */
+  .referent-content p {
+    font-size: 0.76rem;
+  }
 
-const languageButtons =
-  document.querySelectorAll(".language-btn");
-
-
-function changeLanguage(lang) {
-
-  if (!translations[lang]) {
-
-    lang = "es";
-
+  .referent-content small {
+    font-size: 0.62rem;
   }
 
 
-  document.documentElement.lang =
-    lang;
+  /* CARRUSEL */
 
+  .carousel-slide figcaption {
+    padding-left: 0.9rem;
 
-  const elements =
-    document.querySelectorAll("[data-i18n]");
+    padding-right: 0.9rem;
+  }
 
+  .carousel-control.prev {
+    left: 0.5rem;
+  }
 
-  elements.forEach((element) => {
-
-    const key =
-      element.dataset.i18n;
-
-
-    if (
-      translations[lang] &&
-      translations[lang][key] !== undefined
-    ) {
-
-      element.textContent =
-        translations[lang][key];
-
-    }
-
-  });
-
-
-  languageButtons.forEach((button) => {
-
-    button.classList.toggle(
-      "active",
-      button.dataset.lang === lang
-    );
-
-  });
-
-
-  localStorage.setItem(
-    "enacom-language",
-    lang
-  );
-
-
-  /* Actualizar quiz */
-
-  if (
-    typeof renderQuestion === "function" &&
-    typeof currentQuestion !== "undefined" &&
-    currentQuestion < quizQuestions.length
-  ) {
-
-    renderQuestion();
-
+  .carousel-control.next {
+    right: 0.5rem;
   }
 
 
-  /* Actualizar línea de tiempo */
+  /* CONTADOR */
 
-  if (
-    typeof renderTimeline === "function"
-  ) {
-
-    renderTimeline(lang);
-
+  .countdown .countdown-title {
+    font-size: 1.2rem !important;
   }
 
 }
 
 
-languageButtons.forEach((button) => {
+/* =====================================================
+   REDUCIR MOVIMIENTO
+===================================================== */
 
-  button.addEventListener(
-    "click",
-    () => {
+@media (prefers-reduced-motion: reduce) {
 
-      changeLanguage(
-        button.dataset.lang
-      );
-
-    }
-  );
-
-});
-
-
-const savedLanguage =
-  localStorage.getItem(
-    "enacom-language"
-  ) || "es";
-
-
-
-/* =========================================================
-   ACCESIBILIDAD
-========================================================= */
-
-let textScale =
-  parseFloat(
-    localStorage.getItem(
-      "enacom-text-scale"
-    )
-  ) || 1;
-
-
-document.documentElement.style.setProperty(
-  "--text-scale",
-  textScale
-);
-
-
-/* AUMENTAR TEXTO */
-
-const increaseTextButton =
-  document.getElementById(
-    "increase-text"
-  );
-
-
-if (increaseTextButton) {
-
-  increaseTextButton.addEventListener(
-    "click",
-    () => {
-
-      textScale =
-        Math.min(
-          textScale + 0.1,
-          1.5
-        );
-
-      updateTextScale();
-
-    }
-  );
-
-}
-
-
-/* DISMINUIR TEXTO */
-
-const decreaseTextButton =
-  document.getElementById(
-    "decrease-text"
-  );
-
-
-if (decreaseTextButton) {
-
-  decreaseTextButton.addEventListener(
-    "click",
-    () => {
-
-      textScale =
-        Math.max(
-          textScale - 0.1,
-          0.8
-        );
-
-      updateTextScale();
-
-    }
-  );
-
-}
-
-
-function updateTextScale() {
-
-  document.documentElement.style.setProperty(
-    "--text-scale",
-    textScale
-  );
-
-
-  localStorage.setItem(
-    "enacom-text-scale",
-    textScale
-  );
-
-}
-
-
-/* ALTO CONTRASTE */
-
-const contrastButton =
-  document.getElementById(
-    "contrast-toggle"
-  );
-
-
-if (contrastButton) {
-
-  contrastButton.addEventListener(
-    "click",
-    () => {
-
-      document.body.classList.toggle(
-        "high-contrast"
-      );
-
-
-      localStorage.setItem(
-        "enacom-contrast",
-        document.body.classList.contains(
-          "high-contrast"
-        )
-      );
-
-    }
-  );
-
-}
-
-
-/* Recuperar contraste guardado */
-
-if (
-  localStorage.getItem(
-    "enacom-contrast"
-  ) === "true"
-) {
-
-  document.body.classList.add(
-    "high-contrast"
-  );
-
-}
-
-
-/* RESTABLECER */
-
-const resetAccessibilityButton =
-  document.getElementById(
-    "reset-accessibility"
-  );
-
-
-if (resetAccessibilityButton) {
-
-  resetAccessibilityButton.addEventListener(
-    "click",
-    () => {
-
-      textScale = 1;
-
-      updateTextScale();
-
-      document.body.classList.remove(
-        "high-contrast"
-      );
-
-      localStorage.removeItem(
-        "enacom-contrast"
-      );
-
-    }
-  );
-
-}
-
-
-
-/* =========================================================
-   QUIZ
-========================================================= */
-
-const quizQuestions = [
-
-  {
-
-    question: {
-
-      es:
-        "¿Cuál es uno de los principales desafíos de la desinformación?",
-
-      en:
-        "What is one of the main challenges posed by disinformation?",
-
-      pt:
-        "Qual é um dos principais desafios da desinformação?"
-
-    },
-
-
-    options: {
-
-      es: [
-
-        "Mejorar automáticamente la calidad de las noticias",
-
-        "Afectar la confianza pública y la circulación de información",
-
-        "Eliminar la necesidad de periodistas"
-
-      ],
-
-      en: [
-
-        "Automatically improve news quality",
-
-        "Affect public trust and the circulation of information",
-
-        "Eliminate the need for journalists"
-
-      ],
-
-      pt: [
-
-        "Melhorar automaticamente a qualidade das notícias",
-
-        "Afetar a confiança pública e a circulação de informações",
-
-        "Eliminar a necessidade de jornalistas"
-
-      ]
-
-    },
-
-
-    correct: 1
-
-  },
-
-
-  {
-
-    question: {
-
-      es:
-        "¿Qué relación existe entre comunicación y democracia?",
-
-      en:
-        "What is the relationship between communication and democracy?",
-
-      pt:
-        "Qual é a relação entre comunicação e democracia?"
-
-    },
-
-
-    options: {
-
-      es: [
-
-        "La comunicación no tiene relación con la democracia",
-
-        "La circulación de información contribuye a la participación y al debate público",
-
-        "La democracia depende únicamente de las redes sociales"
-
-      ],
-
-      en: [
-
-        "Communication has no relationship with democracy",
-
-        "The circulation of information contributes to participation and public debate",
-
-        "Democracy depends only on social media"
-
-      ],
-
-      pt: [
-
-        "A comunicação não tem relação com a democracia",
-
-        "A circulação de informações contribui para a participação e o debate público",
-
-        "A democracia depende apenas das redes sociais"
-
-      ]
-
-    },
-
-
-    correct: 1
-
-  },
-
-
-  {
-
-    question: {
-
-      es:
-        "¿Qué tecnología plantea nuevos desafíos para el periodismo?",
-
-      en:
-        "Which technology creates new challenges for journalism?",
-
-      pt:
-        "Qual tecnologia cria novos desafios para o jornalismo?"
-
-    },
-
-
-    options: {
-
-      es: [
-
-        "La inteligencia artificial",
-
-        "El papel",
-
-        "La radio analógica únicamente"
-
-      ],
-
-      en: [
-
-        "Artificial intelligence",
-
-        "Paper",
-
-        "Analog radio only"
-
-      ],
-
-      pt: [
-
-        "A inteligência artificial",
-
-        "O papel",
-
-        "Apenas o rádio analógico"
-
-      ]
-
-    },
-
-
-    correct: 0
-
-  },
-
-
-  {
-
-    question: {
-
-      es:
-        "¿Dónde se realizó ENACOM 2025?",
-
-      en:
-        "Where was ENACOM 2025 held?",
-
-      pt:
-        "Onde foi realizado o ENACOM 2025?"
-
-    },
-
-
-    options: {
-
-      es: [
-
-        "San Luis",
-
-        "Buenos Aires",
-
-        "Córdoba"
-
-      ],
-
-      en: [
-
-        "San Luis",
-
-        "Buenos Aires",
-
-        "Córdoba"
-
-      ],
-
-      pt: [
-
-        "San Luis",
-
-        "Buenos Aires",
-
-        "Córdoba"
-
-      ]
-
-    },
-
-
-    correct: 0
-
+  html {
+    scroll-behavior: auto;
   }
 
-];
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
 
+    animation-duration: 0.01ms !important;
 
-let currentQuestion = 0;
-
-let score = 0;
-
-let selectedAnswer = null;
-
-
-const quizContainer =
-  document.getElementById(
-    "quiz-container"
-  );
-
-const quizNext =
-  document.getElementById(
-    "quiz-next"
-  );
-
-const quizResult =
-  document.getElementById(
-    "quiz-result"
-  );
-
-
-
-/* =========================================================
-   RENDERIZAR PREGUNTA
-========================================================= */
-
-function renderQuestion() {
-
-  if (!quizContainer) return;
-
-  if (!quizNext) return;
-
-  if (!quizResult) return;
-
-
-  selectedAnswer = null;
-
-
-  const lang =
-    document.documentElement.lang ||
-    "es";
-
-
-  const question =
-    quizQuestions[currentQuestion];
-
-
-  if (!question) return;
-
-
-  quizContainer.innerHTML = "";
-
-
-  const wrapper =
-    document.createElement("div");
-
-  wrapper.className =
-    "quiz-question";
-
-
-  const title =
-    document.createElement("h3");
-
-
-  title.textContent =
-    `${currentQuestion + 1}. ${
-      question.question[lang] ||
-      question.question.es
-    }`;
-
-
-  wrapper.appendChild(title);
-
-
-  const options =
-    document.createElement("div");
-
-  options.className =
-    "quiz-options";
-
-
-  const questionOptions =
-    question.options[lang] ||
-    question.options.es;
-
-
-  questionOptions.forEach(
-    (option, index) => {
-
-      const button =
-        document.createElement(
-          "button"
-        );
-
-
-      button.type = "button";
-
-      button.className =
-        "quiz-option";
-
-      button.textContent =
-        option;
-
-
-      button.addEventListener(
-        "click",
-        () => {
-
-          selectedAnswer =
-            index;
-
-
-          document
-            .querySelectorAll(
-              ".quiz-option"
-            )
-            .forEach((item) => {
-
-              item.classList.remove(
-                "selected"
-              );
-
-            });
-
-
-          button.classList.add(
-            "selected"
-          );
-
-        }
-      );
-
-
-      options.appendChild(
-        button
-      );
-
-    }
-  );
-
-
-  wrapper.appendChild(
-    options
-  );
-
-
-  quizContainer.appendChild(
-    wrapper
-  );
-
-
-  quizResult.textContent =
-    "";
-
-
-  quizNext.style.display =
-    "";
-
-
-  quizNext.disabled =
-    false;
-
-}
-
-
-
-/* =========================================================
-   SIGUIENTE PREGUNTA
-========================================================= */
-
-if (quizNext) {
-
-  quizNext.addEventListener(
-    "click",
-    () => {
-
-      if (selectedAnswer === null) {
-
-        const lang =
-          document.documentElement.lang ||
-          "es";
-
-
-        if (quizResult) {
-
-          if (lang === "pt") {
-
-            quizResult.textContent =
-              "Escolha uma resposta antes de continuar.";
-
-          } else if (lang === "en") {
-
-            quizResult.textContent =
-              "Choose an answer before continuing.";
-
-          } else {
-
-            quizResult.textContent =
-              "Elegí una respuesta antes de continuar.";
-
-          }
-
-        }
-
-
-        return;
-
-      }
-
-
-      if (
-        selectedAnswer ===
-        quizQuestions[
-          currentQuestion
-        ].correct
-      ) {
-
-        score++;
-
-      }
-
-
-      currentQuestion++;
-
-
-      if (
-        currentQuestion >=
-        quizQuestions.length
-      ) {
-
-        showQuizResult();
-
-      } else {
-
-        renderQuestion();
-
-      }
-
-    }
-  );
-
-}
-
-
-
-/* =========================================================
-   RESULTADO DEL QUIZ
-========================================================= */
-
-function showQuizResult() {
-
-  if (!quizContainer) return;
-
-  if (!quizNext) return;
-
-  if (!quizResult) return;
-
-
-  const lang =
-    document.documentElement.lang ||
-    "es";
-
-
-  quizContainer.innerHTML =
-    "";
-
-
-  quizNext.style.display =
-    "none";
-
-
-  let message = "";
-
-
-  if (lang === "en") {
-
-    message =
-      `You got ${score} out of ${quizQuestions.length} correct.`;
-
-  } else if (lang === "pt") {
-
-    message =
-      `Você acertou ${score} de ${quizQuestions.length} perguntas.`;
-
-  } else {
-
-    message =
-      `Acertaste ${score} de ${quizQuestions.length} preguntas.`;
-
+    animation-iteration-count: 1 !important;
   }
-
-
-  quizResult.textContent =
-    message;
-
-}
-
-
-
-/* =========================================================
-   LÍNEA DEL TIEMPO · HISTORIA ENACOM
-========================================================= */
-
-const timelineData = {
-
-  /* =====================================================
-     ESPAÑOL
-  ===================================================== */
-
-  es: [
-
-    [
-      "1983",
-      "AFACOS",
-      "1983 · Nace AFACOS",
-      "En el retorno de la democracia se crea la Asociación Federal de Carreras de Comunicación Social (AFACOS), el primer espacio federal de articulación entre universidades para promover intercambio académico, investigación y formación profesional."
-    ],
-
-    [
-      "2001",
-      "FADECCOS",
-      "2001 · Se formaliza FADECCOS",
-      "AFACOS se transforma en la Federación Argentina de Carreras de Comunicación Social (FADECCOS). La nueva organización amplía la representación de las carreras y consolida la coordinación entre universidades."
-    ],
-
-    [
-      "2002",
-      "Primer ENACOM",
-      "2002 · El primer ENACOM",
-      "FADECCOS organiza en Olavarría el primer Encuentro Nacional de Carreras de Comunicación. Nace como un espacio de debate sobre periodismo, medios, cultura, políticas comunicacionales y nuevas tecnologías."
-    ],
-
-    [
-      "2002–10",
-      "Expansión federal",
-      "2002–2010 · Expansión y consolidación",
-      "El encuentro rota por distintas provincias para descentralizar la producción de conocimiento. Crece la participación, se incorporan investigadores latinoamericanos y se suman producciones audiovisuales y multimediales."
-    ],
-
-    [
-      "2010–19",
-      "Nuevas agendas",
-      "2010–2019 · Nuevas agendas",
-      "La convergencia digital amplía el debate hacia redes sociales, desinformación, comunicación política, inteligencia artificial, género y derechos comunicacionales."
-    ],
-
-    [
-      "2020",
-      "Virtualidad",
-      "2020 · Adaptación a la virtualidad",
-      "La pandemia interrumpe los encuentros presenciales y obliga a trasladar las dinámicas a plataformas digitales, transformando las formas de participación y sosteniendo los vínculos académicos."
-    ],
-
-    [
-      "2021",
-      "Mendoza",
-      "2021 · Regreso presencial",
-      "El encuentro vuelve a realizarse de forma presencial en Mendoza y recupera el intercambio cara a cara. La agenda aborda la sobreinformación, la desinformación y los cambios comunicacionales producidos por la pandemia."
-    ],
-
-    [
-      "2024",
-      "San Luis",
-      "2024 · San Luis, sede elegida",
-      "La Asamblea de FADECCOS aprueba la candidatura de la Facultad de Ciencias Humanas de la Universidad Nacional de San Luis como sede del XXII ENACOM."
-    ],
-
-    [
-      "2025",
-      "XXII ENACOM",
-      "2025 · ENACOM en San Luis",
-      "Del 5 al 7 de noviembre, la Universidad Nacional de San Luis recibe el XXII Encuentro Nacional de Carreras de Comunicación bajo el lema Tiempo de comunicación. Diálogos sobre pasado y presente en un mundo acelerado."
-    ],
-
-    [
-      "2026",
-      "Corrientes Capital",
-      "2026 · ENACOM en Corrientes",
-      "Los días 4, 5 y 6 de noviembre de 2026, Corrientes Capital será sede del próximo ENACOM, continuando la construcción federal de este encuentro nacional de carreras de comunicación."
-    ]
-
-  ],
-
-
-  /* =====================================================
-     ENGLISH
-  ===================================================== */
-
-  en: [
-
-    [
-      "1983",
-      "AFACOS",
-      "1983 · AFACOS is founded",
-      "During Argentina's return to democracy, the Federal Association of Social Communication Programs is created as the first national space for cooperation among universities."
-    ],
-
-    [
-      "2001",
-      "FADECCOS",
-      "2001 · FADECCOS is formalized",
-      "AFACOS becomes the Argentine Federation of Social Communication Programs, widening representation and coordination among universities."
-    ],
-
-    [
-      "2002",
-      "First ENACOM",
-      "2002 · The first ENACOM",
-      "FADECCOS organizes the first National Meeting of Communication Programs in Olavarría, creating a space for debate on journalism, media, culture and communication policies."
-    ],
-
-    [
-      "2002–10",
-      "Federal growth",
-      "2002–2010 · Expansion and consolidation",
-      "The event rotates across provinces, broadening participation and incorporating Latin American researchers, audiovisual productions and multimedia projects."
-    ],
-
-    [
-      "2010–19",
-      "New agendas",
-      "2010–2019 · New agendas",
-      "Digital convergence broadens the debate to social media, disinformation, political communication, artificial intelligence, gender and communication rights."
-    ],
-
-    [
-      "2020",
-      "Virtuality",
-      "2020 · Going virtual",
-      "The pandemic interrupts in-person meetings and moves activities to digital platforms, transforming participation while maintaining academic ties."
-    ],
-
-    [
-      "2021",
-      "Mendoza",
-      "2021 · Return to in-person meetings",
-      "The event returns to an in-person format in Mendoza, focusing on overinformation, disinformation and communication changes caused by the pandemic."
-    ],
-
-    [
-      "2024",
-      "San Luis",
-      "2024 · San Luis is chosen",
-      "FADECCOS approves the Faculty of Human Sciences at the National University of San Luis as host of the 22nd ENACOM."
-    ],
-
-    [
-      "2025",
-      "22nd ENACOM",
-      "2025 · ENACOM in San Luis",
-      "From November 5 to 7, the National University of San Luis hosts the 22nd National Meeting of Communication Programs."
-    ],
-
-    [
-      "2026",
-      "Corrientes Capital",
-      "2026 · ENACOM in Corrientes",
-      "On November 4, 5 and 6, 2026, Corrientes Capital will host the next ENACOM, continuing the federal development of this national meeting of communication programs."
-    ]
-
-  ],
-
-
-  /* =====================================================
-     PORTUGUÊS
-  ===================================================== */
-
-  pt: [
-
-    [
-      "1983",
-      "AFACOS",
-      "1983 · Nasce a AFACOS",
-      "No retorno da democracia argentina, cria-se a Associação Federal de Carreiras de Comunicação Social, o primeiro espaço federal de articulação entre universidades."
-    ],
-
-    [
-      "2001",
-      "FADECCOS",
-      "2001 · Formalização da FADECCOS",
-      "A AFACOS transforma-se na Federação Argentina de Carreiras de Comunicação Social, ampliando a representação e a coordenação entre universidades."
-    ],
-
-    [
-      "2002",
-      "Primeiro ENACOM",
-      "2002 · O primeiro ENACOM",
-      "A FADECCOS organiza em Olavarría o primeiro Encontro Nacional de Carreiras de Comunicação, criando um espaço de debate sobre jornalismo, meios e cultura."
-    ],
-
-    [
-      "2002–10",
-      "Expansão federal",
-      "2002–2010 · Expansão e consolidação",
-      "O encontro passa a circular por diferentes províncias, amplia a participação e incorpora pesquisadores latino-americanos e produções audiovisuais."
-    ],
-
-    [
-      "2010–19",
-      "Novas agendas",
-      "2010–2019 · Novas agendas",
-      "A convergência digital amplia o debate para redes sociais, desinformação, comunicação política, inteligência artificial, gênero e direitos comunicacionais."
-    ],
-
-    [
-      "2020",
-      "Virtualidade",
-      "2020 · Adaptação à virtualidade",
-      "A pandemia interrompe os encontros presenciais e transfere as atividades para plataformas digitais, transformando as formas de participação."
-    ],
-
-    [
-      "2021",
-      "Mendoza",
-      "2021 · Retorno presencial",
-      "O encontro retorna ao formato presencial em Mendoza e recupera o intercâmbio cara a cara, com foco nos impactos comunicacionais da pandemia."
-    ],
-
-    [
-      "2024",
-      "San Luis",
-      "2024 · San Luis é escolhida",
-      "A FADECCOS aprova a Faculdade de Ciências Humanas da Universidade Nacional de San Luis como sede do XXII ENACOM."
-    ],
-
-    [
-      "2025",
-      "XXII ENACOM",
-      "2025 · ENACOM em San Luis",
-      "De 5 a 7 de novembro, a Universidade Nacional de San Luis recebe o XXII Encontro Nacional de Carreiras de Comunicação."
-    ],
-
-    [
-      "2026",
-      "Corrientes Capital",
-      "2026 · ENACOM em Corrientes",
-      "Nos dias 4, 5 e 6 de novembro de 2026, Corrientes Capital será sede do próximo ENACOM, dando continuidade à construção federal deste encontro nacional de carreiras de comunicação."
-    ]
-
-  ]
-
-};
-
-
-
-/* =========================================================
-   RENDERIZAR LÍNEA DE TIEMPO
-========================================================= */
-
-function renderTimeline(lang) {
-
-  const controls =
-    document.getElementById(
-      "timeline-controls"
-    );
-
-
-  const detail =
-    document.getElementById(
-      "timeline-detail"
-    );
-
-
-  const items =
-    timelineData[lang] ||
-    timelineData.es;
-
-
-  if (!controls || !detail) return;
-
-
-  controls.innerHTML =
-    "";
-
-
-  function selectTimelineItem(index) {
-
-    const item =
-      items[index];
-
-
-    controls
-      .querySelectorAll(
-        ".timeline-button"
-      )
-      .forEach(
-        (button, buttonIndex) => {
-
-          button.setAttribute(
-            "aria-selected",
-            String(
-              buttonIndex === index
-            )
-          );
-
-        }
-      );
-
-
-    detail.innerHTML =
-      "";
-
-
-    const title =
-      document.createElement(
-        "h3"
-      );
-
-
-    const text =
-      document.createElement(
-        "p"
-      );
-
-
-    title.textContent =
-      item[2];
-
-
-    text.textContent =
-      item[3];
-
-
-    detail.appendChild(
-      title
-    );
-
-
-    detail.appendChild(
-      text
-    );
-
-  }
-
-
-  items.forEach(
-    (item, index) => {
-
-      const button =
-        document.createElement(
-          "button"
-        );
-
-
-      const year =
-        document.createElement(
-          "strong"
-        );
-
-
-      const label =
-        document.createElement(
-          "span"
-        );
-
-
-      button.type =
-        "button";
-
-
-      button.className =
-        "timeline-button";
-
-
-      button.setAttribute(
-        "role",
-        "tab"
-      );
-
-
-      button.setAttribute(
-        "aria-selected",
-        String(index === 0)
-      );
-
-
-      year.textContent =
-        item[0];
-
-
-      label.textContent =
-        item[1];
-
-
-      button.appendChild(
-        year
-      );
-
-
-      button.appendChild(
-        label
-      );
-
-
-      button.addEventListener(
-        "click",
-        () => {
-
-          selectTimelineItem(
-            index
-          );
-
-        }
-      );
-
-
-      controls.appendChild(
-        button
-      );
-
-    }
-  );
-
-
-  selectTimelineItem(0);
-
-}
-
-
-
-/* =========================================================
-   CUENTA REGRESIVA · ENACOM 2026
-========================================================= */
-
-const countdownTarget =
-  new Date(
-    "2026-11-04T08:00:00-03:00"
-  ).getTime();
-
-
-const countdownDays =
-  document.getElementById(
-    "countdown-days"
-  );
-
-
-const countdownHours =
-  document.getElementById(
-    "countdown-hours"
-  );
-
-
-const countdownMinutes =
-  document.getElementById(
-    "countdown-minutes"
-  );
-
-
-const countdownSeconds =
-  document.getElementById(
-    "countdown-seconds"
-  );
-
-
-const countdownStatus =
-  document.getElementById(
-    "countdown-status"
-  );
-
-
-
-function updateCountdown() {
-
-  if (
-    !countdownDays ||
-    !countdownHours ||
-    !countdownMinutes ||
-    !countdownSeconds
-  ) {
-
-    return;
-
-  }
-
-
-  const remaining =
-    countdownTarget -
-    Date.now();
-
-
-  if (remaining <= 0) {
-
-    countdownDays.textContent =
-      "0";
-
-    countdownHours.textContent =
-      "0";
-
-    countdownMinutes.textContent =
-      "0";
-
-    countdownSeconds.textContent =
-      "0";
-
-
-    if (countdownStatus) {
-
-      const lang =
-        document.documentElement.lang ||
-        "es";
-
-
-      countdownStatus.textContent =
-        translations[
-          lang
-        ].countdownComplete;
-
-    }
-
-
-    return true;
-
-  }
-
-
-  const totalSeconds =
-    Math.floor(
-      remaining / 1000
-    );
-
-
-  const days =
-    Math.floor(
-      totalSeconds / 86400
-    );
-
-
-  const hours =
-    Math.floor(
-      (totalSeconds % 86400) /
-      3600
-    );
-
-
-  const minutes =
-    Math.floor(
-      (totalSeconds % 3600) /
-      60
-    );
-
-
-  const seconds =
-    totalSeconds % 60;
-
-
-  countdownDays.textContent =
-    String(days);
-
-
-  countdownHours.textContent =
-    String(hours)
-      .padStart(2, "0");
-
-
-  countdownMinutes.textContent =
-    String(minutes)
-      .padStart(2, "0");
-
-
-  countdownSeconds.textContent =
-    String(seconds)
-      .padStart(2, "0");
-
-
-  return false;
-
-}
-
-
-
-/* =========================================================
-   INICIAR TODO
-========================================================= */
-
-changeLanguage(
-  savedLanguage
-);
-
-
-renderQuestion();
-
-
-if (!updateCountdown()) {
-
-  const countdownTimer =
-    setInterval(
-      () => {
-
-        if (
-          updateCountdown()
-        ) {
-
-          clearInterval(
-            countdownTimer
-          );
-
-        }
-
-      },
-      1000
-    );
 
 }
