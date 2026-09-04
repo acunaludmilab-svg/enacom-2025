@@ -1,7 +1,7 @@
 /* =========================================================
-   ENACOM 2025
+   ENACOM 2025 / 2026
    Interactividad, idiomas, accesibilidad,
-   carrusel, quiz, línea de tiempo
+   carrusel, quiz, línea de tiempo y cuenta regresiva
 ========================================================= */
 
 
@@ -42,8 +42,7 @@ accordionButtons.forEach((button) => {
 
     } else {
 
-      content.style.maxHeight =
-        "0px";
+      content.style.maxHeight = "0px";
 
     }
 
@@ -51,6 +50,8 @@ accordionButtons.forEach((button) => {
 
 });
 
+
+/* Abrir correctamente los acordeones que ya están abiertos */
 
 document
   .querySelectorAll(".subthread.open")
@@ -94,16 +95,16 @@ if (
   nextButton
 ) {
 
+  /* Crear indicadores */
+
   slides.forEach((slide, index) => {
 
     const dot =
       document.createElement("button");
 
-    dot.className =
-      "carousel-dot";
+    dot.className = "carousel-dot";
 
-    dot.type =
-      "button";
+    dot.type = "button";
 
     dot.setAttribute(
       "aria-label",
@@ -145,8 +146,7 @@ if (
     }
 
 
-    currentSlide =
-      index;
+    currentSlide = index;
 
 
     slides.forEach((slide, i) => {
@@ -198,6 +198,8 @@ if (
   showSlide(0);
 
 
+  /* Carrusel automático */
+
   let carouselTimer =
     setInterval(() => {
 
@@ -207,6 +209,8 @@ if (
 
     }, 6500);
 
+
+  /* Pausar al pasar el mouse */
 
   const carousel =
     document.querySelector(".carousel");
@@ -254,6 +258,10 @@ if (
 
 const translations = {
 
+  /* =====================================================
+     ESPAÑOL
+  ===================================================== */
+
   es: {
 
     navEjes:
@@ -271,6 +279,8 @@ const translations = {
     navRedes:
       "Redes",
 
+
+    /* HERO */
 
     kicker:
       "XXII Encuentro Nacional de Carreras de Comunicación",
@@ -291,6 +301,8 @@ const translations = {
       "Producciones desarrolladas a partir de los debates y problemáticas abordadas durante el encuentro.",
 
 
+    /* CUENTA REGRESIVA */
+
     countdownTitle:
       "Días para ENACOM 2026",
 
@@ -309,6 +321,8 @@ const translations = {
     countdownComplete:
       "El ENACOM 2026 ya comenzó.",
 
+
+    /* GALERÍA */
 
     galleryKicker:
       "El encuentro en imágenes",
@@ -353,6 +367,8 @@ const translations = {
     photoNote:
       "Las fotografías se presentan con identificación de su fuente y autoría.",
 
+
+    /* HISTORIA */
 
     timelineKicker:
       "Recorrido histórico",
@@ -420,6 +436,8 @@ const translations = {
       "Más de dos décadas después de aquel primer encuentro, ENACOM continúa construyendo un espacio federal para pensar colectivamente los desafíos de la comunicación.",
 
 
+    /* EJES */
+
     axesKicker:
       "Recorrido conceptual",
 
@@ -435,6 +453,8 @@ const translations = {
     axisMainText:
       "Este eje aborda la relación entre las crisis socioeconómicas y políticas, la comunicación pública, el periodismo, la circulación de información y los desafíos democráticos.",
 
+
+    /* PROBLEMÁTICAS */
 
     problemsKicker:
       "Debates contemporáneos",
@@ -463,6 +483,8 @@ const translations = {
     viewPdf:
       "Ver material completo",
 
+
+    /* PONENCIAS */
 
     speakersKicker:
       "Voces del encuentro",
@@ -496,6 +518,8 @@ const translations = {
       "Docente e investigador vinculado al campo de la comunicación. Participó del ENACOM 2025 como parte de las actividades académicas del encuentro.",
 
 
+    /* MESA DESTACADA */
+
     featuredKicker:
       "Mesa panel destacada",
 
@@ -528,6 +552,8 @@ const translations = {
       "Herencias de la comunicación",
 
 
+    /* QUIZ */
+
     quizKicker:
       "Participá",
 
@@ -541,6 +567,8 @@ const translations = {
       "Siguiente pregunta",
 
 
+    /* REDES */
+
     socialKicker:
       "Seguí el encuentro",
 
@@ -550,6 +578,8 @@ const translations = {
     socialText:
       "Encontrá más información, fotografías y novedades sobre el Encuentro Nacional de Carreras de Comunicación.",
 
+
+    /* ACCESIBILIDAD */
 
     accessKicker:
       "Accesibilidad",
@@ -573,6 +603,8 @@ const translations = {
       "Restablecer",
 
 
+    /* CIERRE */
+
     closing:
       "ENACOM 2025 invita a pensar el tiempo de la comunicación como una trama viva: memoria, presente, conflicto, tecnología y derecho a la información en diálogo.",
 
@@ -581,6 +613,10 @@ const translations = {
 
   },
 
+
+  /* =====================================================
+     ENGLISH
+  ===================================================== */
 
   en: {
 
@@ -906,6 +942,10 @@ const translations = {
 
   },
 
+
+  /* =====================================================
+     PORTUGUÊS
+  ===================================================== */
 
   pt: {
 
@@ -1295,6 +1335,8 @@ function changeLanguage(lang) {
   );
 
 
+  /* Actualizar quiz */
+
   if (
     typeof renderQuestion === "function" &&
     typeof currentQuestion !== "undefined" &&
@@ -1305,6 +1347,8 @@ function changeLanguage(lang) {
 
   }
 
+
+  /* Actualizar línea de tiempo */
 
   if (
     typeof renderTimeline === "function"
@@ -1358,6 +1402,8 @@ document.documentElement.style.setProperty(
 );
 
 
+/* AUMENTAR TEXTO */
+
 const increaseTextButton =
   document.getElementById(
     "increase-text"
@@ -1383,6 +1429,8 @@ if (increaseTextButton) {
 
 }
 
+
+/* DISMINUIR TEXTO */
 
 const decreaseTextButton =
   document.getElementById(
@@ -1426,6 +1474,8 @@ function updateTextScale() {
 }
 
 
+/* ALTO CONTRASTE */
+
 const contrastButton =
   document.getElementById(
     "contrast-toggle"
@@ -1456,6 +1506,8 @@ if (contrastButton) {
 }
 
 
+/* Recuperar contraste guardado */
+
 if (
   localStorage.getItem(
     "enacom-contrast"
@@ -1468,6 +1520,8 @@ if (
 
 }
 
+
+/* RESTABLECER */
 
 const resetAccessibilityButton =
   document.getElementById(
@@ -1521,6 +1575,7 @@ const quizQuestions = [
 
     },
 
+
     options: {
 
       es: [
@@ -1555,6 +1610,7 @@ const quizQuestions = [
 
     },
 
+
     correct: 1
 
   },
@@ -1574,6 +1630,7 @@ const quizQuestions = [
         "Qual é a relação entre comunicação e democracia?"
 
     },
+
 
     options: {
 
@@ -1609,6 +1666,7 @@ const quizQuestions = [
 
     },
 
+
     correct: 1
 
   },
@@ -1628,6 +1686,7 @@ const quizQuestions = [
         "Qual tecnologia cria novos desafios para o jornalismo?"
 
     },
+
 
     options: {
 
@@ -1663,6 +1722,7 @@ const quizQuestions = [
 
     },
 
+
     correct: 0
 
   },
@@ -1682,6 +1742,7 @@ const quizQuestions = [
         "Onde foi realizado o ENACOM 2025?"
 
     },
+
 
     options: {
 
@@ -1717,6 +1778,7 @@ const quizQuestions = [
 
     },
 
+
     correct: 0
 
   }
@@ -1747,6 +1809,11 @@ const quizResult =
   );
 
 
+
+/* =========================================================
+   RENDERIZAR PREGUNTA
+========================================================= */
+
 function renderQuestion() {
 
   if (!quizContainer) return;
@@ -1771,8 +1838,7 @@ function renderQuestion() {
   if (!question) return;
 
 
-  quizContainer.innerHTML =
-    "";
+  quizContainer.innerHTML = "";
 
 
   const wrapper =
@@ -1817,8 +1883,7 @@ function renderQuestion() {
         );
 
 
-      button.type =
-        "button";
+      button.type = "button";
 
       button.className =
         "quiz-option";
@@ -1877,14 +1942,21 @@ function renderQuestion() {
   quizResult.textContent =
     "";
 
+
   quizNext.style.display =
     "";
+
 
   quizNext.disabled =
     false;
 
 }
 
+
+
+/* =========================================================
+   SIGUIENTE PREGUNTA
+========================================================= */
 
 if (quizNext) {
 
@@ -1960,6 +2032,11 @@ if (quizNext) {
 }
 
 
+
+/* =========================================================
+   RESULTADO DEL QUIZ
+========================================================= */
+
 function showQuizResult() {
 
   if (!quizContainer) return;
@@ -1982,8 +2059,7 @@ function showQuizResult() {
     "none";
 
 
-  let message =
-    "";
+  let message = "";
 
 
   if (lang === "en") {
@@ -2012,10 +2088,14 @@ function showQuizResult() {
 
 
 /* =========================================================
-   LÍNEA DEL TIEMPO
+   LÍNEA DEL TIEMPO · HISTORIA ENACOM
 ========================================================= */
 
 const timelineData = {
+
+  /* =====================================================
+     ESPAÑOL
+  ===================================================== */
 
   es: [
 
@@ -2065,7 +2145,7 @@ const timelineData = {
       "2021",
       "Mendoza",
       "2021 · Regreso presencial",
-      "El encuentro vuelve a realizarse de forma presencial en Mendoza y recupera el intercambio cara a cara."
+      "El encuentro vuelve a realizarse de forma presencial en Mendoza y recupera el intercambio cara a cara. La agenda aborda la sobreinformación, la desinformación y los cambios comunicacionales producidos por la pandemia."
     ],
 
     [
@@ -2079,46 +2159,177 @@ const timelineData = {
       "2025",
       "XXII ENACOM",
       "2025 · ENACOM en San Luis",
-      "Del 5 al 7 de noviembre, la Universidad Nacional de San Luis recibe el XXII Encuentro Nacional de Carreras de Comunicación."
+      "Del 5 al 7 de noviembre, la Universidad Nacional de San Luis recibe el XXII Encuentro Nacional de Carreras de Comunicación bajo el lema Tiempo de comunicación. Diálogos sobre pasado y presente en un mundo acelerado."
     ],
 
     [
       "2026",
       "Corrientes Capital",
       "2026 · ENACOM en Corrientes",
-      "Los días 4, 5 y 6 de noviembre de 2026, Corrientes Capital será sede del próximo ENACOM."
+      "Los días 4, 5 y 6 de noviembre de 2026, Corrientes Capital será sede del próximo ENACOM, continuando la construcción federal de este encuentro nacional de carreras de comunicación."
     ]
 
   ],
 
-  en: [],
 
-  pt: []
+  /* =====================================================
+     ENGLISH
+  ===================================================== */
+
+  en: [
+
+    [
+      "1983",
+      "AFACOS",
+      "1983 · AFACOS is founded",
+      "During Argentina's return to democracy, the Federal Association of Social Communication Programs is created as the first national space for cooperation among universities."
+    ],
+
+    [
+      "2001",
+      "FADECCOS",
+      "2001 · FADECCOS is formalized",
+      "AFACOS becomes the Argentine Federation of Social Communication Programs, widening representation and coordination among universities."
+    ],
+
+    [
+      "2002",
+      "First ENACOM",
+      "2002 · The first ENACOM",
+      "FADECCOS organizes the first National Meeting of Communication Programs in Olavarría, creating a space for debate on journalism, media, culture and communication policies."
+    ],
+
+    [
+      "2002–10",
+      "Federal growth",
+      "2002–2010 · Expansion and consolidation",
+      "The event rotates across provinces, broadening participation and incorporating Latin American researchers, audiovisual productions and multimedia projects."
+    ],
+
+    [
+      "2010–19",
+      "New agendas",
+      "2010–2019 · New agendas",
+      "Digital convergence broadens the debate to social media, disinformation, political communication, artificial intelligence, gender and communication rights."
+    ],
+
+    [
+      "2020",
+      "Virtuality",
+      "2020 · Going virtual",
+      "The pandemic interrupts in-person meetings and moves activities to digital platforms, transforming participation while maintaining academic ties."
+    ],
+
+    [
+      "2021",
+      "Mendoza",
+      "2021 · Return to in-person meetings",
+      "The event returns to an in-person format in Mendoza, focusing on overinformation, disinformation and communication changes caused by the pandemic."
+    ],
+
+    [
+      "2024",
+      "San Luis",
+      "2024 · San Luis is chosen",
+      "FADECCOS approves the Faculty of Human Sciences at the National University of San Luis as host of the 22nd ENACOM."
+    ],
+
+    [
+      "2025",
+      "22nd ENACOM",
+      "2025 · ENACOM in San Luis",
+      "From November 5 to 7, the National University of San Luis hosts the 22nd National Meeting of Communication Programs."
+    ],
+
+    [
+      "2026",
+      "Corrientes Capital",
+      "2026 · ENACOM in Corrientes",
+      "On November 4, 5 and 6, 2026, Corrientes Capital will host the next ENACOM, continuing the federal development of this national meeting of communication programs."
+    ]
+
+  ],
+
+
+  /* =====================================================
+     PORTUGUÊS
+  ===================================================== */
+
+  pt: [
+
+    [
+      "1983",
+      "AFACOS",
+      "1983 · Nasce a AFACOS",
+      "No retorno da democracia argentina, cria-se a Associação Federal de Carreiras de Comunicação Social, o primeiro espaço federal de articulação entre universidades."
+    ],
+
+    [
+      "2001",
+      "FADECCOS",
+      "2001 · Formalização da FADECCOS",
+      "A AFACOS transforma-se na Federação Argentina de Carreiras de Comunicação Social, ampliando a representação e a coordenação entre universidades."
+    ],
+
+    [
+      "2002",
+      "Primeiro ENACOM",
+      "2002 · O primeiro ENACOM",
+      "A FADECCOS organiza em Olavarría o primeiro Encontro Nacional de Carreiras de Comunicação, criando um espaço de debate sobre jornalismo, meios e cultura."
+    ],
+
+    [
+      "2002–10",
+      "Expansão federal",
+      "2002–2010 · Expansão e consolidação",
+      "O encontro passa a circular por diferentes províncias, amplia a participação e incorpora pesquisadores latino-americanos e produções audiovisuais."
+    ],
+
+    [
+      "2010–19",
+      "Novas agendas",
+      "2010–2019 · Novas agendas",
+      "A convergência digital amplia o debate para redes sociais, desinformação, comunicação política, inteligência artificial, gênero e direitos comunicacionais."
+    ],
+
+    [
+      "2020",
+      "Virtualidade",
+      "2020 · Adaptação à virtualidade",
+      "A pandemia interrompe os encontros presenciais e transfere as atividades para plataformas digitais, transformando as formas de participação."
+    ],
+
+    [
+      "2021",
+      "Mendoza",
+      "2021 · Retorno presencial",
+      "O encontro retorna ao formato presencial em Mendoza e recupera o intercâmbio cara a cara, com foco nos impactos comunicacionais da pandemia."
+    ],
+
+    [
+      "2024",
+      "San Luis",
+      "2024 · San Luis é escolhida",
+      "A FADECCOS aprova a Faculdade de Ciências Humanas da Universidade Nacional de San Luis como sede do XXII ENACOM."
+    ],
+
+    [
+      "2025",
+      "XXII ENACOM",
+      "2025 · ENACOM em San Luis",
+      "De 5 a 7 de novembro, a Universidade Nacional de San Luis recebe o XXII Encontro Nacional de Carreiras de Comunicação."
+    ],
+
+    [
+      "2026",
+      "Corrientes Capital",
+      "2026 · ENACOM em Corrientes",
+      "Nos dias 4, 5 e 6 de novembro de 2026, Corrientes Capital será sede do próximo ENACOM, dando continuidade à construção federal deste encontro nacional de carreiras de comunicação."
+    ]
+
+  ]
 
 };
-
-
-/* =========================================================
-   COMPLETAR IDIOMAS DE LA LÍNEA DE TIEMPO
-========================================================= */
-
-timelineData.en = timelineData.es.map((item) => [
-
-  item[0],
-  item[1],
-  item[2],
-  item[3]
-
-]);
-
-timelineData.pt = timelineData.es.map((item) => [
-
-  item[0],
-  item[1],
-  item[2],
-  item[3]
-
-]);
 
 
 
@@ -2312,25 +2523,30 @@ const countdownDays =
     "countdown-days"
   );
 
+
 const countdownHours =
   document.getElementById(
     "countdown-hours"
   );
+
 
 const countdownMinutes =
   document.getElementById(
     "countdown-minutes"
   );
 
+
 const countdownSeconds =
   document.getElementById(
     "countdown-seconds"
   );
 
+
 const countdownStatus =
   document.getElementById(
     "countdown-status"
   );
+
 
 
 function updateCountdown() {
@@ -2422,24 +2638,18 @@ function updateCountdown() {
 
 
   countdownHours.textContent =
-    String(hours).padStart(
-      2,
-      "0"
-    );
+    String(hours)
+      .padStart(2, "0");
 
 
   countdownMinutes.textContent =
-    String(minutes).padStart(
-      2,
-      "0"
-    );
+    String(minutes)
+      .padStart(2, "0");
 
 
   countdownSeconds.textContent =
-    String(seconds).padStart(
-      2,
-      "0"
-    );
+    String(seconds)
+      .padStart(2, "0");
 
 
   return false;
@@ -2449,7 +2659,7 @@ function updateCountdown() {
 
 
 /* =========================================================
-   INICIAR
+   INICIAR TODO
 ========================================================= */
 
 changeLanguage(
