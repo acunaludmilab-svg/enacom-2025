@@ -501,10 +501,9 @@ a {
   margin-top: 0.75rem;
 }
 
-body.high-contrast .countdown {
-  border-color: #000000;
-  background: #ffffff;
-  box-shadow: none;
+body.high-contrast .countdown-title,
+body.high-contrast .countdown-status {
+    color: #fff3e1 !important;
 }
 
 body.high-contrast .countdown-title,
