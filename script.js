@@ -236,6 +236,8 @@ const translations = {
 
   es: {
 
+    navHistoria: "Historia ENACOM",
+
     navEjes: "Ejes temáticos",
 
     navPonencias: "Ponencias",
@@ -262,12 +264,23 @@ const translations = {
     heroImageCaption:
       "Producciones desarrolladas a partir de los debates y problemáticas abordadas durante el encuentro.",
 
-    countdownTitle: "Días para ENACOM 2026",
-    countdownDays: "Días",
-    countdownHours: "Horas",
-    countdownMinutes: "Minutos",
-    countdownSeconds: "Segundos",
-    countdownComplete: "El ENACOM 2026 ya comenzó.",
+    countdownTitle:
+      "Días para ENACOM 2026",
+
+    countdownDays:
+      "Días",
+
+    countdownHours:
+      "Horas",
+
+    countdownMinutes:
+      "Minutos",
+
+    countdownSeconds:
+      "Segundos",
+
+    countdownComplete:
+      "El ENACOM 2026 ya comenzó.",
 
     galleryKicker:
       "El encuentro en imágenes",
@@ -311,9 +324,14 @@ const translations = {
     photoNote:
       "Las fotografías se presentan con identificación de su fuente y autoría.",
 
-    timelineKicker: "Recorrido histórico",
-    timelineTitle: "La historia del ENACOM",
-    timelineIntro: "Elegí un hito para recorrer la construcción colectiva de este encuentro federal.",
+    timelineKicker:
+      "Recorrido histórico",
+
+    timelineTitle:
+      "La historia del ENACOM",
+
+    timelineIntro:
+      "Elegí un hito para recorrer la construcción colectiva de este encuentro federal.",
 
     axesKicker:
       "Recorrido conceptual",
@@ -366,19 +384,41 @@ const translations = {
     speakersIntro:
       "Algunas de las mesas y especialistas que participaron del ENACOM 2025.",
 
-    bioMangone: "Doctor en Ciencias Sociales por la UBA, docente en la Universidad de Buenos Aires y en la Universidad Nacional de La Pampa. Su trabajo aborda el discurso político, los medios y la cultura.",
-    bioSegura: "Profesora de la UNC e investigadora del CONICET. Sus investigaciones abordan las desigualdades comunicacionales y digitales, la participación social y los discursos de odio y desinformación.",
-    bioBecerra: "Investigador y analista especializado en políticas de comunicación, medios y democracia. Es profesor en la UNQ y la UBA y doctor por la Universidad Autónoma de Barcelona.",
-    bioCristiano: "Doctor en Sociología, investigador del CONICET y profesor en la UNC. Su trabajo explora el tiempo social, la imaginación y las formas de vida en el capitalismo contemporáneo.",
-    bioCosta: "Doctora en Ciencias Sociales por la UBA, investigadora del CONICET y directora de Tecnoceno Lab. Su obra explora los vínculos entre tecnología, cuerpo y cultura en la era del algoritmo.",
-    bioPeret: "Comunicador, docente e investigador. Participó de la organización y coordinación de actividades del ENACOM 2025, incluyendo la mesa sobre convergencia e inteligencias artificiales.",
-    bioVilte: "Docente e investigador vinculado al campo de la comunicación. Participó del ENACOM 2025 como parte de las actividades académicas del encuentro.",
+    bioMangone:
+      "Doctor en Ciencias Sociales por la UBA, docente en la Universidad de Buenos Aires y en la Universidad Nacional de La Pampa. Su trabajo aborda el discurso político, los medios y la cultura.",
 
-    featuredKicker: "Mesa panel destacada",
-    featuredTitle: "¿Qué hacer en tiempos de convergencia e inteligencias artificiales?",
-    featuredText1: "Una de las mesas más convocantes del ENACOM 2025 reunió a Martín Becerra (UNQ), Flavia Costa (UBA) y Javier Cristiano (UNC), con la coordinación de Maximiliano Peret (UNICEN).",
-    featuredText2: "Durante el encuentro se abordaron los desafíos éticos, políticos y culturales que plantea la inteligencia artificial en el campo de la comunicación: la concentración de poder en las plataformas, la transformación de los modos de producción simbólica y la necesidad de sostener una mirada crítica y democrática sobre las tecnologías.",
-    featuredQuote: "“La comunicación no puede quedar al margen de las transformaciones tecnológicas: debe intervenir, pensar y proponer futuros posibles.”",
+    bioSegura:
+      "Profesora de la UNC e investigadora del CONICET. Sus investigaciones abordan las desigualdades comunicacionales y digitales, la participación social y los discursos de odio y desinformación.",
+
+    bioBecerra:
+      "Investigador y analista especializado en políticas de comunicación, medios y democracia. Es profesor en la UNQ y la UBA y doctor por la Universidad Autónoma de Barcelona.",
+
+    bioCristiano:
+      "Doctor en Sociología, investigador del CONICET y profesor en la UNC. Su trabajo explora el tiempo social, la imaginación y las formas de vida en el capitalismo contemporáneo.",
+
+    bioCosta:
+      "Doctora en Ciencias Sociales por la UBA, investigadora del CONICET y directora de Tecnoceno Lab. Su obra explora los vínculos entre tecnología, cuerpo y cultura en la era del algoritmo.",
+
+    bioPeret:
+      "Comunicador, docente e investigador. Participó de la organización y coordinación de actividades del ENACOM 2025, incluyendo la mesa sobre convergencia e inteligencias artificiales.",
+
+    bioVilte:
+      "Docente e investigador vinculado al campo de la comunicación. Participó del ENACOM 2025 como parte de las actividades académicas del encuentro.",
+
+    featuredKicker:
+      "Mesa panel destacada",
+
+    featuredTitle:
+      "¿Qué hacer en tiempos de convergencia e inteligencias artificiales?",
+
+    featuredText1:
+      "Una de las mesas más convocantes del ENACOM 2025 reunió a Martín Becerra (UNQ), Flavia Costa (UBA) y Javier Cristiano (UNC), con la coordinación de Maximiliano Peret (UNICEN).",
+
+    featuredText2:
+      "Durante el encuentro se abordaron los desafíos éticos, políticos y culturales que plantea la inteligencia artificial en el campo de la comunicación: la concentración de poder en las plataformas, la transformación de los modos de producción simbólica y la necesidad de sostener una mirada crítica y democrática sobre las tecnologías.",
+
+    featuredQuote:
+      "“La comunicación no puede quedar al margen de las transformaciones tecnológicas: debe intervenir, pensar y proponer futuros posibles.”",
 
     speaker1Title:
       "Cultura, política y comunicación",
@@ -448,6 +488,9 @@ const translations = {
 
   en: {
 
+    navHistoria:
+      "ENACOM History",
+
     navEjes:
       "Thematic axes",
 
@@ -478,12 +521,23 @@ const translations = {
     heroImageCaption:
       "Productions developed from the debates and issues addressed during the event.",
 
-    countdownTitle: "Days until ENACOM 2026",
-    countdownDays: "Days",
-    countdownHours: "Hours",
-    countdownMinutes: "Minutes",
-    countdownSeconds: "Seconds",
-    countdownComplete: "ENACOM 2026 has begun.",
+    countdownTitle:
+      "Days until ENACOM 2026",
+
+    countdownDays:
+      "Days",
+
+    countdownHours:
+      "Hours",
+
+    countdownMinutes:
+      "Minutes",
+
+    countdownSeconds:
+      "Seconds",
+
+    countdownComplete:
+      "ENACOM 2026 has begun.",
 
     galleryKicker:
       "The event in images",
@@ -527,9 +581,14 @@ const translations = {
     photoNote:
       "Photographs are presented with their source and authorship clearly identified.",
 
-    timelineKicker: "Historical journey",
-    timelineTitle: "The history of ENACOM",
-    timelineIntro: "Choose a milestone to explore the collective history of this federal gathering.",
+    timelineKicker:
+      "Historical journey",
+
+    timelineTitle:
+      "The history of ENACOM",
+
+    timelineIntro:
+      "Choose a milestone to explore the collective history of this federal gathering.",
 
     axesKicker:
       "Conceptual journey",
@@ -582,25 +641,47 @@ const translations = {
     speakersIntro:
       "Some of the panels and specialists who participated in ENACOM 2025.",
 
-    bioMangone: "Doctor of Social Sciences from the University of Buenos Aires, professor at the University of Buenos Aires and the National University of La Pampa. His work addresses political discourse, media and culture.",
-    bioSegura: "Professor at the National University of Córdoba and CONICET researcher. Her research addresses communication and digital inequalities, social participation, hate speech and disinformation.",
-    bioBecerra: "Researcher and analyst specializing in communication policies, media and democracy. He teaches at UNQ and UBA and holds a doctorate from the Autonomous University of Barcelona.",
-    bioCristiano: "Doctor of Sociology, CONICET researcher and professor at UNC. His work explores social time, imagination and ways of life in contemporary capitalism.",
-    bioCosta: "Doctor of Social Sciences from UBA, CONICET researcher and director of Tecnoceno Lab. Her work explores the links between technology, the body and culture in the age of algorithms.",
-    bioPeret: "Communicator, professor and researcher. He participated in organizing and coordinating ENACOM 2025 activities, including the panel on convergence and artificial intelligence.",
-    bioVilte: "Professor and researcher linked to the field of communication. He participated in ENACOM 2025 as part of the event's academic activities.",
+    bioMangone:
+      "Doctor of Social Sciences from the University of Buenos Aires, professor at the University of Buenos Aires and the National University of La Pampa. His work addresses political discourse, media and culture.",
 
-    featuredKicker: "Featured panel",
-    featuredTitle: "What can we do in times of convergence and artificial intelligence?",
-    featuredText1: "One of ENACOM 2025's most popular panels brought together Martín Becerra (UNQ), Flavia Costa (UBA) and Javier Cristiano (UNC), coordinated by Maximiliano Peret (UNICEN).",
-    featuredText2: "The event addressed the ethical, political and cultural challenges posed by artificial intelligence in communication: the concentration of power on platforms, changing modes of symbolic production and the need for a critical, democratic view of technology.",
-    featuredQuote: "“Communication cannot remain on the sidelines of technological transformations: it must intervene, think and propose possible futures.”",
+    bioSegura:
+      "Professor at the National University of Córdoba and CONICET researcher. Her research addresses communication and digital inequalities, social participation, hate speech and disinformation.",
+
+    bioBecerra:
+      "Researcher and analyst specializing in communication policies, media and democracy. He teaches at UNQ and UBA and holds a doctorate from the Autonomous University of Barcelona.",
+
+    bioCristiano:
+      "Doctor of Sociology, CONICET researcher and professor at UNC. His work explores social time, imagination and ways of life in contemporary capitalism.",
+
+    bioCosta:
+      "Doctor of Social Sciences from UBA, CONICET researcher and director of Tecnoceno Lab. Her work explores the links between technology, the body and culture in the age of algorithms.",
+
+    bioPeret:
+      "Communicator, professor and researcher. He participated in organizing and coordinating ENACOM 2025 activities, including the panel on convergence and artificial intelligence.",
+
+    bioVilte:
+      "Professor and researcher linked to the field of communication. He participated in ENACOM 2025 as part of the event's academic activities.",
+
+    featuredKicker:
+      "Featured panel",
+
+    featuredTitle:
+      "What should we do in times of convergence and artificial intelligence?",
+
+    featuredText1:
+      "One of the most attended panels of ENACOM 2025 brought together Martín Becerra (UNQ), Flavia Costa (UBA) and Javier Cristiano (UNC), coordinated by Maximiliano Peret (UNICEN).",
+
+    featuredText2:
+      "The panel explored the ethical, political and cultural challenges posed by artificial intelligence in communication: platform power concentration, changing forms of symbolic production and the need for a critical and democratic view of technology.",
+
+    featuredQuote:
+      "“Communication cannot remain outside technological transformations: it must intervene, think and propose possible futures.”",
 
     speaker1Title:
       "Culture, politics and communication",
 
     speaker1Subtitle:
-      "Towards a genealogy of the field: where do we come from?",
+      "For a genealogy of the field: where do we come from?",
 
     speaker2Title:
       "Communication, convergence and artificial intelligence",
@@ -609,7 +690,7 @@ const translations = {
       "Social Sciences and Humanities",
 
     speaker4Title:
-      "Legacies of communication",
+      "Communication legacies",
 
     quizKicker:
       "Take part",
@@ -618,7 +699,7 @@ const translations = {
       "How much do you know about communication?",
 
     quizIntro:
-      "Test what you learned during the journey.",
+      "Test what you learned throughout the journey.",
 
     nextQuestion:
       "Next question",
@@ -636,10 +717,10 @@ const translations = {
       "Accessibility",
 
     accessTitle:
-      "A website for everyone",
+      "A page for everyone",
 
     accessText:
-      "Use these tools to adapt the reading experience to your needs.",
+      "Use these tools to adapt the reading experience according to your needs.",
 
     increaseText:
       "Increase text",
@@ -654,15 +735,18 @@ const translations = {
       "Reset",
 
     closing:
-      "ENACOM 2025 invites us to think about the time of communication as a living network: memory, present, conflict, technology and the right to information in dialogue.",
+      "ENACOM 2025 invites us to think of communication time as a living fabric: memory, present, conflict, technology and the right to information in dialogue.",
 
     footer:
-      "Academic project developed by students of the Social Communication program at UNNE."
+      "Academic work carried out by students of Social Communication at UNNE."
 
   },
 
 
   pt: {
+
+    navHistoria:
+      "História do ENACOM",
 
     navEjes:
       "Eixos temáticos",
@@ -674,10 +758,10 @@ const translations = {
       "Participe",
 
     navRedes:
-      "Redes sociais",
+      "Redes",
 
     kicker:
-      "22º Encontro Nacional de Carreiras de Comunicação",
+      "XXII Encontro Nacional de Carreiras de Comunicação",
 
     heroTitle:
       "Tempo de comunicação. Diálogos entre passado e presente em um mundo acelerado",
@@ -692,14 +776,25 @@ const translations = {
       "Explorar o encontro",
 
     heroImageCaption:
-      "Produções desenvolvidas a partir dos debates e questões abordados durante o encontro.",
+      "Produções desenvolvidas a partir dos debates e problemáticas abordadas durante o encontro.",
 
-    countdownTitle: "Dias para o ENACOM 2026",
-    countdownDays: "Dias",
-    countdownHours: "Horas",
-    countdownMinutes: "Minutos",
-    countdownSeconds: "Segundos",
-    countdownComplete: "O ENACOM 2026 já começou.",
+    countdownTitle:
+      "Dias para o ENACOM 2026",
+
+    countdownDays:
+      "Dias",
+
+    countdownHours:
+      "Horas",
+
+    countdownMinutes:
+      "Minutos",
+
+    countdownSeconds:
+      "Segundos",
+
+    countdownComplete:
+      "O ENACOM 2026 já começou.",
 
     galleryKicker:
       "O encontro em imagens",
@@ -741,11 +836,16 @@ const translations = {
       "Fotografia: Faculdade de Ciências da Educação — UNER.",
 
     photoNote:
-      "As fotografias são apresentadas com sua fonte e autoria devidamente identificadas.",
+      "As fotografias apresentam sua fonte e autoria identificadas.",
 
-    timelineKicker: "Percurso histórico",
-    timelineTitle: "A história do ENACOM",
-    timelineIntro: "Escolha um marco para percorrer a construção coletiva deste encontro federal.",
+    timelineKicker:
+      "Percurso histórico",
+
+    timelineTitle:
+      "A história do ENACOM",
+
+    timelineIntro:
+      "Escolha um marco para percorrer a construção coletiva deste encontro federal.",
 
     axesKicker:
       "Percurso conceitual",
@@ -754,34 +854,34 @@ const translations = {
       "Eixos temáticos",
 
     axesIntro:
-      "O percurso reúne alguns dos principais temas abordados durante o ENACOM 2025.",
+      "O percurso reúne algumas das principais problemáticas abordadas durante o ENACOM 2025.",
 
     axisMainTitle:
       "Crise, comunicação e democracia",
 
     axisMainText:
-      "Este eixo aborda a relação entre as crises socioeconômicas e políticas, a comunicação pública, o jornalismo, a circulação de informações e os desafios democráticos.",
+      "Este eixo aborda a relação entre as crises socioeconômicas e políticas, a comunicação pública, o jornalismo, a circulação da informação e os desafios democráticos.",
 
     problemsKicker:
       "Debates contemporâneos",
 
     problemsTitle:
-      "Questões e debates",
+      "Problemáticas e debates",
 
     problemsIntro:
       "Dois dos temas trabalhados em nosso percurso sobre comunicação, jornalismo e democracia.",
 
     problemA:
-      "Ataques contra comunicadores e jornalistas",
+      "Ataques a comunicadores e jornalistas",
 
     problemAText:
-      "Esta questão aborda as formas de assédio, censura, violência simbólica e pressão pública que afetam o trabalho jornalístico e o direito social à informação.",
+      "Esta problemática aborda assédio, censura, violência simbólica e pressão pública que afetam o trabalho jornalístico e o direito social à informação.",
 
     problemB:
       "Desinformação, jornalismo e democracia",
 
     problemBText:
-      "As fake news, a inteligência artificial e a desinformação transformam a maneira como as informações são produzidas, distribuídas e recebidas.",
+      "As fake news, a inteligência artificial e a desinformação transformam a forma como a informação é produzida, distribuída e recebida.",
 
     viewInfographic:
       "Ver infográfico completo",
@@ -793,24 +893,25 @@ const translations = {
       "Vozes do encontro",
 
     speakersTitle:
-      "Palestras em destaque",
+      "Palestras destacadas",
 
     speakersIntro:
       "Algumas das mesas e especialistas que participaram do ENACOM 2025.",
 
-    bioMangone: "Doutor em Ciências Sociais pela UBA, docente da Universidade de Buenos Aires e da Universidade Nacional de La Pampa. Seu trabalho aborda o discurso político, os meios e a cultura.",
-    bioSegura: "Professora da UNC e pesquisadora do CONICET. Suas pesquisas abordam desigualdades comunicacionais e digitais, participação social, discursos de ódio e desinformação.",
-    bioBecerra: "Pesquisador e analista especializado em políticas de comunicação, meios e democracia. É professor da UNQ e da UBA e doutor pela Universidade Autônoma de Barcelona.",
-    bioCristiano: "Doutor em Sociologia, pesquisador do CONICET e professor da UNC. Seu trabalho explora o tempo social, a imaginação e as formas de vida no capitalismo contemporâneo.",
-    bioCosta: "Doutora em Ciências Sociais pela UBA, pesquisadora do CONICET e diretora do Tecnoceno Lab. Sua obra explora os vínculos entre tecnologia, corpo e cultura na era do algoritmo.",
-    bioPeret: "Comunicador, docente e pesquisador. Participou da organização e coordenação das atividades do ENACOM 2025, incluindo a mesa sobre convergência e inteligências artificiais.",
-    bioVilte: "Docente e pesquisador ligado ao campo da comunicação. Participou do ENACOM 2025 como parte das atividades acadêmicas do encontro.",
+    featuredKicker:
+      "Mesa de destaque",
 
-    featuredKicker: "Mesa de destaque",
-    featuredTitle: "O que fazer em tempos de convergência e inteligências artificiais?",
-    featuredText1: "Uma das mesas mais concorridas do ENACOM 2025 reuniu Martín Becerra (UNQ), Flavia Costa (UBA) e Javier Cristiano (UNC), com coordenação de Maximiliano Peret (UNICEN).",
-    featuredText2: "O encontro abordou os desafios éticos, políticos e culturais da inteligência artificial no campo da comunicação: a concentração de poder nas plataformas, a transformação dos modos de produção simbólica e a necessidade de uma visão crítica e democrática sobre as tecnologias.",
-    featuredQuote: "“A comunicação não pode ficar à margem das transformações tecnológicas: deve intervir, pensar e propor futuros possíveis.”",
+    featuredTitle:
+      "O que fazer em tempos de convergência e inteligências artificiais?",
+
+    featuredText1:
+      "Uma das mesas mais concorridas do ENACOM 2025 reuniu Martín Becerra (UNQ), Flavia Costa (UBA) e Javier Cristiano (UNC), com coordenação de Maximiliano Peret (UNICEN).",
+
+    featuredText2:
+      "Durante o encontro foram abordados os desafios éticos, políticos e culturais colocados pela inteligência artificial no campo da comunicação.",
+
+    featuredQuote:
+      "“A comunicação não pode ficar à margem das transformações tecnológicas.”",
 
     speaker1Title:
       "Cultura, política e comunicação",
@@ -852,10 +953,10 @@ const translations = {
       "Acessibilidade",
 
     accessTitle:
-      "Um site para todas as pessoas",
+      "Uma página para todas as pessoas",
 
     accessText:
-      "Use estas ferramentas para adaptar a experiência de leitura às suas necessidades.",
+      "Use estas ferramentas para adaptar a experiência de leitura de acordo com suas necessidades.",
 
     increaseText:
       "Aumentar texto",
@@ -873,7 +974,7 @@ const translations = {
       "O ENACOM 2025 convida a pensar o tempo da comunicação como uma trama viva: memória, presente, conflito, tecnologia e direito à informação em diálogo.",
 
     footer:
-      "Trabalho acadêmico realizado por estudantes da carreira de Comunicação Social da UNNE."
+      "Trabalho acadêmico realizado por estudantes de Comunicação Social da UNNE."
 
   }
 
@@ -882,99 +983,83 @@ const translations = {
 
 
 /* =========================================================
-   CAMBIAR IDIOMA
+   IDIOMA ACTIVO
 ========================================================= */
 
-const languageButtons =
-  document.querySelectorAll(".language-btn");
+let savedLanguage =
+  localStorage.getItem("enacomLanguage") || "es";
 
 
 function changeLanguage(lang) {
 
   if (!translations[lang]) {
+
     lang = "es";
+
   }
+
+  savedLanguage = lang;
+
+  localStorage.setItem(
+    "enacomLanguage",
+    lang
+  );
 
   document.documentElement.lang = lang;
 
 
-  const elements =
-    document.querySelectorAll("[data-i18n]");
+  document
+    .querySelectorAll("[data-i18n]")
+    .forEach((element) => {
+
+      const key =
+        element.getAttribute("data-i18n");
+
+      if (
+        translations[lang] &&
+        translations[lang][key]
+      ) {
+
+        element.textContent =
+          translations[lang][key];
+
+      }
+
+    });
 
 
-  elements.forEach((element) => {
+  document
+    .querySelectorAll(".language-btn")
+    .forEach((button) => {
 
-    const key =
-      element.dataset.i18n;
+      button.classList.toggle(
+        "active",
+        button.dataset.lang === lang
+      );
 
-    if (
-      translations[lang] &&
-      translations[lang][key] !== undefined
-    ) {
-
-      element.textContent =
-        translations[lang][key];
-
-    }
-
-  });
+    });
 
 
-  languageButtons.forEach((button) => {
+  renderTimeline(lang);
 
-    button.classList.toggle(
-      "active",
-      button.dataset.lang === lang
-    );
-
-  });
-
-
-  localStorage.setItem(
-    "enacom-language",
-    lang
-  );
-
-
-  /* Actualizar el quiz si está activo */
-
-  if (
-    typeof renderQuestion === "function" &&
-    typeof currentQuestion !== "undefined" &&
-    currentQuestion < quizQuestions.length
-  ) {
-
-    renderQuestion();
-
-  }
-
-  if (typeof renderTimeline === "function") {
-    renderTimeline(lang);
-  }
+  updateCountdown();
 
 }
 
 
-languageButtons.forEach((button) => {
+document
+  .querySelectorAll(".language-btn")
+  .forEach((button) => {
 
-  button.addEventListener(
-    "click",
-    () => {
+    button.addEventListener("click", () => {
 
       changeLanguage(
         button.dataset.lang
       );
 
-    }
-  );
+    });
 
-});
-
-
-const savedLanguage =
-  localStorage.getItem(
-    "enacom-language"
-  ) || "es";
+  });
 
 
 
@@ -982,96 +1067,79 @@ const savedLanguage =
    ACCESIBILIDAD
 ========================================================= */
 
+const increaseButton =
+  document.querySelector("[data-action='increase-text']");
+
+const decreaseButton =
+  document.querySelector("[data-action='decrease-text']");
+
+const contrastButton =
+  document.querySelector("[data-action='contrast']");
+
+const resetButton =
+  document.querySelector("[data-action='reset']");
+
+
 let textScale =
-  parseFloat(
-    localStorage.getItem(
-      "enacom-text-scale"
-    )
+  Number(
+    localStorage.getItem("enacomTextScale")
   ) || 1;
 
 
-document.documentElement.style.setProperty(
-  "--text-scale",
-  textScale
-);
+function applyTextScale() {
 
-
-
-/* AUMENTAR TEXTO */
-
-const increaseTextButton =
-  document.getElementById("increase-text");
-
-
-if (increaseTextButton) {
-
-  increaseTextButton.addEventListener(
-    "click",
-    () => {
-
-      textScale =
-        Math.min(
-          textScale + 0.1,
-          1.5
-        );
-
-      updateTextScale();
-
-    }
-  );
-
-}
-
-
-
-/* DISMINUIR TEXTO */
-
-const decreaseTextButton =
-  document.getElementById("decrease-text");
-
-
-if (decreaseTextButton) {
-
-  decreaseTextButton.addEventListener(
-    "click",
-    () => {
-
-      textScale =
-        Math.max(
-          textScale - 0.1,
-          0.8
-        );
-
-      updateTextScale();
-
-    }
-  );
-
-}
-
-
-
-function updateTextScale() {
+  textScale =
+    Math.min(
+      1.35,
+      Math.max(
+        0.85,
+        textScale
+      )
+    );
 
   document.documentElement.style.setProperty(
     "--text-scale",
     textScale
   );
 
-
   localStorage.setItem(
-    "enacom-text-scale",
+    "enacomTextScale",
     textScale
   );
 
 }
 
 
+if (increaseButton) {
 
-/* ALTO CONTRASTE */
+  increaseButton.addEventListener(
+    "click",
+    () => {
 
-const contrastButton =
-  document.getElementById("contrast-toggle");
+      textScale += 0.1;
+
+      applyTextScale();
+
+    }
+  );
+
+}
+
+
+if (decreaseButton) {
+
+  decreaseButton.addEventListener(
+    "click",
+    () => {
+
+      textScale -= 0.1;
+
+      applyTextScale();
+
+    }
+  );
+
+}
 
 
 if (contrastButton) {
@@ -1084,12 +1152,13 @@ if (contrastButton) {
         "high-contrast"
       );
 
-
       localStorage.setItem(
-        "enacom-contrast",
+        "enacomContrast",
         document.body.classList.contains(
           "high-contrast"
         )
+          ? "1"
+          : "0"
       );
 
     }
@@ -1098,13 +1167,8 @@ if (contrastButton) {
 }
 
 
-
-/* Recuperar contraste guardado */
-
 if (
-  localStorage.getItem(
-    "enacom-contrast"
-  ) === "true"
+  localStorage.getItem("enacomContrast") === "1"
 ) {
 
   document.body.classList.add(
@@ -1114,39 +1178,32 @@ if (
 }
 
 
+if (resetButton) {
 
-/* RESTABLECER */
-
-const resetAccessibilityButton =
-  document.getElementById(
-    "reset-accessibility"
-  );
-
-
-if (resetAccessibilityButton) {
-
-  resetAccessibilityButton.addEventListener(
+  resetButton.addEventListener(
     "click",
     () => {
 
       textScale = 1;
 
-      updateTextScale();
-
+      applyTextScale();
 
       document.body.classList.remove(
         "high-contrast"
       );
 
-
-      localStorage.removeItem(
-        "enacom-contrast"
+      localStorage.setItem(
+        "enacomContrast",
+        "0"
       );
 
     }
   );
 
 }
+
+
+applyTextScale();
 
 
 
@@ -1157,345 +1214,140 @@ if (resetAccessibilityButton) {
 const quizQuestions = [
 
   {
+    question:
+      "¿En qué año se realizó el primer ENACOM?",
 
-    question: {
-
-      es:
-        "¿Cuál es uno de los principales desafíos de la desinformación?",
-
-      en:
-        "What is one of the main challenges posed by disinformation?",
-
-      pt:
-        "Qual é um dos principais desafios da desinformação?"
-
-    },
-
-
-    options: {
-
-      es: [
-
-        "Mejorar automáticamente la calidad de las noticias",
-
-        "Afectar la confianza pública y la circulación de información",
-
-        "Eliminar la necesidad de periodistas"
-
+    options:
+      [
+        "1983",
+        "2001",
+        "2002",
+        "2020"
       ],
 
-
-      en: [
-
-        "Automatically improve news quality",
-
-        "Affect public trust and the circulation of information",
-
-        "Eliminate the need for journalists"
-
-      ],
-
-
-      pt: [
-
-        "Melhorar automaticamente a qualidade das notícias",
-
-        "Afetar a confiança pública e a circulação de informações",
-
-        "Eliminar a necessidade de jornalistas"
-
-      ]
-
-    },
-
-
-    correct: 1
-
+    answer:
+      2
   },
 
-
   {
+    question:
+      "¿Qué organización se transformó en FADECCOS en 2001?",
 
-    question: {
-
-      es:
-        "¿Qué relación existe entre comunicación y democracia?",
-
-      en:
-        "What is the relationship between communication and democracy?",
-
-      pt:
-        "Qual é a relação entre comunicação e democracia?"
-
-    },
-
-
-    options: {
-
-      es: [
-
-        "La comunicación no tiene relación con la democracia",
-
-        "La circulación de información contribuye a la participación y al debate público",
-
-        "La democracia depende únicamente de las redes sociales"
-
+    options:
+      [
+        "UNNE",
+        "AFACOS",
+        "ENACOM",
+        "UNSL"
       ],
 
-
-      en: [
-
-        "Communication has no relationship with democracy",
-
-        "The circulation of information contributes to participation and public debate",
-
-        "Democracy depends only on social media"
-
-      ],
-
-
-      pt: [
-
-        "A comunicação não tem relação com a democracia",
-
-        "A circulação de informações contribui para a participação e o debate público",
-
-        "A democracia depende apenas das redes sociais"
-
-      ]
-
-    },
-
-
-    correct: 1
-
+    answer:
+      1
   },
 
-
   {
+    question:
+      "¿Dónde se realizó el primer ENACOM?",
 
-    question: {
-
-      es:
-        "¿Qué tecnología plantea nuevos desafíos para el periodismo?",
-
-      en:
-        "Which technology creates new challenges for journalism?",
-
-      pt:
-        "Qual tecnologia cria novos desafios para o jornalismo?"
-
-    },
-
-
-    options: {
-
-      es: [
-
-        "La inteligencia artificial",
-
-        "El papel",
-
-        "La radio analógica únicamente"
-
+    options:
+      [
+        "San Luis",
+        "Mendoza",
+        "Olavarría",
+        "Buenos Aires"
       ],
 
-
-      en: [
-
-        "Artificial intelligence",
-
-        "Paper",
-
-        "Analog radio only"
-
-      ],
-
-
-      pt: [
-
-        "A inteligência artificial",
-
-        "O papel",
-
-        "Apenas o rádio analógico"
-
-      ]
-
-    },
-
-
-    correct: 0
-
+    answer:
+      2
   },
 
+  {
+    question:
+      "¿En qué año el encuentro se adaptó a la virtualidad por la pandemia?",
+
+    options:
+      [
+        "2019",
+        "2020",
+        "2021",
+        "2024"
+      ],
+
+    answer:
+      1
+  },
 
   {
+    question:
+      "¿En qué ciudad se realizó el ENACOM 2025?",
 
-    question: {
-
-      es:
-        "¿Dónde se realizó ENACOM 2025?",
-
-      en:
-        "Where was ENACOM 2025 held?",
-
-      pt:
-        "Onde foi realizado o ENACOM 2025?"
-
-    },
-
-
-    options: {
-
-      es: [
-
+    options:
+      [
+        "Córdoba",
+        "Mendoza",
         "San Luis",
-
-        "Buenos Aires",
-
-        "Córdoba"
-
+        "Rosario"
       ],
 
-
-      en: [
-
-        "San Luis",
-
-        "Buenos Aires",
-
-        "Córdoba"
-
-      ],
-
-
-      pt: [
-
-        "San Luis",
-
-        "Buenos Aires",
-
-        "Córdoba"
-
-      ]
-
-    },
-
-
-    correct: 0
-
+    answer:
+      2
   }
 
 ];
 
 
-
 let currentQuestion = 0;
-
 let score = 0;
 
-let selectedAnswer = null;
 
+const quizQuestion =
+  document.getElementById("quiz-question");
 
-
-const quizContainer =
-  document.getElementById(
-    "quiz-container"
-  );
-
+const quizOptions =
+  document.getElementById("quiz-options");
 
 const quizNext =
-  document.getElementById(
-    "quiz-next"
-  );
-
+  document.getElementById("quiz-next");
 
 const quizResult =
-  document.getElementById(
-    "quiz-result"
-  );
+  document.getElementById("quiz-result");
 
-
-
-/* =========================================================
-   RENDERIZAR PREGUNTA
-========================================================= */
 
 function renderQuestion() {
 
-  if (!quizContainer) return;
+  if (
+    !quizQuestion ||
+    !quizOptions
+  ) {
 
-  if (!quizNext) return;
+    return;
 
-  if (!quizResult) return;
-
-
-  selectedAnswer = null;
-
-
-  const lang =
-    document.documentElement.lang || "es";
+  }
 
 
-  const question =
+  const current =
     quizQuestions[currentQuestion];
 
 
-  if (!question) return;
+  quizQuestion.textContent =
+    current.question;
 
 
-  quizContainer.innerHTML = "";
+  quizOptions.innerHTML =
+    "";
 
 
-  const wrapper =
-    document.createElement("div");
-
-
-  wrapper.className =
-    "quiz-question";
-
-
-  const title =
-    document.createElement("h3");
-
-
-  title.textContent =
-    `${currentQuestion + 1}. ${
-      question.question[lang] ||
-      question.question.es
-    }`;
-
-
-  wrapper.appendChild(title);
-
-
-  const options =
-    document.createElement("div");
-
-
-  options.className =
-    "quiz-options";
-
-
-  const questionOptions =
-    question.options[lang] ||
-    question.options.es;
-
-
-  questionOptions.forEach(
+  current.options.forEach(
     (option, index) => {
 
       const button =
         document.createElement("button");
 
-
-      button.type = "button";
-
+      button.type =
+        "button";
 
       button.className =
         "quiz-option";
-
 
       button.textContent =
         option;
@@ -1505,55 +1357,74 @@ function renderQuestion() {
         "click",
         () => {
 
-          selectedAnswer = index;
+          const allOptions =
+            quizOptions.querySelectorAll(
+              ".quiz-option"
+            );
 
 
-          document
-            .querySelectorAll(".quiz-option")
-            .forEach((item) => {
+          allOptions.forEach(
+            (item) => {
 
-              item.classList.remove(
-                "selected"
-              );
+              item.disabled =
+                true;
 
-            });
-
-
-          button.classList.add(
-            "selected"
+            }
           );
+
+
+          if (
+            index === current.answer
+          ) {
+
+            button.classList.add(
+              "correct"
+            );
+
+            score++;
+
+          } else {
+
+            button.classList.add(
+              "incorrect"
+            );
+
+            allOptions[
+              current.answer
+            ].classList.add(
+              "correct"
+            );
+
+          }
+
+          if (quizNext) {
+
+            quizNext.disabled =
+              false;
+
+          }
 
         }
       );
 
 
-      options.appendChild(button);
+      quizOptions.appendChild(
+        button
+      );
 
     }
   );
 
 
-  wrapper.appendChild(options);
+  if (quizNext) {
 
+    quizNext.disabled =
+      true;
 
-  quizContainer.appendChild(wrapper);
-
-
-  quizResult.textContent = "";
-
-
-  quizNext.style.display = "";
-
-
-  quizNext.disabled = false;
+  }
 
 }
 
-
-
-/* =========================================================
-   SIGUIENTE PREGUNTA
-========================================================= */
 
 if (quizNext) {
 
@@ -1561,63 +1432,55 @@ if (quizNext) {
     "click",
     () => {
 
-      if (selectedAnswer === null) {
-
-        const lang =
-          document.documentElement.lang ||
-          "es";
-
-
-        if (quizResult) {
-
-          if (lang === "pt") {
-
-            quizResult.textContent =
-              "Escolha uma resposta antes de continuar.";
-
-          } else if (lang === "en") {
-
-            quizResult.textContent =
-              "Choose an answer before continuing.";
-
-          } else {
-
-            quizResult.textContent =
-              "Elegí una respuesta antes de continuar.";
-
-          }
-
-        }
-
-        return;
-
-      }
-
-
-
-      if (
-        selectedAnswer ===
-        quizQuestions[currentQuestion].correct
-      ) {
-
-        score++;
-
-      }
-
-
       currentQuestion++;
 
 
       if (
-        currentQuestion >=
+        currentQuestion <
         quizQuestions.length
       ) {
 
-        showQuizResult();
+        renderQuestion();
 
       } else {
 
-        renderQuestion();
+        quizQuestion.textContent =
+          "";
+
+        quizOptions.innerHTML =
+          "";
+
+        quizNext.disabled =
+          true;
+
+
+        let message;
+
+
+        if (
+          savedLanguage === "en"
+        ) {
+
+          message =
+            `You got ${score} out of ${quizQuestions.length} questions right.`;
+
+        } else if (
+          savedLanguage === "pt"
+        ) {
+
+          message =
+            `Você acertou ${score} de ${quizQuestions.length} perguntas.`;
+
+        } else {
+
+          message =
+            `Acertaste ${score} de ${quizQuestions.length} preguntas.`;
+
+        }
+
+
+        quizResult.textContent =
+          message;
 
       }
 
@@ -1629,192 +1492,541 @@ if (quizNext) {
 
 
 /* =========================================================
-   RESULTADO DEL QUIZ
-========================================================= */
-
-function showQuizResult() {
-
-  if (!quizContainer) return;
-
-  if (!quizNext) return;
-
-  if (!quizResult) return;
-
-
-  const lang =
-    document.documentElement.lang || "es";
-
-
-  quizContainer.innerHTML = "";
-
-
-  quizNext.style.display =
-    "none";
-
-
-  let message = "";
-
-
-  if (lang === "en") {
-
-    message =
-      `You got ${score} out of ${quizQuestions.length} correct.`;
-
-  } else if (lang === "pt") {
-
-    message =
-      `Você acertou ${score} de ${quizQuestions.length} perguntas.`;
-
-  } else {
-
-    message =
-      `Acertaste ${score} de ${quizQuestions.length} preguntas.`;
-
-  }
-
-
-  quizResult.textContent =
-    message;
-
-}
-
-
-/* =========================================================
    LÍNEA DEL TIEMPO · HISTORIA DEL ENACOM
 ========================================================= */
 
 const timelineData = {
+
   es: [
-    ["1983", "AFACOS", "1983 · Nace AFACOS", "En el retorno de la democracia se crea la Asociación Federal de Carreras de Comunicación Social (AFACOS), el primer espacio federal de articulación entre universidades para promover intercambio académico, investigación y formación profesional."],
-    ["2001", "FADECCOS", "2001 · Se formaliza FADECCOS", "AFACOS se transforma en la Federación Argentina de Carreras de Comunicación Social (FADECCOS). La nueva organización amplía la representación de las carreras y consolida la coordinación entre universidades."],
-    ["2002", "Primer ENACOM", "2002 · El primer ENACOM", "FADECCOS organiza en Olavarría el primer Encuentro Nacional de Carreras de Comunicación. Nace como un espacio de debate sobre periodismo, medios, cultura, políticas comunicacionales y nuevas tecnologías."],
-    ["2002–10", "Expansión federal", "2002–2010 · Expansión y consolidación", "El encuentro rota por distintas provincias para descentralizar la producción de conocimiento. Crece la participación, se incorporan investigadores latinoamericanos y se suman producciones audiovisuales y multimediales."],
-    ["2010–19", "Nuevas agendas", "2010–2019 · Nuevas agendas", "La convergencia digital amplía el debate hacia redes sociales, desinformación, comunicación política, inteligencia artificial, género y derechos comunicacionales."],
-    ["2020", "Virtualidad", "2020 · Adaptación a la virtualidad", "La pandemia interrumpe los encuentros presenciales y obliga a trasladar las dinámicas a plataformas digitales, transformando las formas de participación y sosteniendo los vínculos académicos."],
-    ["2021", "Mendoza", "2021 · Regreso presencial", "El encuentro vuelve a realizarse de forma presencial en Mendoza y recupera el intercambio cara a cara. La agenda aborda la sobreinformación, la desinformación y los cambios comunicacionales producidos por la pandemia."],
-    ["2024", "San Luis", "2024 · San Luis, sede elegida", "La Asamblea de FADECCOS aprueba la candidatura de la Facultad de Ciencias Humanas de la Universidad Nacional de San Luis como sede del XXII ENACOM."],
-    ["2025", "XXII ENACOM", "2025 · ENACOM en San Luis", "Del 5 al 7 de noviembre, la Universidad Nacional de San Luis recibe el XXII Encuentro Nacional de Carreras de Comunicación bajo el lema Tiempo de comunicación. Diálogos sobre pasado y presente en un mundo acelerado."]
+
+    [
+      "1983",
+      "AFACOS",
+      "1983 · Nace AFACOS",
+      "En el retorno de la democracia se crea la Asociación Federal de Carreras de Comunicación Social (AFACOS), el primer espacio federal de articulación entre universidades para promover intercambio académico, investigación y formación profesional."
+    ],
+
+    [
+      "2001",
+      "FADECCOS",
+      "2001 · Se formaliza FADECCOS",
+      "AFACOS se transforma en la Federación Argentina de Carreras de Comunicación Social (FADECCOS). La nueva organización amplía la representación de las carreras y consolida la coordinación entre universidades."
+    ],
+
+    [
+      "2002",
+      "Primer ENACOM",
+      "2002 · El primer ENACOM",
+      "FADECCOS organiza en Olavarría el primer Encuentro Nacional de Carreras de Comunicación. Nace como un espacio de debate sobre periodismo, medios, cultura, políticas comunicacionales y nuevas tecnologías."
+    ],
+
+    [
+      "2002–10",
+      "Expansión federal",
+      "2002–2010 · Expansión y consolidación",
+      "El encuentro rota por distintas provincias para descentralizar la producción de conocimiento. Crece la participación, se incorporan investigadores latinoamericanos y se suman producciones audiovisuales y multimediales."
+    ],
+
+    [
+      "2010–19",
+      "Nuevas agendas",
+      "2010–2019 · Nuevas agendas",
+      "La convergencia digital amplía el debate hacia redes sociales, desinformación, comunicación política, inteligencia artificial, género y derechos comunicacionales."
+    ],
+
+    [
+      "2020",
+      "Virtualidad",
+      "2020 · Adaptación a la virtualidad",
+      "La pandemia interrumpe los encuentros presenciales y obliga a trasladar las dinámicas a plataformas digitales, transformando las formas de participación y sosteniendo los vínculos académicos."
+    ],
+
+    [
+      "2021",
+      "Mendoza",
+      "2021 · Regreso presencial",
+      "El encuentro vuelve a realizarse de forma presencial en Mendoza y recupera el intercambio cara a cara. La agenda aborda la sobreinformación, la desinformación y los cambios comunicacionales producidos por la pandemia."
+    ],
+
+    [
+      "2024",
+      "San Luis",
+      "2024 · San Luis, sede elegida",
+      "La Asamblea de FADECCOS aprueba la candidatura de la Facultad de Ciencias Humanas de la Universidad Nacional de San Luis como sede del XXII ENACOM."
+    ],
+
+    [
+      "2025",
+      "XXII ENACOM",
+      "2025 · ENACOM en San Luis",
+      "Del 5 al 7 de noviembre, la Universidad Nacional de San Luis recibe el XXII Encuentro Nacional de Carreras de Comunicación bajo el lema Tiempo de comunicación. Diálogos sobre pasado y presente en un mundo acelerado."
+    ]
+
   ],
+
+
   en: [
-    ["1983", "AFACOS", "1983 · AFACOS is founded", "During Argentina's return to democracy, the Federal Association of Social Communication Programs is created as the first national space for cooperation among universities."],
-    ["2001", "FADECCOS", "2001 · FADECCOS is formalized", "AFACOS becomes the Argentine Federation of Social Communication Programs, widening representation and coordination among universities."],
-    ["2002", "First ENACOM", "2002 · The first ENACOM", "FADECCOS organizes the first National Meeting of Communication Programs in Olavarría, creating a space for debate on journalism, media, culture and communication policies."],
-    ["2002–10", "Federal growth", "2002–2010 · Expansion and consolidation", "The event rotates across provinces, broadening participation and incorporating Latin American researchers, audiovisual productions and multimedia projects."],
-    ["2010–19", "New agendas", "2010–2019 · New agendas", "Digital convergence broadens the debate to social media, disinformation, political communication, artificial intelligence, gender and communication rights."],
-    ["2020", "Virtuality", "2020 · Going virtual", "The pandemic interrupts in-person meetings and moves activities to digital platforms, transforming participation while maintaining academic ties."],
-    ["2021", "Mendoza", "2021 · Return to in-person meetings", "The event returns to an in-person format in Mendoza, focusing on overinformation, disinformation and communication changes caused by the pandemic."],
-    ["2024", "San Luis", "2024 · San Luis is chosen", "FADECCOS approves the Faculty of Human Sciences at the National University of San Luis as host of the 22nd ENACOM."],
-    ["2025", "22nd ENACOM", "2025 · ENACOM in San Luis", "From November 5 to 7, the National University of San Luis hosts the 22nd National Meeting of Communication Programs."]
+
+    [
+      "1983",
+      "AFACOS",
+      "1983 · AFACOS is founded",
+      "During Argentina's return to democracy, the Federal Association of Social Communication Programs is created as the first national space for cooperation among universities."
+    ],
+
+    [
+      "2001",
+      "FADECCOS",
+      "2001 · FADECCOS is formalized",
+      "AFACOS becomes the Argentine Federation of Social Communication Programs, widening representation and coordination among universities."
+    ],
+
+    [
+      "2002",
+      "First ENACOM",
+      "2002 · The first ENACOM",
+      "FADECCOS organizes the first National Meeting of Communication Programs in Olavarría, creating a space for debate on journalism, media, culture and communication policies."
+    ],
+
+    [
+      "2002–10",
+      "Federal growth",
+      "2002–2010 · Expansion and consolidation",
+      "The event rotates across provinces, broadening participation and incorporating Latin American researchers, audiovisual productions and multimedia projects."
+    ],
+
+    [
+      "2010–19",
+      "New agendas",
+      "2010–2019 · New agendas",
+      "Digital convergence broadens the debate to social media, disinformation, political communication, artificial intelligence, gender and communication rights."
+    ],
+
+    [
+      "2020",
+      "Virtuality",
+      "2020 · Going virtual",
+      "The pandemic interrupts in-person meetings and moves activities to digital platforms, transforming participation while maintaining academic ties."
+    ],
+
+    [
+      "2021",
+      "Mendoza",
+      "2021 · Return to in-person meetings",
+      "The event returns to an in-person format in Mendoza, focusing on overinformation, disinformation and communication changes caused by the pandemic."
+    ],
+
+    [
+      "2024",
+      "San Luis",
+      "2024 · San Luis is chosen",
+      "FADECCOS approves the Faculty of Human Sciences at the National University of San Luis as host of the 22nd ENACOM."
+    ],
+
+    [
+      "2025",
+      "22nd ENACOM",
+      "2025 · ENACOM in San Luis",
+      "From November 5 to 7, the National University of San Luis hosts the 22nd National Meeting of Communication Programs."
+    ]
+
   ],
+
+
   pt: [
-    ["1983", "AFACOS", "1983 · Nasce a AFACOS", "No retorno da democracia argentina, cria-se a Associação Federal de Carreiras de Comunicação Social, o primeiro espaço federal de articulação entre universidades."],
-    ["2001", "FADECCOS", "2001 · Formalização da FADECCOS", "A AFACOS transforma-se na Federação Argentina de Carreiras de Comunicação Social, ampliando a representação e a coordenação entre universidades."],
-    ["2002", "Primeiro ENACOM", "2002 · O primeiro ENACOM", "A FADECCOS organiza em Olavarría o primeiro Encontro Nacional de Carreiras de Comunicação, criando um espaço de debate sobre jornalismo, meios e cultura."],
-    ["2002–10", "Expansão federal", "2002–2010 · Expansão e consolidação", "O encontro passa a circular por diferentes províncias, amplia a participação e incorpora pesquisadores latino-americanos e produções audiovisuais."],
-    ["2010–19", "Novas agendas", "2010–2019 · Novas agendas", "A convergência digital amplia o debate para redes sociais, desinformação, comunicação política, inteligência artificial, gênero e direitos comunicacionais."],
-    ["2020", "Virtualidade", "2020 · Adaptação à virtualidade", "A pandemia interrompe os encontros presenciais e transfere as atividades para plataformas digitais, transformando as formas de participação."],
-    ["2021", "Mendoza", "2021 · Retorno presencial", "O encontro retorna ao formato presencial em Mendoza e recupera o intercâmbio cara a cara, com foco nos impactos comunicacionais da pandemia."],
-    ["2024", "San Luis", "2024 · San Luis é escolhida", "A FADECCOS aprova a Faculdade de Ciências Humanas da Universidade Nacional de San Luis como sede do XXII ENACOM."],
-    ["2025", "XXII ENACOM", "2025 · ENACOM em San Luis", "De 5 a 7 de novembro, a Universidade Nacional de San Luis recebe o XXII Encontro Nacional de Carreiras de Comunicação."]
+
+    [
+      "1983",
+      "AFACOS",
+      "1983 · Nasce a AFACOS",
+      "No retorno da democracia argentina, cria-se a Associação Federal de Carreiras de Comunicação Social, o primeiro espaço federal de articulação entre universidades."
+    ],
+
+    [
+      "2001",
+      "FADECCOS",
+      "2001 · Formalização da FADECCOS",
+      "A AFACOS transforma-se na Federação Argentina de Carreiras de Comunicação Social, ampliando a representação e a coordenação entre universidades."
+    ],
+
+    [
+      "2002",
+      "Primeiro ENACOM",
+      "2002 · O primeiro ENACOM",
+      "A FADECCOS organiza em Olavarría o primeiro Encontro Nacional de Carreiras de Comunicação, criando um espaço de debate sobre jornalismo, meios e cultura."
+    ],
+
+    [
+      "2002–10",
+      "Expansão federal",
+      "2002–2010 · Expansão e consolidação",
+      "O encontro passa a circular por diferentes províncias, amplia a participação e incorpora pesquisadores latino-americanos e produções audiovisuais."
+    ],
+
+    [
+      "2010–19",
+      "Novas agendas",
+      "2010–2019 · Novas agendas",
+      "A convergência digital amplia o debate para redes sociais, desinformação, comunicação política, inteligência artificial, gênero e direitos comunicacionais."
+    ],
+
+    [
+      "2020",
+      "Virtualidade",
+      "2020 · Adaptação à virtualidade",
+      "A pandemia interrompe os encontros presenciais e transfere as atividades para plataformas digitais, transformando as formas de participação."
+    ],
+
+    [
+      "2021",
+      "Mendoza",
+      "2021 · Retorno presencial",
+      "O encontro retorna ao formato presencial em Mendoza e recupera o intercâmbio cara a cara, com foco nos impactos comunicacionais da pandemia."
+    ],
+
+    [
+      "2024",
+      "San Luis",
+      "2024 · San Luis é escolhida",
+      "A FADECCOS aprova a Faculdade de Ciências Humanas da Universidade Nacional de San Luis como sede do XXII ENACOM."
+    ],
+
+    [
+      "2025",
+      "XXII ENACOM",
+      "2025 · ENACOM em San Luis",
+      "De 5 a 7 de novembro, a Universidade Nacional de San Luis recebe o XXII Encontro Nacional de Carreiras de Comunicação."
+    ]
+
   ]
+
 };
 
+
+
+/* =========================================================
+   RENDERIZAR LÍNEA DEL TIEMPO
+========================================================= */
+
 function renderTimeline(lang) {
-  const controls = document.getElementById("timeline-controls");
-  const detail = document.getElementById("timeline-detail");
-  const items = timelineData[lang] || timelineData.es;
 
-  if (!controls || !detail) return;
+  const controls =
+    document.getElementById(
+      "timeline-controls"
+    );
 
-  controls.innerHTML = "";
+  const detail =
+    document.getElementById(
+      "timeline-detail"
+    );
 
-  function selectTimelineItem(index) {
-    const item = items[index];
 
-    controls.querySelectorAll(".timeline-button").forEach((button, buttonIndex) => {
-      button.setAttribute("aria-selected", String(buttonIndex === index));
-    });
+  const items =
+    timelineData[lang] ||
+    timelineData.es;
 
-    detail.innerHTML = "";
 
-    const title = document.createElement("h3");
-    const text = document.createElement("p");
+  if (!controls || !detail) {
 
-    title.textContent = item[2];
-    text.textContent = item[3];
+    return;
 
-    detail.appendChild(title);
-    detail.appendChild(text);
   }
 
-  items.forEach((item, index) => {
-    const button = document.createElement("button");
-    const year = document.createElement("strong");
-    const label = document.createElement("span");
 
-    button.type = "button";
-    button.className = "timeline-button";
-    button.setAttribute("role", "tab");
-    button.setAttribute("aria-selected", String(index === 0));
+  controls.innerHTML =
+    "";
 
-    year.textContent = item[0];
-    label.textContent = item[1];
 
-    button.appendChild(year);
-    button.appendChild(label);
+  function selectTimelineItem(index) {
 
-    button.addEventListener("click", () => selectTimelineItem(index));
+    const item =
+      items[index];
 
-    controls.appendChild(button);
-  });
+
+    controls
+      .querySelectorAll(
+        ".timeline-button"
+      )
+      .forEach(
+        (button, buttonIndex) => {
+
+          button.setAttribute(
+            "aria-selected",
+            String(
+              buttonIndex === index
+            )
+          );
+
+        }
+      );
+
+
+    detail.innerHTML =
+      "";
+
+
+    const title =
+      document.createElement("h3");
+
+    const text =
+      document.createElement("p");
+
+
+    title.textContent =
+      item[2];
+
+    text.textContent =
+      item[3];
+
+
+    detail.appendChild(
+      title
+    );
+
+    detail.appendChild(
+      text
+    );
+
+  }
+
+
+  items.forEach(
+    (item, index) => {
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+      const year =
+        document.createElement(
+          "strong"
+        );
+
+      const label =
+        document.createElement(
+          "span"
+        );
+
+
+      button.type =
+        "button";
+
+      button.className =
+        "timeline-button";
+
+      button.setAttribute(
+        "role",
+        "tab"
+      );
+
+      button.setAttribute(
+        "aria-selected",
+        String(
+          index === 0
+        )
+      );
+
+
+      year.textContent =
+        item[0];
+
+      label.textContent =
+        item[1];
+
+
+      button.appendChild(
+        year
+      );
+
+      button.appendChild(
+        label
+      );
+
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          selectTimelineItem(
+            index
+          );
+
+        }
+      );
+
+
+      controls.appendChild(
+        button
+      );
+
+    }
+  );
+
 
   selectTimelineItem(0);
+
 }
+
+
 
 /* =========================================================
    CUENTA REGRESIVA · ENACOM 2026
 ========================================================= */
 
-const countdownTarget = new Date("2026-11-04T08:00:00-03:00").getTime();
-const countdownDays = document.getElementById("countdown-days");
-const countdownHours = document.getElementById("countdown-hours");
-const countdownMinutes = document.getElementById("countdown-minutes");
-const countdownSeconds = document.getElementById("countdown-seconds");
-const countdownStatus = document.getElementById("countdown-status");
+/*
+  Fecha objetivo:
+  4 de noviembre de 2026
+  08:00 AM
+  Argentina (UTC-03:00)
+*/
+
+const countdownTarget =
+  new Date(
+    "2026-11-04T08:00:00-03:00"
+  ).getTime();
+
+
+const countdownDays =
+  document.getElementById(
+    "countdown-days"
+  );
+
+const countdownHours =
+  document.getElementById(
+    "countdown-hours"
+  );
+
+const countdownMinutes =
+  document.getElementById(
+    "countdown-minutes"
+  );
+
+const countdownSeconds =
+  document.getElementById(
+    "countdown-seconds"
+  );
+
+const countdownStatus =
+  document.getElementById(
+    "countdown-status"
+  );
+
+
 
 function updateCountdown() {
-  if (!countdownDays || !countdownHours || !countdownMinutes || !countdownSeconds) {
+
+  if (
+    !countdownDays ||
+    !countdownHours ||
+    !countdownMinutes ||
+    !countdownSeconds
+  ) {
+
     return;
+
   }
 
-  const remaining = countdownTarget - Date.now();
+
+  const remaining =
+    countdownTarget -
+    Date.now();
+
+
+  /*
+    Cuando llega al 4 de noviembre
+    a las 08:00, queda todo en cero.
+  */
 
   if (remaining <= 0) {
-    countdownDays.textContent = "0";
-    countdownHours.textContent = "0";
-    countdownMinutes.textContent = "0";
-    countdownSeconds.textContent = "0";
+
+    countdownDays.textContent =
+      "0";
+
+    countdownHours.textContent =
+      "0";
+
+    countdownMinutes.textContent =
+      "0";
+
+    countdownSeconds.textContent =
+      "0";
+
 
     if (countdownStatus) {
-      const lang = document.documentElement.lang || "es";
-      countdownStatus.textContent = translations[lang].countdownComplete;
+
+      const lang =
+        document.documentElement.lang ||
+        "es";
+
+
+      countdownStatus.textContent =
+        translations[lang]
+          .countdownComplete;
+
     }
 
+
     return true;
+
   }
 
-  const totalSeconds = Math.floor(remaining / 1000);
-  const days = Math.floor(totalSeconds / 86400);
-  const hours = Math.floor((totalSeconds % 86400) / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-  const seconds = totalSeconds % 60;
 
-  countdownDays.textContent = String(days);
-  countdownHours.textContent = String(hours).padStart(2, "0");
-  countdownMinutes.textContent = String(minutes).padStart(2, "0");
-  countdownSeconds.textContent = String(seconds).padStart(2, "0");
+  const totalSeconds =
+    Math.floor(
+      remaining / 1000
+    );
+
+
+  const days =
+    Math.floor(
+      totalSeconds / 86400
+    );
+
+
+  const hours =
+    Math.floor(
+      (
+        totalSeconds %
+        86400
+      ) / 3600
+    );
+
+
+  const minutes =
+    Math.floor(
+      (
+        totalSeconds %
+        3600
+      ) / 60
+    );
+
+
+  const seconds =
+    totalSeconds % 60;
+
+
+  countdownDays.textContent =
+    String(days);
+
+
+  countdownHours.textContent =
+    String(hours)
+      .padStart(2, "0");
+
+
+  countdownMinutes.textContent =
+    String(minutes)
+      .padStart(2, "0");
+
+
+  countdownSeconds.textContent =
+    String(seconds)
+      .padStart(2, "0");
+
 
   return false;
+
 }
 
 
@@ -1823,14 +2035,34 @@ function updateCountdown() {
    INICIAR
 ========================================================= */
 
-changeLanguage(savedLanguage);
+changeLanguage(
+  savedLanguage
+);
+
 
 renderQuestion();
 
-if (!updateCountdown()) {
-  const countdownTimer = setInterval(() => {
-    if (updateCountdown()) {
-      clearInterval(countdownTimer);
-    }
-  }, 1000);
+
+if (
+  !updateCountdown()
+) {
+
+  const countdownTimer =
+    setInterval(
+      () => {
+
+        if (
+          updateCountdown()
+        ) {
+
+          clearInterval(
+            countdownTimer
+          );
+
+        }
+
+      },
+      1000
+    );
+
 }
