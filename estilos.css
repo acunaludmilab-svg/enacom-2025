@@ -30,10 +30,22 @@
 html {
   scroll-behavior: smooth;
   font-size: calc(16px * var(--text-scale));
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+video,
+iframe,
+svg {
+  max-width: 100%;
+  height: auto;
 }
 
 body {
   margin: 0;
+  max-width: 100%;
+  overflow-x: hidden;
 
   font-family:
     Arial,
