@@ -52,6 +52,13 @@
       <div class="nav-links">
 
         <a
+          href="#historia"
+          data-i18n="navHistoria"
+        >
+          Historia ENACOM
+        </a>
+
+        <a
           href="#ejes"
           data-i18n="navEjes"
         >
@@ -519,6 +526,57 @@
           Fotografías de los ponentes:
           Instagram de FADECCOS ENACOM.
         </p>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         HISTORIA DE ENACOM · RECORRIDO INTERACTIVO
+    ==================================================== -->
+
+    <section
+      class="timeline-section"
+      id="historia"
+      aria-labelledby="timeline-title"
+    >
+
+      <div class="section-wrap">
+
+        <div class="section-title center">
+          <span
+            class="kicker"
+            data-i18n="timelineKicker"
+          >
+            Recorrido histórico
+          </span>
+
+          <h2 id="timeline-title" data-i18n="timelineTitle">
+            La historia del ENACOM
+          </h2>
+
+          <p data-i18n="timelineIntro">
+            Elegí un hito para recorrer la construcción colectiva de este encuentro federal.
+          </p>
+        </div>
+
+        <div class="timeline" role="region" aria-label="Historia interactiva del ENACOM">
+          <div
+            class="timeline-controls"
+            id="timeline-controls"
+            role="tablist"
+            aria-label="Hitos históricos del ENACOM"
+          ></div>
+
+          <article
+            class="timeline-detail"
+            id="timeline-detail"
+            aria-live="polite"
+            aria-atomic="true"
+          ></article>
+        </div>
 
       </div>
 
