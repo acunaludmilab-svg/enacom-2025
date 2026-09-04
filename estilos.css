@@ -458,7 +458,7 @@ a {
 }
 
 .countdown-title {
-  color: #fff3e1;
+  color: var(--cream);
   font-size: 1.15rem;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -812,12 +812,27 @@ section {
 }
 
 .timeline-controls {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(7.2rem, 1fr));
   gap: 0.65rem;
+  padding-bottom: 0.35rem;
+}
+
+.timeline-controls::before {
+  content: "";
+  position: absolute;
+  left: 1.1rem;
+  right: 1.1rem;
+  top: 1.12rem;
+  height: 2px;
+  background: var(--line);
+  pointer-events: none;
 }
 
 .timeline-button {
+  position: relative;
+  z-index: 1;
   min-height: 5.6rem;
   padding: 0.75rem 0.55rem;
   border: 1px solid var(--line);
@@ -876,7 +891,7 @@ section {
 
 .timeline-detail {
   min-height: 10rem;
-  margin-top: 1rem;
+  margin-top: 1.25rem;
   padding: clamp(1.25rem, 3vw, 2rem);
   border-left: 6px solid var(--orange);
   border-radius: var(--radius);
