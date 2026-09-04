@@ -95,8 +95,6 @@ if (
   nextButton
 ) {
 
-  /* Crear indicadores */
-
   slides.forEach((slide, index) => {
 
     const dot =
@@ -198,8 +196,6 @@ if (
   showSlide(0);
 
 
-  /* Carrusel automático */
-
   let carouselTimer =
     setInterval(() => {
 
@@ -209,8 +205,6 @@ if (
 
     }, 6500);
 
-
-  /* Pausar al pasar el mouse */
 
   const carousel =
     document.querySelector(".carousel");
@@ -378,6 +372,9 @@ const translations = {
 
     timelineIntro:
       "Conocé el origen, la evolución y la construcción federal del Encuentro Nacional de Carreras de Comunicación.",
+
+    timelineAriaLabel:
+      "Hitos de la historia del ENACOM",
 
 
     historyWhatKicker:
@@ -727,6 +724,9 @@ const translations = {
     timelineIntro:
       "Discover the origins, evolution and federal development of the National Meeting of Communication Programs.",
 
+    timelineAriaLabel:
+      "ENACOM history milestones",
+
 
     historyWhatKicker:
       "What is ENACOM?",
@@ -1055,6 +1055,9 @@ const translations = {
 
     timelineIntro:
       "Conheça a origem, a evolução e a construção federal do Encontro Nacional de Carreiras de Comunicação.",
+
+    timelineAriaLabel:
+      "Marcos da história do ENACOM",
 
 
     historyWhatKicker:
@@ -2059,7 +2062,8 @@ function showQuizResult() {
     "none";
 
 
-  let message = "";
+  let message =
+    "";
 
 
   if (lang === "en") {
@@ -2357,6 +2361,15 @@ function renderTimeline(lang) {
 
 
   if (!controls || !detail) return;
+
+
+  /* IMPORTANTE:
+     actualizar también el idioma del componente */
+
+  controls.setAttribute(
+    "aria-label",
+    translations[lang].timelineAriaLabel
+  );
 
 
   controls.innerHTML =
