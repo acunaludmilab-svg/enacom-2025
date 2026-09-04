@@ -480,32 +480,52 @@
     <!-- ===================================================
          LÍNEA DEL TIEMPO · HISTORIA DEL ENACOM
     ==================================================== -->
-    <section class="timeline-section" id="historia">
+    <section class="timeline-section history-section" id="historia" aria-labelledby="timeline-title">
       <div class="section-wrap">
 
         <div class="section-title center">
           <span class="kicker" data-i18n="timelineKicker">Recorrido histórico</span>
-          <h2 data-i18n="timelineTitle">La historia del ENACOM</h2>
-          <p data-i18n="timelineIntro">
-            Elegí un hito para recorrer la construcción colectiva
-            de este encuentro federal.
-          </p>
+          <h2 id="timeline-title" data-i18n="timelineTitle">La historia del ENACOM</h2>
+          <p data-i18n="timelineIntro">Conocé el origen, la evolución y la construcción federal del Encuentro Nacional de Carreras de Comunicación.</p>
+        </div>
+
+        <div class="history-intro">
+          <div class="history-intro-main">
+            <span class="history-label" data-i18n="historyWhatKicker">¿Qué es ENACOM?</span>
+            <h3 data-i18n="historyWhatTitle">Un encuentro nacional para pensar la comunicación</h3>
+            <p data-i18n="historyWhatText">El Encuentro Nacional de Carreras de Comunicación (ENACOM) surgió en 2002 como una propuesta para reunir a estudiantes, docentes, investigadores y graduados vinculados al campo de la comunicación social de todo el país.</p>
+            <p data-i18n="historyWhatText2">Organizado por la Federación Argentina de Carreras de Comunicación Social (FADECCOS), el primer encuentro se realizó en Olavarría y abrió un espacio federal de intercambio, debate y producción académica alrededor de los medios, el periodismo, la cultura, las políticas comunicacionales y las nuevas tecnologías.</p>
+          </div>
+          <div class="history-intro-card">
+            <div class="history-card-number">2002</div>
+            <div>
+              <span class="history-card-label" data-i18n="historyCardLabel">Primer ENACOM</span>
+              <h4 data-i18n="historyCardTitle">Olavarría</h4>
+              <p data-i18n="historyCardText">El comienzo de un espacio nacional y federal dedicado al intercambio sobre comunicación.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="history-pillars">
+          <article class="history-pillar"><div class="history-pillar-icon">01</div><div><h3 data-i18n="historyPillar1Title">Encuentro</h3><p data-i18n="historyPillar1Text">Un espacio para reunir a estudiantes, docentes, investigadores y graduados de distintas universidades.</p></div></article>
+          <article class="history-pillar"><div class="history-pillar-icon">02</div><div><h3 data-i18n="historyPillar2Title">Federalización</h3><p data-i18n="historyPillar2Text">El encuentro comenzó a recorrer distintas provincias, descentralizando la producción y circulación del conocimiento sobre comunicación.</p></div></article>
+          <article class="history-pillar"><div class="history-pillar-icon">03</div><div><h3 data-i18n="historyPillar3Title">Debate</h3><p data-i18n="historyPillar3Text">A lo largo de los años incorporó nuevas problemáticas vinculadas con los cambios sociales, culturales, tecnológicos y políticos.</p></div></article>
+        </div>
+
+        <div class="history-timeline-heading">
+          <span class="history-label" data-i18n="historyTimelineKicker">Una historia en movimiento</span>
+          <h3 data-i18n="historyTimelineTitle">De 1983 hasta hoy</h3>
+          <p data-i18n="historyTimelineText">Seleccioná cada momento para conocer cómo fue transformándose el encuentro.</p>
         </div>
 
         <div class="timeline">
-          <div
-            class="timeline-controls"
-            id="timeline-controls"
-            role="tablist"
-            aria-label="Hitos de la historia del ENACOM"
-          ></div>
+          <div class="timeline-controls" id="timeline-controls" role="tablist" aria-label="Hitos de la historia del ENACOM"></div>
+          <div class="timeline-detail" id="timeline-detail" role="tabpanel" aria-live="polite"></div>
+        </div>
 
-          <div
-            class="timeline-detail"
-            id="timeline-detail"
-            role="tabpanel"
-            aria-live="polite"
-          ></div>
+        <div class="history-closing">
+          <div class="history-closing-line"></div>
+          <p data-i18n="historyClosing">Más de dos décadas después de aquel primer encuentro, ENACOM continúa construyendo un espacio federal para pensar colectivamente los desafíos de la comunicación.</p>
         </div>
 
       </div>
