@@ -1,565 +1,615 @@
-/* =========================================================
-   LÍNEA DEL TIEMPO · HISTORIA DEL ENACOM
-========================================================= */
-
-const timelineData = {
-
-  es: [
-
-    {
-      year: "1983",
-      label: "AFACOS",
-      title: "1983 · Creación de AFACOS — Punto de inicio",
-      intro:
-        "En el marco del retorno de la democracia en Argentina, comienza a construirse una articulación federal entre las carreras de comunicación.",
-      text:
-        "Se crea la Asociación Federal de Carreras de Comunicación Social (AFACOS), que constituye el primer intento de articulación federal entre universidades para promover el intercambio académico, la investigación, la reflexión crítica sobre los medios y la formación profesional. Su creación sienta las bases institucionales del campo comunicacional en el país.",
-      tag: "El comienzo"
-    },
-
-    {
-      year: "2001",
-      label: "FADECCOS",
-      title: "2001 · Formalización de FADECCOS — Reorganización e institucionalización",
-      intro:
-        "La estructura federal se fortalece y adquiere una nueva forma institucional.",
-      text:
-        "AFACOS se transforma en la Federación Argentina de Carreras de Comunicación Social (FADECCOS). Este paso de «asociación» a «federación» responde al gran crecimiento de las carreras de comunicación durante los años 90 y da lugar a una estructura más amplia y representativa. Su objetivo central es coordinar universidades, impulsar la investigación y consolidar encuentros nacionales en un contexto de creciente relevancia social, política y tecnológica de la comunicación.",
-      tag: "La consolidación"
-    },
-
-    {
-      year: "2002",
-      label: "Primer ENACOM",
-      title: "2002 · Primer ENACOM",
-      intro:
-        "El encuentro nace como una propuesta federal para reunir a quienes forman parte del campo de la comunicación.",
-      text:
-        "Organizado por FADECCOS, se realiza en Olavarría el primer Encuentro Nacional de Carreras de Comunicación (ENACOM). Concebido para reunir a estudiantes, docentes, investigadores y graduados de todo el país, este evento fundacional instala un espacio permanente de debate sobre periodismo, medios, cultura, políticas comunicacionales y nuevas tecnologías.",
-      tag: "El nacimiento del encuentro"
-    },
-
-    {
-      year: "2002–2010",
-      label: "Expansión federal",
-      title: "2002–2010 · Expansión y consolidación federal",
-      intro:
-        "El ENACOM comienza a recorrer el país y amplía la dimensión federal del intercambio académico.",
-      text:
-        "El ENACOM comienza a rotar por distintas provincias con el objetivo de descentralizar la producción de conocimiento fuera de Buenos Aires. Durante este período crece la participación, se incorporan investigadores latinoamericanos, aparecen nuevos debates sobre internet y comunicación digital y se suman presentaciones de producciones audiovisuales y multimediales.",
-      secondary:
-        "Al mismo tiempo, se mantiene una mirada académica y crítica, el rol protagónico de los estudiantes y la articulación entre universidades públicas. El encuentro deja de ser solamente un espacio de exposición teórica para convertirse también en un ámbito de producción colectiva y búsqueda de soluciones.",
-      tag: "El crecimiento"
-    },
-
-    {
-      year: "2010–2019",
-      label: "Nuevas agendas",
-      title: "2010–2019 · Nuevas agendas y actualización del debate",
-      intro:
-        "La transformación digital modifica las preguntas del campo y obliga al encuentro a incorporar nuevos problemas.",
-      text:
-        "Con el auge de la convergencia digital, el ENACOM actualiza sus contenidos hacia temáticas contemporáneas como redes sociales, fake news, comunicación política, inteligencia artificial, género y derechos comunicacionales.",
-      secondary:
-        "El contexto político, los cambios de gobierno y las demandas sociales de la época —entre ellas movimientos como Ni Una Menos y la lucha por la Legalización del Aborto (IVE)— refuerzan la relación de la comunicación con los Derechos Humanos, la democratización de la palabra y el derecho a la información.",
-      tag: "Nuevas preguntas"
-    },
-
-    {
-      year: "2020",
-      label: "Virtualidad",
-      title: "2020 · Suspensión y virtualización por la pandemia",
-      intro:
-        "La pandemia modifica la forma de encontrarse, participar y producir conocimiento.",
-      text:
-        "La crisis sanitaria interrumpe las actividades presenciales tradicionales. El ENACOM debe adaptar sus dinámicas hacia la virtualidad y el uso intensivo de plataformas digitales.",
-      secondary:
-        "La transformación modifica las formas de participación y, al mismo tiempo, evidencia el rol clave de la tecnología para sostener los vínculos educativos y sociales en un contexto crítico.",
-      tag: "Un cambio inesperado"
-    },
-
-    {
-      year: "2021",
-      label: "Mendoza",
-      title: "2021 · Reanudación presencial — Mendoza",
-      intro:
-        "Después de la interrupción provocada por la pandemia, el encuentro recupera el espacio presencial.",
-      text:
-        "Tras el período más agudo de la pandemia, el ENACOM vuelve a realizarse de manera presencial en Mendoza. La recuperación del intercambio cara a cara y del debate colectivo tiene un fuerte valor simbólico.",
-      secondary:
-        "La agenda se centra en analizar las consecuencias comunicacionales de la pandemia: la sobreinformación, la desinformación, las noticias falsas, el rol de los medios y la virtualización de la vida cotidiana.",
-      tag: "El regreso"
-    },
-
-    {
-      year: "2024",
-      label: "San Luis",
-      title: "Septiembre de 2024 · San Luis es elegida sede del XXII ENACOM",
-      intro:
-        "La historia del encuentro llega a San Luis y abre el camino hacia la edición de 2025.",
-      text:
-        "La Asamblea de FADECCOS aprueba por unanimidad la candidatura de la Facultad de Ciencias Humanas de la Universidad Nacional de San Luis (UNSL) como sede del ENACOM 2025.",
-      secondary:
-        "La propuesta es valorada por la trayectoria de más de 25 años de la carrera de Comunicación Social, el crecimiento académico de la UNSL, su capacidad organizativa y el interés en fortalecer debates sobre comunicación contemporánea.",
-      conclusion:
-        "La elección de San Luis representa la continuidad de un proceso histórico de fortalecimiento de las carreras de comunicación en Argentina. Desde su creación en 2002, el encuentro fue creciendo hasta consolidarse como uno de los espacios académicos más importantes para debatir las transformaciones sociales, políticas y tecnológicas vinculadas a la comunicación.",
-      tag: "El camino a 2025"
-    },
-
-    {
-      year: "2025",
-      label: "XXII ENACOM",
-      title: "2025 · XXII ENACOM en San Luis",
-      intro:
-        "La historia del encuentro desemboca en la edición que constituye el eje central de este sitio.",
-      text:
-        "Durante los días 5, 6 y 7 de noviembre de 2025, la Universidad Nacional de San Luis fue sede del XXII Encuentro Nacional de Carreras de Comunicación.",
-      secondary:
-        "El lema fue «Tiempo de comunicación. Diálogos sobre pasado y presente en un mundo acelerado», una propuesta vinculada a las transformaciones tecnológicas, sociales, culturales y políticas que atraviesan actualmente al campo de la comunicación.",
-      conclusion:
-        "Participaron estudiantes, docentes, investigadores, comunicadores, extensionistas universitarios y profesionales de distintas provincias y países latinoamericanos. Así, ENACOM 2025 puede entenderse como un nuevo capítulo de una historia que comenzó más de veinte años atrás.",
-      tag: "El presente"
-    }
-
-  ],
-
-
-  en: [
-
-    {
-      year: "1983",
-      label: "AFACOS",
-      title: "1983 · Creation of AFACOS",
-      intro:
-        "During Argentina's return to democracy, a federal articulation between communication programs begins to take shape.",
-      text:
-        "The Federal Association of Social Communication Programs (AFACOS) is created as the first attempt to connect universities across the country, promoting academic exchange, research, critical reflection on media and professional training.",
-      tag: "The beginning"
-    },
-
-    {
-      year: "2001",
-      label: "FADECCOS",
-      title: "2001 · FADECCOS is formalized",
-      intro:
-        "The federal structure becomes stronger and acquires a new institutional form.",
-      text:
-        "AFACOS becomes the Argentine Federation of Social Communication Programs (FADECCOS). The transformation responds to the growth of communication programs during the 1990s and creates a broader structure for coordination, research and national meetings.",
-      tag: "Consolidation"
-    },
-
-    {
-      year: "2002",
-      label: "First ENACOM",
-      title: "2002 · First ENACOM",
-      intro:
-        "The meeting is created as a federal space for the communication community.",
-      text:
-        "FADECCOS organizes the first National Meeting of Communication Programs in Olavarría. Students, teachers, researchers and graduates from across the country come together to debate journalism, media, culture, communication policies and new technologies.",
-      tag: "The birth of ENACOM"
-    },
-
-    {
-      year: "2002–2010",
-      label: "Federal expansion",
-      title: "2002–2010 · Expansion and federal consolidation",
-      intro:
-        "ENACOM begins moving across the country and strengthens its federal dimension.",
-      text:
-        "The meeting rotates among different provinces in order to decentralize knowledge production. Participation grows, Latin American researchers join the event and debates on internet, digital communication, audiovisual productions and multimedia projects emerge.",
-      secondary:
-        "At the same time, ENACOM maintains its academic and critical perspective, the leading role of students and cooperation among public universities.",
-      tag: "Growth"
-    },
-
-    {
-      year: "2010–2019",
-      label: "New agendas",
-      title: "2010–2019 · New agendas",
-      intro:
-        "Digital transformation changes the questions explored by the communication field.",
-      text:
-        "Digital convergence expands ENACOM's agenda toward social media, fake news, political communication, artificial intelligence, gender and communication rights.",
-      secondary:
-        "Political transformations and social demands strengthen the relationship between communication, human rights, democratization of speech and the right to information.",
-      tag: "New questions"
-    },
-
-    {
-      year: "2020",
-      label: "Virtuality",
-      title: "2020 · Suspension and virtuality",
-      intro:
-        "The pandemic transforms the way people meet, participate and exchange knowledge.",
-      text:
-        "The health crisis interrupts traditional in-person activities. ENACOM adapts to virtual formats and the intensive use of digital platforms.",
-      secondary:
-        "This transformation changes participation and demonstrates the importance of technology in maintaining educational and social connections.",
-      tag: "An unexpected change"
-    },
-
-    {
-      year: "2021",
-      label: "Mendoza",
-      title: "2021 · Return to in-person meetings",
-      intro:
-        "After the pandemic interruption, ENACOM returns to face-to-face interaction.",
-      text:
-        "The meeting returns to Mendoza, restoring face-to-face exchange and collective debate.",
-      secondary:
-        "The agenda focuses on overinformation, disinformation, fake news, the role of media and the virtualization of everyday life.",
-      tag: "The return"
-    },
-
-    {
-      year: "2024",
-      label: "San Luis",
-      title: "September 2024 · San Luis is chosen",
-      intro:
-        "The history of ENACOM reaches San Luis and opens the path toward the 2025 edition.",
-      text:
-        "FADECCOS unanimously approves the Faculty of Human Sciences at the National University of San Luis as the host institution for ENACOM 2025.",
-      secondary:
-        "The proposal is valued because of the history of its Communication program, the academic growth of the university and its organizational capacity.",
-      conclusion:
-        "The choice of San Luis represents the continuation of a historical process of strengthening communication programs in Argentina.",
-      tag: "The path to 2025"
-    },
-
-    {
-      year: "2025",
-      label: "22nd ENACOM",
-      title: "2025 · 22nd ENACOM in San Luis",
-      intro:
-        "The historical journey leads to the edition that is at the center of this website.",
-      text:
-        "From November 5 to 7, 2025, the National University of San Luis hosted the 22nd National Meeting of Communication Programs.",
-      secondary:
-        "Its motto was “A time for communication. Dialogues between past and present in an accelerated world”, connecting technological, social, cultural and political transformations in communication.",
-      conclusion:
-        "Students, teachers, researchers, communicators and professionals from different provinces and Latin American countries participated in the event.",
-      tag: "The present"
-    }
-
-  ],
-
-
-  pt: [
-
-    {
-      year: "1983",
-      label: "AFACOS",
-      title: "1983 · Criação da AFACOS",
-      intro:
-        "No retorno da democracia argentina, começa a construção de uma articulação federal entre os cursos de comunicação.",
-      text:
-        "É criada a Associação Federal de Carreiras de Comunicação Social (AFACOS), como primeiro espaço federal de articulação entre universidades para promover intercâmbio acadêmico, pesquisa, reflexão crítica sobre os meios e formação profissional.",
-      tag: "O começo"
-    },
-
-    {
-      year: "2001",
-      label: "FADECCOS",
-      title: "2001 · Formalização da FADECCOS",
-      intro:
-        "A estrutura federal se fortalece e adquire uma nova forma institucional.",
-      text:
-        "A AFACOS transforma-se na Federação Argentina de Carreiras de Comunicação Social (FADECCOS), ampliando a representação das universidades e consolidando a coordenação, a pesquisa e os encontros nacionais.",
-      tag: "Consolidação"
-    },
-
-    {
-      year: "2002",
-      label: "Primeiro ENACOM",
-      title: "2002 · Primeiro ENACOM",
-      intro:
-        "O encontro nasce como um espaço federal para reunir a comunidade da comunicação.",
-      text:
-        "Organizado pela FADECCOS, o primeiro Encontro Nacional de Carreiras de Comunicação acontece em Olavarría. Estudantes, docentes, pesquisadores e graduados de todo o país se reúnem para debater jornalismo, meios, cultura, políticas comunicacionais e novas tecnologias.",
-      tag: "O nascimento"
-    },
-
-    {
-      year: "2002–2010",
-      label: "Expansão federal",
-      title: "2002–2010 · Expansão e consolidação federal",
-      intro:
-        "O ENACOM começa a circular por diferentes províncias e fortalece sua dimensão federal.",
-      text:
-        "A participação cresce, pesquisadores latino-americanos são incorporados e aparecem debates sobre internet, comunicação digital e produções audiovisuais e multimídia.",
-      secondary:
-        "Ao mesmo tempo, o encontro mantém uma perspectiva acadêmica e crítica e o protagonismo dos estudantes e das universidades públicas.",
-      tag: "Crescimento"
-    },
-
-    {
-      year: "2010–2019",
-      label: "Novas agendas",
-      title: "2010–2019 · Novas agendas",
-      intro:
-        "A transformação digital muda as perguntas do campo da comunicação.",
-      text:
-        "A convergência digital amplia a agenda para redes sociais, fake news, comunicação política, inteligência artificial, gênero e direitos comunicacionais.",
-      secondary:
-        "As transformações políticas e sociais reforçam a relação entre comunicação, direitos humanos, democratização da palavra e direito à informação.",
-      tag: "Novas perguntas"
-    },
-
-    {
-      year: "2020",
-      label: "Virtualidade",
-      title: "2020 · Suspensão e virtualidade",
-      intro:
-        "A pandemia transforma as formas de encontro e participação.",
-      text:
-        "A crise sanitária interrompe as atividades presenciais e leva o ENACOM para plataformas digitais.",
-      secondary:
-        "Essa transformação evidencia o papel da tecnologia para manter vínculos educativos e sociais em um contexto crítico.",
-      tag: "Uma mudança inesperada"
-    },
-
-    {
-      year: "2021",
-      label: "Mendoza",
-      title: "2021 · Retorno presencial",
-      intro:
-        "Depois da interrupção causada pela pandemia, o encontro retorna ao espaço presencial.",
-      text:
-        "O ENACOM volta a Mendoza e recupera o intercâmbio presencial e o debate coletivo.",
-      secondary:
-        "A agenda aborda a sobreinformação, a desinformação, as fake news, o papel dos meios e a virtualização da vida cotidiana.",
-      tag: "O retorno"
-    },
-
-    {
-      year: "2024",
-      label: "San Luis",
-      title: "2024 · San Luis é escolhida como sede",
-      intro:
-        "A história do ENACOM chega a San Luis e abre caminho para 2025.",
-      text:
-        "A FADECCOS aprova por unanimidade a Faculdade de Ciências Humanas da Universidade Nacional de San Luis como sede do ENACOM 2025.",
-      secondary:
-        "A proposta é valorizada pela trajetória da carreira de Comunicação Social, pelo crescimento acadêmico da universidade e por sua capacidade organizativa.",
-      conclusion:
-        "A escolha de San Luis representa a continuidade do fortalecimento histórico das carreiras de comunicação na Argentina.",
-      tag: "O caminho para 2025"
-    },
-
-    {
-      year: "2025",
-      label: "XXII ENACOM",
-      title: "2025 · XXII ENACOM em San Luis",
-      intro:
-        "O percurso histórico chega à edição que está no centro deste site.",
-      text:
-        "De 5 a 7 de novembro de 2025, a Universidade Nacional de San Luis recebe o XXII Encontro Nacional de Carreiras de Comunicação.",
-      secondary:
-        "O lema foi “Tempo de comunicação. Diálogos entre passado e presente em um mundo acelerado”, relacionando transformações tecnológicas, sociais, culturais e políticas.",
-      conclusion:
-        "Participam estudantes, docentes, pesquisadores, comunicadores e profissionais de diferentes províncias e países latino-americanos.",
-      tag: "O presente"
-    }
-
-  ]
-
-};
-
-
-
-/* =========================================================
-   RENDERIZAR LÍNEA DEL TIEMPO
-========================================================= */
-
-function renderTimeline(lang) {
-
-  const controls =
-    document.getElementById(
-      "timeline-controls"
-    );
-
-  const detail =
-    document.getElementById(
-      "timeline-detail"
-    );
-
-
-  const items =
-    timelineData[lang] ||
-    timelineData.es;
-
-
-  if (!controls || !detail) {
-    return;
-  }
-
-
-  controls.innerHTML = "";
-
-
-  function selectTimelineItem(index) {
-
-    const item = items[index];
-
-
-    controls
-      .querySelectorAll(".timeline-button")
-      .forEach((button, buttonIndex) => {
-
-        button.setAttribute(
-          "aria-selected",
-          String(buttonIndex === index)
-        );
-
-      });
-
-
-    detail.innerHTML = "";
-
-
-    /* Etiqueta */
-
-    const tag =
-      document.createElement("span");
-
-    tag.className =
-      "timeline-detail-tag";
-
-    tag.textContent =
-      item.tag;
-
-
-    /* Título */
-
-    const title =
-      document.createElement("h3");
-
-    title.textContent =
-      item.title;
-
-
-    /* Introducción */
-
-    const intro =
-      document.createElement("p");
-
-    intro.className =
-      "timeline-detail-intro";
-
-    intro.textContent =
-      item.intro;
-
-
-    detail.appendChild(tag);
-    detail.appendChild(title);
-    detail.appendChild(intro);
-
-
-    /* Texto principal */
-
-    const text =
-      document.createElement("p");
-
-    text.textContent =
-      item.text;
-
-    detail.appendChild(text);
-
-
-    /* Segundo párrafo */
-
-    if (item.secondary) {
-
-      const secondary =
-        document.createElement("p");
-
-      secondary.textContent =
-        item.secondary;
-
-      detail.appendChild(
-        secondary
-      );
-
-    }
-
-
-    /* Cierre */
-
-    if (item.conclusion) {
-
-      const conclusion =
-        document.createElement("p");
-
-      conclusion.className =
-        "timeline-detail-conclusion";
-
-      conclusion.textContent =
-        item.conclusion;
-
-      detail.appendChild(
-        conclusion
-      );
-
-    }
-
-  }
-
-
-  items.forEach((item, index) => {
-
-    const button =
-      document.createElement("button");
-
-    const year =
-      document.createElement("strong");
-
-    const label =
-      document.createElement("span");
-
-
-    button.type =
-      "button";
-
-    button.className =
-      "timeline-button";
-
-    button.setAttribute(
-      "role",
-      "tab"
-    );
-
-    button.setAttribute(
-      "aria-selected",
-      String(index === 0)
-    );
-
-
-    year.textContent =
-      item.year;
-
-    label.textContent =
-      item.label;
-
-
-    button.appendChild(year);
-    button.appendChild(label);
-
-
-    button.addEventListener(
-      "click",
-      () => {
-
-        selectTimelineItem(index);
-
-      }
-    );
-
-
-    controls.appendChild(button);
-
-  });
-
-
-  selectTimelineItem(0);
-
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ENACOM 2025 - XXII Encuentro Nacional de Carreras de Comunicación. San Luis, Argentina.">
+  <title>ENACOM 2025 | Tiempo de comunicación</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <!-- =====================================================
+       ACCESIBILIDAD
+  ====================================================== -->
+  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+  <!-- =====================================================
+       HEADER
+  ====================================================== -->
+  <header class="site-header">
+    <nav class="nav" aria-label="Navegación principal">
+
+      <a class="brand" href="#inicio" aria-label="ENACOM 2025 - volver al inicio">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>ENACOM 2025</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#ejes" data-i18n="navEjes">Ejes temáticos</a>
+        <a href="#historia" data-i18n="navHistoria">Historia</a>
+        <a href="#referentes" data-i18n="navPonencias">Referentes</a>
+        <a href="#interactivo" data-i18n="navInteractivo">Interactivo</a>
+        <a href="#redes" data-i18n="navRedes">Redes</a>
+      </div>
+
+      <div class="language-selector" aria-label="Selector de idioma">
+        <button class="language-btn active" data-lang="es" type="button">ES</button>
+        <button class="language-btn" data-lang="en" type="button">EN</button>
+        <button class="language-btn" data-lang="pt" type="button">PT</button>
+      </div>
+
+    </nav>
+  </header>
+
+  <!-- =====================================================
+       CONTENIDO PRINCIPAL
+  ====================================================== -->
+  <main id="contenido">
+
+    <!-- ===================================================
+         HERO
+    ==================================================== -->
+    <section class="hero" id="inicio">
+      <div class="hero-content">
+
+        <div class="hero-text">
+
+          <span class="kicker" data-i18n="kicker">
+            XXII Encuentro Nacional de Carreras de Comunicación
+          </span>
+
+          <h1>ENACOM<br>2025</h1>
+
+          <h2 data-i18n="heroTitle">
+            Tiempo de comunicación. Diálogos sobre pasado y presente
+            en un mundo acelerado
+          </h2>
+
+          <p data-i18n="heroText">
+            Un recorrido por los principales debates, ponencias y
+            producciones del ENACOM 2025, realizado en San Luis.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button primary" href="#galeria" data-i18n="heroGallery">Ver fotografías</a>
+            <a class="button" href="#ejes" data-i18n="heroExplore">Explorar el encuentro</a>
+          </div>
+
+          <section class="countdown" aria-labelledby="countdown-title">
+            <p class="countdown-title" id="countdown-title" data-i18n="countdownTitle">
+              Días para ENACOM 2026
+            </p>
+            <div class="countdown-grid" id="countdown" aria-live="polite">
+              <div class="countdown-unit">
+                <strong id="countdown-days">0</strong>
+                <span data-i18n="countdownDays">Días</span>
+              </div>
+              <div class="countdown-unit">
+                <strong id="countdown-hours">0</strong>
+                <span data-i18n="countdownHours">Horas</span>
+              </div>
+              <div class="countdown-unit">
+                <strong id="countdown-minutes">0</strong>
+                <span data-i18n="countdownMinutes">Minutos</span>
+              </div>
+              <div class="countdown-unit">
+                <strong id="countdown-seconds">0</strong>
+                <span data-i18n="countdownSeconds">Segundos</span>
+              </div>
+            </div>
+            <p class="countdown-status" id="countdown-status" aria-live="polite"></p>
+          </section>
+
+        </div>
+
+        <!-- IMAGEN / IDENTIDAD -->
+        <aside class="event-panel">
+          <img src="images/preview-comunicacion.png" alt="Composición visual del ENACOM 2025">
+          <p data-i18n="heroImageCaption">
+            Producciones desarrolladas a partir de los debates y
+            problemáticas abordadas durante el encuentro.
+          </p>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- ===================================================
+         GALERÍA / CARRUSEL
+    ==================================================== -->
+    <section class="gallery-section" id="galeria">
+      <div class="section-wrap">
+
+        <div class="section-title center">
+          <span class="kicker" data-i18n="galleryKicker">El encuentro en imágenes</span>
+          <h2 data-i18n="galleryTitle">ENACOM 2025 en San Luis</h2>
+          <p data-i18n="galleryText">
+            Una mirada visual sobre las jornadas realizadas en la
+            Facultad de Ciencias Humanas de la Universidad Nacional
+            de San Luis.
+          </p>
+        </div>
+
+        <div class="carousel" aria-label="Galería de fotografías del ENACOM 2025">
+          <div class="carousel-track">
+
+            <!-- FOTO 1 -->
+            <figure class="carousel-slide active">
+              <img src="images/carrusel-facultad.jpg" alt="Frente de la Facultad de Ciencias Humanas de la Universidad Nacional de San Luis, sede del ENACOM 2025">
+              <figcaption>
+                <strong>Facultad de Ciencias Humanas</strong>
+                <span>Universidad Nacional de San Luis · Sede del ENACOM 2025</span>
+              </figcaption>
+            </figure>
+
+            <!-- FOTO 2 -->
+            <figure class="carousel-slide">
+              <img src="images/carrusel-publico-1.png" alt="Público asistente durante una jornada del ENACOM 2025">
+              <figcaption>
+                <strong>Participación y encuentro</strong>
+                <span>Docentes, investigadores y estudiantes durante la jornada</span>
+              </figcaption>
+            </figure>
+
+            <!-- FOTO 3 -->
+            <figure class="carousel-slide">
+              <img src="images/carrusel-publico-2.png" alt="Público observando una actividad durante el ENACOM 2025">
+              <figcaption>
+                <strong>Comunidad académica</strong>
+                <span>Un espacio de intercambio y reflexión sobre comunicación</span>
+              </figcaption>
+            </figure>
+
+            <!-- FOTO 4 -->
+            <figure class="carousel-slide">
+              <img src="images/carrusel-peret.png" alt="Maximiliano Peret durante el ENACOM 2025">
+              <figcaption>
+                <strong>Maximiliano Peret</strong>
+                <span>Coordinación de la mesa sobre convergencia e inteligencias artificiales</span>
+              </figcaption>
+            </figure>
+
+            <!-- FOTO 5 -->
+            <figure class="carousel-slide">
+              <img src="images/carrusel-vilte.png" alt="Miguel Ángel Vilte durante el ENACOM 2025">
+              <figcaption>
+                <strong>Miguel Ángel Vilte</strong>
+                <span>Participación en las actividades académicas del encuentro</span>
+              </figcaption>
+            </figure>
+
+            <!-- FOTO 6 -->
+            <figure class="carousel-slide">
+              <img src="images/carrusel-cristiano.png" alt="Javier Cristiano durante el ENACOM 2025">
+              <figcaption>
+                <strong>Javier Cristiano</strong>
+                <span>Doctor en Sociología, investigador del CONICET y profesor en la UNC</span>
+              </figcaption>
+            </figure>
+
+            <!-- FOTO 7 -->
+            <figure class="carousel-slide">
+              <img src="images/carrusel-becerra.png" alt="Martín Becerra durante el ENACOM 2025">
+              <figcaption>
+                <strong>Martín Becerra</strong>
+                <span>Investigador especializado en comunicación, medios y democracia</span>
+              </figcaption>
+            </figure>
+
+          </div>
+
+          <button class="carousel-control prev" type="button" aria-label="Fotografía anterior">‹</button>
+          <button class="carousel-control next" type="button" aria-label="Fotografía siguiente">›</button>
+          <div class="carousel-dots" aria-label="Seleccionar fotografía"></div>
+        </div>
+
+        <p class="photo-note" data-i18n="photoNote">
+          Las fotografías se presentan con identificación de su
+          fuente y autoría.
+        </p>
+
+        <p class="photo-credit">
+          Fotografías de los ponentes: Instagram de FADECCOS ENACOM.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- ===================================================
+         EJES TEMÁTICOS
+    ==================================================== -->
+    <section class="main-thread" id="ejes">
+      <div class="section-wrap">
+
+        <div class="section-title">
+          <span class="kicker" data-i18n="axesKicker">Recorrido conceptual</span>
+          <h2 data-i18n="axesTitle">Ejes temáticos</h2>
+          <p data-i18n="axesIntro">
+            El recorrido reúne algunas de las principales problemáticas
+            abordadas durante el ENACOM 2025.
+          </p>
+        </div>
+
+        <div class="feature-layout">
+
+          <article class="thread-copy">
+            <h3 data-i18n="axisMainTitle">Crisis, comunicación y democracia</h3>
+            <p data-i18n="axisMainText">
+              Este eje aborda la relación entre las crisis socioeconómicas
+              y políticas, la comunicación pública, el periodismo,
+              la circulación de información y los desafíos democráticos.
+            </p>
+          </article>
+
+          <div class="media-slot">
+            <iframe
+              src="https://www.youtube.com/embed/H3dgq7f7Cdc?si=i6j7gJmSSWB-PtCm"
+              title="Video sobre ENACOM 2025"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         PROBLEMÁTICAS Y DEBATES
+    ==================================================== -->
+    <section class="subthreads" id="problematicas">
+      <div class="section-wrap">
+
+        <div class="section-title">
+          <span class="kicker" data-i18n="problemsKicker">Debates contemporáneos</span>
+          <h2 data-i18n="problemsTitle">Problemáticas y debates</h2>
+          <p data-i18n="problemsIntro">
+            Dos de los temas trabajados en nuestro recorrido sobre
+            comunicación, periodismo y democracia.
+          </p>
+        </div>
+
+        <div class="accordion">
+
+          <!-- PROBLEMÁTICA A -->
+          <article class="subthread open">
+            <button class="subthread-button" type="button" aria-expanded="true" aria-controls="problem-a">
+              <span class="label">
+                <span class="letter">A</span>
+                <span data-i18n="problemA">Ataques a comunicadores y periodistas</span>
+              </span>
+              <span class="chevron" aria-hidden="true">+</span>
+            </button>
+
+            <div class="subthread-content" id="problem-a">
+              <div class="subthread-inner">
+
+                <p class="subthread-text" data-i18n="problemAText">
+                  Esta problemática aborda las formas de hostigamiento,
+                  censura, violencia simbólica y presión pública que afectan
+                  el trabajo periodístico y el derecho social a estar informado.
+                </p>
+
+                <a href="infografia_enacom_2025_3_3.html" target="_blank" class="infografia-preview">
+                  <img src="images/preview-periodistas.png.png" alt="Vista previa de la infografía sobre ataques a comunicadores">
+                  <span class="preview-overlay" data-i18n="viewInfographic">Ver infografía completa</span>
+                </a>
+
+              </div>
+            </div>
+          </article>
+
+          <!-- PROBLEMÁTICA B -->
+          <article class="subthread">
+            <button class="subthread-button" type="button" aria-expanded="false" aria-controls="problem-b">
+              <span class="label">
+                <span class="letter">B</span>
+                <span data-i18n="problemB">Desinformación, periodismo y democracia</span>
+              </span>
+              <span class="chevron" aria-hidden="true">+</span>
+            </button>
+
+            <div class="subthread-content" id="problem-b">
+              <div class="subthread-inner">
+
+                <p class="subthread-text" data-i18n="problemBText">
+                  La circulación de fake news, la inteligencia artificial
+                  y la desinformación transforman la forma en que se produce,
+                  distribuye y recibe información.
+                </p>
+
+                <a href="fake news.pdf" target="_blank" class="infografia-preview">
+                  <img src="images/preview-fakenews.png.png" alt="Vista previa del material sobre fake news">
+                  <span class="preview-overlay" data-i18n="viewPdf">Ver material completo</span>
+                </a>
+
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         REFERENTES DEL ENACOM
+    ==================================================== -->
+    <section class="speakers-section" id="referentes">
+      <div class="section-wrap">
+
+        <div class="section-title center">
+          <span class="kicker" data-i18n="speakersKicker">Referentes del encuentro</span>
+          <h2 data-i18n="speakersTitle">Referentes del ENACOM 2025</h2>
+          <p data-i18n="speakersIntro">
+            Investigadores, docentes y especialistas que participaron
+            de los debates y actividades del encuentro.
+          </p>
+        </div>
+
+        <div class="referents-grid">
+
+          <!-- CARLOS MANGONE -->
+          <article class="referent-card">
+            <img src="images/mangone.png" alt="Carlos Mangone">
+            <div class="referent-content">
+              <h3>Carlos Mangone</h3>
+              <p data-i18n="bioMangone">
+                Doctor en Ciencias Sociales por la UBA, docente en la
+                Universidad de Buenos Aires y en la Universidad Nacional
+                de La Pampa. Su trabajo aborda el discurso político,
+                los medios y la cultura.
+              </p>
+            </div>
+          </article>
+
+          <!-- MARÍA SOLEDAD SEGURA -->
+          <article class="referent-card">
+            <img src="images/segura.png" alt="María Soledad Segura">
+            <div class="referent-content">
+              <h3>María Soledad Segura</h3>
+              <p data-i18n="bioSegura">
+                Profesora de la UNC e investigadora del CONICET.
+                Sus investigaciones abordan las desigualdades
+                comunicacionales y digitales, la participación social
+                y los discursos de odio y desinformación.
+              </p>
+            </div>
+          </article>
+
+          <!-- MARTÍN BECERRA -->
+          <article class="referent-card">
+            <img src="images/becerra.png" alt="Martín Becerra">
+            <div class="referent-content">
+              <h3>Martín Becerra</h3>
+              <p data-i18n="bioBecerra">
+                Investigador y analista especializado en políticas de
+                comunicación, medios y democracia. Es profesor en la
+                UNQ y la UBA y doctor por la Universidad Autónoma
+                de Barcelona.
+              </p>
+            </div>
+          </article>
+
+          <!-- JAVIER CRISTIANO -->
+          <article class="referent-card">
+            <img src="images/cristiano.png" alt="Javier Cristiano">
+            <div class="referent-content">
+              <h3>Javier Cristiano</h3>
+              <p data-i18n="bioCristiano">
+                Doctor en Sociología, investigador del CONICET y
+                profesor en la UNC. Su trabajo explora el tiempo social,
+                la imaginación y las formas de vida en el capitalismo
+                contemporáneo.
+              </p>
+            </div>
+          </article>
+
+          <!-- FLAVIA COSTA -->
+          <article class="referent-card">
+            <img src="images/costa.png" alt="Flavia Costa">
+            <div class="referent-content">
+              <h3>Flavia Costa</h3>
+              <p data-i18n="bioCosta">
+                Doctora en Ciencias Sociales por la UBA, investigadora
+                del CONICET y directora de Tecnoceno Lab. Su obra
+                explora los vínculos entre tecnología, cuerpo y cultura
+                en la era del algoritmo.
+              </p>
+            </div>
+          </article>
+
+          <!-- MAXIMILIANO PERET -->
+          <article class="referent-card">
+            <img src="images/peret.png" alt="Maximiliano Peret">
+            <div class="referent-content">
+              <h3>Maximiliano Peret</h3>
+              <p data-i18n="bioPeret">
+                Comunicador, docente e investigador. Participó de la
+                organización y coordinación de actividades del ENACOM 2025,
+                incluyendo la mesa sobre convergencia e inteligencias artificiales.
+              </p>
+            </div>
+          </article>
+
+          <!-- MIGUEL ÁNGEL VILTE -->
+          <article class="referent-card">
+            <img src="images/vilte.png" alt="Miguel Ángel Vilte">
+            <div class="referent-content">
+              <h3>Miguel Ángel Vilte</h3>
+              <p data-i18n="bioVilte">
+                Docente e investigador vinculado al campo de la
+                comunicación. Participó del ENACOM 2025 como parte
+                de las actividades académicas del encuentro.
+              </p>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- =================================================
+             MESA DESTACADA
+        ================================================== -->
+        <div class="featured-panel">
+          <span class="kicker" data-i18n="featuredKicker">Mesa panel destacada</span>
+          <h3 data-i18n="featuredTitle">
+            ¿Qué hacer en tiempos de convergencia e inteligencias artificiales?
+          </h3>
+          <p data-i18n="featuredText1">
+            Una de las mesas más convocantes del ENACOM 2025 reunió a
+            Martín Becerra (UNQ), Flavia Costa (UBA) y Javier Cristiano (UNC),
+            con la coordinación de Maximiliano Peret (UNICEN).
+          </p>
+          <p data-i18n="featuredText2">
+            Durante el encuentro se abordaron los desafíos éticos,
+            políticos y culturales que plantea la inteligencia artificial
+            en el campo de la comunicación: la concentración de poder en
+            las plataformas, la transformación de los modos de producción
+            simbólica y la necesidad de sostener una mirada crítica y
+            democrática sobre las tecnologías.
+          </p>
+          <blockquote data-i18n="featuredQuote">
+            "La comunicación no puede quedar al margen de las transformaciones
+            tecnológicas: debe intervenir, pensar y proponer futuros posibles."
+          </blockquote>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================
+         LÍNEA DEL TIEMPO · HISTORIA DEL ENACOM
+    ==================================================== -->
+    <section class="timeline-section" id="historia">
+      <div class="section-wrap">
+
+        <div class="section-title center">
+          <span class="kicker" data-i18n="timelineKicker">Recorrido histórico</span>
+          <h2 data-i18n="timelineTitle">La historia del ENACOM</h2>
+          <p data-i18n="timelineIntro">
+            Elegí un hito para recorrer la construcción colectiva
+            de este encuentro federal.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <div
+            class="timeline-controls"
+            id="timeline-controls"
+            role="tablist"
+            aria-label="Hitos de la historia del ENACOM"
+          ></div>
+
+          <div
+            class="timeline-detail"
+            id="timeline-detail"
+            role="tabpanel"
+            aria-live="polite"
+          ></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================
+         INTERACTIVO
+    ==================================================== -->
+    <section class="interactive-section" id="interactivo">
+      <div class="section-wrap">
+
+        <div class="section-title center">
+          <span class="kicker" data-i18n="quizKicker">Participá</span>
+          <h2 data-i18n="quizTitle">¿Cuánto sabés sobre comunicación?</h2>
+          <p data-i18n="quizIntro">Poné a prueba lo que aprendiste durante el recorrido.</p>
+        </div>
+
+        <div class="quiz-card">
+          <div id="quiz-container"></div>
+          <button id="quiz-next" class="button primary quiz-button" type="button" data-i18n="nextQuestion">
+            Siguiente pregunta
+          </button>
+          <div id="quiz-result" class="quiz-result" aria-live="polite"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================
+         REDES
+    ==================================================== -->
+    <section class="social-section" id="redes">
+      <div class="section-wrap">
+        <div class="social-card">
+
+          <div>
+            <span class="kicker" data-i18n="socialKicker">Seguí el encuentro</span>
+            <h2 data-i18n="socialTitle">ENACOM también está en redes</h2>
+            <p data-i18n="socialText">
+              Encontrá más información, fotografías y novedades
+              sobre el Encuentro Nacional de Carreras de Comunicación.
+            </p>
+          </div>
+
+          <div class="social-buttons">
+            <a class="social-button instagram" href="https://www.instagram.com/enacom.fadeccos/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de ENACOM">Instagram</a>
+            <a class="social-button facebook" href="https://www.facebook.com/enacom.fadeccos" rel="noopener noreferrer" aria-label="Facebook de ENACOM">Facebook</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         ACCESIBILIDAD
+    ==================================================== -->
+    <section class="accessibility-section">
+      <div class="section-wrap">
+        <div class="accessibility-panel">
+
+          <div>
+            <span class="kicker" data-i18n="accessKicker">Accesibilidad</span>
+            <h2 data-i18n="accessTitle">Una página para todas las personas</h2>
+            <p data-i18n="accessText">
+              Utilizá estas herramientas para adaptar la experiencia
+              de lectura según tus necesidades.
+            </p>
+          </div>
+
+          <div class="accessibility-buttons">
+            <button id="increase-text" type="button" class="access-button" data-i18n="increaseText">Aumentar texto</button>
+            <button id="decrease-text" type="button" class="access-button" data-i18n="decreaseText">Disminuir texto</button>
+            <button id="contrast-toggle" type="button" class="access-button" data-i18n="contrast">Alto contraste</button>
+            <button id="reset-accessibility" type="button" class="access-button" data-i18n="reset">Restablecer</button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         CIERRE
+    ==================================================== -->
+    <section class="closing">
+      <div class="section-wrap">
+        <p data-i18n="closing">
+          ENACOM 2025 invita a pensar la comunicación como un espacio
+          de diálogo entre memoria, presente, conflicto, tecnología
+          y derecho a la información.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+  <footer class="site-footer">
+    <p>ENACOM 2025 · San Luis, Argentina</p>
+    <p data-i18n="footer">Trabajo académico realizado en el marco del ENACOM 2025.</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
