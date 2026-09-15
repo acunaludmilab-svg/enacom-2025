@@ -30,22 +30,10 @@
 html {
   scroll-behavior: smooth;
   font-size: calc(16px * var(--text-scale));
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-img,
-video,
-iframe,
-svg {
-  max-width: 100%;
-  height: auto;
 }
 
 body {
   margin: 0;
-  max-width: 100%;
-  overflow-x: hidden;
 
   font-family:
     Arial,
@@ -437,108 +425,46 @@ a {
   font-size: 1.05rem;
 }
 
-.hero-actions {
-  display: flex;
-
-  flex-wrap: wrap;
-
-  gap: 0.8rem;
-
-  margin-top: 1.6rem;
-}
-
-
-/* =====================================================
-   CONTADOR ENACOM
-===================================================== */
-
 .countdown {
   max-width: 45rem;
-
   margin-top: 1.6rem;
-
   padding: 1.15rem;
-
   border: 2px solid var(--red);
-
   border-radius: var(--radius);
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--red),
-      var(--dark-red)
-    );
-
-  box-shadow:
-    0 16px 32px rgba(200, 51, 45, 0.22);
+  background: linear-gradient(
+    135deg,
+    var(--red),
+    var(--dark-red)
+  );
+  box-shadow: 0 16px 32px rgba(200, 51, 45, 0.22);
 }
 
-
-/* TÍTULO PRINCIPAL DEL CONTADOR */
-
-.countdown .countdown-title {
-  display: block;
-
+.countdown-title,
+.countdown-status {
   margin: 0;
-
-  color: #ffffff !important;
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  font-size: 1.6rem !important;
-
-  line-height: 1.2 !important;
-
-  font-weight: 900 !important;
-
-  letter-spacing: 0.04em !important;
-
-  text-transform: uppercase;
-
-  opacity: 1 !important;
-}
-
-
-/* ESTADO DEL CONTADOR */
-
-.countdown .countdown-status {
-  margin: 0;
-
-  color: #ffffff !important;
-
+  color: white;
   font-weight: 800;
 }
 
-
-/* CUADRÍCULA DEL CONTADOR */
+.countdown-title {
+  color: var(--cream);
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
 
 .countdown-grid {
   display: grid;
-
-  grid-template-columns:
-    repeat(4, minmax(0, 1fr));
-
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.55rem;
-
   margin-top: 0.75rem;
 }
 
-
-/* CADA UNIDAD */
-
 .countdown-unit {
   padding: 0.8rem 0.35rem;
-
   border: 1px solid rgba(255, 255, 255, 0.65);
-
   border-radius: 10px;
-
   background: rgba(255, 255, 255, 0.96);
-
   text-align: center;
 }
 
@@ -549,20 +475,14 @@ a {
 
 .countdown-unit strong {
   color: var(--red);
-
-  font-size:
-    clamp(1.6rem, 3vw, 2.25rem);
-
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
   line-height: 1.1;
 }
 
 .countdown-unit span {
   margin-top: 0.2rem;
-
   color: var(--muted);
-
   font-size: 0.72rem;
-
   font-weight: 800;
 }
 
@@ -570,56 +490,90 @@ a {
   margin-top: 0.75rem;
 }
 
-
-/* =====================================================
-   ALTO CONTRASTE - CONTADOR
-===================================================== */
-
-/*
-   IMPORTANTE:
-   Estas reglas están al final de la sección para que
-   el modo alto contraste NO vuelva negro el título
-   del contador.
-*/
-
 body.high-contrast .countdown {
-  background:
-    linear-gradient(
-      135deg,
-      #000000,
-      #222222
-    );
-
   border-color: #000000;
+  background: #ffffff;
+  box-shadow: none;
 }
 
-body.high-contrast .countdown .countdown-title,
-body.high-contrast .countdown .countdown-status {
-  color: #ffffff !important;
-
-  font-size: 1.6rem !important;
-
-  font-weight: 900 !important;
-
-  opacity: 1 !important;
+body.high-contrast .countdown-title,
+body.high-contrast .countdown-status,
+body.high-contrast .countdown-unit strong,
+body.high-contrast .countdown-unit span {
+  color: #000000;
 }
 
 body.high-contrast .countdown-unit {
-  background: #ffffff;
-
   border-color: #000000;
 }
 
-body.high-contrast .countdown-unit strong {
-  color: #000000 !important;
+.countdown-title,
+.countdown-status {
+  margin: 0;
+  color: white;
+  font-weight: 800;
 }
 
+.countdown-title {
+  color: var(--cream);
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin-top: 0.75rem;
+}
+
+.countdown-unit {
+  padding: 0.8rem 0.35rem;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.96);
+  text-align: center;
+}
+
+.countdown-unit strong,
+.countdown-unit span {
+  display: block;
+}
+
+.countdown-unit strong {
+  color: var(--red);
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  line-height: 1.1;
+}
+
+.countdown-unit span {
+  margin-top: 0.2rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.countdown-status:not(:empty) {
+  margin-top: 0.75rem;
+}
+
+body.high-contrast .countdown {
+  border-color: #000000;
+  background: #ffffff;
+  box-shadow: none;
+}
+
+body.high-contrast .countdown-title,
+body.high-contrast .countdown-status,
+body.high-contrast .countdown-unit strong,
 body.high-contrast .countdown-unit span {
-  color: #000000 !important;
+  color: #000000;
 }
 
-
-/* ================= PANEL DEL EVENTO ================= */
+body.high-contrast .countdown-unit {
+  border-color: #000000;
+}
 
 .event-panel {
   background: rgba(255, 250, 243, 0.9);
@@ -901,223 +855,6 @@ section {
   font-size: 0.78rem;
 
   opacity: 0.85;
-}
-
-
-/* ================= LÍNEA DEL TIEMPO ================= */
-
-.timeline-section {
-  background:
-    linear-gradient(
-      180deg,
-      #fff7ed 0%,
-      #ffffff 100%
-    );
-}
-
-.timeline {
-  max-width: 1050px;
-
-  margin: 2rem auto 0;
-}
-
-.timeline-controls {
-  position: relative;
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(auto-fit, minmax(7.2rem, 1fr));
-
-  gap: 0.65rem;
-
-  padding-bottom: 0.35rem;
-}
-
-.timeline-controls::before {
-  content: "";
-
-  position: absolute;
-
-  left: 1.1rem;
-  right: 1.1rem;
-
-  top: 1.12rem;
-
-  height: 2px;
-
-  background: var(--line);
-
-  pointer-events: none;
-}
-
-.timeline-button {
-  position: relative;
-
-  z-index: 1;
-
-  min-height: 5.6rem;
-
-  padding: 0.75rem 0.55rem;
-
-  border: 1px solid var(--line);
-
-  border-radius: 10px;
-
-  background: white;
-
-  color: var(--ink);
-
-  cursor: pointer;
-
-  font: inherit;
-
-  text-align: left;
-
-  transition:
-    transform 180ms ease,
-    background 180ms ease,
-    color 180ms ease;
-}
-
-.timeline-button::before {
-  content: "";
-
-  display: block;
-
-  width: 0.7rem;
-  height: 0.7rem;
-
-  margin-bottom: 0.45rem;
-
-  border-radius: 50%;
-
-  background: var(--orange);
-}
-
-.timeline-button strong,
-.timeline-button span {
-  display: block;
-}
-
-.timeline-button strong {
-  color: var(--red);
-
-  font-size: 1.1rem;
-}
-
-.timeline-button span {
-  margin-top: 0.15rem;
-
-  color: var(--muted);
-
-  font-size: 0.76rem;
-
-  font-weight: 700;
-
-  line-height: 1.25;
-}
-
-.timeline-button:hover,
-.timeline-button[aria-selected="true"] {
-  background: var(--red);
-
-  color: white;
-
-  transform: translateY(-3px);
-}
-
-.timeline-button[aria-selected="true"]::before {
-  background: white;
-}
-
-.timeline-button[aria-selected="true"] strong,
-.timeline-button[aria-selected="true"] span {
-  color: white;
-}
-
-.timeline-detail {
-  min-height: 10rem;
-
-  margin-top: 1.25rem;
-
-  padding:
-    clamp(1.25rem, 3vw, 2rem);
-
-  border-left: 6px solid var(--orange);
-
-  border-radius: var(--radius);
-
-  background: white;
-
-  box-shadow:
-    0 14px 34px rgba(97, 43, 22, 0.09);
-}
-
-.timeline-detail h3 {
-  margin: 0 0 0.65rem;
-
-  color: var(--red);
-
-  font-size:
-    clamp(1.35rem, 3vw, 2rem);
-}
-
-.timeline-detail p {
-  margin: 0;
-
-  color: var(--muted);
-}
-
-
-/* ================= SR ONLY ================= */
-
-.sr-only {
-  position: absolute;
-
-  width: 1px;
-
-  height: 1px;
-
-  padding: 0;
-
-  margin: -1px;
-
-  overflow: hidden;
-
-  clip: rect(0, 0, 0, 0);
-
-  white-space: nowrap;
-
-  border: 0;
-}
-
-
-/* ================= ALTO CONTRASTE TIMELINE ================= */
-
-body.high-contrast .timeline-button,
-body.high-contrast .timeline-detail {
-  border-color: #000000;
-
-  background: #ffffff;
-
-  box-shadow: none;
-}
-
-body.high-contrast .timeline-button strong,
-body.high-contrast .timeline-button span,
-body.high-contrast .timeline-detail h3,
-body.high-contrast .timeline-detail p {
-  color: #000000;
-}
-
-body.high-contrast .timeline-button[aria-selected="true"] {
-  background: #000000;
-}
-
-body.high-contrast .timeline-button[aria-selected="true"] strong,
-body.high-contrast .timeline-button[aria-selected="true"] span {
-  color: #ffffff;
 }
 
 
@@ -1407,6 +1144,9 @@ body.high-contrast .timeline-button[aria-selected="true"] span {
   background: #fff;
 }
 
+
+/* Grilla de referentes */
+
 .referents-grid {
   display: grid;
 
@@ -1418,11 +1158,13 @@ body.high-contrast .timeline-button[aria-selected="true"] span {
   margin-top: 2rem;
 }
 
+
+/* Tarjeta individual */
+
 .referent-card {
   display: grid;
 
-  grid-template-columns:
-    150px minmax(0, 1fr);
+  grid-template-columns: 150px minmax(0, 1fr);
 
   gap: 1.25rem;
 
@@ -1456,6 +1198,9 @@ body.high-contrast .timeline-button[aria-selected="true"] span {
     0 18px 36px rgba(97,43,22,0.14);
 }
 
+
+/* Foto del referente */
+
 .referent-card > img {
   width: 150px;
 
@@ -1469,6 +1214,9 @@ body.high-contrast .timeline-button[aria-selected="true"] span {
 
   background: var(--cream);
 }
+
+
+/* Contenido */
 
 .referent-content {
   display: flex;
@@ -1522,8 +1270,7 @@ body.high-contrast .timeline-button[aria-selected="true"] span {
 .featured-panel {
   margin-top: 2rem;
 
-  padding:
-    clamp(1.5rem, 4vw, 2.4rem);
+  padding: clamp(1.5rem, 4vw, 2.4rem);
 
   border-radius: var(--radius);
 
@@ -1584,6 +1331,7 @@ body.high-contrast .timeline-button[aria-selected="true"] span {
 
 /* =====================================================
    ESTILOS ANTIGUOS DE PONENCIAS
+   Se mantienen por compatibilidad.
 ===================================================== */
 
 .speakers-grid {
@@ -1999,9 +1747,7 @@ body.high-contrast .subthread-text {
 }
 
 
-/* =====================================================
-   CIERRE
-===================================================== */
+/* ================= CIERRE ================= */
 
 .closing {
   background: var(--red);
@@ -2050,40 +1796,13 @@ body.high-contrast .subthread-text {
 
 
 /* =====================================================
-   HISTORIA ENACOM · INTRODUCCIÓN
-===================================================== */
-.history-section{background:linear-gradient(180deg,#fff7ed 0%,#fff 55%,#fff7ed 100%)}
-.history-intro{max-width:1050px;margin:2.5rem auto 0;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(260px,.65fr);gap:1.25rem;align-items:stretch}
-.history-intro-main{padding:clamp(1.5rem,4vw,2.5rem);border-radius:var(--radius);background:#fff;border:1px solid var(--line);border-left:6px solid var(--orange);box-shadow:0 14px 34px rgba(97,43,22,.09)}
-.history-label{display:inline-flex;align-items:center;width:fit-content;padding:.4rem .7rem;border-radius:8px;background:var(--cream);border:1px solid var(--line);color:var(--red);font-size:.78rem;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
-.history-intro-main h3{margin:.8rem 0 .9rem;color:var(--red);font-size:clamp(1.5rem,3vw,2.25rem);line-height:1.12}
-.history-intro-main p{margin:0 0 .9rem;color:var(--muted);font-size:1rem;line-height:1.65}
-.history-intro-main p:last-child{margin-bottom:0}
-.history-intro-card{position:relative;display:flex;flex-direction:column;justify-content:center;padding:1.6rem;border-radius:var(--radius);background:linear-gradient(145deg,var(--red),var(--dark-red));color:#fff;box-shadow:0 18px 38px rgba(200,51,45,.2);overflow:hidden}
-.history-intro-card::after{content:"";position:absolute;width:180px;height:180px;right:-80px;bottom:-80px;border-radius:50%;background:rgba(255,255,255,.08)}
-.history-card-number{font-size:clamp(3rem,7vw,5rem);line-height:.9;font-weight:900;letter-spacing:-.06em;color:#fff;margin-bottom:1.1rem}
-.history-card-label{display:block;margin-bottom:.25rem;color:rgba(255,255,255,.75);font-size:.75rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
-.history-intro-card h4{position:relative;z-index:1;margin:0;color:#fff;font-size:1.55rem;line-height:1.15}
-.history-intro-card p{position:relative;z-index:1;margin:.7rem 0 0;color:rgba(255,255,255,.88);font-size:.9rem;line-height:1.5}
-.history-pillars{max-width:1050px;margin:1.25rem auto 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
-.history-pillar{display:flex;gap:.9rem;align-items:flex-start;padding:1.2rem;border-radius:12px;background:rgba(255,255,255,.9);border:1px solid var(--line);box-shadow:0 10px 24px rgba(97,43,22,.06)}
-.history-pillar-icon{flex:0 0 auto;width:2.4rem;height:2.4rem;display:grid;place-items:center;border-radius:8px;background:var(--cream);color:var(--red);border:1px solid var(--line);font-size:.72rem;font-weight:900}
-.history-pillar h3{margin:0 0 .25rem;color:var(--red);font-size:1rem}.history-pillar p{margin:0;color:var(--muted);font-size:.82rem;line-height:1.5}
-.history-timeline-heading{max-width:1050px;margin:clamp(3rem,6vw,4.5rem) auto 0;text-align:center}.history-timeline-heading h3{margin:.65rem 0 .4rem;color:var(--red);font-size:clamp(1.5rem,3vw,2.2rem);line-height:1.1}.history-timeline-heading p{max-width:600px;margin:0 auto;color:var(--muted);font-size:.95rem}
-.history-closing{max-width:850px;margin:2.5rem auto 0;text-align:center}.history-closing-line{width:70px;height:4px;margin:0 auto 1.2rem;border-radius:10px;background:linear-gradient(90deg,var(--orange),var(--red))}.history-closing p{margin:0;color:#4f2927;font-size:1.05rem;line-height:1.6;font-weight:800}
-body.high-contrast .history-intro-main,body.high-contrast .history-pillar{background:#fff;border-color:#000;box-shadow:none}body.high-contrast .history-intro-main{border-left-color:#000}body.high-contrast .history-label,body.high-contrast .history-pillar-icon{background:#fff;border-color:#000;color:#000}body.high-contrast .history-intro-main h3,body.high-contrast .history-pillar h3,body.high-contrast .history-timeline-heading h3,body.high-contrast .history-closing p{color:#000}body.high-contrast .history-intro-main p,body.high-contrast .history-pillar p,body.high-contrast .history-timeline-heading p{color:#000}body.high-contrast .history-intro-card{background:#000;box-shadow:none}body.high-contrast .history-card-number,body.high-contrast .history-intro-card h4{color:#fff}body.high-contrast .history-card-label,body.high-contrast .history-intro-card p{color:#fff}body.high-contrast .history-closing-line{background:#000}
-@media (max-width:800px){.history-intro{grid-template-columns:1fr}.history-intro-card{min-height:220px}.history-pillars{grid-template-columns:1fr}}
-@media (max-width:650px){.history-intro{margin-top:1.8rem}.history-intro-main{padding:1.25rem;border-left-width:4px}.history-intro-main h3{font-size:1.45rem}.history-intro-main p{font-size:.9rem}.history-intro-card{padding:1.3rem}.history-card-number{font-size:3.6rem}.history-pillar{padding:1rem}.history-timeline-heading{margin-top:3rem}.history-closing{margin-top:2rem}.history-closing p{font-size:.95rem}}
-
-/* =====================================================
    RESPONSIVE
 ===================================================== */
 
 @media (max-width: 1000px) {
 
   .referent-card {
-    grid-template-columns:
-      125px minmax(0, 1fr);
+    grid-template-columns: 125px minmax(0, 1fr);
   }
 
   .referent-card > img {
@@ -2151,9 +1870,6 @@ body.high-contrast .history-intro-main,body.high-contrast .history-pillar{backgr
     width: 100%;
   }
 
-
-  /* CONTADOR EN CELULAR */
-
   .countdown-grid {
     gap: 0.4rem;
   }
@@ -2165,23 +1881,6 @@ body.high-contrast .history-intro-main,body.high-contrast .history-pillar{backgr
   .countdown-unit strong {
     font-size: 1.2rem;
   }
-
-  .countdown .countdown-title {
-    font-size: 1.35rem !important;
-
-    line-height: 1.2 !important;
-  }
-
-
-  /* TIMELINE */
-
-  .timeline-controls {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
-  }
-
-
-  /* CARRUSEL */
 
   .carousel-track {
     aspect-ratio: 4 / 3;
@@ -2201,14 +1900,10 @@ body.high-contrast .history-intro-main,body.high-contrast .history-pillar{backgr
 
   .carousel-control {
     width: 2.5rem;
-
     height: 2.5rem;
 
     font-size: 1.6rem;
   }
-
-
-  /* PROBLEMÁTICAS */
 
   .subthread-inner {
     grid-template-columns: 1fr;
@@ -2218,22 +1913,16 @@ body.high-contrast .history-intro-main,body.high-contrast .history-pillar{backgr
     height: 250px;
   }
 
-
-  /* QUIZ */
-
   .quiz-card {
     padding: 1.2rem;
   }
-
-
-  /* IDIOMAS */
 
   .language-selector {
     margin-left: auto;
   }
 
 
-  /* REFERENTES */
+  /* REFERENTES EN CELULAR */
 
   .referents-grid {
     grid-template-columns: 1fr;
@@ -2242,8 +1931,7 @@ body.high-contrast .history-intro-main,body.high-contrast .history-pillar{backgr
   }
 
   .referent-card {
-    grid-template-columns:
-      105px minmax(0, 1fr);
+    grid-template-columns: 105px minmax(0, 1fr);
 
     gap: 1rem;
 
@@ -2319,8 +2007,7 @@ body.high-contrast .history-intro-main,body.high-contrast .history-pillar{backgr
 @media (max-width: 430px) {
 
   .referent-card {
-    grid-template-columns:
-      85px minmax(0, 1fr);
+    grid-template-columns: 85px minmax(0, 1fr);
 
     gap: 0.75rem;
   }
@@ -2343,9 +2030,6 @@ body.high-contrast .history-intro-main,body.high-contrast .history-pillar{backgr
     font-size: 0.62rem;
   }
 
-
-  /* CARRUSEL */
-
   .carousel-slide figcaption {
     padding-left: 0.9rem;
 
@@ -2358,13 +2042,6 @@ body.high-contrast .history-intro-main,body.high-contrast .history-pillar{backgr
 
   .carousel-control.next {
     right: 0.5rem;
-  }
-
-
-  /* CONTADOR */
-
-  .countdown .countdown-title {
-    font-size: 1.2rem !important;
   }
 
 }
@@ -2391,3 +2068,34 @@ body.high-contrast .history-intro-main,body.high-contrast .history-pillar{backgr
   }
 
 }
+
+/* Quiz feedback and persistent section navigation */
+[hidden] { display: none !important; }
+section[id] { scroll-margin-top: calc(var(--header-height, 150px) + 20px); }
+.quiz-progress { font-weight: 700; color: var(--red); margin-bottom: .75rem; }
+.quiz-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1rem; }
+.quiz-actions button:disabled { opacity: .5; cursor: not-allowed; }
+.quiz-feedback { margin-top: 1rem; padding: 1rem; border-radius: 12px; background: #fff3e1; }
+.quiz-feedback:empty { display: none; }
+.quiz-feedback p { margin: .5rem 0 0; }
+.quiz-feedback.correct { background: #e9f6ed; color: #14532d; border: 1px solid #287447; }
+.quiz-feedback.incorrect { background: #fff0ed; color: #8c2520; border: 1px solid #b33228; }
+.quiz-option[aria-disabled="true"] { cursor: default; }
+.quiz-option.correct { border: 2px solid #287447; background: #e9f6ed; color: #14532d; }
+.quiz-option.incorrect { border: 2px solid #b33228; background: #fff0ed; color: #8c2520; }
+.floating-navigation { position: fixed; right: 1.25rem; bottom: max(1rem, env(safe-area-inset-bottom)); z-index: 110; display: flex; align-items: end; gap: .5rem; }
+.quick-navigation summary, .back-to-top { padding: .8rem 1rem; background: var(--red); color: white; border-radius: 999px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 18px #0002; }
+.back-to-top { text-decoration: none; }
+.quick-navigation nav { position: absolute; bottom: calc(100% + .75rem); right: 0; width: min(270px, calc(100vw - 2rem)); max-height: 60vh; overflow-y: auto; padding: .65rem; background: #fffaf3; color: #29201b; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 8px 30px #0003; }
+.quick-navigation nav a { display: block; padding: .65rem .85rem; border-radius: 8px; text-decoration: none; font-weight: 700; }
+.quick-navigation nav a:hover { background: #f8dfbd; }
+:where(button, a, summary):focus-visible { outline: 3px solid #215dad; outline-offset: 4px; }
+body { padding-bottom: 5rem; }
+body.high-contrast .quiz-feedback, body.high-contrast .quick-navigation nav { background: #000; color: #fff; border: 1px solid #fff; }
+body.high-contrast .quiz-option.correct { color: #fff; background: #14532d; }
+body.high-contrast .quiz-option.incorrect { color: #fff; background: #8c2520; }
+@media (max-width: 600px) {
+  .floating-navigation { right: .75rem; }
+  .quiz-actions button { flex: 1 1 100%; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
