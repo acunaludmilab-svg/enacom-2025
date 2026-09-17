@@ -2327,3 +2327,33 @@ body.high-contrast .history-intro-label { background: #fff; color: #000; }
   .history-content { padding: 0 1rem 1.25rem; }
   .history-intro { margin-bottom: 2.5rem; border-radius: 18px; }
 }
+/* =========================================================
+   FIX CONTADOR ENACOM 2026
+========================================================= */
+
+.countdown {
+  background: var(--cream) !important;
+  border: 2px solid var(--orange) !important;
+  box-shadow: 0 14px 30px rgba(242, 106, 33, 0.14) !important;
+}
+
+.countdown-title {
+  color: var(--red) !important;
+}
+
+.countdown-status {
+  color: var(--red) !important;
+}
+
+.countdown-unit {
+  background: #ffffff !important;
+  border: 1px solid rgba(200, 51, 45, 0.22) !important;
+}
+
+.countdown-unit strong {
+  color: var(--red) !important;
+}
+
+.countdown-unit span {
+  color: var(--ink) !important;
+}
