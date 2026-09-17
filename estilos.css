@@ -1,2329 +1,2110 @@
-:root {
-  --orange: #f26a21;
-  --coral: #ef5b5b;
-  --red: #c8332d;
-  --dark-red: #982722;
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="ENACOM 2025 - XXII Encuentro Nacional de Carreras de Comunicación. San Luis, Argentina."
+  >
+
+  <title>ENACOM 2025 | Tiempo de comunicación</title>
+
+  <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+  <!-- =====================================================
+       ACCESIBILIDAD
+  ====================================================== -->
+
+  <a class="skip-link" href="#contenido">
+    Saltar al contenido principal
+  </a>
+
+
+  <!-- =====================================================
+       HEADER
+  ====================================================== -->
+
+  <header class="site-header">
 
-  --cream: #fff3e1;
-  --sand: #f8dfbd;
+    <nav class="nav" aria-label="Navegación principal">
 
-  --ink: #2d2020;
-  --muted: #654f49;
+      <a
+        class="brand"
+        href="#inicio"
+        aria-label="ENACOM 2025 - volver al inicio"
+      >
 
-  --white: #fffaf3;
-  --line: rgba(200, 51, 45, 0.18);
+        <span
+          class="brand-mark"
+          aria-hidden="true"
+        ></span>
 
-  --shadow: 0 18px 42px rgba(97, 43, 22, 0.14);
+        <span>ENACOM 2025</span>
 
-  --radius: 14px;
+      </a>
 
-  --text-scale: 1;
-}
 
+      <div class="nav-links">
 
-/* ================= GENERAL ================= */
+        <a
+          href="#historia"
+          data-i18n="navHistory"
+        >
+          Historia
+        </a>
 
-* {
-  box-sizing: border-box;
-}
+        <a
+          href="#ejes"
+          data-i18n="navEjes"
+        >
+          Ejes temáticos
+        </a>
 
-html {
-  scroll-behavior: smooth;
-  font-size: calc(16px * var(--text-scale));
-}
+        <a
+          href="#referentes"
+          data-i18n="navPonencias"
+        >
+          Referentes
+        </a>
 
-body {
-  margin: 0;
+        <a
+          href="#interactivo"
+          data-i18n="navInteractivo"
+        >
+          Interactivo
+        </a>
 
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
+        <a
+          href="#redes"
+          data-i18n="navRedes"
+        >
+          Redes
+        </a>
 
-  color: var(--ink);
+      </div>
 
-  background:
-    radial-gradient(
-      circle at top left,
-      rgba(242, 106, 33, 0.12),
-      transparent 34rem
-    ),
-    linear-gradient(
-      180deg,
-      #fffaf3 0%,
-      #ffffff 48%,
-      #fff7ed 100%
-    );
 
-  line-height: 1.6;
-}
+      <div
+        class="language-selector"
+        aria-label="Selector de idioma"
+      >
 
-body.high-contrast {
-  --ink: #000000;
-  --muted: #111111;
-  --cream: #ffffff;
-  --white: #ffffff;
-  --sand: #ffffff;
-  --line: #000000;
+        <button
+          class="language-btn active"
+          data-lang="es"
+          type="button"
+        >
+          ES
+        </button>
 
-  background: #ffffff;
-}
+        <button
+          class="language-btn"
+          data-lang="en"
+          type="button"
+        >
+          EN
+        </button>
 
-a {
-  color: inherit;
-}
+        <button
+          class="language-btn"
+          data-lang="pt"
+          type="button"
+        >
+          PT
+        </button>
 
-button,
-a {
-  -webkit-tap-highlight-color: transparent;
-}
+      </div>
 
-:focus-visible {
-  outline: 4px solid #0066ff;
-  outline-offset: 4px;
-}
+    </nav>
 
+  </header>
 
-/* ================= ACCESIBILIDAD ================= */
 
-.skip-link {
-  position: fixed;
+  <!-- =====================================================
+       CONTENIDO PRINCIPAL
+  ====================================================== -->
+
+  <main id="contenido">
 
-  top: -100px;
-  left: 1rem;
 
-  z-index: 9999;
+    <!-- ===================================================
+         HERO
+    ==================================================== -->
 
-  background: #000;
-  color: #fff;
+    <section
+      class="hero"
+      id="inicio"
+    >
 
-  padding: 0.8rem 1rem;
+      <div class="hero-content">
 
-  border-radius: 8px;
+        <div class="hero-text">
 
-  font-weight: 800;
-}
+          <span
+            class="kicker"
+            data-i18n="kicker"
+          >
+            XXII Encuentro Nacional de Carreras de Comunicación
+          </span>
 
-.skip-link:focus {
-  top: 1rem;
-}
 
+          <h1>
+            ENACOM<br>2025
+          </h1>
 
-/* ================= HEADER ================= */
 
-.site-header {
-  position: sticky;
+          <h2 data-i18n="heroTitle">
+            Tiempo de comunicación. Diálogos sobre pasado y presente
+            en un mundo acelerado
+          </h2>
 
-  top: 0;
 
-  z-index: 100;
+          <p data-i18n="heroText">
+            Un recorrido por los principales debates, ponencias y
+            producciones del ENACOM 2025, realizado en San Luis.
+          </p>
 
-  background: rgba(255, 250, 243, 0.96);
 
-  border-bottom: 1px solid var(--line);
+          <div class="hero-actions">
 
-  backdrop-filter: blur(12px);
-}
+            <a
+              class="button primary"
+              href="#galeria"
+              data-i18n="heroGallery"
+            >
+              Ver fotografías
+            </a>
 
-.nav {
-  max-width: 1200px;
 
-  margin: 0 auto;
+            <a
+              class="button"
+              href="#ejes"
+              data-i18n="heroExplore"
+            >
+              Explorar el encuentro
+            </a>
 
-  padding: 0.8rem 1.2rem;
+          </div>
 
-  display: flex;
+      <section class="countdown" aria-labelledby="countdown-title">
+  <p
+    class="countdown-title"
+    id="countdown-title"
+    data-i18n="countdownTitle"
+  >
+    Días para ENACOM 2026
+  </p>
 
-  align-items: center;
+  <div class="countdown-grid" id="countdown" aria-live="polite">
+    <div class="countdown-unit">
+      <strong id="countdown-days">0</strong>
+      <span data-i18n="countdownDays">Días</span>
+    </div>
 
-  justify-content: space-between;
+    <div class="countdown-unit">
+      <strong id="countdown-hours">0</strong>
+      <span data-i18n="countdownHours">Horas</span>
+    </div>
 
-  gap: 1rem;
-}
+    <div class="countdown-unit">
+      <strong id="countdown-minutes">0</strong>
+      <span data-i18n="countdownMinutes">Minutos</span>
+    </div>
 
-.brand {
-  display: flex;
+    <div class="countdown-unit">
+      <strong id="countdown-seconds">0</strong>
+      <span data-i18n="countdownSeconds">Segundos</span>
+    </div>
+  </div>
 
-  align-items: center;
+  <p
+    class="countdown-status"
+    id="countdown-status"
+    aria-live="polite"
+  ></p>
+</section>
 
-  gap: 0.7rem;
+        </div>
 
-  text-decoration: none;
 
-  font-weight: 900;
+        <!-- IMAGEN / IDENTIDAD -->
 
-  color: var(--red);
+        <aside class="event-panel">
 
-  white-space: nowrap;
-}
+          <img
+            src="images/preview-comunicacion.png"
+            alt="Composición visual del ENACOM 2025"
+          >
 
-.brand-mark {
-  width: 2.3rem;
-  height: 2.3rem;
 
-  border-radius: 10px;
+          <p data-i18n="heroImageCaption">
+            Producciones desarrolladas a partir de los debates y
+            problemáticas abordadas durante el encuentro.
+          </p>
 
-  background:
-    linear-gradient(
-      135deg,
-      var(--orange) 0 45%,
-      var(--coral) 45% 70%,
-      var(--red) 70% 100%
-    );
+        </aside>
 
-  box-shadow:
-    0 8px 18px rgba(200, 51, 45, 0.22);
-}
+      </div>
 
-.nav-links {
-  display: flex;
+    </section>
 
-  flex-wrap: wrap;
 
-  justify-content: center;
 
-  gap: 0.45rem;
-}
+    <!-- ===================================================
+         HISTORIA DEL ENACOM
+    ==================================================== -->
 
-.nav-links a {
-  padding: 0.55rem 0.7rem;
+    <section
+      class="history-section"
+      id="historia"
+    >
 
-  text-decoration: none;
+      <div class="section-wrap">
 
-  border-radius: 8px;
 
-  font-weight: 700;
+        <div class="section-title center">
 
-  transition:
-    background 180ms ease,
-    color 180ms ease;
-}
+          <span
+            class="kicker"
+            data-i18n="historyKicker"
+          >
+            Memoria y recorrido
+          </span>
 
-.nav-links a:hover {
-  background: var(--cream);
 
-  color: var(--red);
-}
+          <h2 data-i18n="historyTitle">
+            Historia del ENACOM
+          </h2>
 
 
-/* ================= IDIOMAS ================= */
+          <p data-i18n="historyLead">
+            Un recorrido por los principales momentos que dieron forma al
+            Encuentro Nacional de Carreras de Comunicación y a la articulación
+            federal de las carreras de comunicación en Argentina.
+          </p>
 
-.language-selector {
-  display: flex;
+        </div>
 
-  gap: 0.25rem;
 
-  padding: 0.2rem;
 
-  border-radius: 9px;
+        <!-- ¿QUÉ ES ENACOM? -->
 
-  background: #fff;
+        <div class="history-intro">
 
-  border: 1px solid var(--line);
-}
+          <span
+            class="history-intro-label"
+            data-i18n="historyWhatLabel"
+          >
+            ¿Qué es el ENACOM?
+          </span>
 
-.language-btn {
-  border: 0;
 
-  background: transparent;
+          <h3 data-i18n="historyWhatTitle">
+            Un espacio federal para pensar la comunicación
+          </h3>
 
-  cursor: pointer;
 
-  padding: 0.4rem 0.55rem;
+          <p data-i18n="historyWhatP1">
+            El Encuentro Nacional de Carreras de Comunicación (ENACOM)
+            reúne a estudiantes, docentes, investigadores, graduados y
+            profesionales vinculados al campo de la comunicación social
+            de diferentes universidades del país.
+          </p>
 
-  border-radius: 6px;
 
-  font-weight: 800;
+          <p data-i18n="historyWhatP2">
+            A lo largo de sus distintas ediciones, el encuentro se consolidó
+            como un espacio de intercambio académico, producción colectiva
+            y debate sobre las transformaciones sociales, culturales,
+            políticas y tecnológicas que atraviesan a la comunicación.
+          </p>
 
-  color: var(--muted);
-}
+        </div>
 
-.language-btn.active {
-  background: var(--red);
 
-  color: white;
-}
 
-.language-btn:hover {
-  background: var(--cream);
-}
+        <!-- LÍNEA DEL TIEMPO -->
 
+        <div class="history-timeline">
 
-/* ================= BOTONES ================= */
 
-.button {
-  border: 1px solid rgba(200, 51, 45, 0.2);
+          <!-- 1983 -->
 
-  border-radius: 10px;
+          <details class="history-item">
 
-  color: var(--ink);
+            <summary>
 
-  background: white;
+              <span class="history-year">
+                1983
+              </span>
 
-  text-decoration: none;
 
-  font-weight: 800;
+              <span class="history-summary-text">
 
-  padding: 0.75rem 1rem;
+                <strong data-i18n="history1983Title">
+                  Creación de AFACOS
+                </strong>
 
-  min-height: 2.8rem;
+                <small data-i18n="history1983Sub">
+                  Primer antecedente de articulación federal
+                </small>
 
-  display: inline-flex;
+              </span>
 
-  align-items: center;
 
-  justify-content: center;
+              <span
+                class="history-icon"
+                aria-hidden="true"
+              >
+                +
+              </span>
 
-  cursor: pointer;
+            </summary>
 
-  transition:
-    transform 180ms ease,
-    background 180ms ease,
-    color 180ms ease;
-}
 
-.button:hover {
-  transform: translateY(-2px);
+            <div class="history-content">
 
-  background: var(--cream);
+              <p data-i18n="history1983P1">
+                Se crea la Asociación Federal de Carreras de Comunicación
+                Social (AFACOS), en el contexto del retorno de la democracia
+                en Argentina.
+              </p>
 
-  color: var(--red);
-}
 
-.button.primary {
-  background: var(--red);
+              <p data-i18n="history1983P2">
+                La organización buscó fortalecer el vínculo entre las
+                carreras de comunicación del país mediante el intercambio
+                académico, la investigación, la reflexión crítica sobre
+                los medios y la formación profesional.
+              </p>
 
-  border-color: var(--red);
 
-  color: white;
+              <p data-i18n="history1983P3">
+                Su creación sentó una de las bases para la posterior
+                conformación de FADECCOS y el desarrollo del ENACOM.
+              </p>
 
-  box-shadow:
-    0 12px 26px rgba(200, 51, 45, 0.24);
-}
+            </div>
 
-.button.primary:hover {
-  background: var(--dark-red);
+          </details>
 
-  color: white;
-}
 
 
-/* ================= HERO ================= */
+          <!-- 2001 -->
 
-.hero {
-  min-height: calc(100vh - 4.5rem);
+          <details class="history-item">
 
-  display: grid;
+            <summary>
 
-  align-items: center;
+              <span class="history-year">
+                2001
+              </span>
 
-  position: relative;
 
-  padding:
-    clamp(4rem, 8vw, 7rem)
-    1.25rem
-    3.5rem;
+              <span class="history-summary-text">
 
-  overflow: hidden;
-}
+                <strong data-i18n="history2001Title">
+                  Formalización de FADECCOS
+                </strong>
 
-.hero::before {
-  content: "";
+                <small data-i18n="history2001Sub">
+                  Una nueva etapa de organización institucional
+                </small>
 
-  position: absolute;
+              </span>
 
-  inset: 0;
 
-  background:
-    linear-gradient(
-      120deg,
-      rgba(255, 250, 243, 0.94) 0 47%,
-      rgba(255, 250, 243, 0.72) 47% 100%
-    ),
+              <span
+                class="history-icon"
+                aria-hidden="true"
+              >
+                +
+              </span>
 
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='780' viewBox='0 0 1200 780'%3E%3Crect width='1200' height='780' fill='%23fff3e1'/%3E%3Cpath d='M760 90C890 72 1056 121 1116 242c68 137-23 293-133 386-101 85-250 101-371 49-116-50-205-163-202-289C414 242 585 115 760 90Z' fill='%23f26a21' opacity='.28'/%3E%3Cpath d='M119 503c75-89 196-145 309-113 101 29 168 133 169 238 1 54-17 103-49 144H0V616c25-38 61-79 119-113Z' fill='%23ef5b5b' opacity='.22'/%3E%3C/svg%3E");
+            </summary>
 
-  background-position: center;
 
-  background-size: cover;
+            <div class="history-content">
 
-  z-index: -1;
-}
+              <p data-i18n="history2001P1">
+                Se consolida la Federación Argentina de Carreras de
+                Comunicación Social (FADECCOS), continuando el proceso
+                iniciado por AFACOS.
+              </p>
 
-.hero-content {
-  max-width: 1200px;
 
-  margin: 0 auto;
+              <p data-i18n="history2001P2">
+                La federación permitió ampliar la representación de las
+                carreras de comunicación, fortalecer el intercambio entre
+                universidades e impulsar investigaciones y encuentros
+                nacionales vinculados al campo.
+              </p>
 
-  width: 100%;
+            </div>
 
-  display: grid;
+          </details>
 
-  grid-template-columns:
-    minmax(0, 1.05fr)
-    minmax(18rem, 0.65fr);
 
-  gap: clamp(2rem, 5vw, 4.5rem);
 
-  align-items: center;
-}
+          <!-- 2002 -->
 
-.kicker {
-  display: inline-flex;
+          <details class="history-item">
 
-  align-items: center;
+            <summary>
 
-  padding: 0.42rem 0.68rem;
+              <span class="history-year">
+                2002
+              </span>
 
-  border-radius: 8px;
 
-  background: rgba(255, 255, 255, 0.86);
+              <span class="history-summary-text">
 
-  border: 1px solid var(--line);
+                <strong data-i18n="history2002Title">
+                  Primer ENACOM
+                </strong>
 
-  color: var(--red);
+                <small data-i18n="history2002Sub">
+                  Olavarría
+                </small>
 
-  font-weight: 800;
+              </span>
 
-  font-size: 0.9rem;
-}
 
-.hero h1 {
-  margin: 1rem 0 0.5rem;
+              <span
+                class="history-icon"
+                aria-hidden="true"
+              >
+                +
+              </span>
 
-  font-size: clamp(3.4rem, 9vw, 7.5rem);
+            </summary>
 
-  line-height: 0.88;
 
-  color: var(--red);
+            <div class="history-content">
 
-  letter-spacing: -0.04em;
-}
+              <p data-i18n="history2002P1">
+                En la ciudad de Olavarría se realiza el primer Encuentro
+                Nacional de Carreras de Comunicación.
+              </p>
 
-.hero h2 {
-  margin: 0;
 
-  max-width: 52rem;
+              <p data-i18n="history2002P2">
+                El encuentro surge como un espacio destinado a reunir
+                estudiantes, docentes, investigadores y graduados de
+                comunicación social de distintos puntos del país.
+              </p>
 
-  font-size:
-    clamp(1.25rem, 2.6vw, 2.1rem);
 
-  line-height: 1.22;
+              <p data-i18n="history2002P3">
+                A partir de esta primera edición comienzan a desarrollarse
+                debates sobre medios, periodismo, políticas de comunicación,
+                cultura, educación y tecnologías.
+              </p>
 
-  color: #4f2927;
+            </div>
 
-  font-weight: 800;
-}
+          </details>
 
-.hero p {
-  max-width: 45rem;
 
-  margin: 1.25rem 0 0;
 
-  color: var(--muted);
+          <!-- 2002–2010 -->
 
-  font-size: 1.05rem;
-}
+          <details class="history-item">
 
-.countdown {
-  max-width: 45rem;
-  margin-top: 1.6rem;
-  padding: 1.15rem;
-  border: 2px solid var(--red);
-  border-radius: var(--radius);
-  background: linear-gradient(
-    135deg,
-    var(--red),
-    var(--dark-red)
-  );
-  box-shadow: 0 16px 32px rgba(200, 51, 45, 0.22);
-}
+            <summary>
 
-.countdown-title,
-.countdown-status {
-  margin: 0;
-  color: white;
-  font-weight: 800;
-}
+              <span class="history-year">
+                2002–2010
+              </span>
 
-.countdown-title {
-  color: var(--cream);
-  font-size: 1.15rem;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
 
-.countdown-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.55rem;
-  margin-top: 0.75rem;
-}
+              <span class="history-summary-text">
 
-.countdown-unit {
-  padding: 0.8rem 0.35rem;
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.96);
-  text-align: center;
-}
+                <strong data-i18n="history0210Title">
+                  Expansión federal
+                </strong>
 
-.countdown-unit strong,
-.countdown-unit span {
-  display: block;
-}
+                <small data-i18n="history0210Sub">
+                  El encuentro comienza a recorrer el país
+                </small>
 
-.countdown-unit strong {
-  color: var(--red);
-  font-size: clamp(1.6rem, 3vw, 2.25rem);
-  line-height: 1.1;
-}
+              </span>
 
-.countdown-unit span {
-  margin-top: 0.2rem;
-  color: var(--muted);
-  font-size: 0.72rem;
-  font-weight: 800;
-}
 
-.countdown-status:not(:empty) {
-  margin-top: 0.75rem;
-}
+              <span
+                class="history-icon"
+                aria-hidden="true"
+              >
+                +
+              </span>
 
-body.high-contrast .countdown {
-  border-color: #000000;
-  background: #ffffff;
-  box-shadow: none;
-}
+            </summary>
 
-body.high-contrast .countdown-title,
-body.high-contrast .countdown-status,
-body.high-contrast .countdown-unit strong,
-body.high-contrast .countdown-unit span {
-  color: #000000;
-}
 
-body.high-contrast .countdown-unit {
-  border-color: #000000;
-}
+            <div class="history-content">
 
-.countdown-title,
-.countdown-status {
-  margin: 0;
-  color: white;
-  font-weight: 800;
-}
+              <p data-i18n="history0210P1">
+                Durante sus primeras ediciones, el ENACOM comienza a
+                desarrollarse en distintas provincias argentinas,
+                profundizando su carácter federal.
+              </p>
 
-.countdown-title {
-  color: var(--cream);
-  font-size: 1.15rem;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
 
-.countdown-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.55rem;
-  margin-top: 0.75rem;
-}
+              <p data-i18n="history0210P2">
+                Crece la participación de estudiantes e investigadores,
+                aparecen nuevas discusiones vinculadas con internet y
+                comunicación digital y se incorporan producciones
+                audiovisuales y multimediales.
+              </p>
 
-.countdown-unit {
-  padding: 0.8rem 0.35rem;
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.96);
-  text-align: center;
-}
 
-.countdown-unit strong,
-.countdown-unit span {
-  display: block;
-}
+              <p data-i18n="history0210P3">
+                El encuentro comienza a consolidarse no solamente como un
+                espacio de exposición académica, sino también como un lugar
+                de producción colectiva de conocimientos.
+              </p>
 
-.countdown-unit strong {
-  color: var(--red);
-  font-size: clamp(1.6rem, 3vw, 2.25rem);
-  line-height: 1.1;
-}
+            </div>
 
-.countdown-unit span {
-  margin-top: 0.2rem;
-  color: var(--muted);
-  font-size: 0.72rem;
-  font-weight: 800;
-}
+          </details>
 
-.countdown-status:not(:empty) {
-  margin-top: 0.75rem;
-}
 
-body.high-contrast .countdown {
-  border-color: #000000;
-  background: #ffffff;
-  box-shadow: none;
-}
 
-body.high-contrast .countdown-title,
-body.high-contrast .countdown-status,
-body.high-contrast .countdown-unit strong,
-body.high-contrast .countdown-unit span {
-  color: #000000;
-}
+          <!-- 2010–2019 -->
 
-body.high-contrast .countdown-unit {
-  border-color: #000000;
-}
+          <details class="history-item">
 
-.event-panel {
-  background: rgba(255, 250, 243, 0.9);
+            <summary>
 
-  border: 1px solid var(--line);
+              <span class="history-year">
+                2010–2019
+              </span>
 
-  border-radius: var(--radius);
 
-  box-shadow: var(--shadow);
+              <span class="history-summary-text">
 
-  padding: 1rem;
-}
+                <strong data-i18n="history1019Title">
+                  Nuevas agendas
+                </strong>
 
-.event-panel img {
-  width: 100%;
+                <small data-i18n="history1019Sub">
+                  Transformaciones sociales y digitales
+                </small>
 
-  display: block;
+              </span>
 
-  border-radius: 10px;
 
-  aspect-ratio: 4 / 3;
+              <span
+                class="history-icon"
+                aria-hidden="true"
+              >
+                +
+              </span>
 
-  object-fit: cover;
-}
+            </summary>
 
-.event-panel p {
-  margin: 0.9rem 0 0;
 
-  font-size: 0.95rem;
+            <div class="history-content">
 
-  color: var(--muted);
-}
+              <p data-i18n="history1019P1">
+                Las transformaciones tecnológicas y sociales amplían
+                progresivamente los debates presentes en el encuentro.
+              </p>
 
 
-/* ================= SECCIONES ================= */
+              <p data-i18n="history1019P2">
+                Redes sociales, convergencia digital, desinformación,
+                comunicación política, derechos comunicacionales,
+                comunicación y género y democratización de la palabra
+                comienzan a ocupar un lugar central.
+              </p>
 
-section {
-  scroll-margin-top: 6rem;
-}
 
-.section-wrap {
-  max-width: 1200px;
+              <p data-i18n="history1019P3">
+                El ENACOM acompaña así las transformaciones del campo
+                profesional y académico de la comunicación.
+              </p>
 
-  margin: 0 auto;
+            </div>
 
-  padding:
-    clamp(3.5rem, 6vw, 5.5rem)
-    1.25rem;
-}
+          </details>
 
-.section-title {
-  display: grid;
 
-  gap: 0.55rem;
 
-  margin-bottom: 1.7rem;
-}
+          <!-- 2020 -->
 
-.section-title.center {
-  text-align: center;
+          <details class="history-item">
 
-  justify-items: center;
-}
+            <summary>
 
-.section-title h2 {
-  margin: 0;
+              <span class="history-year">
+                2020
+              </span>
 
-  font-size:
-    clamp(2rem, 4vw, 3.2rem);
 
-  line-height: 1.05;
+              <span class="history-summary-text">
 
-  color: var(--red);
-}
+                <strong data-i18n="history2020Title">
+                  La pandemia transforma el encuentro
+                </strong>
 
-.section-title p {
-  margin: 0;
+                <small data-i18n="history2020Sub">
+                  Nuevas formas de participación
+                </small>
 
-  max-width: 48rem;
+              </span>
 
-  color: var(--muted);
 
-  font-size: 1.03rem;
-}
+              <span
+                class="history-icon"
+                aria-hidden="true"
+              >
+                +
+              </span>
 
+            </summary>
 
-/* ================= CARRUSEL ================= */
 
-.gallery-section {
-  background: #fff;
-}
+            <div class="history-content">
 
-.carousel {
-  position: relative;
+              <p data-i18n="history2020P1">
+                La pandemia de COVID-19 modifica las actividades académicas
+                presenciales y obliga a transformar las dinámicas de intercambio.
+              </p>
 
-  max-width: 1050px;
 
-  margin: 2rem auto 0;
+              <p data-i18n="history2020P2">
+                La virtualidad, las plataformas digitales y las nuevas formas
+                de circulación de contenidos adquieren un papel todavía más
+                importante dentro del campo de la comunicación.
+              </p>
 
-  border-radius: 18px;
+            </div>
 
-  overflow: hidden;
+          </details>
 
-  box-shadow: var(--shadow);
 
-  background: #1d1514;
-}
 
-.carousel-track {
-  position: relative;
+          <!-- 2021 -->
 
-  width: 100%;
+          <details class="history-item">
 
-  aspect-ratio: 16 / 8.5;
-}
+            <summary>
 
-.carousel-slide {
-  position: absolute;
+              <span class="history-year">
+                2021
+              </span>
 
-  inset: 0;
 
-  margin: 0;
+              <span class="history-summary-text">
 
-  opacity: 0;
+                <strong data-i18n="history2021Title">
+                  Reanudación del encuentro
+                </strong>
 
-  pointer-events: none;
+                <small data-i18n="history2021Sub">
+                  Mendoza
+                </small>
 
-  transition: opacity 400ms ease;
-}
+              </span>
 
-.carousel-slide.active {
-  opacity: 1;
 
-  pointer-events: auto;
-}
+              <span
+                class="history-icon"
+                aria-hidden="true"
+              >
+                +
+              </span>
 
-.carousel-slide img {
-  width: 100%;
+            </summary>
 
-  height: 100%;
 
-  object-fit: cover;
+            <div class="history-content">
 
-  display: block;
-}
+              <p data-i18n="history2021P1">
+                El ENACOM vuelve a encontrarse presencialmente en Mendoza
+                luego del período más crítico de la pandemia.
+              </p>
 
-.carousel-slide figcaption {
-  position: absolute;
 
-  left: 0;
-  right: 0;
-  bottom: 0;
+              <p data-i18n="history2021P2">
+                Los debates incorporan con mayor fuerza cuestiones como
+                la virtualización de la vida cotidiana, la sobreinformación,
+                las noticias falsas y el papel de los medios durante
+                situaciones de crisis.
+              </p>
 
-  padding: 1.1rem 1.3rem;
+            </div>
 
-  color: white;
+          </details>
 
-  background:
-    linear-gradient(
-      transparent,
-      rgba(0, 0, 0, 0.82)
-    );
 
-  display: grid;
 
-  gap: 0.15rem;
+          <!-- 2024 -->
 
-  padding-top: 4rem;
-}
+          <details class="history-item">
 
-.carousel-slide figcaption strong {
-  font-size: 1.1rem;
-}
+            <summary>
 
-.carousel-slide figcaption span {
-  font-size: 0.8rem;
+              <span class="history-year">
+                2024
+              </span>
 
-  opacity: 0.9;
-}
 
-.carousel-control {
-  position: absolute;
+              <span class="history-summary-text">
 
-  top: 50%;
+                <strong data-i18n="history2024Title">
+                  San Luis es elegida sede
+                </strong>
 
-  transform: translateY(-50%);
+                <small data-i18n="history2024Sub">
+                  Preparación del XXII ENACOM
+                </small>
 
-  width: 3rem;
-  height: 3rem;
+              </span>
 
-  border: 0;
 
-  border-radius: 50%;
+              <span
+                class="history-icon"
+                aria-hidden="true"
+              >
+                +
+              </span>
 
-  background: rgba(255,255,255,0.92);
+            </summary>
 
-  color: var(--red);
 
-  font-size: 2rem;
+            <div class="history-content">
 
-  cursor: pointer;
+              <p data-i18n="history2024P1">
+                En septiembre de 2024, la Asamblea de FADECCOS aprueba
+                la candidatura de la Facultad de Ciencias Humanas de la
+                Universidad Nacional de San Luis como sede del ENACOM 2025.
+              </p>
 
-  z-index: 5;
-}
 
-.carousel-control:hover {
-  background: white;
+              <p data-i18n="history2024P2">
+                La elección da continuidad al carácter federal del encuentro
+                y reconoce la trayectoria académica de la carrera de
+                Comunicación Social de la universidad.
+              </p>
 
-  transform:
-    translateY(-50%)
-    scale(1.06);
-}
+            </div>
 
-.carousel-control.prev {
-  left: 1rem;
-}
+          </details>
 
-.carousel-control.next {
-  right: 1rem;
-}
 
-.carousel-dots {
-  position: absolute;
 
-  bottom: 0.8rem;
+          <!-- 2025 -->
 
-  left: 50%;
+          <details class="history-item">
 
-  transform: translateX(-50%);
+            <summary>
 
-  display: flex;
+              <span class="history-year">
+                2025
+              </span>
 
-  gap: 0.4rem;
 
-  z-index: 10;
-}
+              <span class="history-summary-text">
 
-.carousel-dot {
-  width: 10px;
-  height: 10px;
+                <strong data-i18n="history2025Title">
+                  XXII ENACOM — San Luis
+                </strong>
 
-  border-radius: 50%;
+                <small data-i18n="history2025Sub">
+                  Tiempo de comunicación
+                </small>
 
-  border: 1px solid white;
+              </span>
 
-  background: rgba(255,255,255,0.5);
 
-  cursor: pointer;
-}
+              <span
+                class="history-icon"
+                aria-hidden="true"
+              >
+                +
+              </span>
 
-.carousel-dot.active {
-  background: white;
+            </summary>
 
-  transform: scale(1.2);
-}
 
-.photo-note {
-  text-align: center;
+            <div class="history-content">
 
-  color: var(--muted);
+              <p data-i18n="history2025P1">
+                Los días 5, 6 y 7 de noviembre de 2025, la Universidad
+                Nacional de San Luis fue sede del XXII Encuentro Nacional
+                de Carreras de Comunicación.
+              </p>
 
-  font-size: 0.82rem;
 
-  margin-top: 0.8rem;
-}
+              <p data-i18n="history2025P2">
+                Bajo el lema “Tiempo de comunicación. Diálogos sobre pasado
+                y presente en un mundo acelerado”, la edición puso en diálogo
+                la trayectoria histórica del campo con las transformaciones
+                contemporáneas de la comunicación.
+              </p>
 
 
-/* ================= CRÉDITOS FOTOGRÁFICOS ================= */
+              <p data-i18n="history2025P3">
+                Participaron estudiantes, docentes, investigadores,
+                comunicadores, extensionistas y profesionales provenientes
+                de diferentes provincias y países de América Latina.
+              </p>
 
-.photo-credit {
-  max-width: 700px;
+            </div>
 
-  margin: 0.35rem auto 0;
+          </details>
 
-  text-align: center;
 
-  color: var(--muted);
 
-  font-size: 0.78rem;
+          <!-- 2026 -->
 
-  opacity: 0.85;
-}
+          <details class="history-item history-current">
 
+            <summary>
 
-/* ================= EJE PRINCIPAL ================= */
+              <span class="history-year">
+                2026
+              </span>
 
-.main-thread {
-  background: white;
-}
 
-.feature-layout {
-  display: grid;
+              <span class="history-summary-text">
 
-  grid-template-columns:
-    minmax(0, 0.8fr)
-    minmax(0, 1.2fr);
+                <strong data-i18n="history2026Title">
+                  XXIII ENACOM — Corrientes
+                </strong>
 
-  gap: 1.25rem;
+                <small data-i18n="history2026Sub">
+                  La historia continúa en la UNNE
+                </small>
 
-  align-items: stretch;
-}
+              </span>
 
-.thread-copy {
-  border-left: 6px solid var(--orange);
 
-  padding: 1.3rem;
+              <span
+                class="history-icon"
+                aria-hidden="true"
+              >
+                +
+              </span>
 
-  background: var(--cream);
+            </summary>
 
-  border-radius: var(--radius);
-}
 
-.thread-copy h3 {
-  margin: 0 0 0.5rem;
+            <div class="history-content">
 
-  font-size: 1.35rem;
+              <span
+                class="history-badge"
+                data-i18n="history2026Badge"
+              >
+                Próxima edición
+              </span>
 
-  color: #4f2927;
-}
 
-.thread-copy p {
-  margin: 0;
+              <h3 data-i18n="history2026Heading">
+                Corrientes será sede del XXIII ENACOM
+              </h3>
 
-  color: var(--muted);
-}
 
-.media-slot {
-  min-height: 22rem;
+              <p data-i18n="history2026P1">
+                Los días 4, 5 y 6 de noviembre de 2026, la ciudad de
+                Corrientes recibirá el XXIII Encuentro Nacional de
+                Carreras de Comunicación.
+              </p>
 
-  border-radius: var(--radius);
 
-  overflow: hidden;
+              <p data-i18n="history2026P2">
+                La sede será el Campus Cabral de la Universidad Nacional
+                del Nordeste, con la carrera de Comunicación Social de la
+                Facultad de Humanidades como anfitriona.
+              </p>
 
-  background: #1d1514;
-}
 
-.media-slot iframe {
-  width: 100%;
+              <p data-i18n="history2026P3">
+                Esta edición se desarrollará bajo el lema:
+              </p>
 
-  height: 100%;
 
-  min-height: 22rem;
+              <blockquote
+                class="history-quote"
+                data-i18n="history2026Quote"
+              >
+                “Pensar la comunicación y la democracia en las
+                encrucijadas del siglo XXI”
+              </blockquote>
 
-  border: 0;
 
-  display: block;
-}
+              <p data-i18n="history2026P4">
+                El encuentro propone debatir los desafíos contemporáneos
+                de la comunicación y el periodismo, promoviendo espacios
+                de diálogo y nuevas líneas de acción en intervención,
+                docencia e investigación.
+              </p>
 
+            </div>
 
-/* ================= PROBLEMÁTICAS ================= */
+          </details>
 
-.subthreads {
-  background:
-    linear-gradient(
-      180deg,
-      #fff7ed 0%,
-      #ffffff 100%
-    );
-}
 
-.accordion {
-  display: grid;
+        </div>
 
-  gap: 0.9rem;
-}
+      </div>
 
-.subthread {
-  border: 1px solid var(--line);
+    </section>
 
-  border-radius: var(--radius);
 
-  background: rgba(255,255,255,0.92);
+    <!-- ===================================================
+         GALERÍA / CARRUSEL
+    ==================================================== -->
 
-  box-shadow:
-    0 12px 28px rgba(97,43,22,0.08);
+    <section
+      class="gallery-section"
+      id="galeria"
+    >
 
-  overflow: hidden;
-}
+      <div class="section-wrap">
 
-.subthread-button {
-  width: 100%;
 
-  border: 0;
+        <div class="section-title center">
 
-  background: transparent;
+          <span
+            class="kicker"
+            data-i18n="galleryKicker"
+          >
+            El encuentro en imágenes
+          </span>
 
-  padding: 1.1rem;
 
-  display: flex;
+          <h2 data-i18n="galleryTitle">
+            ENACOM 2025 en San Luis
+          </h2>
 
-  align-items: center;
 
-  justify-content: space-between;
+          <p data-i18n="galleryText">
+            Una mirada visual sobre las jornadas realizadas en la
+            Facultad de Ciencias Humanas de la Universidad Nacional
+            de San Luis.
+          </p>
 
-  gap: 1rem;
+        </div>
 
-  cursor: pointer;
 
-  color: var(--ink);
 
-  text-align: left;
+        <div
+          class="carousel"
+          aria-label="Galería de fotografías del ENACOM 2025"
+        >
 
-  font: inherit;
+          <div class="carousel-track">
 
-  font-weight: 800;
 
-  font-size: 1.1rem;
-}
+            <!-- FOTO 1 -->
 
-.subthread-button .label {
-  display: flex;
+            <figure class="carousel-slide active">
 
-  align-items: center;
+              <img
+                src="images/carrusel-facultad.jpg"
+                alt="Frente de la Facultad de Ciencias Humanas de la Universidad Nacional de San Luis, sede del ENACOM 2025"
+              >
 
-  gap: 0.75rem;
-}
 
-.letter {
-  flex: 0 0 auto;
+              <figcaption>
 
-  width: 2rem;
-  height: 2rem;
+                <strong>
+                  Facultad de Ciencias Humanas
+                </strong>
 
-  border-radius: 8px;
+                <span>
+                  Universidad Nacional de San Luis · Sede del ENACOM 2025
+                </span>
 
-  display: grid;
+              </figcaption>
 
-  place-items: center;
+            </figure>
 
-  background: var(--cream);
 
-  color: var(--red);
 
-  border: 1px solid var(--line);
+            <!-- FOTO 2 -->
 
-  font-size: 0.92rem;
-}
+            <figure class="carousel-slide">
 
-.chevron {
-  flex: 0 0 auto;
+              <img
+                src="images/carrusel-publico-1.png"
+                alt="Público asistente durante una jornada del ENACOM 2025"
+              >
 
-  width: 2.15rem;
-  height: 2.15rem;
 
-  border-radius: 8px;
+              <figcaption>
 
-  display: grid;
+                <strong>
+                  Participación y encuentro
+                </strong>
 
-  place-items: center;
+                <span>
+                  Docentes, investigadores y estudiantes durante la jornada
+                </span>
 
-  background: var(--red);
+              </figcaption>
 
-  color: white;
+            </figure>
 
-  transition: transform 180ms ease;
-}
 
-.subthread.open .chevron {
-  transform: rotate(45deg);
-}
 
-.subthread-content {
-  max-height: 0;
+            <!-- FOTO 3 -->
 
-  overflow: hidden;
+            <figure class="carousel-slide">
 
-  transition:
-    max-height 300ms ease;
+              <img
+                src="images/carrusel-publico-2.png"
+                alt="Público observando una actividad durante el ENACOM 2025"
+              >
 
-  border-top: 1px solid transparent;
-}
 
-.subthread.open .subthread-content {
-  border-top-color: var(--line);
-}
+              <figcaption>
 
-.subthread-inner {
-  padding: 1.1rem;
+                <strong>
+                  Comunidad académica
+                </strong>
 
-  display: grid;
+                <span>
+                  Un espacio de intercambio y reflexión sobre comunicación
+                </span>
 
-  grid-template-columns:
-    minmax(0, 0.78fr)
-    minmax(0, 1.22fr);
+              </figcaption>
 
-  gap: 1rem;
-}
+            </figure>
 
-.subthread-text {
-  color: var(--muted);
 
-  margin: 0;
 
-  background: var(--cream);
+            <!-- FOTO 4 -->
 
-  border-radius: var(--radius);
+            <figure class="carousel-slide">
 
-  padding: 1rem;
-}
+              <img
+                src="images/carrusel-peret.png"
+                alt="Maximiliano Peret durante el ENACOM 2025"
+              >
 
-.infografia-preview {
-  position: relative;
 
-  display: block;
+              <figcaption>
 
-  width: 100%;
+                <strong>
+                  Maximiliano Peret
+                </strong>
 
-  height: 320px;
+                <span>
+                  Coordinación de la mesa sobre convergencia e inteligencias artificiales
+                </span>
 
-  overflow: hidden;
+              </figcaption>
 
-  border-radius: var(--radius);
+            </figure>
 
-  border: 1px solid #f6b28b;
 
-  background: #fff7ed;
 
-  text-decoration: none;
-}
+            <!-- FOTO 5 -->
 
-.infografia-preview img {
-  width: 100%;
+            <figure class="carousel-slide">
 
-  height: 100%;
+              <img
+                src="images/carrusel-vilte.png"
+                alt="Miguel Ángel Vilte durante el ENACOM 2025"
+              >
 
-  object-fit: cover;
 
-  display: block;
-}
+              <figcaption>
 
-.preview-overlay {
-  position: absolute;
+                <strong>
+                  Miguel Ángel Vilte
+                </strong>
 
-  inset: 0;
+                <span>
+                  Participación en las actividades académicas del encuentro
+                </span>
 
-  background: rgba(152,39,34,0.84);
+              </figcaption>
 
-  color: white;
+            </figure>
 
-  display: flex;
 
-  align-items: center;
 
-  justify-content: center;
+            <!-- FOTO 6 -->
 
-  text-align: center;
+            <figure class="carousel-slide">
 
-  opacity: 0;
+              <img
+                src="images/carrusel-cristiano.png"
+                alt="Javier Cristiano durante el ENACOM 2025"
+              >
 
-  transition: opacity .25s ease;
 
-  font-size: 1.05rem;
+              <figcaption>
 
-  font-weight: 800;
-}
+                <strong>
+                  Javier Cristiano
+                </strong>
 
-.infografia-preview:hover .preview-overlay,
-.infografia-preview:focus .preview-overlay {
-  opacity: 1;
-}
+                <span>
+                  Doctor en Sociología, investigador del CONICET y profesor en la UNC
+                </span>
 
+              </figcaption>
 
-/* =====================================================
-   REFERENTES DEL ENACOM 2025
-===================================================== */
+            </figure>
 
-.speakers-section {
-  background: #fff;
-}
 
 
-/* Grilla de referentes */
+            <!-- FOTO 7 -->
 
-.referents-grid {
-  display: grid;
+            <figure class="carousel-slide">
 
-  grid-template-columns:
-    repeat(2, minmax(0, 1fr));
+              <img
+                src="images/carrusel-becerra.png"
+                alt="Martín Becerra durante el ENACOM 2025"
+              >
 
-  gap: 1.3rem;
 
-  margin-top: 2rem;
-}
+              <figcaption>
 
+                <strong>
+                  Martín Becerra
+                </strong>
 
-/* Tarjeta individual */
+                <span>
+                  Investigador especializado en comunicación, medios y democracia
+                </span>
 
-.referent-card {
-  display: grid;
+              </figcaption>
 
-  grid-template-columns: 150px minmax(0, 1fr);
+            </figure>
 
-  gap: 1.25rem;
+          </div>
 
-  align-items: stretch;
 
-  padding: 1rem;
 
-  border-radius: var(--radius);
+          <button
+            class="carousel-control prev"
+            type="button"
+            aria-label="Fotografía anterior"
+          >
+            ‹
+          </button>
 
-  background:
-    linear-gradient(
-      145deg,
-      #fff7ed,
-      #ffffff
-    );
 
-  border: 1px solid var(--line);
+          <button
+            class="carousel-control next"
+            type="button"
+            aria-label="Fotografía siguiente"
+          >
+            ›
+          </button>
 
-  box-shadow:
-    0 12px 30px rgba(97,43,22,0.08);
 
-  transition:
-    transform 200ms ease,
-    box-shadow 200ms ease;
-}
+          <div
+            class="carousel-dots"
+            aria-label="Seleccionar fotografía"
+          ></div>
 
-.referent-card:hover {
-  transform: translateY(-4px);
+        </div>
 
-  box-shadow:
-    0 18px 36px rgba(97,43,22,0.14);
-}
 
 
-/* Foto del referente */
+        <p
+          class="photo-note"
+          data-i18n="photoNote"
+        >
+          Las fotografías se presentan con identificación de su
+          fuente y autoría.
+        </p>
 
-.referent-card > img {
-  width: 150px;
 
-  height: 190px;
+        <p class="photo-credit">
+          Fotografías de los ponentes:
+          Instagram de FADECCOS ENACOM.
+        </p>
 
-  object-fit: cover;
+      </div>
 
-  display: block;
+    </section>
 
-  border-radius: 10px;
 
-  background: var(--cream);
-}
 
+    <!-- ===================================================
+         EJES TEMÁTICOS
+    ==================================================== -->
 
-/* Contenido */
+    <section
+      class="main-thread"
+      id="ejes"
+    >
 
-.referent-content {
-  display: flex;
+      <div class="section-wrap">
 
-  flex-direction: column;
 
-  justify-content: center;
+        <div class="section-title">
 
-  min-width: 0;
-}
+          <span
+            class="kicker"
+            data-i18n="axesKicker"
+          >
+            Recorrido conceptual
+          </span>
 
-.referent-content h3 {
-  margin: 0 0 0.5rem;
 
-  color: var(--red);
+          <h2 data-i18n="axesTitle">
+            Ejes temáticos
+          </h2>
 
-  font-size: 1.35rem;
 
-  line-height: 1.2;
-}
+          <p data-i18n="axesIntro">
+            El recorrido reúne algunas de las principales problemáticas
+            abordadas durante el ENACOM 2025.
+          </p>
 
-.referent-content p {
-  margin: 0;
+        </div>
 
-  color: var(--muted);
 
-  font-size: 0.92rem;
 
-  line-height: 1.5;
-}
+        <div class="feature-layout">
 
-.referent-content small {
-  display: block;
 
-  margin-top: 0.75rem;
+          <article class="thread-copy">
 
-  color: var(--muted);
+            <h3 data-i18n="axisMainTitle">
+              Crisis, comunicación y democracia
+            </h3>
 
-  font-size: 0.72rem;
 
-  line-height: 1.35;
+            <p data-i18n="axisMainText">
+              Este eje aborda la relación entre las crisis socioeconómicas
+              y políticas, la comunicación pública, el periodismo,
+              la circulación de información y los desafíos democráticos.
+            </p>
 
-  opacity: 0.78;
-}
+          </article>
 
 
-/* =====================================================
-   MESA DESTACADA
-===================================================== */
 
-.featured-panel {
-  margin-top: 2rem;
+          <div class="media-slot">
 
-  padding: clamp(1.5rem, 4vw, 2.4rem);
+            <iframe
+              src="https://www.youtube.com/embed/H3dgq7f7Cdc?si=i6j7gJmSSWB-PtCm"
+              title="Video sobre ENACOM 2025"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
 
-  border-radius: var(--radius);
+          </div>
 
-  background:
-    linear-gradient(
-      135deg,
-      var(--cream),
-      #ffffff
-    );
+        </div>
 
-  border-left: 6px solid var(--orange);
+      </div>
 
-  box-shadow:
-    0 14px 34px rgba(97,43,22,0.09);
-}
+    </section>
 
-.featured-panel .kicker {
-  margin-bottom: 0.8rem;
-}
 
-.featured-panel h3 {
-  margin: 0 0 0.8rem;
 
-  color: var(--red);
+    <!-- ===================================================
+         PROBLEMÁTICAS Y DEBATES
+    ==================================================== -->
 
-  font-size:
-    clamp(1.5rem, 3vw, 2.15rem);
+    <section
+      class="subthreads"
+      id="problematicas"
+    >
 
-  line-height: 1.15;
-}
+      <div class="section-wrap">
 
-.featured-panel p {
-  max-width: 900px;
 
-  margin: 0 0 0.8rem;
+        <div class="section-title">
 
-  color: var(--muted);
-}
+          <span
+            class="kicker"
+            data-i18n="problemsKicker"
+          >
+            Debates contemporáneos
+          </span>
 
-.featured-panel blockquote {
-  margin: 1.3rem 0 0;
 
-  padding: 1rem 1.2rem;
+          <h2 data-i18n="problemsTitle">
+            Problemáticas y debates
+          </h2>
 
-  border-left: 4px solid var(--red);
 
-  background: rgba(255,255,255,0.7);
+          <p data-i18n="problemsIntro">
+            Dos de los temas trabajados en nuestro recorrido sobre
+            comunicación, periodismo y democracia.
+          </p>
 
-  border-radius: 0 10px 10px 0;
+        </div>
 
-  color: #4f2927;
 
-  font-weight: 800;
 
-  font-style: italic;
-}
+        <div class="accordion">
 
 
-/* =====================================================
-   ESTILOS ANTIGUOS DE PONENCIAS
-   Se mantienen por compatibilidad.
-===================================================== */
+          <!-- PROBLEMÁTICA A -->
 
-.speakers-grid {
-  display: grid;
+          <article class="subthread open">
 
-  grid-template-columns:
-    repeat(2, minmax(0, 1fr));
+            <button
+              class="subthread-button"
+              type="button"
+              aria-expanded="true"
+              aria-controls="problem-a"
+            >
 
-  gap: 1.2rem;
-}
+              <span class="label">
 
-.speaker-card {
-  position: relative;
+                <span class="letter">
+                  A
+                </span>
 
-  padding: 1.6rem;
 
-  border-radius: var(--radius);
+                <span data-i18n="problemA">
+                  Ataques a comunicadores y periodistas
+                </span>
 
-  background:
-    linear-gradient(
-      145deg,
-      #fff7ed,
-      #ffffff
-    );
+              </span>
 
-  border: 1px solid var(--line);
 
-  box-shadow:
-    0 12px 30px rgba(97,43,22,0.08);
+              <span
+                class="chevron"
+                aria-hidden="true"
+              >
+                +
+              </span>
 
-  transition:
-    transform 200ms ease,
-    box-shadow 200ms ease;
-}
+            </button>
 
-.speaker-card:hover {
-  transform: translateY(-5px);
 
-  box-shadow:
-    0 18px 36px rgba(97,43,22,0.14);
-}
 
-.speaker-number {
-  display: inline-block;
+            <div
+              class="subthread-content"
+              id="problem-a"
+            >
 
-  margin-bottom: 0.8rem;
+              <div class="subthread-inner">
 
-  color: var(--orange);
 
-  font-weight: 900;
+                <p
+                  class="subthread-text"
+                  data-i18n="problemAText"
+                >
+                  Esta problemática aborda las formas de hostigamiento,
+                  censura, violencia simbólica y presión pública que afectan
+                  el trabajo periodístico y el derecho social a estar informado.
+                </p>
 
-  font-size: 1.2rem;
-}
 
-.speaker-card h3 {
-  margin: 0;
 
-  color: var(--red);
+                <a
+                  href="infografia_enacom_2025_3_3.html"
+                  target="_blank"
+                  class="infografia-preview"
+                >
 
-  font-size: 1.35rem;
+                  <img
+                    src="images/preview-periodistas.png.png"
+                    alt="Vista previa de la infografía sobre ataques a comunicadores"
+                  >
 
-  line-height: 1.2;
-}
 
-.speaker-subtitle {
-  color: var(--muted);
+                  <span
+                    class="preview-overlay"
+                    data-i18n="viewInfographic"
+                  >
+                    Ver infografía completa
+                  </span>
 
-  font-style: italic;
-}
+                </a>
 
-.speaker-names {
-  margin-top: 1rem;
+              </div>
 
-  padding-top: 1rem;
+            </div>
 
-  border-top: 1px solid var(--line);
+          </article>
 
-  font-weight: 800;
 
-  line-height: 1.8;
-}
 
+          <!-- PROBLEMÁTICA B -->
 
-/* ================= QUIZ ================= */
+          <article class="subthread">
 
-.interactive-section {
-  background:
-    linear-gradient(
-      135deg,
-      #fff3e1,
-      #ffffff
-    );
-}
+            <button
+              class="subthread-button"
+              type="button"
+              aria-expanded="false"
+              aria-controls="problem-b"
+            >
 
-.quiz-card {
-  max-width: 760px;
+              <span class="label">
 
-  margin: 2rem auto 0;
+                <span class="letter">
+                  B
+                </span>
 
-  padding: 2rem;
 
-  background: white;
+                <span data-i18n="problemB">
+                  Desinformación, periodismo y democracia
+                </span>
 
-  border-radius: var(--radius);
+              </span>
 
-  border: 1px solid var(--line);
 
-  box-shadow: var(--shadow);
-}
+              <span
+                class="chevron"
+                aria-hidden="true"
+              >
+                +
+              </span>
 
-.quiz-question {
-  margin-bottom: 1.5rem;
-}
+            </button>
 
-.quiz-question h3 {
-  margin-top: 0;
 
-  color: var(--red);
 
-  font-size: 1.4rem;
-}
+            <div
+              class="subthread-content"
+              id="problem-b"
+            >
 
-.quiz-options {
-  display: grid;
+              <div class="subthread-inner">
 
-  gap: 0.7rem;
-}
 
-.quiz-option {
-  width: 100%;
+                <p
+                  class="subthread-text"
+                  data-i18n="problemBText"
+                >
+                  La circulación de fake news, la inteligencia artificial
+                  y la desinformación transforman la forma en que se produce,
+                  distribuye y recibe información.
+                </p>
 
-  padding: 1rem;
 
-  border-radius: 10px;
 
-  border: 2px solid var(--line);
+                <a
+                  href="fake news.pdf"
+                  target="_blank"
+                  class="infografia-preview"
+                >
 
-  background: white;
+                  <img
+                    src="images/preview-fakenews.png.png"
+                    alt="Vista previa del material sobre fake news"
+                  >
 
-  cursor: pointer;
 
-  text-align: left;
+                  <span
+                    class="preview-overlay"
+                    data-i18n="viewPdf"
+                  >
+                    Ver material completo
+                  </span>
 
-  font: inherit;
+                </a>
 
-  font-weight: 700;
-}
+              </div>
 
-.quiz-option:hover {
-  background: var(--cream);
+            </div>
 
-  border-color: var(--orange);
-}
+          </article>
 
-.quiz-option.selected {
-  background: var(--cream);
+        </div>
 
-  border-color: var(--red);
-}
+      </div>
 
-.quiz-option.correct {
-  background: #dff4df;
+    </section>
 
-  border-color: #2e7d32;
-}
 
-.quiz-option.incorrect {
-  background: #ffe1df;
 
-  border-color: #b71c1c;
-}
+    <!-- ===================================================
+         REFERENTES DEL ENACOM
+    ==================================================== -->
 
-.quiz-button {
-  margin-top: 1.3rem;
-}
+    <section
+      class="speakers-section"
+      id="referentes"
+    >
 
-.quiz-result {
-  margin-top: 1.5rem;
+      <div class="section-wrap">
 
-  font-size: 1.2rem;
 
-  font-weight: 800;
+        <div class="section-title center">
 
-  color: var(--red);
-}
+          <span
+            class="kicker"
+            data-i18n="speakersKicker"
+          >
+            Referentes del encuentro
+          </span>
 
 
-/* ================= REDES ================= */
+          <h2 data-i18n="speakersTitle">
+            Referentes del ENACOM 2025
+          </h2>
 
-.social-section {
-  background: white;
-}
 
-.social-card {
-  display: flex;
+          <p data-i18n="speakersIntro">
+            Investigadores, docentes y especialistas que participaron
+            de los debates y actividades del encuentro.
+          </p>
 
-  justify-content: space-between;
+        </div>
 
-  align-items: center;
 
-  gap: 2rem;
 
-  padding: 2rem;
+        <div class="referents-grid">
 
-  border-radius: var(--radius);
 
-  background:
-    linear-gradient(
-      135deg,
-      var(--red),
-      var(--dark-red)
-    );
+          <!-- CARLOS MANGONE -->
 
-  color: white;
+          <article class="referent-card">
 
-  box-shadow: var(--shadow);
-}
+            <img
+              src="images/mangone.png"
+              alt="Carlos Mangone"
+            >
 
-.social-card .kicker {
-  background: rgba(255,255,255,0.15);
 
-  color: white;
+            <div class="referent-content">
 
-  border-color: rgba(255,255,255,0.3);
-}
+              <h3>
+                Carlos Mangone
+              </h3>
 
-.social-card h2 {
-  margin: 0.7rem 0 0;
 
-  font-size:
-    clamp(1.8rem, 4vw, 3rem);
-}
+              <p>
+                Doctor en Ciencias Sociales por la UBA, docente en la
+                Universidad de Buenos Aires y en la Universidad Nacional
+                de La Pampa. Su trabajo aborda el discurso político,
+                los medios y la cultura.
+              </p>
 
-.social-card p {
-  max-width: 600px;
 
-  opacity: 0.9;
-}
+            </div>
 
-.social-buttons {
-  display: flex;
+          </article>
 
-  gap: 0.7rem;
 
-  flex-wrap: wrap;
-}
 
-.social-button {
-  display: inline-flex;
+          <!-- MARÍA SOLEDAD SEGURA -->
 
-  align-items: center;
+          <article class="referent-card">
 
-  justify-content: center;
+            <img
+              src="images/segura.png"
+              alt="María Soledad Segura"
+            >
 
-  padding: 0.8rem 1.1rem;
 
-  border-radius: 10px;
+            <div class="referent-content">
 
-  background: white;
+              <h3>
+                María Soledad Segura
+              </h3>
 
-  color: var(--red);
 
-  text-decoration: none;
+              <p>
+                Profesora de la UNC e investigadora del CONICET.
+                Sus investigaciones abordan las desigualdades
+                comunicacionales y digitales, la participación social
+                y los discursos de odio y desinformación.
+              </p>
 
-  font-weight: 900;
 
-  transition:
-    transform 180ms ease,
-    background 180ms ease;
-}
+            </div>
 
-.social-button:hover {
-  transform: translateY(-2px);
-}
+          </article>
 
 
-/* ================= ACCESIBILIDAD ================= */
 
-.accessibility-section {
-  background: #fff7ed;
-}
+          <!-- MARTÍN BECERRA -->
 
-.accessibility-panel {
-  display: flex;
+          <article class="referent-card">
 
-  align-items: center;
+            <img
+              src="images/becerra.png"
+              alt="Martín Becerra"
+            >
 
-  justify-content: space-between;
 
-  gap: 2rem;
+            <div class="referent-content">
 
-  padding: 1.7rem;
+              <h3>
+                Martín Becerra
+              </h3>
 
-  border-radius: var(--radius);
 
-  border: 1px solid var(--line);
+              <p>
+                Investigador y analista especializado en políticas de
+                comunicación, medios y democracia. Es profesor en la
+                UNQ y la UBA y doctor por la Universidad Autónoma
+                de Barcelona.
+              </p>
 
-  background: white;
-}
 
-.accessibility-panel h2 {
-  margin: 0.6rem 0 0;
+            </div>
 
-  color: var(--red);
-}
+          </article>
 
-.accessibility-panel p {
-  color: var(--muted);
 
-  margin-bottom: 0;
-}
 
-.accessibility-buttons {
-  display: flex;
+          <!-- JAVIER CRISTIANO -->
 
-  flex-wrap: wrap;
+          <article class="referent-card">
 
-  gap: 0.5rem;
-}
+            <img
+              src="images/cristiano.png"
+              alt="Javier Cristiano"
+            >
 
-.access-button {
-  padding: 0.7rem 0.8rem;
 
-  border: 1px solid var(--line);
+            <div class="referent-content">
 
-  border-radius: 8px;
+              <h3>
+                Javier Cristiano
+              </h3>
 
-  background: white;
 
-  cursor: pointer;
+              <p>
+                Doctor en Sociología, investigador del CONICET y
+                profesor en la UNC. Su trabajo explora el tiempo social,
+                la imaginación y las formas de vida en el capitalismo
+                contemporáneo.
+              </p>
 
-  font-weight: 800;
-}
 
-.access-button:hover {
-  background: var(--cream);
+            </div>
 
-  color: var(--red);
-}
+          </article>
 
 
-/* =====================================================
-   MODO ALTO CONTRASTE
-===================================================== */
 
-body.high-contrast .site-header {
-  background: #ffffff;
+          <!-- FLAVIA COSTA -->
 
-  border-color: #000000;
-}
+          <article class="referent-card">
 
-body.high-contrast .hero::before {
-  background: #ffffff;
-}
+            <img
+              src="images/costa.png"
+              alt="Flavia Costa"
+            >
 
-body.high-contrast .hero h1,
-body.high-contrast .hero h2,
-body.high-contrast .section-title h2,
-body.high-contrast .referent-content h3,
-body.high-contrast .featured-panel h3 {
-  color: #000000;
-}
 
-body.high-contrast .kicker {
-  color: #000000;
+            <div class="referent-content">
 
-  background: #ffffff;
+              <h3>
+                Flavia Costa
+              </h3>
 
-  border-color: #000000;
-}
 
-body.high-contrast .referent-card,
-body.high-contrast .featured-panel,
-body.high-contrast .quiz-card,
-body.high-contrast .accessibility-panel {
-  background: #ffffff;
+              <p>
+                Doctora en Ciencias Sociales por la UBA, investigadora
+                del CONICET y directora de Tecnoceno Lab. Su obra
+                explora los vínculos entre tecnología, cuerpo y cultura
+                en la era del algoritmo.
+              </p>
 
-  border-color: #000000;
 
-  box-shadow: none;
-}
+            </div>
 
-body.high-contrast .referent-content p,
-body.high-contrast .referent-content small,
-body.high-contrast .photo-note,
-body.high-contrast .photo-credit,
-body.high-contrast .section-title p {
-  color: #000000;
-}
+          </article>
 
-body.high-contrast .featured-panel {
-  border-left-color: #000000;
-}
 
-body.high-contrast .featured-panel blockquote {
-  color: #000000;
 
-  border-left-color: #000000;
+          <!-- MAXIMILIANO PERET -->
 
-  background: #ffffff;
-}
+          <article class="referent-card">
 
-body.high-contrast .subthread {
-  border-color: #000000;
-}
+            <img
+              src="images/peret.png"
+              alt="Maximiliano Peret"
+            >
 
-body.high-contrast .subthread-text {
-  background: #ffffff;
 
-  color: #000000;
+            <div class="referent-content">
 
-  border: 1px solid #000000;
-}
+              <h3>
+                Maximiliano Peret
+              </h3>
 
 
-/* ================= CIERRE ================= */
+              <p>
+                Comunicador, docente e investigador. Participó de la
+                organización y coordinación de actividades del ENACOM 2025,
+                incluyendo la mesa sobre convergencia e inteligencias artificiales.
+              </p>
 
-.closing {
-  background: var(--red);
 
-  color: white;
-}
+            </div>
 
-.closing .section-wrap {
-  padding-top: 2.5rem;
+          </article>
 
-  padding-bottom: 2.5rem;
-}
 
-.closing p {
-  margin: 0;
 
-  max-width: 60rem;
+          <!-- MIGUEL ÁNGEL VILTE -->
 
-  font-weight: 700;
+          <article class="referent-card">
 
-  font-size: 1.15rem;
-}
+            <img
+              src="images/vilte.png"
+              alt="Miguel Ángel Vilte"
+            >
 
 
-/* ================= FOOTER ================= */
+            <div class="referent-content">
 
-.site-footer {
-  padding: 2rem 1.25rem;
+              <h3>
+                Miguel Ángel Vilte
+              </h3>
 
-  text-align: center;
 
-  background: #241717;
+              <p>
+                Docente e investigador vinculado al campo de la
+                comunicación. Participó del ENACOM 2025 como parte
+                de las actividades académicas del encuentro.
+              </p>
 
-  color: white;
-}
 
-.site-footer p {
-  margin: 0.25rem;
-}
+            </div>
 
-.site-footer p:last-child {
-  opacity: 0.7;
+          </article>
 
-  font-size: 0.85rem;
-}
+        </div>
 
 
-/* =====================================================
-   RESPONSIVE
-===================================================== */
 
-@media (max-width: 1000px) {
+        <!-- =================================================
+             MESA DESTACADA
+        ================================================== -->
 
-  .referent-card {
-    grid-template-columns: 125px minmax(0, 1fr);
-  }
+        <div class="featured-panel">
 
-  .referent-card > img {
-    width: 125px;
+          <span class="kicker">
+            Mesa panel destacada
+          </span>
 
-    height: 175px;
-  }
 
-}
+          <h3>
+            ¿Qué hacer en tiempos de convergencia e inteligencias artificiales?
+          </h3>
 
 
-@media (max-width: 900px) {
+          <p>
+            Una de las mesas más convocantes del ENACOM 2025 reunió a
+            Martín Becerra (UNQ), Flavia Costa (UBA) y Javier Cristiano (UNC),
+            con la coordinación de Maximiliano Peret (UNICEN).
+          </p>
 
-  .nav {
-    flex-wrap: wrap;
-  }
 
-  .nav-links {
-    order: 3;
+          <p>
+            Durante el encuentro se abordaron los desafíos éticos,
+            políticos y culturales que plantea la inteligencia artificial
+            en el campo de la comunicación: la concentración de poder en
+            las plataformas, la transformación de los modos de producción
+            simbólica y la necesidad de sostener una mirada crítica y
+            democrática sobre las tecnologías.
+          </p>
 
-    width: 100%;
-  }
 
-  .hero-content,
-  .feature-layout {
-    grid-template-columns: 1fr;
-  }
+          <blockquote>
+            “La comunicación no puede quedar al margen de las transformaciones
+            tecnológicas: debe intervenir, pensar y proponer futuros posibles.”
+          </blockquote>
 
-  .speakers-grid {
-    grid-template-columns: 1fr;
-  }
+        </div>
 
-  .social-card,
-  .accessibility-panel {
-    flex-direction: column;
+      </div>
 
-    align-items: flex-start;
-  }
+    </section>
 
-  .referents-grid {
-    grid-template-columns: 1fr;
-  }
 
-}
 
+    <!-- ===================================================
+         INTERACTIVO
+    ==================================================== -->
 
-@media (max-width: 650px) {
+    <section
+      class="interactive-section"
+      id="interactivo"
+    >
 
-  .hero {
-    min-height: auto;
+      <div class="section-wrap">
 
-    padding-top: 3rem;
-  }
 
-  .hero h1 {
-    font-size:
-      clamp(3rem, 18vw, 5rem);
-  }
+        <div class="section-title center">
 
-  .hero-actions {
-    flex-direction: column;
-  }
+          <span
+            class="kicker"
+            data-i18n="quizKicker"
+          >
+            Participá
+          </span>
 
-  .hero-actions .button {
-    width: 100%;
-  }
 
-  .countdown-grid {
-    gap: 0.4rem;
-  }
+          <h2 data-i18n="quizTitle">
+            ¿Cuánto sabés sobre comunicación?
+          </h2>
 
-  .countdown-unit {
-    padding: 0.55rem 0.2rem;
-  }
 
-  .countdown-unit strong {
-    font-size: 1.2rem;
-  }
+          <p data-i18n="quizIntro">
+            Poné a prueba lo que aprendiste durante el recorrido.
+          </p>
 
-  .carousel-track {
-    aspect-ratio: 4 / 3;
-  }
+        </div>
 
-  .carousel-slide figcaption {
-    padding-bottom: 3.2rem;
-  }
 
-  .carousel-slide figcaption strong {
-    font-size: 0.95rem;
-  }
 
-  .carousel-slide figcaption span {
-    font-size: 0.7rem;
-  }
+        <div class="quiz-card">
 
-  .carousel-control {
-    width: 2.5rem;
-    height: 2.5rem;
+          <div id="quiz-container"></div>
 
-    font-size: 1.6rem;
-  }
 
-  .subthread-inner {
-    grid-template-columns: 1fr;
-  }
+          <div id="quiz-feedback" class="quiz-feedback" role="status" aria-live="polite" aria-atomic="true"></div>
+          <div class="quiz-actions">
+            <button id="quiz-previous" class="button secondary" type="button" disabled>Pregunta anterior</button>
+            <button id="quiz-next" class="button primary" type="button" disabled>Siguiente pregunta</button>
+            <button id="quiz-restart" class="button primary" type="button" hidden>Volver a intentar</button>
+          </div>
 
-  .infografia-preview {
-    height: 250px;
-  }
+          <div
+            id="quiz-result"
+            tabindex="-1"
+            class="quiz-result"
+            aria-live="polite"
+          ></div>
 
-  .quiz-card {
-    padding: 1.2rem;
-  }
+        </div>
 
-  .language-selector {
-    margin-left: auto;
-  }
+      </div>
 
+    </section>
 
-  /* REFERENTES EN CELULAR */
 
-  .referents-grid {
-    grid-template-columns: 1fr;
 
-    gap: 1rem;
-  }
+    <!-- ===================================================
+         REDES
+    ==================================================== -->
 
-  .referent-card {
-    grid-template-columns: 105px minmax(0, 1fr);
+    <section
+      class="social-section"
+      id="redes"
+    >
 
-    gap: 1rem;
+      <div class="section-wrap">
 
-    padding: 0.8rem;
-  }
+        <div class="social-card">
 
-  .referent-card > img {
-    width: 105px;
 
-    height: 145px;
-  }
+          <div>
 
-  .referent-content h3 {
-    font-size: 1.12rem;
-  }
+            <span
+              class="kicker"
+              data-i18n="socialKicker"
+            >
+              Seguí el encuentro
+            </span>
 
-  .referent-content p {
-    font-size: 0.82rem;
 
-    line-height: 1.45;
-  }
+            <h2 data-i18n="socialTitle">
+              ENACOM también está en redes sociales
+            </h2>
 
-  .referent-content small {
-    font-size: 0.67rem;
-  }
 
+            <p data-i18n="socialText">
+              Encontrá más información, fotografías y novedades
+              sobre el Encuentro Nacional de Carreras de Comunicación.
+            </p>
 
-  /* MESA DESTACADA */
+          </div>
 
-  .featured-panel {
-    padding: 1.3rem;
 
-    border-left-width: 4px;
-  }
 
-  .featured-panel h3 {
-    font-size: 1.4rem;
-  }
+          <div class="social-buttons">
 
-  .featured-panel p {
-    font-size: 0.9rem;
-  }
 
-  .featured-panel blockquote {
-    font-size: 0.9rem;
-  }
+            <a
+              class="social-button instagram"
+              href="https://www.instagram.com/enacom.fadeccos/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram de ENACOM"
+            >
+              Instagram
+            </a>
 
 
-  /* REDES */
+            <a
+              class="social-button facebook"
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook de ENACOM"
+            >
+              Facebook
+            </a>
 
-  .social-buttons {
-    width: 100%;
-  }
+          </div>
 
-  .social-button {
-    flex: 1;
-  }
+        </div>
 
+      </div>
 
-  /* ACCESIBILIDAD */
+    </section>
 
-  .accessibility-buttons {
-    width: 100%;
-  }
 
-  .access-button {
-    flex: 1;
-  }
 
-}
+    <!-- ===================================================
+         ACCESIBILIDAD
+    ==================================================== -->
 
+    <section class="accessibility-section">
 
-@media (max-width: 430px) {
+      <div class="section-wrap">
 
-  .referent-card {
-    grid-template-columns: 85px minmax(0, 1fr);
+        <div class="accessibility-panel">
 
-    gap: 0.75rem;
-  }
 
-  .referent-card > img {
-    width: 85px;
+          <div>
 
-    height: 120px;
-  }
+            <span
+              class="kicker"
+              data-i18n="accessKicker"
+            >
+              Accesibilidad
+            </span>
 
-  .referent-content h3 {
-    font-size: 1rem;
-  }
 
-  .referent-content p {
-    font-size: 0.76rem;
-  }
+            <h2 data-i18n="accessTitle">
+              Una página para todas las personas
+            </h2>
 
-  .referent-content small {
-    font-size: 0.62rem;
-  }
 
-  .carousel-slide figcaption {
-    padding-left: 0.9rem;
+            <p data-i18n="accessText">
+              Utilizá estas herramientas para adaptar la experiencia
+              de lectura según tus necesidades.
+            </p>
 
-    padding-right: 0.9rem;
-  }
+          </div>
 
-  .carousel-control.prev {
-    left: 0.5rem;
-  }
 
-  .carousel-control.next {
-    right: 0.5rem;
-  }
 
-}
+          <div class="accessibility-buttons">
 
 
-/* =====================================================
-   REDUCIR MOVIMIENTO
-===================================================== */
+            <button
+              id="increase-text"
+              type="button"
+              class="access-button"
+              data-i18n="increaseText"
+            >
+              Aumentar texto
+            </button>
 
-@media (prefers-reduced-motion: reduce) {
 
-  html {
-    scroll-behavior: auto;
-  }
+            <button
+              id="decrease-text"
+              type="button"
+              class="access-button"
+              data-i18n="decreaseText"
+            >
+              Disminuir texto
+            </button>
 
-  *,
-  *::before,
-  *::after {
-    transition-duration: 0.01ms !important;
 
-    animation-duration: 0.01ms !important;
+            <button
+              id="contrast-toggle"
+              type="button"
+              class="access-button"
+              data-i18n="contrast"
+            >
+              Alto contraste
+            </button>
 
-    animation-iteration-count: 1 !important;
-  }
 
-}
+            <button
+              id="reset-accessibility"
+              type="button"
+              class="access-button"
+              data-i18n="reset"
+            >
+              Restablecer
+            </button>
 
-/* Quiz feedback and persistent section navigation */
-[hidden] { display: none !important; }
-section[id] { scroll-margin-top: calc(var(--header-height, 150px) + 20px); }
-.quiz-progress { font-weight: 700; color: var(--red); margin-bottom: .75rem; }
-.quiz-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1rem; }
-.quiz-actions button:disabled { opacity: .5; cursor: not-allowed; }
-.quiz-feedback { margin-top: 1rem; padding: 1rem; border-radius: 12px; background: #fff3e1; }
-.quiz-feedback:empty { display: none; }
-.quiz-feedback p { margin: .5rem 0 0; }
-.quiz-feedback.correct { background: #e9f6ed; color: #14532d; border: 1px solid #287447; }
-.quiz-feedback.incorrect { background: #fff0ed; color: #8c2520; border: 1px solid #b33228; }
-.quiz-option[aria-disabled="true"] { cursor: default; }
-.quiz-option.correct { border: 2px solid #287447; background: #e9f6ed; color: #14532d; }
-.quiz-option.incorrect { border: 2px solid #b33228; background: #fff0ed; color: #8c2520; }
-.floating-navigation { position: fixed; right: 1.25rem; bottom: max(1rem, env(safe-area-inset-bottom)); z-index: 110; display: flex; align-items: end; gap: .5rem; }
-.quick-navigation summary, .back-to-top { padding: .8rem 1rem; background: var(--red); color: white; border-radius: 999px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 18px #0002; }
-.back-to-top { text-decoration: none; }
-.quick-navigation nav { position: absolute; bottom: calc(100% + .75rem); right: 0; width: min(270px, calc(100vw - 2rem)); max-height: 60vh; overflow-y: auto; padding: .65rem; background: #fffaf3; color: #29201b; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 8px 30px #0003; }
-.quick-navigation nav a { display: block; padding: .65rem .85rem; border-radius: 8px; text-decoration: none; font-weight: 700; }
-.quick-navigation nav a:hover { background: #f8dfbd; }
-:where(button, a, summary):focus-visible { outline: 3px solid #215dad; outline-offset: 4px; }
-body { padding-bottom: 5rem; }
-body.high-contrast .quiz-feedback, body.high-contrast .quick-navigation nav { background: #000; color: #fff; border: 1px solid #fff; }
-body.high-contrast .quiz-option.correct { color: #fff; background: #14532d; }
-body.high-contrast .quiz-option.incorrect { color: #fff; background: #8c2520; }
-@media (max-width: 600px) {
-  .floating-navigation { right: .75rem; }
-  .quiz-actions button { flex: 1 1 100%; }
-}
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+          </div>
 
+        </div>
 
-/* =========================================================
-   HISTORIA DEL ENACOM
-========================================================= */
+      </div>
 
-.history-section {
-  position: relative;
-  padding: clamp(4rem, 8vw, 7rem) 1.2rem;
-  background:
-    radial-gradient(circle at 10% 10%, rgba(242, 106, 33, 0.12), transparent 28rem),
-    linear-gradient(180deg, var(--white) 0%, var(--cream) 100%);
-  overflow: hidden;
-}
+    </section>
 
-.history-intro {
-  max-width: 900px;
-  margin: 2.5rem auto 4rem;
-  padding: clamp(1.5rem, 4vw, 2.5rem);
-  border: 1px solid var(--line);
-  border-radius: 24px;
-  background: rgba(255, 250, 243, 0.86);
-  box-shadow: var(--shadow);
-}
 
-.history-intro-label {
-  display: inline-block;
-  margin-bottom: 0.8rem;
-  padding: 0.35rem 0.75rem;
-  border-radius: 999px;
-  background: var(--orange);
-  color: #fff;
-  font-size: 0.8rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
 
-.history-intro h3 {
-  margin: 0 0 1rem;
-  color: var(--red);
-  font-size: clamp(1.5rem, 3vw, 2.1rem);
-  line-height: 1.15;
-}
+    <!-- ===================================================
+         CIERRE
+    ==================================================== -->
 
-.history-intro p {
-  margin: 0 0 1rem;
-  color: var(--muted);
-}
+    <section class="closing">
 
-.history-intro p:last-child { margin-bottom: 0; }
+      <div class="section-wrap">
 
-.history-timeline {
-  position: relative;
-  width: min(950px, 100%);
-  margin: 0 auto;
-  padding-left: 3rem;
-}
+        <p data-i18n="closing">
+          ENACOM 2025 invita a pensar la comunicación como un espacio
+          de diálogo entre memoria, presente, conflicto, tecnología
+          y derecho a la información.
+        </p>
 
-.history-timeline::before {
-  content: "";
-  position: absolute;
-  top: 1rem;
-  bottom: 1rem;
-  left: 1rem;
-  width: 4px;
-  border-radius: 999px;
-  background: linear-gradient(to bottom, var(--orange), var(--coral), var(--red), var(--dark-red));
-}
+      </div>
 
-.history-item {
-  position: relative;
-  margin-bottom: 1rem;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: var(--white);
-  box-shadow: 0 10px 30px rgba(97, 43, 22, 0.08);
-  overflow: visible;
-  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
-}
+    </section>
 
-.history-item::before {
-  content: "";
-  position: absolute;
-  left: -2.58rem;
-  top: 1.72rem;
-  width: 1rem;
-  height: 1rem;
-  border: 4px solid var(--white);
-  border-radius: 50%;
-  background: var(--red);
-  box-shadow: 0 0 0 2px var(--red);
-  z-index: 3;
-}
+  </main>
 
-.history-item:hover {
-  transform: translateY(-2px);
-  border-color: rgba(200, 51, 45, 0.34);
-  box-shadow: 0 14px 34px rgba(97, 43, 22, 0.13);
-}
 
-.history-item summary {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.25rem 1.4rem;
-  cursor: pointer;
-  list-style: none;
-  user-select: none;
-}
 
-.history-item summary::-webkit-details-marker { display: none; }
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
 
-.history-year {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 92px;
-  padding: 0.55rem 0.8rem;
-  border-radius: 12px;
-  background: var(--cream);
-  color: var(--red);
-  font-size: 1.05rem;
-  font-weight: 900;
-  letter-spacing: -0.02em;
-}
+  <footer class="site-footer">
 
-.history-summary-text {
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-}
+    <p>
+      ENACOM 2025 · San Luis, Argentina
+    </p>
 
-.history-summary-text strong { color: var(--ink); font-size: 1rem; line-height: 1.3; }
-.history-summary-text small { color: var(--muted); font-size: 0.86rem; }
 
-.history-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.2rem;
-  height: 2.2rem;
-  border-radius: 50%;
-  background: var(--red);
-  color: #fff;
-  font-size: 1.45rem;
-  line-height: 1;
-  transition: transform 200ms ease, background 200ms ease;
-}
+    <p data-i18n="footer">
+      Trabajo académico realizado en el marco del ENACOM 2025.
+    </p>
 
-.history-item[open] .history-icon { transform: rotate(45deg); background: var(--dark-red); }
-.history-item[open] .history-year { background: var(--red); color: #fff; }
+  </footer>
 
-.history-content {
-  padding: 0 1.5rem 1.6rem;
-  animation: historyOpen 260ms ease;
-}
 
-.history-content p { max-width: 760px; margin: 0 0 0.9rem; color: var(--muted); }
-.history-content p:last-child { margin-bottom: 0; }
-.history-content h3 { margin: 0.8rem 0; color: var(--red); font-size: 1.4rem; }
 
-@keyframes historyOpen {
-  from { opacity: 0; transform: translateY(-8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+  <script src="script.js"></script>
 
-.history-current {
-  border: 2px solid var(--orange);
-  background: linear-gradient(135deg, var(--white), var(--cream));
-}
+  <div class="floating-navigation">
+    <details class="quick-navigation">
+      <summary data-i18n="navSections">Secciones</summary>
+      <nav aria-label="Accesos rápidos">
+        <a href="#inicio" data-i18n="navHome">Inicio</a>
+        <a href="#historia" data-i18n="navHistory">Historia</a>
+        <a href="#galeria" data-i18n="navGallery">Galería</a>
+        <a href="#ejes" data-i18n="navEjes">Ejes temáticos</a>
+        <a href="#problematicas" data-i18n="navProblems">Problemáticas</a>
+        <a href="#referentes" data-i18n="navPonencias">Ponencias</a>
+        <a href="#interactivo" data-i18n="navInteractivo">Participá</a>
+        <a href="#redes" data-i18n="navRedes">Redes</a>
+      </nav>
+    </details>
+    <a class="back-to-top" href="#inicio">↑ <span data-i18n="navHome">Inicio</span></a>
+  </div>
 
-.history-current::before { background: var(--orange); box-shadow: 0 0 0 2px var(--orange); }
-.history-current .history-year { background: var(--orange); color: #fff; }
-
-.history-badge {
-  display: inline-block;
-  margin-top: 0.3rem;
-  padding: 0.3rem 0.7rem;
-  border-radius: 999px;
-  background: var(--orange);
-  color: #fff;
-  font-size: 0.75rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.history-quote {
-  margin: 1.2rem 0;
-  padding: 1rem 1.2rem;
-  border-left: 5px solid var(--orange);
-  border-radius: 0 14px 14px 0;
-  background: var(--sand);
-  color: var(--dark-red);
-  font-size: clamp(1.05rem, 2vw, 1.3rem);
-  font-weight: 800;
-  line-height: 1.45;
-}
-
-body.high-contrast .history-section { background: #fff; }
-body.high-contrast .history-intro,
-body.high-contrast .history-item { background: #000; border: 2px solid #fff; color: #fff; }
-body.high-contrast .history-summary-text strong,
-body.high-contrast .history-summary-text small,
-body.high-contrast .history-content p,
-body.high-contrast .history-intro p,
-body.high-contrast .history-intro h3,
-body.high-contrast .history-content h3 { color: #fff; }
-body.high-contrast .history-quote { background: #000; color: #fff; border: 2px solid #fff; border-left: 6px solid #fff; }
-body.high-contrast .history-year { background: #fff; color: #000; }
-body.high-contrast .history-icon,
-body.high-contrast .history-badge,
-body.high-contrast .history-intro-label { background: #fff; color: #000; }
-
-@media (max-width: 700px) {
-  .history-section { padding: 3.5rem 1rem; }
-  .history-timeline { padding-left: 1.7rem; }
-  .history-timeline::before { left: 0.35rem; width: 3px; }
-  .history-item::before { left: -1.72rem; top: 1.6rem; width: 0.75rem; height: 0.75rem; border-width: 3px; }
-  .history-item summary { grid-template-columns: 1fr auto; gap: 0.7rem; padding: 1rem; }
-  .history-year { grid-column: 1 / 2; justify-self: start; min-width: auto; font-size: 0.9rem; }
-  .history-summary-text { grid-column: 1 / 2; }
-  .history-icon { grid-column: 2; grid-row: 1 / 3; width: 2rem; height: 2rem; }
-  .history-content { padding: 0 1rem 1.25rem; }
-  .history-intro { margin-bottom: 2.5rem; border-radius: 18px; }
-}
+</body>
+</html>
